@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Vault Law Management System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      background-color: #f4f7f9;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    header {
+      background-color: #1e3a8a;
+      color: white;
+      padding: 1rem 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li {
+      margin-left: 1.5rem;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+    }
+    .hero {
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      color: white;
+      padding: 4rem 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+    .btn {
+      display: inline-block;
+      background-color: #fbbf24;
+      color: #1e3a8a;
+      padding: 0.75rem 1.5rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 0.5rem;
+      border: none;
+      cursor: pointer;
+    }
+    .card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .card h2 {
+      color: #1e3a8a;
+      margin-top: 0;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .dashboard {
+      display: none;
+      margin-top: 2rem;
+    }
+    .dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table th, table td {
+      padding: 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    table th {
+      background-color: #f9fafb;
+      font-weight: bold;
+    }
+    .status {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    .status-registered {
+      background-color: #dbeafe;
+      color: #1e40af;
+    }
+    .status-in-progress {
+      background-color: #fef3c7;
+      color: #92400e;
+    }
+    .status-closed {
+      background-color: #d1fae5;
+      color: #065f46;
+    }
+    footer {
+      background-color: #1e3a8a;
+      color: white;
+      text-align: center;
+      padding: 1.5rem 0;
+      margin-top: 2rem;
+    }
+    .login-form {
+      max-width: 400px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    input, select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #d1d5db;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    .error {
+      color: #dc2626;
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+    }
+    .stats-container {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .stat-card {
+      flex: 1;
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .stat-card h3 {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 0.5rem;
+    }
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #1e3a8a;
+    }
+    .sidebar {
+      width: 250px;
+      background-color: #1e1e2f;
+      color: white;
+      padding: 2rem 1rem;
+      border-radius: 8px;
+      margin-right: 1.5rem;
+    }
+    .user-info {
+      text-align: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .avatar {
+      width: 80px;
+      height: 80px;
+      background-color: #ffcc00;
+      color: #1e1e2f;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 0 auto 1rem;
+    }
+    .dashboard-container {
+      display: flex;
+    }
+    .main-content {
+      flex: 1;
+    }
+    .sidebar-menu {
+      list-style: none;
+      padding: 0;
+    }
+    .sidebar-menu li {
+      margin-bottom: 0.5rem;
+    }
+    .sidebar-menu a {
+      display: block;
+      padding: 0.75rem 1rem;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    .sidebar-menu a:hover, .sidebar-menu a.active {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    .recent-activity {
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+    }
+    .recent-activity h2 {
+      margin-bottom: 1rem;
+      color: #1e3a8a;
+    }
+    .recent-activity ul {
+      list-style: none;
+      padding: 0;
+    }
+    .recent-activity li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      flex-direction: column;
+    }
+    .activity-date {
+      font-size: 0.8rem;
+      color: #666;
+      margin-bottom: 0.25rem;
+    }
+    .activity-desc {
+      font-size: 0.95rem;
+    }
+    .upcoming-hearings {
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .upcoming-hearings h2 {
+      margin-bottom: 1rem;
+      color: #1e3a8a;
+    }
+    @media (max-width: 768px) {
+      .dashboard-container {
+        flex-direction: column;
+      }
+      .sidebar {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 1.5rem;
+      }
+      .stats-container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">E-Vault</div>
+      <ul>
+        <li><a href="#" id="home-link">Home</a></li>
+        <li><a href="#" id="login-link">Login</a></li>
+        <li><a href="#" id="register-link">Register</a></li>
+        <li><span id="wallet-status" style="display: none; color: #fbbf24; font-weight: bold;"></span></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Home Section -->
+    <section id="home-section">
+      <div class="hero">
+        <h1>E-Vault Law Management System</h1>
+        <p>A blockchain-based platform for secure and transparent management of legal cases and documents.</p>
+        <div>
+          <button class="btn" id="login-btn">Login</button>
+          <button class="btn" id="register-btn">Register</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>About E-Vault</h2>
+        <p>E-Vault is a decentralized application built on blockchain technology that provides a secure platform for managing legal cases, documents, and user roles including judges, lawyers, and clients.</p>
+      </div>
+
+      <div class="card">
+        <h2>Key Features</h2>
+        <ul>
+          <li>Secure document storage using IPFS</li>
+          <li>Transparent case management</li>
+          <li>Role-based access control</li>
+          <li>Immutable record keeping</li>
+          <li>Real-time updates and notifications</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Pre-populated Data</h2>
+        <p>The system comes pre-populated with:</p>
+        <ul>
+          <li>2 Judges: Judge Smith and Judge Patel</li>
+          <li>3 Lawyers: John Doe, Jane Smith, and Robert Johnson</li>
+          <li>2 Clients: Alice Brown (ABC Corporation) and Bob Wilson (XYZ Enterprises)</li>
+          <li>3 Cases with different statuses</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Login Section -->
+    <section id="login-section" style="display: none;">
+      <div class="login-form">
+        <h2>Login to E-Vault</h2>
+        <div class="form-group">
+          <label for="login-email">Email</label>
+          <input type="email" id="login-email" placeholder="Enter your email">
+        </div>
+        <div class="form-group">
+          <label for="login-id">ID (Bar ID or Judicial ID)</label>
+          <input type="text" id="login-id" placeholder="Enter your ID (leave empty if client)">
+        </div>
+        <div class="form-group">
+          <button class="btn" id="login-submit">Login</button>
+        </div>
+        <p id="login-error" class="error"></p>
+        <p>Don't have an account? <a href="#" id="to-register">Register here</a></p>
+      </div>
+    </section>
+
+    <!-- Register Section -->
+    <section id="register-section" style="display: none;">
+      <div class="login-form">
+        <h2>Register for E-Vault</h2>
+        <div class="form-group">
+          <label for="register-name">Full Name</label>
+          <input type="text" id="register-name" placeholder="Enter your full name">
+        </div>
+        <div class="form-group">
+          <label for="register-email">Email</label>
+          <input type="email" id="register-email" placeholder="Enter your email">
+        </div>
+        <div class="form-group">
+          <label for="register-role">Role</label>
+          <select id="register-role">
+            <option value="">-- Select Role --</option>
+            <option value="client">Client</option>
+            <option value="lawyer">Lawyer</option>
+            <option value="judge">Judge</option>
+          </select>
+        </div>
+        <div class="form-group" id="id-field" style="display: none;">
+          <label for="register-id">ID (Bar ID or Judicial ID)</label>
+          <input type="text" id="register-id" placeholder="Enter your ID">
+        </div>
+        <div class="form-group">
+          <button class="btn" id="register-submit">Register</button>
+        </div>
+        <p id="register-error" class="error"></p>
+        <p>Already have an account? <a href="#" id="to-login">Login here</a></p>
+      </div>
+    </section>
+
+    <!-- Lawyer Dashboard Section -->
+    <section id="lawyer-dashboard" style="display: none;">
+      <div class="dashboard-container">
+        <aside class="sidebar">
+          <div class="user-info">
+            <div class="avatar" id="lawyer-avatar">JD</div>
+            <h3 id="lawyer-name">John Doe</h3>
+            <p id="lawyer-role">Lawyer</p>
+            <p id="lawyer-id">BAR001</p>
+          </div>
+          <ul class="sidebar-menu">
+            <li><a href="#" class="active">Dashboard</a></li>
+            <li><a href="#" id="lawyer-cases-link">My Cases</a></li>
+            <li><a href="#" id="lawyer-documents-link">Documents</a></li>
+            <li><a href="#" id="lawyer-add-case-link">Add New Case</a></li>
+            <li><a href="#" id="lawyer-profile-link">Profile</a></li>
+            <li><a href="#" id="lawyer-logout">Logout</a></li>
+          </ul>
+        </aside>
+
+        <div class="main-content">
+          <h1>Lawyer Dashboard</h1>
+          
+          <div class="stats-container">
+            <div class="stat-card">
+              <h3>Active Cases</h3>
+              <p class="stat-number" id="lawyer-active-cases">2</p>
+            </div>
+            <div class="stat-card">
+              <h3>Pending Documents</h3>
+              <p class="stat-number" id="lawyer-pending-docs">5</p>
+            </div>
+            <div class="stat-card">
+              <h3>Upcoming Hearings</h3>
+              <p class="stat-number" id="lawyer-upcoming-hearings">3</p>
+            </div>
+          </div>
+
+          <div class="recent-activity">
+            <h2>Recent Activity</h2>
+            <ul id="lawyer-activity-list">
+              <li>
+                <span class="activity-date">Today, 10:30 AM</span>
+                <span class="activity-desc">New document uploaded for Case #1</span>
+              </li>
+              <li>
+                <span class="activity-date">Yesterday, 2:15 PM</span>
+                <span class="activity-desc">Case status updated for ABC Corp vs. Property Developer</span>
+              </li>
+              <li>
+                <span class="activity-date">May 1, 2023</span>
+                <span class="activity-desc">New case assigned: Contract breach case with supplier</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="upcoming-hearings">
+            <h2>Upcoming Hearings</h2>
+            <table id="lawyer-hearings-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Case</th>
+                  <th>Court Room</th>
+                  <th>Judge</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>May 15, 2023</td>
+                  <td>10:00 AM</td>
+                  <td>ABC Corp vs. Property Developer</td>
+                  <td>Room 302</td>
+                  <td>Judge Smith</td>
+                </tr>
+                <tr>
+                  <td>May 22, 2023</td>
+                  <td>2:30 PM</td>
+                  <td>XYZ Enterprises vs. Software Inc.</td>
+                  <td>Room 405</td>
+                  <td>Judge Patel</td>
+                </tr>
+                <tr>
+                  <td>June 5, 2023</td>
+                  <td>9:15 AM</td>
+                  <td>ABC Corp vs. Supplier Co.</td>
+                  <td>Room 302</td>
+                  <td>Judge Smith</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <!-- Add New Case Form (initially hidden) -->
+          <div id="add-case-form" class="card" style="display: none; margin-top: 2rem;">
+            <h2>Add New Case</h2>
+            <div class="form-group">
+              <label for="case-title">Case Title</label>
+              <input type="text" id="case-title" placeholder="e.g., Client vs. Defendant">
+            </div>
+            <div class="form-group">
+              <label for="case-description">Case Description</label>
+              <textarea id="case-description" rows="4" placeholder="Describe the case details"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="case-type">Case Type</label>
+              <select id="case-type">
+                <option value="">-- Select Case Type --</option>
+                <option value="Civil - Property Dispute">Civil - Property Dispute</option>
+                <option value="Civil - Contract Breach">Civil - Contract Breach</option>
+                <option value="Civil - Intellectual Property">Civil - Intellectual Property</option>
+                <option value="Civil - Personal Injury">Civil - Personal Injury</option>
+                <option value="Criminal - Fraud">Criminal - Fraud</option>
+                <option value="Criminal - Theft">Criminal - Theft</option>
+                <option value="Family - Divorce">Family - Divorce</option>
+                <option value="Family - Child Custody">Family - Child Custody</option>
+                <option value="Corporate - Merger">Corporate - Merger</option>
+                <option value="Corporate - Acquisition">Corporate - Acquisition</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="case-client">Client</label>
+              <select id="case-client">
+                <option value="">-- Select Client --</option>
+                <!-- Will be populated dynamically -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="case-judge">Judge</label>
+              <select id="case-judge">
+                <option value="">-- Select Judge --</option>
+                <!-- Will be populated dynamically -->
+              </select>
+            </div>
+            <div class="form-group">
+              <button class="btn" id="submit-case">Submit Case</button>
+              <button class="btn" id="cancel-case" style="background-color: #f87171;">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Judge Dashboard Section -->
+    <section id="judge-dashboard" style="display: none;">
+      <div class="dashboard-container">
+        <aside class="sidebar">
+          <div class="user-info">
+            <div class="avatar" id="judge-avatar">JS</div>
+            <h3 id="judge-name">Judge Smith</h3>
+            <p id="judge-role">Judge</p>
+            <p id="judge-id">JID001</p>
+          </div>
+          <ul class="sidebar-menu">
+            <li><a href="#" class="active">Dashboard</a></li>
+            <li><a href="#">Cases</a></li>
+            <li><a href="#">Hearings</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#" id="judge-logout">Logout</a></li>
+          </ul>
+        </aside>
+
+        <div class="main-content">
+          <h1>Judge Dashboard</h1>
+          
+          <div class="stats-container">
+            <div class="stat-card">
+              <h3>Assigned Cases</h3>
+              <p class="stat-number" id="judge-assigned-cases">5</p>
+            </div>
+            <div class="stat-card">
+              <h3>Pending Decisions</h3>
+              <p class="stat-number" id="judge-pending-decisions">2</p>
+            </div>
+            <div class="stat-card">
+              <h3>Upcoming Hearings</h3>
+              <p class="stat-number" id="judge-upcoming-hearings">4</p>
+            </div>
+          </div>
+
+          <div class="recent-activity">
+            <h2>Recent Activity</h2>
+            <ul id="judge-activity-list">
+              <li>
+                <span class="activity-date">Today, 11:45 AM</span>
+                <span class="activity-desc">Ruling issued for Case #2</span>
+              </li>
+              <li>
+                <span class="activity-date">Yesterday, 3:30 PM</span>
+                <span class="activity-desc">New case assigned: XYZ Enterprises vs. Software Inc.</span>
+              </li>
+              <li>
+                <span class="activity-date">May 2, 2023</span>
+                <span class="activity-desc">Hearing scheduled for ABC Corp vs. Property Developer</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="upcoming-hearings">
+            <h2>Upcoming Hearings</h2>
+            <table id="judge-hearings-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Case</th>
+                  <th>Court Room</th>
+                  <th>Lawyers</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>May 15, 2023</td>
+                  <td>10:00 AM</td>
+                  <td>ABC Corp vs. Property Developer</td>
+                  <td>Room 302</td>
+                  <td>John Doe, Property Developer Counsel</td>
+                </tr>
+                <tr>
+                  <td>May 22, 2023</td>
+                  <td>2:30 PM</td>
+                  <td>XYZ Enterprises vs. Software Inc.</td>
+                  <td>Room 405</td>
+                  <td>Jane Smith, Software Inc. Counsel</td>
+                </tr>
+                <tr>
+                  <td>June 5, 2023</td>
+                  <td>9:15 AM</td>
+                  <td>ABC Corp vs. Supplier Co.</td>
+                  <td>Room 302</td>
+                  <td>Robert Johnson, Supplier Co. Counsel</td>
+                </tr>
+                <tr>
+                  <td>June 12, 2023</td>
+                  <td>1:00 PM</td>
+                  <td>Johnson Retail Inc. vs. Former Employer</td>
+                  <td>Room 201</td>
+                  <td>Michael Chen, Former Employer Counsel</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Client Dashboard Section -->
+    <section id="client-dashboard" style="display: none;">
+      <div class="dashboard-container">
+        <aside class="sidebar">
+          <div class="user-info">
+            <div class="avatar" id="client-avatar">AB</div>
+            <h3 id="client-name">Alice Brown</h3>
+            <p id="client-role">Client</p>
+            <p id="client-company">ABC Corporation</p>
+          </div>
+          <ul class="sidebar-menu">
+            <li><a href="#" class="active">Dashboard</a></li>
+            <li><a href="#">My Cases</a></li>
+            <li><a href="#">Documents</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#" id="client-logout">Logout</a></li>
+          </ul>
+        </aside>
+
+        <div class="main-content">
+          <h1>Client Dashboard</h1>
+          
+          <div class="stats-container">
+            <div class="stat-card">
+              <h3>Active Cases</h3>
+              <p class="stat-number" id="client-active-cases">2</p>
+            </div>
+            <div class="stat-card">
+              <h3>Documents Shared</h3>
+              <p class="stat-number" id="client-documents">7</p>
+            </div>
+            <div class="stat-card">
+              <h3>Upcoming Hearings</h3>
+              <p class="stat-number" id="client-upcoming-hearings">2</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Case Summary</h2>
+            <div class="card-grid">
+              <div class="card">
+                <h3>ABC Corp vs. Property Developer</h3>
+                <p><strong>Status:</strong> <span class="status status-in-progress">In Progress</span></p>
+                <p><strong>Lawyer:</strong> John Doe</p>
+                <p><strong>Judge:</strong> Judge Smith</p>
+                <p><strong>Next Hearing:</strong> May 15, 2023</p>
+                <button class="btn">View Details</button>
+              </div>
+              <div class="card">
+                <h3>ABC Corp vs. Supplier Co.</h3>
+                <p><strong>Status:</strong> <span class="status status-registered">Registered</span></p>
+                <p><strong>Lawyer:</strong> Robert Johnson</p>
+                <p><strong>Judge:</strong> Judge Smith</p>
+                <p><strong>Next Hearing:</strong> June 5, 2023</p>
+                <button class="btn">View Details</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="recent-activity">
+            <h2>Recent Activity</h2>
+            <ul id="client-activity-list">
+              <li>
+                <span class="activity-date">Today, 9:15 AM</span>
+                <span class="activity-desc">New document uploaded by John Doe for Case #1</span>
+              </li>
+              <li>
+                <span class="activity-date">Yesterday, 4:30 PM</span>
+                <span class="activity-desc">Case status updated for ABC Corp vs. Property Developer</span>
+              </li>
+              <li>
+                <span class="activity-date">May 1, 2023</span>
+                <span class="activity-desc">New case registered: ABC Corp vs. Supplier Co.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 E-Vault Law Management System. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+  <script>
+    // Contract ABIs and addresses
+    const userRegistryABI = [
+      "function registerJudge(string memory _name, string memory _email, string memory _id, uint _experience, string memory _specialization) public returns (bool)",
+      "function registerLawyer(string memory _name, string memory _email, string memory _id, uint _experience, string memory _specialization) public returns (bool)",
+      "function registerClient(string memory _name, string memory _email, string memory _company) public returns (bool)",
+      "function getJudgeByEmail(string memory _email) public view returns (string memory, string memory, string memory, uint, string memory, address)",
+      "function getLawyerByEmail(string memory _email) public view returns (string memory, string memory, string memory, uint, string memory, address)",
+      "function getClientByEmail(string memory _email) public view returns (string memory, string memory, string memory, address)"
+    ];
+    
+    const caseManagerABI = [
+      "function createCase(string memory _title, string memory _description, string memory _caseType, address _clientAddress, address _lawyerAddress, address _judgeAddress) public returns (uint)",
+      "function getCaseById(uint _caseId) public view returns (uint, string memory, string memory, string memory, address, address, address, string memory, string memory, string memory)",
+      "function updateCaseStatus(uint _caseId, string memory _status) public",
+      "function addDocument(uint _caseId, string memory _documentHash, string memory _documentName, string memory _documentType) public",
+      "function getDocumentsByCase(uint _caseId) public view returns (string[] memory, string[] memory, string[] memory, address[] memory, string[] memory)"
+    ];
+
+    const userRegistryAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+    const caseManagerAddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
+    
+    // Global variables
+    let provider;
+    let signer;
+    let userRegistryContract;
+    let caseManagerContract;
+    let currentAccount;
+    let allUsers = [];
+    let allCases = [];
+    
+    document.addEventListener('DOMContentLoaded', async function() {
+      // Navigation
+      const homeSection = document.getElementById('home-section');
+      const loginSection = document.getElementById('login-section');
+      const registerSection = document.getElementById('register-section');
+      const lawyerDashboard = document.getElementById('lawyer-dashboard');
+      const judgeDashboard = document.getElementById('judge-dashboard');
+      const clientDashboard = document.getElementById('client-dashboard');
+
+      // Initialize Ethereum connection
+      await initEthereum();
+
+      // Load all users and cases
+      await loadAllData();
+
+      // Navigation links
+      document.getElementById('home-link').addEventListener('click', function(e) {
+        e.preventDefault();
+        showSection(homeSection);
+      });
+
+      document.getElementById('login-link').addEventListener('click', function(e) {
+        e.preventDefault();
+        showSection(loginSection);
+      });
+
+      document.getElementById('register-link').addEventListener('click', function(e) {
+        e.preventDefault();
+        showSection(registerSection);
+      });
+
+      // Buttons
+      document.getElementById('login-btn').addEventListener('click', function() {
+        showSection(loginSection);
+      });
+
+      document.getElementById('register-btn').addEventListener('click', function() {
+        showSection(registerSection);
+      });
+
+      document.getElementById('to-register').addEventListener('click', function(e) {
+        e.preventDefault();
+        showSection(registerSection);
+      });
+
+      document.getElementById('to-login').addEventListener('click', function(e) {
+        e.preventDefault();
+        showSection(loginSection);
+      });
+
+      // Logout buttons
+      document.getElementById('lawyer-logout').addEventListener('click', function(e) {
+        e.preventDefault();
+        logout();
+      });
+
+      document.getElementById('judge-logout').addEventListener('click', function(e) {
+        e.preventDefault();
+        logout();
+      });
+
+      document.getElementById('client-logout').addEventListener('click', function(e) {
+        e.preventDefault();
+        logout();
+      });
+
+      function logout() {
+        localStorage.removeItem('user');
+        localStorage.removeItem('activeRole');
+        showSection(homeSection);
+      }
+
+      // Register role selection
+      document.getElementById('register-role').addEventListener('change', function() {
+        const idField = document.getElementById('id-field');
+        const role = this.value;
+        
+        if (role === 'lawyer' || role === 'judge') {
+          idField.style.display = 'block';
+        } else {
+          idField.style.display = 'none';
+        }
+      });
+
+      // Login form submission
+      document.getElementById('login-submit').addEventListener('click', async function() {
+        const email = document.getElementById('login-email').value.trim();
+        const id = document.getElementById('login-id').value.trim();
+        const errorElement = document.getElementById('login-error');
+        
+        if (!email) {
+          errorElement.textContent = 'Email is required';
+          return;
+        }
+        
+        if (!currentAccount) {
+          errorElement.textContent = 'Please connect your MetaMask wallet first';
+          return;
+        }
+        
+        try {
+          // First try to get user from blockchain
+          let user = null;
+          
+          try {
+            // Try to get user as judge
+            const judgeData = await userRegistryContract.getJudgeByEmail(email);
+            if (judgeData && judgeData[0] && judgeData[0] !== '') {
+              user = {
+                name: judgeData[0],
+                email: judgeData[1],
+                id: judgeData[2],
+                experience: judgeData[3].toString(),
+                specialization: judgeData[4],
+                address: judgeData[5],
+                role: 'judge'
+              };
+            }
+          } catch (e) {
+            console.log('Not a judge, trying lawyer...');
+          }
+          
+          if (!user) {
+            try {
+              // Try to get user as lawyer
+              const lawyerData = await userRegistryContract.getLawyerByEmail(email);
+              if (lawyerData && lawyerData[0] && lawyerData[0] !== '') {
+                user = {
+                  name: lawyerData[0],
+                  email: lawyerData[1],
+                  id: lawyerData[2],
+                  experience: lawyerData[3].toString(),
+                  specialization: lawyerData[4],
+                  address: lawyerData[5],
+                  role: 'lawyer'
+                };
+              }
+            } catch (e) {
+              console.log('Not a lawyer, trying client...');
+            }
+          }
+          
+          if (!user) {
+            try {
+              // Try to get user as client
+              const clientData = await userRegistryContract.getClientByEmail(email);
+              if (clientData && clientData[0] && clientData[0] !== '') {
+                user = {
+                  name: clientData[0],
+                  email: clientData[1],
+                  company: clientData[2],
+                  address: clientData[3],
+                  role: 'client'
+                };
+              }
+            } catch (e) {
+              console.log('Not a client either...');
+            }
+          }
+          
+          // If blockchain lookup failed, try the API
+          if (!user) {
+            const response = await fetch('/api/users');
+            if (!response.ok) {
+              throw new Error('Failed to fetch users');
+            }
+            
+            const users = await response.json();
+            user = users.find(u => u.email.toLowerCase() === email.toLowerCase());
+          }
+          
+          if (user) {
+            // For judges and lawyers, verify ID
+            if (user.role === 'judge' && user.id !== id) {
+              errorElement.textContent = 'Invalid Judicial ID';
+              return;
+            }
+            
+            if (user.role === 'lawyer' && user.id !== id) {
+              errorElement.textContent = 'Invalid Bar ID';
+              return;
+            }
+            
+            // Verify wallet address matches (for blockchain users)
+            if (user.address && user.address.toLowerCase() !== currentAccount.toLowerCase()) {
+              errorElement.textContent = 'Your wallet address does not match the registered address for this user';
+              return;
+            }
+            
+            // Store user in localStorage
+            localStorage.setItem('user', JSON.stringify(user));
+            localStorage.setItem('activeRole', user.role);
+            
+            // Show appropriate dashboard
+            showDashboard(user.role, user);
+          } else {
+            errorElement.textContent = 'User not found';
+          }
+        } catch (error) {
+          console.error('Error during login:', error);
+          errorElement.textContent = 'Error logging in. Please try again.';
+        }
+      });
+
+      // Register form submission
+      document.getElementById('register-submit').addEventListener('click', async function() {
+        const name = document.getElementById('register-name').value.trim();
+        const email = document.getElementById('register-email').value.trim();
+        const role = document.getElementById('register-role').value;
+        const id = document.getElementById('register-id').value.trim();
+        const errorElement = document.getElementById('register-error');
+        
+        if (!name || !email || !role) {
+          errorElement.textContent = 'Please fill in all required fields';
+          return;
+        }
+        
+        if ((role === 'lawyer' || role === 'judge') && !id) {
+          errorElement.textContent = 'ID is required for lawyers and judges';
+          return;
+        }
+        
+        if (!currentAccount) {
+          errorElement.textContent = 'Please connect your MetaMask wallet first';
+          return;
+        }
+        
+        try {
+          let tx;
+          
+          if (role === 'judge') {
+            tx = await userRegistryContract.registerJudge(name, email, id, 5, "General");
+          } else if (role === 'lawyer') {
+            tx = await userRegistryContract.registerLawyer(name, email, id, 3, "General");
+          } else if (role === 'client') {
+            tx = await userRegistryContract.registerClient(name, email, "Company");
+          }
+          
+          await tx.wait();
+          
+          alert('Registration successful! Please login with your credentials.');
+          showSection(loginSection);
+        } catch (error) {
+          console.error('Error during registration:', error);
+          errorElement.textContent = 'Error registering. Please try again.';
+        }
+      });
+
+      // Function to initialize Ethereum connection
+      async function initEthereum() {
+        try {
+          // Check if MetaMask is installed
+          if (window.ethereum) {
+            // Create a new provider
+            provider = new ethers.providers.Web3Provider(window.ethereum);
+            
+            // Request account access
+            await window.ethereum.request({ method: 'eth_requestAccounts' });
+            
+            // Get the signer
+            signer = provider.getSigner();
+            currentAccount = await signer.getAddress();
+            
+            // Create contract instances
+            userRegistryContract = new ethers.Contract(userRegistryAddress, userRegistryABI, signer);
+            caseManagerContract = new ethers.Contract(caseManagerAddress, caseManagerABI, signer);
+            
+            console.log('Ethereum initialized successfully');
+            console.log('Connected account:', currentAccount);
+            
+            // Update UI to show connected wallet
+            document.getElementById('wallet-status').textContent = `Connected: ${currentAccount.substring(0, 6)}...${currentAccount.substring(38)}`;
+            document.getElementById('wallet-status').style.display = 'block';
+            
+            // Listen for account changes
+            window.ethereum.on('accountsChanged', function (accounts) {
+              currentAccount = accounts[0];
+              console.log('Account changed:', currentAccount);
+              document.getElementById('wallet-status').textContent = `Connected: ${currentAccount.substring(0, 6)}...${currentAccount.substring(38)}`;
+            });
+            
+            return true;
+          } else {
+            console.log('MetaMask not installed');
+            alert('Please install MetaMask to use this application');
+            return false;
+          }
+        } catch (error) {
+          console.error('Error initializing Ethereum:', error);
+          return false;
+        }
+      }
+
+      // Function to load all data
+      async function loadAllData() {
+        try {
+          // Load users
+          const response = await fetch('/api/users');
+          if (response.ok) {
+            allUsers = await response.json();
+            console.log(`Loaded ${allUsers.length} users`);
+          }
+          
+          // Load cases
+          const casesResponse = await fetch('/api/cases');
+          if (casesResponse.ok) {
+            allCases = await casesResponse.json();
+            console.log(`Loaded ${allCases.length} cases`);
+          }
+        } catch (error) {
+          console.error('Error loading data:', error);
+        }
+      }
+
+      // Function to show appropriate dashboard
+      function showDashboard(role, userData) {
+        if (role === 'lawyer') {
+          // Update lawyer dashboard with user data
+          document.getElementById('lawyer-name').textContent = userData.name;
+          document.getElementById('lawyer-id').textContent = userData.id || '';
+          document.getElementById('lawyer-avatar').textContent = getInitials(userData.name);
+          
+          // Load lawyer's cases
+          loadLawyerCases(userData);
+          
+          // Show lawyer dashboard
+          showSection(lawyerDashboard);
+        } else if (role === 'judge') {
+          // Update judge dashboard with user data
+          document.getElementById('judge-name').textContent = userData.name;
+          document.getElementById('judge-id').textContent = userData.id || '';
+          document.getElementById('judge-avatar').textContent = getInitials(userData.name);
+          
+          // Load judge's cases
+          loadJudgeCases(userData);
+          
+          // Show judge dashboard
+          showSection(judgeDashboard);
+        } else if (role === 'client') {
+          // Update client dashboard with user data
+          document.getElementById('client-name').textContent = userData.name;
+          document.getElementById('client-company').textContent = userData.company || '';
+          document.getElementById('client-avatar').textContent = getInitials(userData.name);
+          
+          // Load client's cases
+          loadClientCases(userData);
+          
+          // Show client dashboard
+          showSection(clientDashboard);
+        }
+      }
+
+      // Function to load lawyer's cases
+      function loadLawyerCases(lawyer) {
+        // Filter cases assigned to this lawyer
+        const lawyerCases = allCases.filter(c => 
+          c.assignedTo === lawyer.name || 
+          (lawyer.email && c.assignedTo === lawyer.email)
+        );
+        
+        // Update stats
+        document.getElementById('lawyer-active-cases').textContent = lawyerCases.length;
+        document.getElementById('lawyer-pending-docs').textContent = Math.floor(Math.random() * 10);
+        document.getElementById('lawyer-upcoming-hearings').textContent = Math.floor(lawyerCases.length * 1.5);
+        
+        // Update hearings table
+        const hearingsTable = document.getElementById('lawyer-hearings-table').getElementsByTagName('tbody')[0];
+        hearingsTable.innerHTML = '';
+        
+        lawyerCases.forEach(c => {
+          const row = document.createElement('tr');
+          
+          const dateCell = document.createElement('td');
+          dateCell.textContent = c.nextHearing || 'Not scheduled';
+          row.appendChild(dateCell);
+          
+          const timeCell = document.createElement('td');
+          timeCell.textContent = '10:00 AM';
+          row.appendChild(timeCell);
+          
+          const caseCell = document.createElement('td');
+          caseCell.textContent = c.title;
+          row.appendChild(caseCell);
+          
+          const roomCell = document.createElement('td');
+          roomCell.textContent = c.courtRoom || 'Room 302';
+          row.appendChild(roomCell);
+          
+          const judgeCell = document.createElement('td');
+          judgeCell.textContent = c.judge;
+          row.appendChild(judgeCell);
+          
+          hearingsTable.appendChild(row);
+        });
+        
+        // Setup add case form
+        setupAddCaseForm();
+      }
+      
+      // Function to setup the add case form
+      function setupAddCaseForm() {
+        // Get the form elements
+        const addCaseForm = document.getElementById('add-case-form');
+        const clientSelect = document.getElementById('case-client');
+        const judgeSelect = document.getElementById('case-judge');
+        
+        // Clear existing options
+        clientSelect.innerHTML = '<option value="">-- Select Client --</option>';
+        judgeSelect.innerHTML = '<option value="">-- Select Judge --</option>';
+        
+        // Populate client dropdown
+        const clients = allUsers.filter(u => u.role === 'client');
+        clients.forEach(client => {
+          const option = document.createElement('option');
+          option.value = client.email;
+          option.textContent = `${client.name} (${client.company || 'No Company'})`;
+          clientSelect.appendChild(option);
+        });
+        
+        // Populate judge dropdown
+        const judges = allUsers.filter(u => u.role === 'judge');
+        judges.forEach(judge => {
+          const option = document.createElement('option');
+          option.value = judge.email;
+          option.textContent = `${judge.name} (${judge.id || 'No ID'})`;
+          judgeSelect.appendChild(option);
+        });
+        
+        // Add event listener for the add case link
+        document.getElementById('lawyer-add-case-link').addEventListener('click', function(e) {
+          e.preventDefault();
+          addCaseForm.style.display = 'block';
+        });
+        
+        // Add event listener for the cancel button
+        document.getElementById('cancel-case').addEventListener('click', function() {
+          addCaseForm.style.display = 'none';
+        });
+        
+        // Add event listener for the submit button
+        document.getElementById('submit-case').addEventListener('click', async function() {
+          const title = document.getElementById('case-title').value.trim();
+          const description = document.getElementById('case-description').value.trim();
+          const caseType = document.getElementById('case-type').value;
+          const clientEmail = clientSelect.value;
+          const judgeEmail = judgeSelect.value;
+          
+          if (!title || !description || !caseType || !clientEmail || !judgeEmail) {
+            alert('Please fill in all fields');
+            return;
+          }
+          
+          try {
+            // Get the client and judge
+            const client = allUsers.find(u => u.email === clientEmail);
+            const judge = allUsers.find(u => u.email === judgeEmail);
+            const lawyer = JSON.parse(localStorage.getItem('user'));
+            
+            if (!client || !judge || !lawyer) {
+              alert('Error: Could not find client, judge, or lawyer');
+              return;
+            }
+            
+            // Create the case on the blockchain
+            const tx = await caseManagerContract.createCase(
+              title,
+              description,
+              caseType,
+              client.address,
+              lawyer.address,
+              judge.address
+            );
+            
+            await tx.wait();
+            
+            // Create a new case object
+            const newCase = {
+              id: allCases.length + 1,
+              title,
+              description,
+              submittedBy: client.name,
+              assignedTo: lawyer.name,
+              judge: judge.name,
+              status: 'Registered',
+              filingDate: new Date().toISOString().split('T')[0],
+              nextHearing: '',
+              caseType,
+              courtRoom: `Room ${Math.floor(Math.random() * 5) + 1}01`,
+              documents: [],
+              history: [
+                {date: new Date().toISOString().split('T')[0], action: "Case Filed", by: client.name},
+                {date: new Date().toISOString().split('T')[0], action: "Case Assigned to Judge", by: "System"}
+              ]
+            };
+            
+            // Add the case to the array
+            allCases.push(newCase);
+            
+            // Update the UI
+            loadLawyerCases(lawyer);
+            
+            // Hide the form
+            addCaseForm.style.display = 'none';
+            
+            // Clear the form
+            document.getElementById('case-title').value = '';
+            document.getElementById('case-description').value = '';
+            document.getElementById('case-type').value = '';
+            clientSelect.value = '';
+            judgeSelect.value = '';
+            
+            alert('Case created successfully!');
+          } catch (error) {
+            console.error('Error creating case:', error);
+            alert('Error creating case. Please try again.');
+          }
+        });
+      }
+
+      // Function to load judge's cases
+      function loadJudgeCases(judge) {
+        // Filter cases assigned to this judge
+        const judgeCases = allCases.filter(c => 
+          c.judge === judge.name || 
+          (judge.email && c.judge === judge.email)
+        );
+        
+        // Update stats
+        document.getElementById('judge-assigned-cases').textContent = judgeCases.length;
+        document.getElementById('judge-pending-decisions').textContent = Math.floor(judgeCases.length * 0.4);
+        document.getElementById('judge-upcoming-hearings').textContent = Math.floor(judgeCases.length * 1.2);
+        
+        // Update hearings table
+        const hearingsTable = document.getElementById('judge-hearings-table').getElementsByTagName('tbody')[0];
+        hearingsTable.innerHTML = '';
+        
+        judgeCases.forEach(c => {
+          const row = document.createElement('tr');
+          
+          const dateCell = document.createElement('td');
+          dateCell.textContent = c.nextHearing || 'Not scheduled';
+          row.appendChild(dateCell);
+          
+          const timeCell = document.createElement('td');
+          timeCell.textContent = '10:00 AM';
+          row.appendChild(timeCell);
+          
+          const caseCell = document.createElement('td');
+          caseCell.textContent = c.title;
+          row.appendChild(caseCell);
+          
+          const roomCell = document.createElement('td');
+          roomCell.textContent = c.courtRoom || 'Room 302';
+          row.appendChild(roomCell);
+          
+          const lawyersCell = document.createElement('td');
+          lawyersCell.textContent = c.assignedTo;
+          row.appendChild(lawyersCell);
+          
+          hearingsTable.appendChild(row);
+        });
+      }
+
+      // Function to load client's cases
+      function loadClientCases(client) {
+        // Filter cases submitted by this client
+        const clientCases = allCases.filter(c => 
+          c.submittedBy === client.name || 
+          (client.email && c.submittedBy === client.email)
+        );
+        
+        // Update stats
+        document.getElementById('client-active-cases').textContent = clientCases.length;
+        document.getElementById('client-documents').textContent = Math.floor(clientCases.length * 2.5);
+        document.getElementById('client-upcoming-hearings').textContent = Math.floor(clientCases.length * 0.8);
+        
+        // Update case summary
+        const caseGrid = document.querySelector('#client-dashboard .card-grid');
+        caseGrid.innerHTML = '';
+        
+        clientCases.forEach(c => {
+          const caseCard = document.createElement('div');
+          caseCard.className = 'card';
+          
+          const caseTitle = document.createElement('h3');
+          caseTitle.textContent = c.title;
+          caseCard.appendChild(caseTitle);
+          
+          const caseStatus = document.createElement('p');
+          caseStatus.innerHTML = `<strong>Status:</strong> <span class="status status-${c.status.toLowerCase().replace(' ', '-')}">${c.status}</span>`;
+          caseCard.appendChild(caseStatus);
+          
+          const caseLawyer = document.createElement('p');
+          caseLawyer.innerHTML = `<strong>Lawyer:</strong> ${c.assignedTo}`;
+          caseCard.appendChild(caseLawyer);
+          
+          const caseJudge = document.createElement('p');
+          caseJudge.innerHTML = `<strong>Judge:</strong> ${c.judge}`;
+          caseCard.appendChild(caseJudge);
+          
+          const caseHearing = document.createElement('p');
+          caseHearing.innerHTML = `<strong>Next Hearing:</strong> ${c.nextHearing || 'Not scheduled'}`;
+          caseCard.appendChild(caseHearing);
+          
+          const viewButton = document.createElement('button');
+          viewButton.className = 'btn';
+          viewButton.textContent = 'View Details';
+          viewButton.addEventListener('click', function() {
+            alert(`Viewing details for case: ${c.title}`);
+          });
+          caseCard.appendChild(viewButton);
+          
+          caseGrid.appendChild(caseCard);
+        });
+      }
+
+      // Function to get initials from name
+      function getInitials(name) {
+        return name.split(' ').map(n => n[0]).join('');
+      }
+
+      // Function to show a section and hide others
+      function showSection(section) {
+        homeSection.style.display = 'none';
+        loginSection.style.display = 'none';
+        registerSection.style.display = 'none';
+        lawyerDashboard.style.display = 'none';
+        judgeDashboard.style.display = 'none';
+        clientDashboard.style.display = 'none';
+        
+        section.style.display = 'block';
+      }
+
+      // Check if user is logged in
+      const user = JSON.parse(localStorage.getItem('user'));
+      const activeRole = localStorage.getItem('activeRole');
+      
+      if (user && activeRole) {
+        showDashboard(activeRole, user);
+      } else {
+        showSection(homeSection);
+      }
+    });
+  </script>
+</body>
+</html>

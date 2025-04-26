@@ -1,0 +1,377 @@
+[
+  {
+    "name": "Judge Smith",
+    "role": "judge",
+    "email": "judge.smith@judiciary.gov",
+    "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+    "id": "JID001",
+    "experience": "15 years",
+    "specialization": "Criminal Law",
+    "cases": [
+      1,
+      3,
+      42,
+      87,
+      88
+    ]
+  },
+  {
+    "name": "Judge Patel",
+    "role": "judge",
+    "email": "judge.patel@judiciary.gov",
+    "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+    "id": "JID002",
+    "experience": "20 years",
+    "specialization": "Civil Law",
+    "cases": [
+      2,
+      13,
+      24,
+      30,
+      43,
+      50,
+      58,
+      68,
+      93
+    ]
+  },
+  {
+    "name": "Judge Miller",
+    "role": "judge",
+    "email": "judge.judge.miller@judiciary.gov",
+    "address": "0x6695ec392fa4c",
+    "id": "JID003",
+    "experience": "6 years",
+    "specialization": "Corporate Law",
+    "cases": [
+      49,
+      91
+    ]
+  },
+  {
+    "name": "Judge Clark",
+    "role": "judge",
+    "email": "judge.judge.clark@judiciary.gov",
+    "address": "0xefd84a2d47b77",
+    "id": "JID004",
+    "experience": "7 years",
+    "specialization": "Tax Law",
+    "cases": [
+      5,
+      18,
+      48,
+      59,
+      71,
+      79,
+      84
+    ]
+  },
+  {
+    "name": "Judge Torres",
+    "role": "judge",
+    "email": "judge.judge.torres@judiciary.gov",
+    "address": "0x55d73b9faa55d",
+    "id": "JID005",
+    "experience": "13 years",
+    "specialization": "Constitutional Law",
+    "cases": [
+      22,
+      40,
+      82,
+      90
+    ]
+  },
+  {
+    "name": "Judge Brown",
+    "role": "judge",
+    "email": "judge.judge.brown@judiciary.gov",
+    "address": "0xc59900f5081b2",
+    "id": "JID006",
+    "experience": "20 years",
+    "specialization": "Civil Law",
+    "cases": [
+      12,
+      39,
+      46,
+      78
+    ]
+  },
+  {
+    "name": "Judge Sanchez",
+    "role": "judge",
+    "email": "judge.judge.sanchez@judiciary.gov",
+    "address": "0x69622891eba8",
+    "id": "JID007",
+    "experience": "25 years",
+    "specialization": "Tax Law",
+    "cases": [
+      9,
+      20,
+      51
+    ]
+  },
+  {
+    "name": "Judge Lee",
+    "role": "judge",
+    "email": "judge.judge.lee@judiciary.gov",
+    "address": "0x5b13f8aab4803",
+    "id": "JID008",
+    "experience": "23 years",
+    "specialization": "Environmental Law",
+    "cases": [
+      17,
+      55,
+      60,
+      61,
+      89
+    ]
+  },
+  {
+    "name": "Judge Harris",
+    "role": "judge",
+    "email": "judge.judge.harris@judiciary.gov",
+    "address": "0x41f23df1c7de",
+    "id": "JID009",
+    "experience": "25 years",
+    "specialization": "Corporate Law",
+    "cases": [
+      33,
+      41
+    ]
+  },
+  {
+    "name": "Judge Baker",
+    "role": "judge",
+    "email": "judge.judge.baker@judiciary.gov",
+    "address": "0x838581b76637",
+    "id": "JID010",
+    "experience": "5 years",
+    "specialization": "Family Law",
+    "cases": [
+      21,
+      32,
+      37,
+      67,
+      75,
+      99
+    ]
+  },
+  {
+    "name": "Judge Hill",
+    "role": "judge",
+    "email": "judge.judge.hill@judiciary.gov",
+    "address": "0x6f0106b3465ff",
+    "id": "JID011",
+    "experience": "21 years",
+    "specialization": "Intellectual Property",
+    "cases": [
+      6,
+      10,
+      31,
+      64,
+      76
+    ]
+  },
+  {
+    "name": "Judge Campbell",
+    "role": "judge",
+    "email": "judge.judge.campbell@judiciary.gov",
+    "address": "0xa509749b8f1ed",
+    "id": "JID012",
+    "experience": "13 years",
+    "specialization": "Environmental Law",
+    "cases": [
+      7,
+      23
+    ]
+  },
+  {
+    "name": "Judge Adams",
+    "role": "judge",
+    "email": "judge.judge.adams@judiciary.gov",
+    "address": "0xb18fb72c83f29",
+    "id": "JID013",
+    "experience": "12 years",
+    "specialization": "Corporate Law",
+    "cases": [
+      27,
+      53,
+      97
+    ]
+  },
+  {
+    "name": "Judge Carter",
+    "role": "judge",
+    "email": "judge.judge.carter@judiciary.gov",
+    "address": "0xe779f13e36f7f",
+    "id": "JID014",
+    "experience": "21 years",
+    "specialization": "Constitutional Law",
+    "cases": [
+      72
+    ]
+  },
+  {
+    "name": "Judge Torres",
+    "role": "judge",
+    "email": "judge.judge.torres@judiciary.gov",
+    "address": "0x5e368f618a877",
+    "id": "JID015",
+    "experience": "26 years",
+    "specialization": "Civil Law",
+    "cases": [
+      15,
+      28,
+      94,
+      100
+    ]
+  },
+  {
+    "name": "Judge Johnson",
+    "role": "judge",
+    "email": "judge.judge.johnson@judiciary.gov",
+    "address": "0x3f957727d5d28",
+    "id": "JID016",
+    "experience": "25 years",
+    "specialization": "Corporate Law",
+    "cases": [
+      19,
+      29,
+      54
+    ]
+  },
+  {
+    "name": "Judge Jackson",
+    "role": "judge",
+    "email": "judge.judge.jackson@judiciary.gov",
+    "address": "0x993e4d8ad246e",
+    "id": "JID017",
+    "experience": "5 years",
+    "specialization": "Family Law",
+    "cases": [
+      25
+    ]
+  },
+  {
+    "name": "Judge Robinson",
+    "role": "judge",
+    "email": "judge.judge.robinson@judiciary.gov",
+    "address": "0x4c234ce010775",
+    "id": "JID018",
+    "experience": "6 years",
+    "specialization": "Civil Law",
+    "cases": [
+      4,
+      16,
+      34,
+      38,
+      85
+    ]
+  },
+  {
+    "name": "Judge Rodriguez",
+    "role": "judge",
+    "email": "judge.judge.rodriguez@judiciary.gov",
+    "address": "0x1eec98eb26018",
+    "id": "JID019",
+    "experience": "25 years",
+    "specialization": "Environmental Law",
+    "cases": [
+      52,
+      65
+    ]
+  },
+  {
+    "name": "Judge Rivera",
+    "role": "judge",
+    "email": "judge.judge.rivera@judiciary.gov",
+    "address": "0x3ba969db17714",
+    "id": "JID020",
+    "experience": "29 years",
+    "specialization": "Civil Law",
+    "cases": [
+      14,
+      35,
+      77,
+      83,
+      96
+    ]
+  },
+  {
+    "name": "Judge Green",
+    "role": "judge",
+    "email": "judge.judge.green@judiciary.gov",
+    "address": "0xd9661d4f8fcbb",
+    "id": "JID021",
+    "experience": "23 years",
+    "specialization": "Constitutional Law",
+    "cases": [
+      44,
+      45,
+      62,
+      66,
+      69,
+      73,
+      80,
+      81,
+      86
+    ]
+  },
+  {
+    "name": "Judge Rodriguez",
+    "role": "judge",
+    "email": "judge.judge.rodriguez@judiciary.gov",
+    "address": "0xb174f6c748c49",
+    "id": "JID022",
+    "experience": "29 years",
+    "specialization": "Civil Law",
+    "cases": [
+      26,
+      36,
+      56,
+      95
+    ]
+  },
+  {
+    "name": "Judge Hill",
+    "role": "judge",
+    "email": "judge.judge.hill@judiciary.gov",
+    "address": "0x88638b68d201e",
+    "id": "JID023",
+    "experience": "12 years",
+    "specialization": "Corporate Law",
+    "cases": [
+      70,
+      74,
+      92,
+      98
+    ]
+  },
+  {
+    "name": "Judge Young",
+    "role": "judge",
+    "email": "judge.judge.young@judiciary.gov",
+    "address": "0x6facf620a077",
+    "id": "JID024",
+    "experience": "25 years",
+    "specialization": "Environmental Law",
+    "cases": [
+      57,
+      63
+    ]
+  },
+  {
+    "name": "Judge Taylor",
+    "role": "judge",
+    "email": "judge.judge.taylor@judiciary.gov",
+    "address": "0x8f7e30152a899",
+    "id": "JID025",
+    "experience": "28 years",
+    "specialization": "Corporate Law",
+    "cases": [
+      8,
+      11,
+      47
+    ]
+  }
+]

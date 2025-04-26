@@ -1,0 +1,5463 @@
+[
+  {
+    "id": 1,
+    "title": "ABC Corp vs. Property Developer",
+    "description": "Property dispute case involving commercial real estate in downtown business district. The client claims breach of purchase agreement and seeks damages.",
+    "submittedBy": "Alice Brown",
+    "assignedTo": "John Doe",
+    "judge": "Judge Smith",
+    "status": "In Progress",
+    "filingDate": "2023-10-15",
+    "nextHearing": "2023-12-10",
+    "caseType": "Civil - Property Dispute",
+    "courtRoom": "Room 302, District Court",
+    "documents": [
+      {
+        "name": "Property_Deed.pdf",
+        "url": "/documents/property_deed.pdf",
+        "uploadedBy": "John Doe",
+        "uploadDate": "2023-10-16"
+      },
+      {
+        "name": "Contract_Agreement.pdf",
+        "url": "/documents/contract_agreement.pdf",
+        "uploadedBy": "Alice Brown",
+        "uploadDate": "2023-10-15"
+      },
+      {
+        "name": "Evidence_Photos.pdf",
+        "url": "/documents/evidence_photos.pdf",
+        "uploadedBy": "John Doe",
+        "uploadDate": "2023-10-20"
+      }
+    ],
+    "history": [
+      {
+        "date": "2023-10-15",
+        "action": "Case Filed",
+        "by": "Alice Brown"
+      },
+      {
+        "date": "2023-10-18",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2023-10-25",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Smith"
+      },
+      {
+        "date": "2023-11-10",
+        "action": "Status Changed to In Progress",
+        "by": "John Doe"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "XYZ Enterprises vs. Software Inc.",
+    "description": "Intellectual property infringement case regarding software patent. The client alleges unauthorized use of patented algorithms in competitor's product.",
+    "submittedBy": "Bob Wilson",
+    "assignedTo": "Jane Smith",
+    "judge": "Judge Patel",
+    "status": "Registered",
+    "filingDate": "2023-11-05",
+    "nextHearing": "2023-12-20",
+    "caseType": "Civil - Intellectual Property",
+    "courtRoom": "Room 405, District Court",
+    "documents": [
+      {
+        "name": "Patent_Filing.pdf",
+        "url": "/documents/patent_filing.pdf",
+        "uploadedBy": "Bob Wilson",
+        "uploadDate": "2023-11-05"
+      },
+      {
+        "name": "Evidence_Document.pdf",
+        "url": "/documents/evidence_document.pdf",
+        "uploadedBy": "Jane Smith",
+        "uploadDate": "2023-11-07"
+      },
+      {
+        "name": "Expert_Opinion.pdf",
+        "url": "/documents/expert_opinion.pdf",
+        "uploadedBy": "Jane Smith",
+        "uploadDate": "2023-11-15"
+      }
+    ],
+    "history": [
+      {
+        "date": "2023-11-05",
+        "action": "Case Filed",
+        "by": "Bob Wilson"
+      },
+      {
+        "date": "2023-11-08",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2023-11-15",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Patel"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "ABC Corp vs. Supplier Co.",
+    "description": "Contract breach case with supplier. The client claims supplier failed to deliver goods according to contractual terms and seeks compensation.",
+    "submittedBy": "Alice Brown",
+    "assignedTo": "Robert Johnson",
+    "judge": "Judge Smith",
+    "status": "Registered",
+    "filingDate": "2023-11-20",
+    "nextHearing": "2024-01-15",
+    "caseType": "Civil - Contract Dispute",
+    "courtRoom": "Room 302, District Court",
+    "documents": [
+      {
+        "name": "Supply_Agreement.pdf",
+        "url": "/documents/supply_agreement.pdf",
+        "uploadedBy": "Alice Brown",
+        "uploadDate": "2023-11-20"
+      },
+      {
+        "name": "Payment_Records.pdf",
+        "url": "/documents/payment_records.pdf",
+        "uploadedBy": "Alice Brown",
+        "uploadDate": "2023-11-20"
+      },
+      {
+        "name": "Correspondence.pdf",
+        "url": "/documents/correspondence.pdf",
+        "uploadedBy": "Robert Johnson",
+        "uploadDate": "2023-11-25"
+      }
+    ],
+    "history": [
+      {
+        "date": "2023-11-20",
+        "action": "Case Filed",
+        "by": "Alice Brown"
+      },
+      {
+        "date": "2023-11-22",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2023-11-30",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Smith"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Martin Inc. vs. Theta Industries",
+    "description": "This is a civil - intellectual property case. The plaintiff seeks damages.",
+    "submittedBy": "Steven Martin",
+    "assignedTo": "Ryan Johnson",
+    "judge": "Judge Robinson",
+    "status": "Registered",
+    "filingDate": "2025-04-06",
+    "nextHearing": "2025-06-07",
+    "caseType": "Civil - Intellectual Property",
+    "courtRoom": "Room 302",
+    "documents": [
+      {
+        "name": "Contract_4_1.pdf",
+        "url": "/documents/contract_4_1.pdf",
+        "uploadedBy": "Steven Martin",
+        "uploadDate": "2024-11-05"
+      },
+      {
+        "name": "Contract_4_2.pdf",
+        "url": "/documents/contract_4_2.pdf",
+        "uploadedBy": "Steven Martin",
+        "uploadDate": "2025-04-18"
+      },
+      {
+        "name": "Petition_4_3.pdf",
+        "url": "/documents/petition_4_3.pdf",
+        "uploadedBy": "Steven Martin",
+        "uploadDate": "2025-04-09"
+      },
+      {
+        "name": "Judgment_4_4.pdf",
+        "url": "/documents/judgment_4_4.pdf",
+        "uploadedBy": "Steven Martin",
+        "uploadDate": "2025-02-18"
+      },
+      {
+        "name": "Motion_4_5.pdf",
+        "url": "/documents/motion_4_5.pdf",
+        "uploadedBy": "Steven Martin",
+        "uploadDate": "2025-02-05"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-04-06",
+        "action": "Case Filed",
+        "by": "Steven Martin"
+      },
+      {
+        "date": "2025-04-06",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Sanchez Co. Corporate Case",
+    "description": "This is a employment - wrongful termination case. The plaintiff seeks damages.",
+    "submittedBy": "Ashley Sanchez",
+    "assignedTo": "James Rodriguez",
+    "judge": "Judge Clark",
+    "status": "Closed",
+    "filingDate": "2025-01-07",
+    "nextHearing": "",
+    "caseType": "Employment - Wrongful Termination",
+    "courtRoom": "Room 201",
+    "documents": [
+      {
+        "name": "Transcript_5_1.pdf",
+        "url": "/documents/transcript_5_1.pdf",
+        "uploadedBy": "James Rodriguez",
+        "uploadDate": "2025-03-29"
+      },
+      {
+        "name": "Brief_5_2.pdf",
+        "url": "/documents/brief_5_2.pdf",
+        "uploadedBy": "Ashley Sanchez",
+        "uploadDate": "2025-03-13"
+      },
+      {
+        "name": "Motion_5_3.pdf",
+        "url": "/documents/motion_5_3.pdf",
+        "uploadedBy": "Ashley Sanchez",
+        "uploadDate": "2025-04-05"
+      },
+      {
+        "name": "Transcript_5_4.pdf",
+        "url": "/documents/transcript_5_4.pdf",
+        "uploadedBy": "Ashley Sanchez",
+        "uploadDate": "2025-03-09"
+      },
+      {
+        "name": "Contract_5_5.pdf",
+        "url": "/documents/contract_5_5.pdf",
+        "uploadedBy": "James Rodriguez",
+        "uploadDate": "2025-01-12"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-01-07",
+        "action": "Case Filed",
+        "by": "Ashley Sanchez"
+      },
+      {
+        "date": "2025-01-07",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-01-21",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Clark"
+      },
+      {
+        "date": "2025-02-06",
+        "action": "Status Changed to Closed",
+        "by": "James Rodriguez"
+      },
+      {
+        "date": "2025-04-07",
+        "action": "Case Closed",
+        "by": "Judge Clark"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Tech Innovations Corporate Case",
+    "description": "This is a employment - wrongful termination case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Jennifer Lee",
+    "assignedTo": "Jason Moore",
+    "judge": "Judge Hill",
+    "status": "On Hold",
+    "filingDate": "2024-12-18",
+    "nextHearing": "2025-05-26",
+    "caseType": "Employment - Wrongful Termination",
+    "courtRoom": "Room 302",
+    "documents": [
+      {
+        "name": "Petition_6_1.pdf",
+        "url": "/documents/petition_6_1.pdf",
+        "uploadedBy": "Jason Moore",
+        "uploadDate": "2024-11-22"
+      },
+      {
+        "name": "Affidavit_6_2.pdf",
+        "url": "/documents/affidavit_6_2.pdf",
+        "uploadedBy": "Jason Moore",
+        "uploadDate": "2024-12-25"
+      },
+      {
+        "name": "Petition_6_3.pdf",
+        "url": "/documents/petition_6_3.pdf",
+        "uploadedBy": "Jason Moore",
+        "uploadDate": "2024-12-11"
+      },
+      {
+        "name": "Agreement_6_4.pdf",
+        "url": "/documents/agreement_6_4.pdf",
+        "uploadedBy": "Jason Moore",
+        "uploadDate": "2024-11-08"
+      },
+      {
+        "name": "Petition_6_5.pdf",
+        "url": "/documents/petition_6_5.pdf",
+        "uploadedBy": "Jennifer Lee",
+        "uploadDate": "2025-02-03"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-12-18",
+        "action": "Case Filed",
+        "by": "Jennifer Lee"
+      },
+      {
+        "date": "2024-12-18",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-01-01",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Hill"
+      },
+      {
+        "date": "2025-01-17",
+        "action": "Status Changed to On Hold",
+        "by": "Jason Moore"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Rodriguez Family Matter",
+    "description": "This is a family - child custody case. The plaintiff seeks damages.",
+    "submittedBy": "Jennifer Garcia",
+    "assignedTo": "Stephanie Lee",
+    "judge": "Judge Campbell",
+    "status": "Registered",
+    "filingDate": "2025-04-13",
+    "nextHearing": "2025-06-20",
+    "caseType": "Family - Child Custody",
+    "courtRoom": "Room 202",
+    "documents": [
+      {
+        "name": "Exhibit_7_1.pdf",
+        "url": "/documents/exhibit_7_1.pdf",
+        "uploadedBy": "Jennifer Garcia",
+        "uploadDate": "2025-03-27"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-04-13",
+        "action": "Case Filed",
+        "by": "Jennifer Garcia"
+      },
+      {
+        "date": "2025-04-13",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "ABC Corporation vs. Acme Inc.",
+    "description": "This is a civil - contract breach case. The plaintiff seeks damages.",
+    "submittedBy": "Alice Brown",
+    "assignedTo": "Jessica Thompson",
+    "judge": "Judge Taylor",
+    "status": "On Hold",
+    "filingDate": "2025-02-23",
+    "nextHearing": "2025-05-14",
+    "caseType": "Civil - Contract Breach",
+    "courtRoom": "Room 402",
+    "documents": [
+      {
+        "name": "Agreement_8_1.pdf",
+        "url": "/documents/agreement_8_1.pdf",
+        "uploadedBy": "Jessica Thompson",
+        "uploadDate": "2024-11-27"
+      },
+      {
+        "name": "Contract_8_2.pdf",
+        "url": "/documents/contract_8_2.pdf",
+        "uploadedBy": "Jessica Thompson",
+        "uploadDate": "2024-11-27"
+      },
+      {
+        "name": "Order_8_3.pdf",
+        "url": "/documents/order_8_3.pdf",
+        "uploadedBy": "Alice Brown",
+        "uploadDate": "2024-12-20"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-02-23",
+        "action": "Case Filed",
+        "by": "Alice Brown"
+      },
+      {
+        "date": "2025-02-23",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-03-09",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Taylor"
+      },
+      {
+        "date": "2025-03-25",
+        "action": "Status Changed to On Hold",
+        "by": "Jessica Thompson"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "title": "State vs. Sarah Miller",
+    "description": "This is a criminal - theft case. The plaintiff seeks damages.",
+    "submittedBy": "Rebecca Hernandez",
+    "assignedTo": "Joshua Lewis",
+    "judge": "Judge Sanchez",
+    "status": "In Progress",
+    "filingDate": "2025-02-22",
+    "nextHearing": "2025-06-03",
+    "caseType": "Criminal - Theft",
+    "courtRoom": "Room 402",
+    "documents": [
+      {
+        "name": "Transcript_9_1.pdf",
+        "url": "/documents/transcript_9_1.pdf",
+        "uploadedBy": "Joshua Lewis",
+        "uploadDate": "2025-04-16"
+      },
+      {
+        "name": "Analysis_9_2.pdf",
+        "url": "/documents/analysis_9_2.pdf",
+        "uploadedBy": "Joshua Lewis",
+        "uploadDate": "2025-01-07"
+      },
+      {
+        "name": "Exhibit_9_3.pdf",
+        "url": "/documents/exhibit_9_3.pdf",
+        "uploadedBy": "Joshua Lewis",
+        "uploadDate": "2025-01-16"
+      },
+      {
+        "name": "Statement_9_4.pdf",
+        "url": "/documents/statement_9_4.pdf",
+        "uploadedBy": "Joshua Lewis",
+        "uploadDate": "2024-12-29"
+      },
+      {
+        "name": "Testimony_9_5.pdf",
+        "url": "/documents/testimony_9_5.pdf",
+        "uploadedBy": "Rebecca Hernandez",
+        "uploadDate": "2025-03-24"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-02-22",
+        "action": "Case Filed",
+        "by": "Rebecca Hernandez"
+      },
+      {
+        "date": "2025-02-22",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-03-08",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Sanchez"
+      },
+      {
+        "date": "2025-03-24",
+        "action": "Status Changed to In Progress",
+        "by": "Joshua Lewis"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Synergy Corp vs. Delta Enterprises",
+    "description": "This is a civil - property dispute case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Ryan Miller",
+    "assignedTo": "Brandon Jones",
+    "judge": "Judge Hill",
+    "status": "On Hold",
+    "filingDate": "2025-04-08",
+    "nextHearing": "2025-04-28",
+    "caseType": "Civil - Property Dispute",
+    "courtRoom": "Room 202",
+    "documents": [
+      {
+        "name": "Order_10_1.pdf",
+        "url": "/documents/order_10_1.pdf",
+        "uploadedBy": "Ryan Miller",
+        "uploadDate": "2025-04-08"
+      },
+      {
+        "name": "Transcript_10_2.pdf",
+        "url": "/documents/transcript_10_2.pdf",
+        "uploadedBy": "Ryan Miller",
+        "uploadDate": "2025-04-02"
+      },
+      {
+        "name": "Testimony_10_3.pdf",
+        "url": "/documents/testimony_10_3.pdf",
+        "uploadedBy": "Brandon Jones",
+        "uploadDate": "2025-03-04"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-04-08",
+        "action": "Case Filed",
+        "by": "Ryan Miller"
+      },
+      {
+        "date": "2025-04-08",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-04-22",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Hill"
+      },
+      {
+        "date": "2025-05-08",
+        "action": "Status Changed to On Hold",
+        "by": "Brandon Jones"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "title": "Pinnacle Group vs. Zeta Systems",
+    "description": "This is a civil - intellectual property case. The plaintiff seeks damages.",
+    "submittedBy": "Joseph Jones",
+    "assignedTo": "Ryan Johnson",
+    "judge": "Judge Taylor",
+    "status": "On Hold",
+    "filingDate": "2024-11-08",
+    "nextHearing": "2025-04-29",
+    "caseType": "Civil - Intellectual Property",
+    "courtRoom": "Room 201",
+    "documents": [
+      {
+        "name": "Analysis_11_1.pdf",
+        "url": "/documents/analysis_11_1.pdf",
+        "uploadedBy": "Joseph Jones",
+        "uploadDate": "2024-11-13"
+      },
+      {
+        "name": "Contract_11_2.pdf",
+        "url": "/documents/contract_11_2.pdf",
+        "uploadedBy": "Ryan Johnson",
+        "uploadDate": "2024-11-11"
+      },
+      {
+        "name": "Analysis_11_3.pdf",
+        "url": "/documents/analysis_11_3.pdf",
+        "uploadedBy": "Ryan Johnson",
+        "uploadDate": "2025-03-18"
+      },
+      {
+        "name": "Transcript_11_4.pdf",
+        "url": "/documents/transcript_11_4.pdf",
+        "uploadedBy": "Ryan Johnson",
+        "uploadDate": "2025-04-10"
+      },
+      {
+        "name": "Statement_11_5.pdf",
+        "url": "/documents/statement_11_5.pdf",
+        "uploadedBy": "Ryan Johnson",
+        "uploadDate": "2025-03-20"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-11-08",
+        "action": "Case Filed",
+        "by": "Joseph Jones"
+      },
+      {
+        "date": "2024-11-08",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2024-11-22",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Taylor"
+      },
+      {
+        "date": "2024-12-08",
+        "action": "Status Changed to On Hold",
+        "by": "Ryan Johnson"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "title": "Catalyst Enterprises Corporate Case",
+    "description": "This is a employment - wrongful termination case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Jennifer Garcia",
+    "assignedTo": "Joseph Williams",
+    "judge": "Judge Brown",
+    "status": "Registered",
+    "filingDate": "2024-11-17",
+    "nextHearing": "2025-06-29",
+    "caseType": "Employment - Wrongful Termination",
+    "courtRoom": "Room 201",
+    "documents": [
+      {
+        "name": "Judgment_12_1.pdf",
+        "url": "/documents/judgment_12_1.pdf",
+        "uploadedBy": "Joseph Williams",
+        "uploadDate": "2024-12-31"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-11-17",
+        "action": "Case Filed",
+        "by": "Jennifer Garcia"
+      },
+      {
+        "date": "2024-11-17",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "title": "Precision Manufacturing Corporate Case",
+    "description": "This is a employment - discrimination case. The plaintiff seeks damages.",
+    "submittedBy": "Rebecca Sanchez",
+    "assignedTo": "Joshua Perez",
+    "judge": "Judge Patel",
+    "status": "On Hold",
+    "filingDate": "2025-01-06",
+    "nextHearing": "2025-06-06",
+    "caseType": "Employment - Discrimination",
+    "courtRoom": "Room 401",
+    "documents": [
+      {
+        "name": "Evidence_13_1.pdf",
+        "url": "/documents/evidence_13_1.pdf",
+        "uploadedBy": "Joshua Perez",
+        "uploadDate": "2024-12-25"
+      },
+      {
+        "name": "Agreement_13_2.pdf",
+        "url": "/documents/agreement_13_2.pdf",
+        "uploadedBy": "Rebecca Sanchez",
+        "uploadDate": "2024-11-21"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-01-06",
+        "action": "Case Filed",
+        "by": "Rebecca Sanchez"
+      },
+      {
+        "date": "2025-01-06",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-01-20",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Patel"
+      },
+      {
+        "date": "2025-02-05",
+        "action": "Status Changed to On Hold",
+        "by": "Joshua Perez"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "title": "Lewis Partners Corporate Case",
+    "description": "This is a corporate - merger case. The plaintiff seeks damages.",
+    "submittedBy": "Laura Lewis",
+    "assignedTo": "Brandon Jones",
+    "judge": "Judge Rivera",
+    "status": "Closed",
+    "filingDate": "2025-01-16",
+    "nextHearing": "",
+    "caseType": "Corporate - Merger",
+    "courtRoom": "Room 502",
+    "documents": [
+      {
+        "name": "Transcript_14_1.pdf",
+        "url": "/documents/transcript_14_1.pdf",
+        "uploadedBy": "Laura Lewis",
+        "uploadDate": "2025-02-09"
+      },
+      {
+        "name": "Report_14_2.pdf",
+        "url": "/documents/report_14_2.pdf",
+        "uploadedBy": "Brandon Jones",
+        "uploadDate": "2025-01-18"
+      },
+      {
+        "name": "Motion_14_3.pdf",
+        "url": "/documents/motion_14_3.pdf",
+        "uploadedBy": "Brandon Jones",
+        "uploadDate": "2025-04-09"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-01-16",
+        "action": "Case Filed",
+        "by": "Laura Lewis"
+      },
+      {
+        "date": "2025-01-16",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-01-30",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Rivera"
+      },
+      {
+        "date": "2025-02-15",
+        "action": "Status Changed to Closed",
+        "by": "Brandon Jones"
+      },
+      {
+        "date": "2025-04-16",
+        "action": "Case Closed",
+        "by": "Judge Rivera"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "title": "Smith Family Matter",
+    "description": "This is a family - divorce case. The plaintiff seeks damages.",
+    "submittedBy": "Brandon Anderson",
+    "assignedTo": "Sarah Jackson",
+    "judge": "Judge Torres",
+    "status": "On Hold",
+    "filingDate": "2025-01-27",
+    "nextHearing": "2025-05-23",
+    "caseType": "Family - Divorce",
+    "courtRoom": "Room 301",
+    "documents": [
+      {
+        "name": "Statement_15_1.pdf",
+        "url": "/documents/statement_15_1.pdf",
+        "uploadedBy": "Sarah Jackson",
+        "uploadDate": "2024-11-22"
+      },
+      {
+        "name": "Agreement_15_2.pdf",
+        "url": "/documents/agreement_15_2.pdf",
+        "uploadedBy": "Brandon Anderson",
+        "uploadDate": "2025-02-02"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-01-27",
+        "action": "Case Filed",
+        "by": "Brandon Anderson"
+      },
+      {
+        "date": "2025-01-27",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-02-10",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Torres"
+      },
+      {
+        "date": "2025-02-26",
+        "action": "Status Changed to On Hold",
+        "by": "Sarah Jackson"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "title": "Martinez Family Matter",
+    "description": "This is a family - divorce case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Rachel Lee",
+    "assignedTo": "Rachel Robinson",
+    "judge": "Judge Robinson",
+    "status": "In Progress",
+    "filingDate": "2024-12-28",
+    "nextHearing": "2025-05-25",
+    "caseType": "Family - Divorce",
+    "courtRoom": "Room 102",
+    "documents": [
+      {
+        "name": "Exhibit_16_1.pdf",
+        "url": "/documents/exhibit_16_1.pdf",
+        "uploadedBy": "Rachel Robinson",
+        "uploadDate": "2025-02-27"
+      },
+      {
+        "name": "Order_16_2.pdf",
+        "url": "/documents/order_16_2.pdf",
+        "uploadedBy": "Rachel Robinson",
+        "uploadDate": "2024-12-12"
+      },
+      {
+        "name": "Evidence_16_3.pdf",
+        "url": "/documents/evidence_16_3.pdf",
+        "uploadedBy": "Rachel Lee",
+        "uploadDate": "2025-04-09"
+      },
+      {
+        "name": "Analysis_16_4.pdf",
+        "url": "/documents/analysis_16_4.pdf",
+        "uploadedBy": "Rachel Robinson",
+        "uploadDate": "2024-11-23"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-12-28",
+        "action": "Case Filed",
+        "by": "Rachel Lee"
+      },
+      {
+        "date": "2024-12-28",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-01-11",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Robinson"
+      },
+      {
+        "date": "2025-01-27",
+        "action": "Status Changed to In Progress",
+        "by": "Rachel Robinson"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "title": "Brown Family Matter",
+    "description": "This is a family - child custody case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Brandon Smith",
+    "assignedTo": "Brandon Garcia",
+    "judge": "Judge Lee",
+    "status": "In Progress",
+    "filingDate": "2025-01-30",
+    "nextHearing": "2025-05-25",
+    "caseType": "Family - Child Custody",
+    "courtRoom": "Room 301",
+    "documents": [
+      {
+        "name": "Contract_17_1.pdf",
+        "url": "/documents/contract_17_1.pdf",
+        "uploadedBy": "Brandon Garcia",
+        "uploadDate": "2025-01-13"
+      },
+      {
+        "name": "Agreement_17_2.pdf",
+        "url": "/documents/agreement_17_2.pdf",
+        "uploadedBy": "Brandon Smith",
+        "uploadDate": "2025-04-15"
+      },
+      {
+        "name": "Contract_17_3.pdf",
+        "url": "/documents/contract_17_3.pdf",
+        "uploadedBy": "Brandon Smith",
+        "uploadDate": "2024-11-17"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-01-30",
+        "action": "Case Filed",
+        "by": "Brandon Smith"
+      },
+      {
+        "date": "2025-01-30",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-02-13",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Lee"
+      },
+      {
+        "date": "2025-03-01",
+        "action": "Status Changed to In Progress",
+        "by": "Brandon Garcia"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "title": "Brown Family Matter",
+    "description": "This is a family - child custody case. The plaintiff seeks damages.",
+    "submittedBy": "Michael Gonzalez",
+    "assignedTo": "Christopher Thomas",
+    "judge": "Judge Clark",
+    "status": "Closed",
+    "filingDate": "2025-02-27",
+    "nextHearing": "",
+    "caseType": "Family - Child Custody",
+    "courtRoom": "Room 402",
+    "documents": [
+      {
+        "name": "Petition_18_1.pdf",
+        "url": "/documents/petition_18_1.pdf",
+        "uploadedBy": "Christopher Thomas",
+        "uploadDate": "2025-01-21"
+      },
+      {
+        "name": "Evidence_18_2.pdf",
+        "url": "/documents/evidence_18_2.pdf",
+        "uploadedBy": "Christopher Thomas",
+        "uploadDate": "2025-03-21"
+      },
+      {
+        "name": "Affidavit_18_3.pdf",
+        "url": "/documents/affidavit_18_3.pdf",
+        "uploadedBy": "Michael Gonzalez",
+        "uploadDate": "2025-01-17"
+      },
+      {
+        "name": "Analysis_18_4.pdf",
+        "url": "/documents/analysis_18_4.pdf",
+        "uploadedBy": "Christopher Thomas",
+        "uploadDate": "2025-01-17"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-02-27",
+        "action": "Case Filed",
+        "by": "Michael Gonzalez"
+      },
+      {
+        "date": "2025-02-27",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-03-13",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Clark"
+      },
+      {
+        "date": "2025-03-29",
+        "action": "Status Changed to Closed",
+        "by": "Christopher Thomas"
+      },
+      {
+        "date": "2025-05-28",
+        "action": "Case Closed",
+        "by": "Judge Clark"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "title": "Global Industries Corporate Case",
+    "description": "This is a corporate - merger case. The plaintiff seeks damages.",
+    "submittedBy": "Daniel Smith",
+    "assignedTo": "James Rodriguez",
+    "judge": "Judge Johnson",
+    "status": "Closed",
+    "filingDate": "2024-11-08",
+    "nextHearing": "",
+    "caseType": "Corporate - Merger",
+    "courtRoom": "Room 301",
+    "documents": [
+      {
+        "name": "Order_19_1.pdf",
+        "url": "/documents/order_19_1.pdf",
+        "uploadedBy": "Daniel Smith",
+        "uploadDate": "2025-03-23"
+      },
+      {
+        "name": "Transcript_19_2.pdf",
+        "url": "/documents/transcript_19_2.pdf",
+        "uploadedBy": "James Rodriguez",
+        "uploadDate": "2025-01-04"
+      },
+      {
+        "name": "Agreement_19_3.pdf",
+        "url": "/documents/agreement_19_3.pdf",
+        "uploadedBy": "James Rodriguez",
+        "uploadDate": "2024-12-12"
+      },
+      {
+        "name": "Petition_19_4.pdf",
+        "url": "/documents/petition_19_4.pdf",
+        "uploadedBy": "James Rodriguez",
+        "uploadDate": "2025-01-29"
+      },
+      {
+        "name": "Exhibit_19_5.pdf",
+        "url": "/documents/exhibit_19_5.pdf",
+        "uploadedBy": "Daniel Smith",
+        "uploadDate": "2024-12-30"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-11-08",
+        "action": "Case Filed",
+        "by": "Daniel Smith"
+      },
+      {
+        "date": "2024-11-08",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2024-11-22",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Johnson"
+      },
+      {
+        "date": "2024-12-08",
+        "action": "Status Changed to Closed",
+        "by": "James Rodriguez"
+      },
+      {
+        "date": "2025-02-06",
+        "action": "Case Closed",
+        "by": "Judge Johnson"
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "title": "Frontier Technologies vs. Eta Solutions",
+    "description": "This is a civil - personal injury case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Joshua Rodriguez",
+    "assignedTo": "Joseph Moore",
+    "judge": "Judge Sanchez",
+    "status": "On Hold",
+    "filingDate": "2024-11-24",
+    "nextHearing": "2025-05-28",
+    "caseType": "Civil - Personal Injury",
+    "courtRoom": "Room 301",
+    "documents": [
+      {
+        "name": "Agreement_20_1.pdf",
+        "url": "/documents/agreement_20_1.pdf",
+        "uploadedBy": "Joshua Rodriguez",
+        "uploadDate": "2024-12-16"
+      },
+      {
+        "name": "Contract_20_2.pdf",
+        "url": "/documents/contract_20_2.pdf",
+        "uploadedBy": "Joshua Rodriguez",
+        "uploadDate": "2024-12-09"
+      },
+      {
+        "name": "Motion_20_3.pdf",
+        "url": "/documents/motion_20_3.pdf",
+        "uploadedBy": "Joshua Rodriguez",
+        "uploadDate": "2024-11-24"
+      },
+      {
+        "name": "Analysis_20_4.pdf",
+        "url": "/documents/analysis_20_4.pdf",
+        "uploadedBy": "Joshua Rodriguez",
+        "uploadDate": "2025-02-04"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-11-24",
+        "action": "Case Filed",
+        "by": "Joshua Rodriguez"
+      },
+      {
+        "date": "2024-11-24",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2024-12-08",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Sanchez"
+      },
+      {
+        "date": "2024-12-24",
+        "action": "Status Changed to On Hold",
+        "by": "Joseph Moore"
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "title": "Phoenix Industries vs. Theta Industries",
+    "description": "This is a civil - personal injury case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Thomas Thomas",
+    "assignedTo": "Elizabeth White",
+    "judge": "Judge Baker",
+    "status": "On Hold",
+    "filingDate": "2025-04-13",
+    "nextHearing": "2025-04-28",
+    "caseType": "Civil - Personal Injury",
+    "courtRoom": "Room 502",
+    "documents": [
+      {
+        "name": "Order_21_1.pdf",
+        "url": "/documents/order_21_1.pdf",
+        "uploadedBy": "Elizabeth White",
+        "uploadDate": "2025-04-23"
+      },
+      {
+        "name": "Agreement_21_2.pdf",
+        "url": "/documents/agreement_21_2.pdf",
+        "uploadedBy": "Elizabeth White",
+        "uploadDate": "2025-01-15"
+      },
+      {
+        "name": "Analysis_21_3.pdf",
+        "url": "/documents/analysis_21_3.pdf",
+        "uploadedBy": "Thomas Thomas",
+        "uploadDate": "2025-01-05"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-04-13",
+        "action": "Case Filed",
+        "by": "Thomas Thomas"
+      },
+      {
+        "date": "2025-04-13",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-04-27",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Baker"
+      },
+      {
+        "date": "2025-05-13",
+        "action": "Status Changed to On Hold",
+        "by": "Elizabeth White"
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "title": "State vs. David Davis",
+    "description": "This is a criminal - fraud case. The plaintiff seeks damages.",
+    "submittedBy": "Michael Gonzalez",
+    "assignedTo": "Brandon Jones",
+    "judge": "Judge Torres",
+    "status": "On Hold",
+    "filingDate": "2025-01-27",
+    "nextHearing": "2025-06-04",
+    "caseType": "Criminal - Fraud",
+    "courtRoom": "Room 101",
+    "documents": [
+      {
+        "name": "Evidence_22_1.pdf",
+        "url": "/documents/evidence_22_1.pdf",
+        "uploadedBy": "Brandon Jones",
+        "uploadDate": "2025-03-25"
+      },
+      {
+        "name": "Judgment_22_2.pdf",
+        "url": "/documents/judgment_22_2.pdf",
+        "uploadedBy": "Michael Gonzalez",
+        "uploadDate": "2025-03-28"
+      },
+      {
+        "name": "Exhibit_22_3.pdf",
+        "url": "/documents/exhibit_22_3.pdf",
+        "uploadedBy": "Brandon Jones",
+        "uploadDate": "2025-03-04"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-01-27",
+        "action": "Case Filed",
+        "by": "Michael Gonzalez"
+      },
+      {
+        "date": "2025-01-27",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-02-10",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Torres"
+      },
+      {
+        "date": "2025-02-26",
+        "action": "Status Changed to On Hold",
+        "by": "Brandon Jones"
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "title": "ABC Corporation Corporate Case",
+    "description": "This is a corporate - merger case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Alice Brown",
+    "assignedTo": "Sarah Wilson",
+    "judge": "Judge Campbell",
+    "status": "On Hold",
+    "filingDate": "2025-01-27",
+    "nextHearing": "2025-05-04",
+    "caseType": "Corporate - Merger",
+    "courtRoom": "Room 302",
+    "documents": [
+      {
+        "name": "Statement_23_1.pdf",
+        "url": "/documents/statement_23_1.pdf",
+        "uploadedBy": "Sarah Wilson",
+        "uploadDate": "2025-02-24"
+      },
+      {
+        "name": "Analysis_23_2.pdf",
+        "url": "/documents/analysis_23_2.pdf",
+        "uploadedBy": "Alice Brown",
+        "uploadDate": "2024-12-20"
+      },
+      {
+        "name": "Petition_23_3.pdf",
+        "url": "/documents/petition_23_3.pdf",
+        "uploadedBy": "Alice Brown",
+        "uploadDate": "2025-03-21"
+      },
+      {
+        "name": "Contract_23_4.pdf",
+        "url": "/documents/contract_23_4.pdf",
+        "uploadedBy": "Alice Brown",
+        "uploadDate": "2024-12-15"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-01-27",
+        "action": "Case Filed",
+        "by": "Alice Brown"
+      },
+      {
+        "date": "2025-01-27",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-02-10",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Campbell"
+      },
+      {
+        "date": "2025-02-26",
+        "action": "Status Changed to On Hold",
+        "by": "Sarah Wilson"
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "title": "Garcia Family Matter",
+    "description": "This is a family - child custody case. The plaintiff seeks damages.",
+    "submittedBy": "Ashley Sanchez",
+    "assignedTo": "James Thomas",
+    "judge": "Judge Patel",
+    "status": "Registered",
+    "filingDate": "2024-11-30",
+    "nextHearing": "2025-05-07",
+    "caseType": "Family - Child Custody",
+    "courtRoom": "Room 401",
+    "documents": [
+      {
+        "name": "Affidavit_24_1.pdf",
+        "url": "/documents/affidavit_24_1.pdf",
+        "uploadedBy": "James Thomas",
+        "uploadDate": "2025-03-16"
+      },
+      {
+        "name": "Judgment_24_2.pdf",
+        "url": "/documents/judgment_24_2.pdf",
+        "uploadedBy": "James Thomas",
+        "uploadDate": "2024-12-09"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-11-30",
+        "action": "Case Filed",
+        "by": "Ashley Sanchez"
+      },
+      {
+        "date": "2024-11-30",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "title": "Precision Manufacturing vs. Theta Industries",
+    "description": "This is a civil - contract breach case. The plaintiff seeks damages.",
+    "submittedBy": "Rebecca Sanchez",
+    "assignedTo": "Andrew Johnson",
+    "judge": "Judge Jackson",
+    "status": "On Hold",
+    "filingDate": "2025-01-28",
+    "nextHearing": "2025-07-22",
+    "caseType": "Civil - Contract Breach",
+    "courtRoom": "Room 102",
+    "documents": [
+      {
+        "name": "Brief_25_1.pdf",
+        "url": "/documents/brief_25_1.pdf",
+        "uploadedBy": "Rebecca Sanchez",
+        "uploadDate": "2025-03-28"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-01-28",
+        "action": "Case Filed",
+        "by": "Rebecca Sanchez"
+      },
+      {
+        "date": "2025-01-28",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-02-11",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Jackson"
+      },
+      {
+        "date": "2025-02-27",
+        "action": "Status Changed to On Hold",
+        "by": "Andrew Johnson"
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "title": "Phoenix Industries vs. Eta Solutions",
+    "description": "This is a civil - contract breach case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Thomas Thomas",
+    "assignedTo": "John Doe",
+    "judge": "Judge Rodriguez",
+    "status": "In Progress",
+    "filingDate": "2024-11-15",
+    "nextHearing": "2025-06-29",
+    "caseType": "Civil - Contract Breach",
+    "courtRoom": "Room 502",
+    "documents": [
+      {
+        "name": "Analysis_26_1.pdf",
+        "url": "/documents/analysis_26_1.pdf",
+        "uploadedBy": "Thomas Thomas",
+        "uploadDate": "2025-01-07"
+      },
+      {
+        "name": "Motion_26_2.pdf",
+        "url": "/documents/motion_26_2.pdf",
+        "uploadedBy": "Thomas Thomas",
+        "uploadDate": "2025-04-21"
+      },
+      {
+        "name": "Judgment_26_3.pdf",
+        "url": "/documents/judgment_26_3.pdf",
+        "uploadedBy": "John Doe",
+        "uploadDate": "2025-02-23"
+      },
+      {
+        "name": "Testimony_26_4.pdf",
+        "url": "/documents/testimony_26_4.pdf",
+        "uploadedBy": "Thomas Thomas",
+        "uploadDate": "2025-03-12"
+      },
+      {
+        "name": "Judgment_26_5.pdf",
+        "url": "/documents/judgment_26_5.pdf",
+        "uploadedBy": "John Doe",
+        "uploadDate": "2025-04-02"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-11-15",
+        "action": "Case Filed",
+        "by": "Thomas Thomas"
+      },
+      {
+        "date": "2024-11-15",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2024-11-29",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Rodriguez"
+      },
+      {
+        "date": "2024-12-15",
+        "action": "Status Changed to In Progress",
+        "by": "John Doe"
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "title": "Davis Co. Corporate Case",
+    "description": "This is a corporate - acquisition case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Joshua Davis",
+    "assignedTo": "Joshua Lewis",
+    "judge": "Judge Adams",
+    "status": "In Progress",
+    "filingDate": "2025-04-16",
+    "nextHearing": "2025-06-24",
+    "caseType": "Corporate - Acquisition",
+    "courtRoom": "Room 402",
+    "documents": [
+      {
+        "name": "Motion_27_1.pdf",
+        "url": "/documents/motion_27_1.pdf",
+        "uploadedBy": "Joshua Davis",
+        "uploadDate": "2025-01-19"
+      },
+      {
+        "name": "Brief_27_2.pdf",
+        "url": "/documents/brief_27_2.pdf",
+        "uploadedBy": "Joshua Lewis",
+        "uploadDate": "2025-04-08"
+      },
+      {
+        "name": "Transcript_27_3.pdf",
+        "url": "/documents/transcript_27_3.pdf",
+        "uploadedBy": "Joshua Lewis",
+        "uploadDate": "2024-12-31"
+      },
+      {
+        "name": "Exhibit_27_4.pdf",
+        "url": "/documents/exhibit_27_4.pdf",
+        "uploadedBy": "Joshua Lewis",
+        "uploadDate": "2025-01-10"
+      },
+      {
+        "name": "Evidence_27_5.pdf",
+        "url": "/documents/evidence_27_5.pdf",
+        "uploadedBy": "Joshua Davis",
+        "uploadDate": "2025-02-05"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-04-16",
+        "action": "Case Filed",
+        "by": "Joshua Davis"
+      },
+      {
+        "date": "2025-04-16",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-04-30",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Adams"
+      },
+      {
+        "date": "2025-05-16",
+        "action": "Status Changed to In Progress",
+        "by": "Joshua Lewis"
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "title": "Martin Inc. Corporate Case",
+    "description": "This is a corporate - merger case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Steven Martin",
+    "assignedTo": "Jason White",
+    "judge": "Judge Torres",
+    "status": "On Hold",
+    "filingDate": "2024-11-25",
+    "nextHearing": "2025-05-11",
+    "caseType": "Corporate - Merger",
+    "courtRoom": "Room 201",
+    "documents": [
+      {
+        "name": "Contract_28_1.pdf",
+        "url": "/documents/contract_28_1.pdf",
+        "uploadedBy": "Jason White",
+        "uploadDate": "2025-01-14"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-11-25",
+        "action": "Case Filed",
+        "by": "Steven Martin"
+      },
+      {
+        "date": "2024-11-25",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2024-12-09",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Torres"
+      },
+      {
+        "date": "2024-12-25",
+        "action": "Status Changed to On Hold",
+        "by": "Jason White"
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "title": "Martin Inc. Corporate Case",
+    "description": "This is a corporate - merger case. The plaintiff seeks damages.",
+    "submittedBy": "Steven Martin",
+    "assignedTo": "Andrew Clark",
+    "judge": "Judge Johnson",
+    "status": "Closed",
+    "filingDate": "2025-01-06",
+    "nextHearing": "",
+    "caseType": "Corporate - Merger",
+    "courtRoom": "Room 302",
+    "documents": [
+      {
+        "name": "Testimony_29_1.pdf",
+        "url": "/documents/testimony_29_1.pdf",
+        "uploadedBy": "Andrew Clark",
+        "uploadDate": "2024-12-27"
+      },
+      {
+        "name": "Contract_29_2.pdf",
+        "url": "/documents/contract_29_2.pdf",
+        "uploadedBy": "Andrew Clark",
+        "uploadDate": "2025-01-31"
+      },
+      {
+        "name": "Statement_29_3.pdf",
+        "url": "/documents/statement_29_3.pdf",
+        "uploadedBy": "Steven Martin",
+        "uploadDate": "2025-04-22"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-01-06",
+        "action": "Case Filed",
+        "by": "Steven Martin"
+      },
+      {
+        "date": "2025-01-06",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-01-20",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Johnson"
+      },
+      {
+        "date": "2025-02-05",
+        "action": "Status Changed to Closed",
+        "by": "Andrew Clark"
+      },
+      {
+        "date": "2025-04-06",
+        "action": "Case Closed",
+        "by": "Judge Johnson"
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "title": "Evergreen Properties Corporate Case",
+    "description": "This is a corporate - acquisition case. The plaintiff seeks damages.",
+    "submittedBy": "Michael Gonzalez",
+    "assignedTo": "Brandon Jones",
+    "judge": "Judge Patel",
+    "status": "In Progress",
+    "filingDate": "2025-02-27",
+    "nextHearing": "2025-06-20",
+    "caseType": "Corporate - Acquisition",
+    "courtRoom": "Room 202",
+    "documents": [
+      {
+        "name": "Analysis_30_1.pdf",
+        "url": "/documents/analysis_30_1.pdf",
+        "uploadedBy": "Brandon Jones",
+        "uploadDate": "2024-12-29"
+      },
+      {
+        "name": "Statement_30_2.pdf",
+        "url": "/documents/statement_30_2.pdf",
+        "uploadedBy": "Michael Gonzalez",
+        "uploadDate": "2025-01-23"
+      },
+      {
+        "name": "Analysis_30_3.pdf",
+        "url": "/documents/analysis_30_3.pdf",
+        "uploadedBy": "Michael Gonzalez",
+        "uploadDate": "2025-03-03"
+      },
+      {
+        "name": "Motion_30_4.pdf",
+        "url": "/documents/motion_30_4.pdf",
+        "uploadedBy": "Brandon Jones",
+        "uploadDate": "2025-03-07"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-02-27",
+        "action": "Case Filed",
+        "by": "Michael Gonzalez"
+      },
+      {
+        "date": "2025-02-27",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-03-13",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Patel"
+      },
+      {
+        "date": "2025-03-29",
+        "action": "Status Changed to In Progress",
+        "by": "Brandon Jones"
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "title": "State vs. Sarah Davis",
+    "description": "This is a criminal - theft case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Jessica Johnson",
+    "assignedTo": "Kevin Jackson",
+    "judge": "Judge Hill",
+    "status": "In Progress",
+    "filingDate": "2025-03-29",
+    "nextHearing": "2025-06-06",
+    "caseType": "Criminal - Theft",
+    "courtRoom": "Room 502",
+    "documents": [
+      {
+        "name": "Brief_31_1.pdf",
+        "url": "/documents/brief_31_1.pdf",
+        "uploadedBy": "Kevin Jackson",
+        "uploadDate": "2025-01-05"
+      },
+      {
+        "name": "Agreement_31_2.pdf",
+        "url": "/documents/agreement_31_2.pdf",
+        "uploadedBy": "Kevin Jackson",
+        "uploadDate": "2024-12-22"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-03-29",
+        "action": "Case Filed",
+        "by": "Jessica Johnson"
+      },
+      {
+        "date": "2025-03-29",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-04-12",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Hill"
+      },
+      {
+        "date": "2025-04-28",
+        "action": "Status Changed to In Progress",
+        "by": "Kevin Jackson"
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "title": "Phoenix Industries Corporate Case",
+    "description": "This is a corporate - acquisition case. The plaintiff seeks damages.",
+    "submittedBy": "Thomas Thomas",
+    "assignedTo": "Jane Smith",
+    "judge": "Judge Baker",
+    "status": "Registered",
+    "filingDate": "2024-11-01",
+    "nextHearing": "2025-04-27",
+    "caseType": "Corporate - Acquisition",
+    "courtRoom": "Room 401",
+    "documents": [
+      {
+        "name": "Transcript_32_1.pdf",
+        "url": "/documents/transcript_32_1.pdf",
+        "uploadedBy": "Thomas Thomas",
+        "uploadDate": "2025-01-30"
+      },
+      {
+        "name": "Agreement_32_2.pdf",
+        "url": "/documents/agreement_32_2.pdf",
+        "uploadedBy": "Jane Smith",
+        "uploadDate": "2025-04-06"
+      },
+      {
+        "name": "Evidence_32_3.pdf",
+        "url": "/documents/evidence_32_3.pdf",
+        "uploadedBy": "Jane Smith",
+        "uploadDate": "2025-01-08"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-11-01",
+        "action": "Case Filed",
+        "by": "Thomas Thomas"
+      },
+      {
+        "date": "2024-11-01",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "title": "Meridian Services vs. Theta Industries",
+    "description": "This is a civil - contract breach case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Elizabeth Jackson",
+    "assignedTo": "Kevin Sanchez",
+    "judge": "Judge Harris",
+    "status": "Closed",
+    "filingDate": "2025-04-08",
+    "nextHearing": "",
+    "caseType": "Civil - Contract Breach",
+    "courtRoom": "Room 302",
+    "documents": [
+      {
+        "name": "Petition_33_1.pdf",
+        "url": "/documents/petition_33_1.pdf",
+        "uploadedBy": "Kevin Sanchez",
+        "uploadDate": "2024-12-01"
+      },
+      {
+        "name": "Contract_33_2.pdf",
+        "url": "/documents/contract_33_2.pdf",
+        "uploadedBy": "Kevin Sanchez",
+        "uploadDate": "2024-11-08"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-04-08",
+        "action": "Case Filed",
+        "by": "Elizabeth Jackson"
+      },
+      {
+        "date": "2025-04-08",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-04-22",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Harris"
+      },
+      {
+        "date": "2025-05-08",
+        "action": "Status Changed to Closed",
+        "by": "Kevin Sanchez"
+      },
+      {
+        "date": "2025-07-07",
+        "action": "Case Closed",
+        "by": "Judge Harris"
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "title": "Sapphire Solutions Corporate Case",
+    "description": "This is a employment - discrimination case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Megan Williams",
+    "assignedTo": "Kevin Ramirez",
+    "judge": "Judge Robinson",
+    "status": "Registered",
+    "filingDate": "2025-02-15",
+    "nextHearing": "2025-06-26",
+    "caseType": "Employment - Discrimination",
+    "courtRoom": "Room 102",
+    "documents": [
+      {
+        "name": "Analysis_34_1.pdf",
+        "url": "/documents/analysis_34_1.pdf",
+        "uploadedBy": "Kevin Ramirez",
+        "uploadDate": "2025-04-21"
+      },
+      {
+        "name": "Agreement_34_2.pdf",
+        "url": "/documents/agreement_34_2.pdf",
+        "uploadedBy": "Megan Williams",
+        "uploadDate": "2024-12-25"
+      },
+      {
+        "name": "Affidavit_34_3.pdf",
+        "url": "/documents/affidavit_34_3.pdf",
+        "uploadedBy": "Megan Williams",
+        "uploadDate": "2025-04-09"
+      },
+      {
+        "name": "Judgment_34_4.pdf",
+        "url": "/documents/judgment_34_4.pdf",
+        "uploadedBy": "Megan Williams",
+        "uploadDate": "2025-03-15"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-02-15",
+        "action": "Case Filed",
+        "by": "Megan Williams"
+      },
+      {
+        "date": "2025-02-15",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "title": "Harris LLC vs. Theta Industries",
+    "description": "This is a civil - personal injury case. The plaintiff seeks damages.",
+    "submittedBy": "Steven Harris",
+    "assignedTo": "Christopher Thomas",
+    "judge": "Judge Rivera",
+    "status": "Registered",
+    "filingDate": "2025-03-07",
+    "nextHearing": "2025-05-05",
+    "caseType": "Civil - Personal Injury",
+    "courtRoom": "Room 302",
+    "documents": [
+      {
+        "name": "Petition_35_1.pdf",
+        "url": "/documents/petition_35_1.pdf",
+        "uploadedBy": "Christopher Thomas",
+        "uploadDate": "2025-02-04"
+      },
+      {
+        "name": "Testimony_35_2.pdf",
+        "url": "/documents/testimony_35_2.pdf",
+        "uploadedBy": "Steven Harris",
+        "uploadDate": "2025-02-05"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-03-07",
+        "action": "Case Filed",
+        "by": "Steven Harris"
+      },
+      {
+        "date": "2025-03-07",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "title": "Unity Enterprises vs. Zeta Systems",
+    "description": "This is a civil - intellectual property case. The plaintiff seeks damages.",
+    "submittedBy": "Rebecca Hernandez",
+    "assignedTo": "Sarah Jackson",
+    "judge": "Judge Rodriguez",
+    "status": "In Progress",
+    "filingDate": "2024-11-11",
+    "nextHearing": "2025-05-20",
+    "caseType": "Civil - Intellectual Property",
+    "courtRoom": "Room 202",
+    "documents": [
+      {
+        "name": "Motion_36_1.pdf",
+        "url": "/documents/motion_36_1.pdf",
+        "uploadedBy": "Sarah Jackson",
+        "uploadDate": "2024-11-23"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-11-11",
+        "action": "Case Filed",
+        "by": "Rebecca Hernandez"
+      },
+      {
+        "date": "2024-11-11",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2024-11-25",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Rodriguez"
+      },
+      {
+        "date": "2024-12-11",
+        "action": "Status Changed to In Progress",
+        "by": "Sarah Jackson"
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "title": "Anderson Co. vs. Theta Industries",
+    "description": "This is a civil - contract breach case. The plaintiff seeks damages.",
+    "submittedBy": "Brandon Anderson",
+    "assignedTo": "Daniel White",
+    "judge": "Judge Baker",
+    "status": "On Hold",
+    "filingDate": "2025-04-01",
+    "nextHearing": "2025-07-13",
+    "caseType": "Civil - Contract Breach",
+    "courtRoom": "Room 302",
+    "documents": [
+      {
+        "name": "Testimony_37_1.pdf",
+        "url": "/documents/testimony_37_1.pdf",
+        "uploadedBy": "Daniel White",
+        "uploadDate": "2025-03-12"
+      },
+      {
+        "name": "Transcript_37_2.pdf",
+        "url": "/documents/transcript_37_2.pdf",
+        "uploadedBy": "Daniel White",
+        "uploadDate": "2025-04-24"
+      },
+      {
+        "name": "Analysis_37_3.pdf",
+        "url": "/documents/analysis_37_3.pdf",
+        "uploadedBy": "Brandon Anderson",
+        "uploadDate": "2025-03-29"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-04-01",
+        "action": "Case Filed",
+        "by": "Brandon Anderson"
+      },
+      {
+        "date": "2025-04-01",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-04-15",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Baker"
+      },
+      {
+        "date": "2025-05-01",
+        "action": "Status Changed to On Hold",
+        "by": "Daniel White"
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "title": "Martinez Family Matter",
+    "description": "This is a family - divorce case. The plaintiff seeks damages.",
+    "submittedBy": "Christopher Miller",
+    "assignedTo": "Kevin Jackson",
+    "judge": "Judge Robinson",
+    "status": "Registered",
+    "filingDate": "2025-01-25",
+    "nextHearing": "2025-05-25",
+    "caseType": "Family - Divorce",
+    "courtRoom": "Room 102",
+    "documents": [
+      {
+        "name": "Analysis_38_1.pdf",
+        "url": "/documents/analysis_38_1.pdf",
+        "uploadedBy": "Kevin Jackson",
+        "uploadDate": "2025-02-08"
+      },
+      {
+        "name": "Agreement_38_2.pdf",
+        "url": "/documents/agreement_38_2.pdf",
+        "uploadedBy": "Christopher Miller",
+        "uploadDate": "2024-11-20"
+      },
+      {
+        "name": "Agreement_38_3.pdf",
+        "url": "/documents/agreement_38_3.pdf",
+        "uploadedBy": "Christopher Miller",
+        "uploadDate": "2025-03-10"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-01-25",
+        "action": "Case Filed",
+        "by": "Christopher Miller"
+      },
+      {
+        "date": "2025-01-25",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "title": "Pinnacle Group Corporate Case",
+    "description": "This is a employment - wrongful termination case. The plaintiff seeks damages.",
+    "submittedBy": "Joseph Jones",
+    "assignedTo": "Andrew Clark",
+    "judge": "Judge Brown",
+    "status": "Closed",
+    "filingDate": "2025-04-07",
+    "nextHearing": "",
+    "caseType": "Employment - Wrongful Termination",
+    "courtRoom": "Room 402",
+    "documents": [
+      {
+        "name": "Transcript_39_1.pdf",
+        "url": "/documents/transcript_39_1.pdf",
+        "uploadedBy": "Andrew Clark",
+        "uploadDate": "2024-11-21"
+      },
+      {
+        "name": "Brief_39_2.pdf",
+        "url": "/documents/brief_39_2.pdf",
+        "uploadedBy": "Joseph Jones",
+        "uploadDate": "2024-11-12"
+      },
+      {
+        "name": "Report_39_3.pdf",
+        "url": "/documents/report_39_3.pdf",
+        "uploadedBy": "Joseph Jones",
+        "uploadDate": "2024-12-14"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-04-07",
+        "action": "Case Filed",
+        "by": "Joseph Jones"
+      },
+      {
+        "date": "2025-04-07",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-04-21",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Brown"
+      },
+      {
+        "date": "2025-05-07",
+        "action": "Status Changed to Closed",
+        "by": "Andrew Clark"
+      },
+      {
+        "date": "2025-07-06",
+        "action": "Case Closed",
+        "by": "Judge Brown"
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "title": "Precision Manufacturing vs. Theta Industries",
+    "description": "This is a civil - contract breach case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Rebecca Sanchez",
+    "assignedTo": "Jessica Thompson",
+    "judge": "Judge Torres",
+    "status": "In Progress",
+    "filingDate": "2025-03-01",
+    "nextHearing": "2025-07-25",
+    "caseType": "Civil - Contract Breach",
+    "courtRoom": "Room 501",
+    "documents": [
+      {
+        "name": "Transcript_40_1.pdf",
+        "url": "/documents/transcript_40_1.pdf",
+        "uploadedBy": "Rebecca Sanchez",
+        "uploadDate": "2024-12-06"
+      },
+      {
+        "name": "Evidence_40_2.pdf",
+        "url": "/documents/evidence_40_2.pdf",
+        "uploadedBy": "Rebecca Sanchez",
+        "uploadDate": "2025-03-16"
+      },
+      {
+        "name": "Affidavit_40_3.pdf",
+        "url": "/documents/affidavit_40_3.pdf",
+        "uploadedBy": "Jessica Thompson",
+        "uploadDate": "2025-01-30"
+      },
+      {
+        "name": "Contract_40_4.pdf",
+        "url": "/documents/contract_40_4.pdf",
+        "uploadedBy": "Rebecca Sanchez",
+        "uploadDate": "2024-12-19"
+      },
+      {
+        "name": "Agreement_40_5.pdf",
+        "url": "/documents/agreement_40_5.pdf",
+        "uploadedBy": "Jessica Thompson",
+        "uploadDate": "2024-12-06"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-03-01",
+        "action": "Case Filed",
+        "by": "Rebecca Sanchez"
+      },
+      {
+        "date": "2025-03-01",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-03-15",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Torres"
+      },
+      {
+        "date": "2025-03-31",
+        "action": "Status Changed to In Progress",
+        "by": "Jessica Thompson"
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "title": "Vertex Systems Corporate Case",
+    "description": "This is a corporate - acquisition case. The plaintiff seeks damages.",
+    "submittedBy": "Andrew Miller",
+    "assignedTo": "Melissa Jones",
+    "judge": "Judge Harris",
+    "status": "Registered",
+    "filingDate": "2025-04-04",
+    "nextHearing": "2025-05-05",
+    "caseType": "Corporate - Acquisition",
+    "courtRoom": "Room 401",
+    "documents": [
+      {
+        "name": "Agreement_41_1.pdf",
+        "url": "/documents/agreement_41_1.pdf",
+        "uploadedBy": "Melissa Jones",
+        "uploadDate": "2025-03-12"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-04-04",
+        "action": "Case Filed",
+        "by": "Andrew Miller"
+      },
+      {
+        "date": "2025-04-04",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "title": "Unity Enterprises vs. Kappa Services",
+    "description": "This is a civil - contract breach case. The plaintiff seeks damages.",
+    "submittedBy": "Rebecca Hernandez",
+    "assignedTo": "James Rodriguez",
+    "judge": "Judge Smith",
+    "status": "In Progress",
+    "filingDate": "2024-11-01",
+    "nextHearing": "2025-06-25",
+    "caseType": "Civil - Contract Breach",
+    "courtRoom": "Room 501",
+    "documents": [
+      {
+        "name": "Transcript_42_1.pdf",
+        "url": "/documents/transcript_42_1.pdf",
+        "uploadedBy": "James Rodriguez",
+        "uploadDate": "2024-11-11"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-11-01",
+        "action": "Case Filed",
+        "by": "Rebecca Hernandez"
+      },
+      {
+        "date": "2024-11-01",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2024-11-15",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Smith"
+      },
+      {
+        "date": "2024-12-01",
+        "action": "Status Changed to In Progress",
+        "by": "James Rodriguez"
+      }
+    ]
+  },
+  {
+    "id": 43,
+    "title": "Frontier Technologies Corporate Case",
+    "description": "This is a corporate - acquisition case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Joshua Rodriguez",
+    "assignedTo": "Brandon Moore",
+    "judge": "Judge Patel",
+    "status": "In Progress",
+    "filingDate": "2025-03-03",
+    "nextHearing": "2025-06-01",
+    "caseType": "Corporate - Acquisition",
+    "courtRoom": "Room 402",
+    "documents": [
+      {
+        "name": "Evidence_43_1.pdf",
+        "url": "/documents/evidence_43_1.pdf",
+        "uploadedBy": "Joshua Rodriguez",
+        "uploadDate": "2025-01-16"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-03-03",
+        "action": "Case Filed",
+        "by": "Joshua Rodriguez"
+      },
+      {
+        "date": "2025-03-03",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-03-17",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Patel"
+      },
+      {
+        "date": "2025-04-02",
+        "action": "Status Changed to In Progress",
+        "by": "Brandon Moore"
+      }
+    ]
+  },
+  {
+    "id": 44,
+    "title": "Vertex Systems Corporate Case",
+    "description": "This is a employment - wrongful termination case. The plaintiff seeks damages.",
+    "submittedBy": "Andrew Miller",
+    "assignedTo": "Andrew Johnson",
+    "judge": "Judge Green",
+    "status": "On Hold",
+    "filingDate": "2024-11-07",
+    "nextHearing": "2025-07-06",
+    "caseType": "Employment - Wrongful Termination",
+    "courtRoom": "Room 201",
+    "documents": [
+      {
+        "name": "Agreement_44_1.pdf",
+        "url": "/documents/agreement_44_1.pdf",
+        "uploadedBy": "Andrew Johnson",
+        "uploadDate": "2024-11-08"
+      },
+      {
+        "name": "Analysis_44_2.pdf",
+        "url": "/documents/analysis_44_2.pdf",
+        "uploadedBy": "Andrew Miller",
+        "uploadDate": "2024-11-25"
+      },
+      {
+        "name": "Brief_44_3.pdf",
+        "url": "/documents/brief_44_3.pdf",
+        "uploadedBy": "Andrew Miller",
+        "uploadDate": "2024-11-23"
+      },
+      {
+        "name": "Report_44_4.pdf",
+        "url": "/documents/report_44_4.pdf",
+        "uploadedBy": "Andrew Miller",
+        "uploadDate": "2025-04-02"
+      },
+      {
+        "name": "Analysis_44_5.pdf",
+        "url": "/documents/analysis_44_5.pdf",
+        "uploadedBy": "Andrew Miller",
+        "uploadDate": "2024-11-20"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-11-07",
+        "action": "Case Filed",
+        "by": "Andrew Miller"
+      },
+      {
+        "date": "2024-11-07",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2024-11-21",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Green"
+      },
+      {
+        "date": "2024-12-07",
+        "action": "Status Changed to On Hold",
+        "by": "Andrew Johnson"
+      }
+    ]
+  },
+  {
+    "id": 45,
+    "title": "Evergreen Properties Corporate Case",
+    "description": "This is a employment - wrongful termination case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Michael Gonzalez",
+    "assignedTo": "James Thomas",
+    "judge": "Judge Green",
+    "status": "On Hold",
+    "filingDate": "2024-11-09",
+    "nextHearing": "2025-06-12",
+    "caseType": "Employment - Wrongful Termination",
+    "courtRoom": "Room 502",
+    "documents": [
+      {
+        "name": "Evidence_45_1.pdf",
+        "url": "/documents/evidence_45_1.pdf",
+        "uploadedBy": "James Thomas",
+        "uploadDate": "2025-03-24"
+      },
+      {
+        "name": "Transcript_45_2.pdf",
+        "url": "/documents/transcript_45_2.pdf",
+        "uploadedBy": "James Thomas",
+        "uploadDate": "2025-04-02"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-11-09",
+        "action": "Case Filed",
+        "by": "Michael Gonzalez"
+      },
+      {
+        "date": "2024-11-09",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2024-11-23",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Green"
+      },
+      {
+        "date": "2024-12-09",
+        "action": "Status Changed to On Hold",
+        "by": "James Thomas"
+      }
+    ]
+  },
+  {
+    "id": 46,
+    "title": "Titan Group Corporate Case",
+    "description": "This is a employment - discrimination case. The plaintiff seeks damages.",
+    "submittedBy": "Christopher Miller",
+    "assignedTo": "Michael Sanchez",
+    "judge": "Judge Brown",
+    "status": "Closed",
+    "filingDate": "2025-02-28",
+    "nextHearing": "",
+    "caseType": "Employment - Discrimination",
+    "courtRoom": "Room 102",
+    "documents": [
+      {
+        "name": "Brief_46_1.pdf",
+        "url": "/documents/brief_46_1.pdf",
+        "uploadedBy": "Michael Sanchez",
+        "uploadDate": "2025-02-18"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-02-28",
+        "action": "Case Filed",
+        "by": "Christopher Miller"
+      },
+      {
+        "date": "2025-02-28",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-03-14",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Brown"
+      },
+      {
+        "date": "2025-03-30",
+        "action": "Status Changed to Closed",
+        "by": "Michael Sanchez"
+      },
+      {
+        "date": "2025-05-29",
+        "action": "Case Closed",
+        "by": "Judge Brown"
+      }
+    ]
+  },
+  {
+    "id": 47,
+    "title": "Rodriguez Family Matter",
+    "description": "This is a family - divorce case. The plaintiff seeks damages.",
+    "submittedBy": "Jennifer Lee",
+    "assignedTo": "James Thomas",
+    "judge": "Judge Taylor",
+    "status": "Registered",
+    "filingDate": "2024-11-25",
+    "nextHearing": "2025-07-10",
+    "caseType": "Family - Divorce",
+    "courtRoom": "Room 301",
+    "documents": [
+      {
+        "name": "Agreement_47_1.pdf",
+        "url": "/documents/agreement_47_1.pdf",
+        "uploadedBy": "James Thomas",
+        "uploadDate": "2025-04-23"
+      },
+      {
+        "name": "Petition_47_2.pdf",
+        "url": "/documents/petition_47_2.pdf",
+        "uploadedBy": "Jennifer Lee",
+        "uploadDate": "2024-12-24"
+      },
+      {
+        "name": "Order_47_3.pdf",
+        "url": "/documents/order_47_3.pdf",
+        "uploadedBy": "James Thomas",
+        "uploadDate": "2025-03-14"
+      },
+      {
+        "name": "Order_47_4.pdf",
+        "url": "/documents/order_47_4.pdf",
+        "uploadedBy": "Jennifer Lee",
+        "uploadDate": "2025-03-06"
+      },
+      {
+        "name": "Statement_47_5.pdf",
+        "url": "/documents/statement_47_5.pdf",
+        "uploadedBy": "Jennifer Lee",
+        "uploadDate": "2024-12-20"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-11-25",
+        "action": "Case Filed",
+        "by": "Jennifer Lee"
+      },
+      {
+        "date": "2024-11-25",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      }
+    ]
+  },
+  {
+    "id": 48,
+    "title": "Martin Inc. vs. Iota Technologies",
+    "description": "This is a civil - personal injury case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Steven Martin",
+    "assignedTo": "Elizabeth White",
+    "judge": "Judge Clark",
+    "status": "On Hold",
+    "filingDate": "2024-11-11",
+    "nextHearing": "2025-05-16",
+    "caseType": "Civil - Personal Injury",
+    "courtRoom": "Room 202",
+    "documents": [
+      {
+        "name": "Petition_48_1.pdf",
+        "url": "/documents/petition_48_1.pdf",
+        "uploadedBy": "Steven Martin",
+        "uploadDate": "2025-02-05"
+      },
+      {
+        "name": "Analysis_48_2.pdf",
+        "url": "/documents/analysis_48_2.pdf",
+        "uploadedBy": "Steven Martin",
+        "uploadDate": "2025-04-14"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-11-11",
+        "action": "Case Filed",
+        "by": "Steven Martin"
+      },
+      {
+        "date": "2024-11-11",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2024-11-25",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Clark"
+      },
+      {
+        "date": "2024-12-11",
+        "action": "Status Changed to On Hold",
+        "by": "Elizabeth White"
+      }
+    ]
+  },
+  {
+    "id": 49,
+    "title": "Tech Innovations vs. Kappa Services",
+    "description": "This is a civil - contract breach case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Jennifer Lee",
+    "assignedTo": "Stephanie Lee",
+    "judge": "Judge Miller",
+    "status": "On Hold",
+    "filingDate": "2025-03-06",
+    "nextHearing": "2025-04-30",
+    "caseType": "Civil - Contract Breach",
+    "courtRoom": "Room 501",
+    "documents": [
+      {
+        "name": "Order_49_1.pdf",
+        "url": "/documents/order_49_1.pdf",
+        "uploadedBy": "Stephanie Lee",
+        "uploadDate": "2024-12-02"
+      },
+      {
+        "name": "Order_49_2.pdf",
+        "url": "/documents/order_49_2.pdf",
+        "uploadedBy": "Stephanie Lee",
+        "uploadDate": "2024-11-25"
+      },
+      {
+        "name": "Report_49_3.pdf",
+        "url": "/documents/report_49_3.pdf",
+        "uploadedBy": "Jennifer Lee",
+        "uploadDate": "2025-03-23"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-03-06",
+        "action": "Case Filed",
+        "by": "Jennifer Lee"
+      },
+      {
+        "date": "2025-03-06",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-03-20",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Miller"
+      },
+      {
+        "date": "2025-04-05",
+        "action": "Status Changed to On Hold",
+        "by": "Stephanie Lee"
+      }
+    ]
+  },
+  {
+    "id": 50,
+    "title": "Lee Associates vs. Epsilon Group",
+    "description": "This is a civil - intellectual property case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Rachel Lee",
+    "assignedTo": "John Doe",
+    "judge": "Judge Patel",
+    "status": "Registered",
+    "filingDate": "2025-02-25",
+    "nextHearing": "2025-06-09",
+    "caseType": "Civil - Intellectual Property",
+    "courtRoom": "Room 501",
+    "documents": [
+      {
+        "name": "Analysis_50_1.pdf",
+        "url": "/documents/analysis_50_1.pdf",
+        "uploadedBy": "John Doe",
+        "uploadDate": "2025-02-19"
+      },
+      {
+        "name": "Transcript_50_2.pdf",
+        "url": "/documents/transcript_50_2.pdf",
+        "uploadedBy": "Rachel Lee",
+        "uploadDate": "2025-02-14"
+      },
+      {
+        "name": "Exhibit_50_3.pdf",
+        "url": "/documents/exhibit_50_3.pdf",
+        "uploadedBy": "Rachel Lee",
+        "uploadDate": "2025-02-19"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-02-25",
+        "action": "Case Filed",
+        "by": "Rachel Lee"
+      },
+      {
+        "date": "2025-02-25",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      }
+    ]
+  },
+  {
+    "id": 51,
+    "title": "Pinnacle Group Corporate Case",
+    "description": "This is a employment - wrongful termination case. The plaintiff seeks damages.",
+    "submittedBy": "Joseph Jones",
+    "assignedTo": "Jessica Lee",
+    "judge": "Judge Sanchez",
+    "status": "Closed",
+    "filingDate": "2025-02-13",
+    "nextHearing": "",
+    "caseType": "Employment - Wrongful Termination",
+    "courtRoom": "Room 301",
+    "documents": [
+      {
+        "name": "Affidavit_51_1.pdf",
+        "url": "/documents/affidavit_51_1.pdf",
+        "uploadedBy": "Joseph Jones",
+        "uploadDate": "2025-01-29"
+      },
+      {
+        "name": "Motion_51_2.pdf",
+        "url": "/documents/motion_51_2.pdf",
+        "uploadedBy": "Jessica Lee",
+        "uploadDate": "2025-02-01"
+      },
+      {
+        "name": "Contract_51_3.pdf",
+        "url": "/documents/contract_51_3.pdf",
+        "uploadedBy": "Joseph Jones",
+        "uploadDate": "2025-01-28"
+      },
+      {
+        "name": "Affidavit_51_4.pdf",
+        "url": "/documents/affidavit_51_4.pdf",
+        "uploadedBy": "Joseph Jones",
+        "uploadDate": "2025-01-16"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-02-13",
+        "action": "Case Filed",
+        "by": "Joseph Jones"
+      },
+      {
+        "date": "2025-02-13",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-02-27",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Sanchez"
+      },
+      {
+        "date": "2025-03-15",
+        "action": "Status Changed to Closed",
+        "by": "Jessica Lee"
+      },
+      {
+        "date": "2025-05-14",
+        "action": "Case Closed",
+        "by": "Judge Sanchez"
+      }
+    ]
+  },
+  {
+    "id": 52,
+    "title": "Jones Co. Corporate Case",
+    "description": "This is a employment - wrongful termination case. The plaintiff seeks damages.",
+    "submittedBy": "Rachel Jones",
+    "assignedTo": "Nicole Moore",
+    "judge": "Judge Rodriguez",
+    "status": "Closed",
+    "filingDate": "2025-04-10",
+    "nextHearing": "",
+    "caseType": "Employment - Wrongful Termination",
+    "courtRoom": "Room 501",
+    "documents": [
+      {
+        "name": "Transcript_52_1.pdf",
+        "url": "/documents/transcript_52_1.pdf",
+        "uploadedBy": "Rachel Jones",
+        "uploadDate": "2024-12-05"
+      },
+      {
+        "name": "Report_52_2.pdf",
+        "url": "/documents/report_52_2.pdf",
+        "uploadedBy": "Nicole Moore",
+        "uploadDate": "2024-10-31"
+      },
+      {
+        "name": "Petition_52_3.pdf",
+        "url": "/documents/petition_52_3.pdf",
+        "uploadedBy": "Rachel Jones",
+        "uploadDate": "2025-04-06"
+      },
+      {
+        "name": "Statement_52_4.pdf",
+        "url": "/documents/statement_52_4.pdf",
+        "uploadedBy": "Nicole Moore",
+        "uploadDate": "2024-12-05"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-04-10",
+        "action": "Case Filed",
+        "by": "Rachel Jones"
+      },
+      {
+        "date": "2025-04-10",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-04-24",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Rodriguez"
+      },
+      {
+        "date": "2025-05-10",
+        "action": "Status Changed to Closed",
+        "by": "Nicole Moore"
+      },
+      {
+        "date": "2025-07-09",
+        "action": "Case Closed",
+        "by": "Judge Rodriguez"
+      }
+    ]
+  },
+  {
+    "id": 53,
+    "title": "Smith Family Matter",
+    "description": "This is a family - child custody case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Brandon Smith",
+    "assignedTo": "Joshua Perez",
+    "judge": "Judge Adams",
+    "status": "Closed",
+    "filingDate": "2025-01-12",
+    "nextHearing": "",
+    "caseType": "Family - Child Custody",
+    "courtRoom": "Room 102",
+    "documents": [
+      {
+        "name": "Transcript_53_1.pdf",
+        "url": "/documents/transcript_53_1.pdf",
+        "uploadedBy": "Joshua Perez",
+        "uploadDate": "2025-01-06"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-01-12",
+        "action": "Case Filed",
+        "by": "Brandon Smith"
+      },
+      {
+        "date": "2025-01-12",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-01-26",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Adams"
+      },
+      {
+        "date": "2025-02-11",
+        "action": "Status Changed to Closed",
+        "by": "Joshua Perez"
+      },
+      {
+        "date": "2025-04-12",
+        "action": "Case Closed",
+        "by": "Judge Adams"
+      }
+    ]
+  },
+  {
+    "id": 54,
+    "title": "Harris LLC vs. Epsilon Group",
+    "description": "This is a civil - personal injury case. The plaintiff seeks damages.",
+    "submittedBy": "Steven Harris",
+    "assignedTo": "Jason Moore",
+    "judge": "Judge Johnson",
+    "status": "On Hold",
+    "filingDate": "2024-11-21",
+    "nextHearing": "2025-07-11",
+    "caseType": "Civil - Personal Injury",
+    "courtRoom": "Room 302",
+    "documents": [
+      {
+        "name": "Evidence_54_1.pdf",
+        "url": "/documents/evidence_54_1.pdf",
+        "uploadedBy": "Jason Moore",
+        "uploadDate": "2025-03-23"
+      },
+      {
+        "name": "Order_54_2.pdf",
+        "url": "/documents/order_54_2.pdf",
+        "uploadedBy": "Jason Moore",
+        "uploadDate": "2025-02-16"
+      },
+      {
+        "name": "Motion_54_3.pdf",
+        "url": "/documents/motion_54_3.pdf",
+        "uploadedBy": "Steven Harris",
+        "uploadDate": "2025-03-26"
+      },
+      {
+        "name": "Motion_54_4.pdf",
+        "url": "/documents/motion_54_4.pdf",
+        "uploadedBy": "Steven Harris",
+        "uploadDate": "2024-12-09"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-11-21",
+        "action": "Case Filed",
+        "by": "Steven Harris"
+      },
+      {
+        "date": "2024-11-21",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2024-12-05",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Johnson"
+      },
+      {
+        "date": "2024-12-21",
+        "action": "Status Changed to On Hold",
+        "by": "Jason Moore"
+      }
+    ]
+  },
+  {
+    "id": 55,
+    "title": "Harris Co. vs. Epsilon Group",
+    "description": "This is a civil - property dispute case. The plaintiff seeks damages.",
+    "submittedBy": "Steven Harris",
+    "assignedTo": "Stephanie Lee",
+    "judge": "Judge Lee",
+    "status": "In Progress",
+    "filingDate": "2024-12-04",
+    "nextHearing": "2025-05-22",
+    "caseType": "Civil - Property Dispute",
+    "courtRoom": "Room 501",
+    "documents": [
+      {
+        "name": "Affidavit_55_1.pdf",
+        "url": "/documents/affidavit_55_1.pdf",
+        "uploadedBy": "Stephanie Lee",
+        "uploadDate": "2024-11-21"
+      },
+      {
+        "name": "Exhibit_55_2.pdf",
+        "url": "/documents/exhibit_55_2.pdf",
+        "uploadedBy": "Stephanie Lee",
+        "uploadDate": "2025-01-04"
+      },
+      {
+        "name": "Exhibit_55_3.pdf",
+        "url": "/documents/exhibit_55_3.pdf",
+        "uploadedBy": "Steven Harris",
+        "uploadDate": "2025-02-05"
+      },
+      {
+        "name": "Agreement_55_4.pdf",
+        "url": "/documents/agreement_55_4.pdf",
+        "uploadedBy": "Steven Harris",
+        "uploadDate": "2025-04-13"
+      },
+      {
+        "name": "Testimony_55_5.pdf",
+        "url": "/documents/testimony_55_5.pdf",
+        "uploadedBy": "Steven Harris",
+        "uploadDate": "2025-01-10"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-12-04",
+        "action": "Case Filed",
+        "by": "Steven Harris"
+      },
+      {
+        "date": "2024-12-04",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2024-12-18",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Lee"
+      },
+      {
+        "date": "2025-01-03",
+        "action": "Status Changed to In Progress",
+        "by": "Stephanie Lee"
+      }
+    ]
+  },
+  {
+    "id": 56,
+    "title": "Davis Co. vs. Delta Enterprises",
+    "description": "This is a civil - property dispute case. The plaintiff seeks damages.",
+    "submittedBy": "Joshua Davis",
+    "assignedTo": "Jason Moore",
+    "judge": "Judge Rodriguez",
+    "status": "In Progress",
+    "filingDate": "2025-04-03",
+    "nextHearing": "2025-06-18",
+    "caseType": "Civil - Property Dispute",
+    "courtRoom": "Room 501",
+    "documents": [
+      {
+        "name": "Exhibit_56_1.pdf",
+        "url": "/documents/exhibit_56_1.pdf",
+        "uploadedBy": "Joshua Davis",
+        "uploadDate": "2024-11-22"
+      },
+      {
+        "name": "Motion_56_2.pdf",
+        "url": "/documents/motion_56_2.pdf",
+        "uploadedBy": "Joshua Davis",
+        "uploadDate": "2025-03-09"
+      },
+      {
+        "name": "Petition_56_3.pdf",
+        "url": "/documents/petition_56_3.pdf",
+        "uploadedBy": "Joshua Davis",
+        "uploadDate": "2024-11-09"
+      },
+      {
+        "name": "Motion_56_4.pdf",
+        "url": "/documents/motion_56_4.pdf",
+        "uploadedBy": "Joshua Davis",
+        "uploadDate": "2025-04-23"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-04-03",
+        "action": "Case Filed",
+        "by": "Joshua Davis"
+      },
+      {
+        "date": "2025-04-03",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-04-17",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Rodriguez"
+      },
+      {
+        "date": "2025-05-03",
+        "action": "Status Changed to In Progress",
+        "by": "Jason Moore"
+      }
+    ]
+  },
+  {
+    "id": 57,
+    "title": "Brown Family Matter",
+    "description": "This is a family - child custody case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Joseph Jones",
+    "assignedTo": "Jason Moore",
+    "judge": "Judge Young",
+    "status": "Closed",
+    "filingDate": "2025-02-12",
+    "nextHearing": "",
+    "caseType": "Family - Child Custody",
+    "courtRoom": "Room 502",
+    "documents": [
+      {
+        "name": "Agreement_57_1.pdf",
+        "url": "/documents/agreement_57_1.pdf",
+        "uploadedBy": "Jason Moore",
+        "uploadDate": "2025-02-02"
+      },
+      {
+        "name": "Affidavit_57_2.pdf",
+        "url": "/documents/affidavit_57_2.pdf",
+        "uploadedBy": "Jason Moore",
+        "uploadDate": "2024-12-15"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-02-12",
+        "action": "Case Filed",
+        "by": "Joseph Jones"
+      },
+      {
+        "date": "2025-02-12",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-02-26",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Young"
+      },
+      {
+        "date": "2025-03-14",
+        "action": "Status Changed to Closed",
+        "by": "Jason Moore"
+      },
+      {
+        "date": "2025-05-13",
+        "action": "Case Closed",
+        "by": "Judge Young"
+      }
+    ]
+  },
+  {
+    "id": 58,
+    "title": "Martinez Family Matter",
+    "description": "This is a family - child custody case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Jennifer Lee",
+    "assignedTo": "Jessica Martinez",
+    "judge": "Judge Patel",
+    "status": "In Progress",
+    "filingDate": "2024-12-16",
+    "nextHearing": "2025-05-20",
+    "caseType": "Family - Child Custody",
+    "courtRoom": "Room 302",
+    "documents": [
+      {
+        "name": "Report_58_1.pdf",
+        "url": "/documents/report_58_1.pdf",
+        "uploadedBy": "Jessica Martinez",
+        "uploadDate": "2025-01-27"
+      },
+      {
+        "name": "Report_58_2.pdf",
+        "url": "/documents/report_58_2.pdf",
+        "uploadedBy": "Jennifer Lee",
+        "uploadDate": "2024-12-17"
+      },
+      {
+        "name": "Motion_58_3.pdf",
+        "url": "/documents/motion_58_3.pdf",
+        "uploadedBy": "Jessica Martinez",
+        "uploadDate": "2025-02-25"
+      },
+      {
+        "name": "Transcript_58_4.pdf",
+        "url": "/documents/transcript_58_4.pdf",
+        "uploadedBy": "Jennifer Lee",
+        "uploadDate": "2025-02-02"
+      },
+      {
+        "name": "Evidence_58_5.pdf",
+        "url": "/documents/evidence_58_5.pdf",
+        "uploadedBy": "Jessica Martinez",
+        "uploadDate": "2025-02-18"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-12-16",
+        "action": "Case Filed",
+        "by": "Jennifer Lee"
+      },
+      {
+        "date": "2024-12-16",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2024-12-30",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Patel"
+      },
+      {
+        "date": "2025-01-15",
+        "action": "Status Changed to In Progress",
+        "by": "Jessica Martinez"
+      }
+    ]
+  },
+  {
+    "id": 59,
+    "title": "State vs. Mary Brown",
+    "description": "This is a criminal - fraud case. The plaintiff seeks damages.",
+    "submittedBy": "Bob Wilson",
+    "assignedTo": "Andrew Clark",
+    "judge": "Judge Clark",
+    "status": "Closed",
+    "filingDate": "2024-12-08",
+    "nextHearing": "",
+    "caseType": "Criminal - Fraud",
+    "courtRoom": "Room 301",
+    "documents": [
+      {
+        "name": "Affidavit_59_1.pdf",
+        "url": "/documents/affidavit_59_1.pdf",
+        "uploadedBy": "Bob Wilson",
+        "uploadDate": "2025-04-01"
+      },
+      {
+        "name": "Order_59_2.pdf",
+        "url": "/documents/order_59_2.pdf",
+        "uploadedBy": "Bob Wilson",
+        "uploadDate": "2025-02-01"
+      },
+      {
+        "name": "Exhibit_59_3.pdf",
+        "url": "/documents/exhibit_59_3.pdf",
+        "uploadedBy": "Andrew Clark",
+        "uploadDate": "2025-03-27"
+      },
+      {
+        "name": "Affidavit_59_4.pdf",
+        "url": "/documents/affidavit_59_4.pdf",
+        "uploadedBy": "Bob Wilson",
+        "uploadDate": "2025-04-14"
+      },
+      {
+        "name": "Evidence_59_5.pdf",
+        "url": "/documents/evidence_59_5.pdf",
+        "uploadedBy": "Bob Wilson",
+        "uploadDate": "2025-04-07"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-12-08",
+        "action": "Case Filed",
+        "by": "Bob Wilson"
+      },
+      {
+        "date": "2024-12-08",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2024-12-22",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Clark"
+      },
+      {
+        "date": "2025-01-07",
+        "action": "Status Changed to Closed",
+        "by": "Andrew Clark"
+      },
+      {
+        "date": "2025-03-08",
+        "action": "Case Closed",
+        "by": "Judge Clark"
+      }
+    ]
+  },
+  {
+    "id": 60,
+    "title": "State vs. Jane Martinez",
+    "description": "This is a criminal - theft case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Ashley Sanchez",
+    "assignedTo": "Andrew Clark",
+    "judge": "Judge Lee",
+    "status": "On Hold",
+    "filingDate": "2024-12-16",
+    "nextHearing": "2025-05-20",
+    "caseType": "Criminal - Theft",
+    "courtRoom": "Room 402",
+    "documents": [
+      {
+        "name": "Judgment_60_1.pdf",
+        "url": "/documents/judgment_60_1.pdf",
+        "uploadedBy": "Ashley Sanchez",
+        "uploadDate": "2025-01-21"
+      },
+      {
+        "name": "Contract_60_2.pdf",
+        "url": "/documents/contract_60_2.pdf",
+        "uploadedBy": "Andrew Clark",
+        "uploadDate": "2025-01-14"
+      },
+      {
+        "name": "Testimony_60_3.pdf",
+        "url": "/documents/testimony_60_3.pdf",
+        "uploadedBy": "Andrew Clark",
+        "uploadDate": "2025-03-18"
+      },
+      {
+        "name": "Motion_60_4.pdf",
+        "url": "/documents/motion_60_4.pdf",
+        "uploadedBy": "Andrew Clark",
+        "uploadDate": "2025-04-03"
+      },
+      {
+        "name": "Evidence_60_5.pdf",
+        "url": "/documents/evidence_60_5.pdf",
+        "uploadedBy": "Andrew Clark",
+        "uploadDate": "2024-12-26"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-12-16",
+        "action": "Case Filed",
+        "by": "Ashley Sanchez"
+      },
+      {
+        "date": "2024-12-16",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2024-12-30",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Lee"
+      },
+      {
+        "date": "2025-01-15",
+        "action": "Status Changed to On Hold",
+        "by": "Andrew Clark"
+      }
+    ]
+  },
+  {
+    "id": 61,
+    "title": "Unity Enterprises Corporate Case",
+    "description": "This is a employment - wrongful termination case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Rebecca Hernandez",
+    "assignedTo": "James Brown",
+    "judge": "Judge Lee",
+    "status": "Closed",
+    "filingDate": "2024-11-14",
+    "nextHearing": "",
+    "caseType": "Employment - Wrongful Termination",
+    "courtRoom": "Room 202",
+    "documents": [
+      {
+        "name": "Affidavit_61_1.pdf",
+        "url": "/documents/affidavit_61_1.pdf",
+        "uploadedBy": "James Brown",
+        "uploadDate": "2025-03-30"
+      },
+      {
+        "name": "Brief_61_2.pdf",
+        "url": "/documents/brief_61_2.pdf",
+        "uploadedBy": "Rebecca Hernandez",
+        "uploadDate": "2024-11-27"
+      },
+      {
+        "name": "Transcript_61_3.pdf",
+        "url": "/documents/transcript_61_3.pdf",
+        "uploadedBy": "James Brown",
+        "uploadDate": "2025-03-06"
+      },
+      {
+        "name": "Petition_61_4.pdf",
+        "url": "/documents/petition_61_4.pdf",
+        "uploadedBy": "James Brown",
+        "uploadDate": "2025-03-31"
+      },
+      {
+        "name": "Testimony_61_5.pdf",
+        "url": "/documents/testimony_61_5.pdf",
+        "uploadedBy": "Rebecca Hernandez",
+        "uploadDate": "2025-03-31"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-11-14",
+        "action": "Case Filed",
+        "by": "Rebecca Hernandez"
+      },
+      {
+        "date": "2024-11-14",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2024-11-28",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Lee"
+      },
+      {
+        "date": "2024-12-14",
+        "action": "Status Changed to Closed",
+        "by": "James Brown"
+      },
+      {
+        "date": "2025-02-12",
+        "action": "Case Closed",
+        "by": "Judge Lee"
+      }
+    ]
+  },
+  {
+    "id": 62,
+    "title": "State vs. Mary Smith",
+    "description": "This is a criminal - theft case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Ashley Sanchez",
+    "assignedTo": "Jessica Lee",
+    "judge": "Judge Green",
+    "status": "On Hold",
+    "filingDate": "2024-11-08",
+    "nextHearing": "2025-05-11",
+    "caseType": "Criminal - Theft",
+    "courtRoom": "Room 102",
+    "documents": [
+      {
+        "name": "Contract_62_1.pdf",
+        "url": "/documents/contract_62_1.pdf",
+        "uploadedBy": "Jessica Lee",
+        "uploadDate": "2025-02-06"
+      },
+      {
+        "name": "Evidence_62_2.pdf",
+        "url": "/documents/evidence_62_2.pdf",
+        "uploadedBy": "Jessica Lee",
+        "uploadDate": "2024-11-20"
+      },
+      {
+        "name": "Testimony_62_3.pdf",
+        "url": "/documents/testimony_62_3.pdf",
+        "uploadedBy": "Jessica Lee",
+        "uploadDate": "2025-03-31"
+      },
+      {
+        "name": "Brief_62_4.pdf",
+        "url": "/documents/brief_62_4.pdf",
+        "uploadedBy": "Ashley Sanchez",
+        "uploadDate": "2025-04-03"
+      },
+      {
+        "name": "Judgment_62_5.pdf",
+        "url": "/documents/judgment_62_5.pdf",
+        "uploadedBy": "Ashley Sanchez",
+        "uploadDate": "2024-10-30"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-11-08",
+        "action": "Case Filed",
+        "by": "Ashley Sanchez"
+      },
+      {
+        "date": "2024-11-08",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2024-11-22",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Green"
+      },
+      {
+        "date": "2024-12-08",
+        "action": "Status Changed to On Hold",
+        "by": "Jessica Lee"
+      }
+    ]
+  },
+  {
+    "id": 63,
+    "title": "Catalyst Enterprises Corporate Case",
+    "description": "This is a employment - discrimination case. The plaintiff seeks damages.",
+    "submittedBy": "Jennifer Garcia",
+    "assignedTo": "Jason White",
+    "judge": "Judge Young",
+    "status": "Closed",
+    "filingDate": "2024-12-15",
+    "nextHearing": "",
+    "caseType": "Employment - Discrimination",
+    "courtRoom": "Room 201",
+    "documents": [
+      {
+        "name": "Judgment_63_1.pdf",
+        "url": "/documents/judgment_63_1.pdf",
+        "uploadedBy": "Jason White",
+        "uploadDate": "2024-11-02"
+      },
+      {
+        "name": "Brief_63_2.pdf",
+        "url": "/documents/brief_63_2.pdf",
+        "uploadedBy": "Jason White",
+        "uploadDate": "2024-11-10"
+      },
+      {
+        "name": "Statement_63_3.pdf",
+        "url": "/documents/statement_63_3.pdf",
+        "uploadedBy": "Jason White",
+        "uploadDate": "2025-01-05"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-12-15",
+        "action": "Case Filed",
+        "by": "Jennifer Garcia"
+      },
+      {
+        "date": "2024-12-15",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2024-12-29",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Young"
+      },
+      {
+        "date": "2025-01-14",
+        "action": "Status Changed to Closed",
+        "by": "Jason White"
+      },
+      {
+        "date": "2025-03-15",
+        "action": "Case Closed",
+        "by": "Judge Young"
+      }
+    ]
+  },
+  {
+    "id": 64,
+    "title": "Davis Co. Corporate Case",
+    "description": "This is a corporate - acquisition case. The plaintiff seeks damages.",
+    "submittedBy": "Joshua Davis",
+    "assignedTo": "Stephanie Jackson",
+    "judge": "Judge Hill",
+    "status": "Registered",
+    "filingDate": "2025-04-13",
+    "nextHearing": "2025-05-26",
+    "caseType": "Corporate - Acquisition",
+    "courtRoom": "Room 101",
+    "documents": [
+      {
+        "name": "Motion_64_1.pdf",
+        "url": "/documents/motion_64_1.pdf",
+        "uploadedBy": "Joshua Davis",
+        "uploadDate": "2025-03-12"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-04-13",
+        "action": "Case Filed",
+        "by": "Joshua Davis"
+      },
+      {
+        "date": "2025-04-13",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      }
+    ]
+  },
+  {
+    "id": 65,
+    "title": "Williams Family Matter",
+    "description": "This is a family - child custody case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Alice Brown",
+    "assignedTo": "Nicole Moore",
+    "judge": "Judge Rodriguez",
+    "status": "Closed",
+    "filingDate": "2024-11-07",
+    "nextHearing": "",
+    "caseType": "Family - Child Custody",
+    "courtRoom": "Room 102",
+    "documents": [
+      {
+        "name": "Statement_65_1.pdf",
+        "url": "/documents/statement_65_1.pdf",
+        "uploadedBy": "Alice Brown",
+        "uploadDate": "2025-03-23"
+      },
+      {
+        "name": "Analysis_65_2.pdf",
+        "url": "/documents/analysis_65_2.pdf",
+        "uploadedBy": "Alice Brown",
+        "uploadDate": "2025-04-13"
+      },
+      {
+        "name": "Testimony_65_3.pdf",
+        "url": "/documents/testimony_65_3.pdf",
+        "uploadedBy": "Nicole Moore",
+        "uploadDate": "2025-01-22"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-11-07",
+        "action": "Case Filed",
+        "by": "Alice Brown"
+      },
+      {
+        "date": "2024-11-07",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2024-11-21",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Rodriguez"
+      },
+      {
+        "date": "2024-12-07",
+        "action": "Status Changed to Closed",
+        "by": "Nicole Moore"
+      },
+      {
+        "date": "2025-02-05",
+        "action": "Case Closed",
+        "by": "Judge Rodriguez"
+      }
+    ]
+  },
+  {
+    "id": 66,
+    "title": "Lee Associates Corporate Case",
+    "description": "This is a corporate - merger case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Rachel Lee",
+    "assignedTo": "Ryan Johnson",
+    "judge": "Judge Green",
+    "status": "In Progress",
+    "filingDate": "2024-12-07",
+    "nextHearing": "2025-06-12",
+    "caseType": "Corporate - Merger",
+    "courtRoom": "Room 201",
+    "documents": [
+      {
+        "name": "Brief_66_1.pdf",
+        "url": "/documents/brief_66_1.pdf",
+        "uploadedBy": "Ryan Johnson",
+        "uploadDate": "2024-12-13"
+      },
+      {
+        "name": "Contract_66_2.pdf",
+        "url": "/documents/contract_66_2.pdf",
+        "uploadedBy": "Ryan Johnson",
+        "uploadDate": "2024-12-29"
+      },
+      {
+        "name": "Evidence_66_3.pdf",
+        "url": "/documents/evidence_66_3.pdf",
+        "uploadedBy": "Rachel Lee",
+        "uploadDate": "2025-01-03"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-12-07",
+        "action": "Case Filed",
+        "by": "Rachel Lee"
+      },
+      {
+        "date": "2024-12-07",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2024-12-21",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Green"
+      },
+      {
+        "date": "2025-01-06",
+        "action": "Status Changed to In Progress",
+        "by": "Ryan Johnson"
+      }
+    ]
+  },
+  {
+    "id": 67,
+    "title": "Quantum Dynamics Corporate Case",
+    "description": "This is a employment - discrimination case. The plaintiff seeks damages.",
+    "submittedBy": "Jessica Johnson",
+    "assignedTo": "Joseph Moore",
+    "judge": "Judge Baker",
+    "status": "Registered",
+    "filingDate": "2024-11-26",
+    "nextHearing": "2025-06-01",
+    "caseType": "Employment - Discrimination",
+    "courtRoom": "Room 101",
+    "documents": [
+      {
+        "name": "Brief_67_1.pdf",
+        "url": "/documents/brief_67_1.pdf",
+        "uploadedBy": "Jessica Johnson",
+        "uploadDate": "2025-02-07"
+      },
+      {
+        "name": "Report_67_2.pdf",
+        "url": "/documents/report_67_2.pdf",
+        "uploadedBy": "Jessica Johnson",
+        "uploadDate": "2024-12-24"
+      },
+      {
+        "name": "Exhibit_67_3.pdf",
+        "url": "/documents/exhibit_67_3.pdf",
+        "uploadedBy": "Jessica Johnson",
+        "uploadDate": "2025-04-15"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-11-26",
+        "action": "Case Filed",
+        "by": "Jessica Johnson"
+      },
+      {
+        "date": "2024-11-26",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      }
+    ]
+  },
+  {
+    "id": 68,
+    "title": "Catalyst Enterprises vs. Delta Enterprises",
+    "description": "This is a civil - property dispute case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Jennifer Garcia",
+    "assignedTo": "Jessica Lee",
+    "judge": "Judge Patel",
+    "status": "On Hold",
+    "filingDate": "2025-03-14",
+    "nextHearing": "2025-07-23",
+    "caseType": "Civil - Property Dispute",
+    "courtRoom": "Room 502",
+    "documents": [
+      {
+        "name": "Judgment_68_1.pdf",
+        "url": "/documents/judgment_68_1.pdf",
+        "uploadedBy": "Jessica Lee",
+        "uploadDate": "2024-10-31"
+      },
+      {
+        "name": "Order_68_2.pdf",
+        "url": "/documents/order_68_2.pdf",
+        "uploadedBy": "Jessica Lee",
+        "uploadDate": "2025-04-14"
+      },
+      {
+        "name": "Order_68_3.pdf",
+        "url": "/documents/order_68_3.pdf",
+        "uploadedBy": "Jessica Lee",
+        "uploadDate": "2025-03-02"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-03-14",
+        "action": "Case Filed",
+        "by": "Jennifer Garcia"
+      },
+      {
+        "date": "2025-03-14",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-03-28",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Patel"
+      },
+      {
+        "date": "2025-04-13",
+        "action": "Status Changed to On Hold",
+        "by": "Jessica Lee"
+      }
+    ]
+  },
+  {
+    "id": 69,
+    "title": "Williams Family Matter",
+    "description": "This is a family - child custody case. The plaintiff seeks damages.",
+    "submittedBy": "Christopher Miller",
+    "assignedTo": "Andrew Brown",
+    "judge": "Judge Green",
+    "status": "On Hold",
+    "filingDate": "2024-11-19",
+    "nextHearing": "2025-06-15",
+    "caseType": "Family - Child Custody",
+    "courtRoom": "Room 201",
+    "documents": [
+      {
+        "name": "Transcript_69_1.pdf",
+        "url": "/documents/transcript_69_1.pdf",
+        "uploadedBy": "Andrew Brown",
+        "uploadDate": "2025-03-30"
+      },
+      {
+        "name": "Petition_69_2.pdf",
+        "url": "/documents/petition_69_2.pdf",
+        "uploadedBy": "Christopher Miller",
+        "uploadDate": "2025-04-14"
+      },
+      {
+        "name": "Evidence_69_3.pdf",
+        "url": "/documents/evidence_69_3.pdf",
+        "uploadedBy": "Andrew Brown",
+        "uploadDate": "2024-11-04"
+      },
+      {
+        "name": "Agreement_69_4.pdf",
+        "url": "/documents/agreement_69_4.pdf",
+        "uploadedBy": "Christopher Miller",
+        "uploadDate": "2024-12-28"
+      },
+      {
+        "name": "Affidavit_69_5.pdf",
+        "url": "/documents/affidavit_69_5.pdf",
+        "uploadedBy": "Christopher Miller",
+        "uploadDate": "2024-12-04"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-11-19",
+        "action": "Case Filed",
+        "by": "Christopher Miller"
+      },
+      {
+        "date": "2024-11-19",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2024-12-03",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Green"
+      },
+      {
+        "date": "2024-12-19",
+        "action": "Status Changed to On Hold",
+        "by": "Andrew Brown"
+      }
+    ]
+  },
+  {
+    "id": 70,
+    "title": "Sapphire Solutions vs. Kappa Services",
+    "description": "This is a civil - personal injury case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Megan Williams",
+    "assignedTo": "Steven White",
+    "judge": "Judge Hill",
+    "status": "Registered",
+    "filingDate": "2025-03-09",
+    "nextHearing": "2025-07-01",
+    "caseType": "Civil - Personal Injury",
+    "courtRoom": "Room 302",
+    "documents": [
+      {
+        "name": "Brief_70_1.pdf",
+        "url": "/documents/brief_70_1.pdf",
+        "uploadedBy": "Megan Williams",
+        "uploadDate": "2024-11-14"
+      },
+      {
+        "name": "Motion_70_2.pdf",
+        "url": "/documents/motion_70_2.pdf",
+        "uploadedBy": "Steven White",
+        "uploadDate": "2025-01-11"
+      },
+      {
+        "name": "Brief_70_3.pdf",
+        "url": "/documents/brief_70_3.pdf",
+        "uploadedBy": "Megan Williams",
+        "uploadDate": "2025-01-28"
+      },
+      {
+        "name": "Transcript_70_4.pdf",
+        "url": "/documents/transcript_70_4.pdf",
+        "uploadedBy": "Steven White",
+        "uploadDate": "2025-03-12"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-03-09",
+        "action": "Case Filed",
+        "by": "Megan Williams"
+      },
+      {
+        "date": "2025-03-09",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      }
+    ]
+  },
+  {
+    "id": 71,
+    "title": "Johnson Family Matter",
+    "description": "This is a family - child custody case. The plaintiff seeks damages.",
+    "submittedBy": "Rebecca Sanchez",
+    "assignedTo": "Jason Moore",
+    "judge": "Judge Clark",
+    "status": "Closed",
+    "filingDate": "2025-01-31",
+    "nextHearing": "",
+    "caseType": "Family - Child Custody",
+    "courtRoom": "Room 202",
+    "documents": [
+      {
+        "name": "Transcript_71_1.pdf",
+        "url": "/documents/transcript_71_1.pdf",
+        "uploadedBy": "Jason Moore",
+        "uploadDate": "2024-11-16"
+      },
+      {
+        "name": "Petition_71_2.pdf",
+        "url": "/documents/petition_71_2.pdf",
+        "uploadedBy": "Jason Moore",
+        "uploadDate": "2025-01-12"
+      },
+      {
+        "name": "Contract_71_3.pdf",
+        "url": "/documents/contract_71_3.pdf",
+        "uploadedBy": "Jason Moore",
+        "uploadDate": "2025-04-01"
+      },
+      {
+        "name": "Affidavit_71_4.pdf",
+        "url": "/documents/affidavit_71_4.pdf",
+        "uploadedBy": "Rebecca Sanchez",
+        "uploadDate": "2025-03-30"
+      },
+      {
+        "name": "Petition_71_5.pdf",
+        "url": "/documents/petition_71_5.pdf",
+        "uploadedBy": "Jason Moore",
+        "uploadDate": "2024-12-17"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-01-31",
+        "action": "Case Filed",
+        "by": "Rebecca Sanchez"
+      },
+      {
+        "date": "2025-01-31",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-02-14",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Clark"
+      },
+      {
+        "date": "2025-03-02",
+        "action": "Status Changed to Closed",
+        "by": "Jason Moore"
+      },
+      {
+        "date": "2025-05-01",
+        "action": "Case Closed",
+        "by": "Judge Clark"
+      }
+    ]
+  },
+  {
+    "id": 72,
+    "title": "State vs. Michael Brown",
+    "description": "This is a criminal - fraud case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Christopher Miller",
+    "assignedTo": "Jennifer Harris",
+    "judge": "Judge Carter",
+    "status": "On Hold",
+    "filingDate": "2025-01-03",
+    "nextHearing": "2025-06-27",
+    "caseType": "Criminal - Fraud",
+    "courtRoom": "Room 202",
+    "documents": [
+      {
+        "name": "Motion_72_1.pdf",
+        "url": "/documents/motion_72_1.pdf",
+        "uploadedBy": "Christopher Miller",
+        "uploadDate": "2024-11-02"
+      },
+      {
+        "name": "Analysis_72_2.pdf",
+        "url": "/documents/analysis_72_2.pdf",
+        "uploadedBy": "Jennifer Harris",
+        "uploadDate": "2025-04-23"
+      },
+      {
+        "name": "Contract_72_3.pdf",
+        "url": "/documents/contract_72_3.pdf",
+        "uploadedBy": "Christopher Miller",
+        "uploadDate": "2025-02-06"
+      },
+      {
+        "name": "Exhibit_72_4.pdf",
+        "url": "/documents/exhibit_72_4.pdf",
+        "uploadedBy": "Christopher Miller",
+        "uploadDate": "2025-02-02"
+      },
+      {
+        "name": "Statement_72_5.pdf",
+        "url": "/documents/statement_72_5.pdf",
+        "uploadedBy": "Jennifer Harris",
+        "uploadDate": "2025-02-24"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-01-03",
+        "action": "Case Filed",
+        "by": "Christopher Miller"
+      },
+      {
+        "date": "2025-01-03",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-01-17",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Carter"
+      },
+      {
+        "date": "2025-02-02",
+        "action": "Status Changed to On Hold",
+        "by": "Jennifer Harris"
+      }
+    ]
+  },
+  {
+    "id": 73,
+    "title": "Brown Family Matter",
+    "description": "This is a family - divorce case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Christopher Miller",
+    "assignedTo": "Amanda Williams",
+    "judge": "Judge Green",
+    "status": "In Progress",
+    "filingDate": "2025-04-20",
+    "nextHearing": "2025-06-01",
+    "caseType": "Family - Divorce",
+    "courtRoom": "Room 201",
+    "documents": [
+      {
+        "name": "Statement_73_1.pdf",
+        "url": "/documents/statement_73_1.pdf",
+        "uploadedBy": "Amanda Williams",
+        "uploadDate": "2025-02-08"
+      },
+      {
+        "name": "Order_73_2.pdf",
+        "url": "/documents/order_73_2.pdf",
+        "uploadedBy": "Amanda Williams",
+        "uploadDate": "2025-02-14"
+      },
+      {
+        "name": "Motion_73_3.pdf",
+        "url": "/documents/motion_73_3.pdf",
+        "uploadedBy": "Christopher Miller",
+        "uploadDate": "2025-03-12"
+      },
+      {
+        "name": "Order_73_4.pdf",
+        "url": "/documents/order_73_4.pdf",
+        "uploadedBy": "Christopher Miller",
+        "uploadDate": "2025-02-13"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-04-20",
+        "action": "Case Filed",
+        "by": "Christopher Miller"
+      },
+      {
+        "date": "2025-04-20",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-05-04",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Green"
+      },
+      {
+        "date": "2025-05-20",
+        "action": "Status Changed to In Progress",
+        "by": "Amanda Williams"
+      }
+    ]
+  },
+  {
+    "id": 74,
+    "title": "Pinnacle Group Corporate Case",
+    "description": "This is a corporate - acquisition case. The plaintiff seeks damages.",
+    "submittedBy": "Joseph Jones",
+    "assignedTo": "Joshua Lewis",
+    "judge": "Judge Hill",
+    "status": "In Progress",
+    "filingDate": "2024-11-08",
+    "nextHearing": "2025-06-05",
+    "caseType": "Corporate - Acquisition",
+    "courtRoom": "Room 102",
+    "documents": [
+      {
+        "name": "Contract_74_1.pdf",
+        "url": "/documents/contract_74_1.pdf",
+        "uploadedBy": "Joshua Lewis",
+        "uploadDate": "2025-03-19"
+      },
+      {
+        "name": "Report_74_2.pdf",
+        "url": "/documents/report_74_2.pdf",
+        "uploadedBy": "Joshua Lewis",
+        "uploadDate": "2024-11-07"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-11-08",
+        "action": "Case Filed",
+        "by": "Joseph Jones"
+      },
+      {
+        "date": "2024-11-08",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2024-11-22",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Hill"
+      },
+      {
+        "date": "2024-12-08",
+        "action": "Status Changed to In Progress",
+        "by": "Joshua Lewis"
+      }
+    ]
+  },
+  {
+    "id": 75,
+    "title": "Davis Co. Corporate Case",
+    "description": "This is a employment - wrongful termination case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Joshua Davis",
+    "assignedTo": "Michael White",
+    "judge": "Judge Baker",
+    "status": "Registered",
+    "filingDate": "2024-11-29",
+    "nextHearing": "2025-06-20",
+    "caseType": "Employment - Wrongful Termination",
+    "courtRoom": "Room 501",
+    "documents": [
+      {
+        "name": "Contract_75_1.pdf",
+        "url": "/documents/contract_75_1.pdf",
+        "uploadedBy": "Michael White",
+        "uploadDate": "2025-03-09"
+      },
+      {
+        "name": "Exhibit_75_2.pdf",
+        "url": "/documents/exhibit_75_2.pdf",
+        "uploadedBy": "Michael White",
+        "uploadDate": "2025-01-20"
+      },
+      {
+        "name": "Brief_75_3.pdf",
+        "url": "/documents/brief_75_3.pdf",
+        "uploadedBy": "Joshua Davis",
+        "uploadDate": "2025-01-03"
+      },
+      {
+        "name": "Order_75_4.pdf",
+        "url": "/documents/order_75_4.pdf",
+        "uploadedBy": "Joshua Davis",
+        "uploadDate": "2024-11-16"
+      },
+      {
+        "name": "Transcript_75_5.pdf",
+        "url": "/documents/transcript_75_5.pdf",
+        "uploadedBy": "Michael White",
+        "uploadDate": "2025-01-25"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-11-29",
+        "action": "Case Filed",
+        "by": "Joshua Davis"
+      },
+      {
+        "date": "2024-11-29",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      }
+    ]
+  },
+  {
+    "id": 76,
+    "title": "Rodriguez Family Matter",
+    "description": "This is a family - divorce case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Joshua Lopez",
+    "assignedTo": "Andrew Ramirez",
+    "judge": "Judge Hill",
+    "status": "Registered",
+    "filingDate": "2024-12-06",
+    "nextHearing": "2025-05-14",
+    "caseType": "Family - Divorce",
+    "courtRoom": "Room 101",
+    "documents": [
+      {
+        "name": "Analysis_76_1.pdf",
+        "url": "/documents/analysis_76_1.pdf",
+        "uploadedBy": "Joshua Lopez",
+        "uploadDate": "2025-03-11"
+      },
+      {
+        "name": "Order_76_2.pdf",
+        "url": "/documents/order_76_2.pdf",
+        "uploadedBy": "Andrew Ramirez",
+        "uploadDate": "2025-03-09"
+      },
+      {
+        "name": "Evidence_76_3.pdf",
+        "url": "/documents/evidence_76_3.pdf",
+        "uploadedBy": "Andrew Ramirez",
+        "uploadDate": "2025-04-06"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-12-06",
+        "action": "Case Filed",
+        "by": "Joshua Lopez"
+      },
+      {
+        "date": "2024-12-06",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      }
+    ]
+  },
+  {
+    "id": 77,
+    "title": "Tech Innovations vs. Acme Inc.",
+    "description": "This is a civil - property dispute case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Jennifer Lee",
+    "assignedTo": "James Thomas",
+    "judge": "Judge Rivera",
+    "status": "In Progress",
+    "filingDate": "2025-02-07",
+    "nextHearing": "2025-05-18",
+    "caseType": "Civil - Property Dispute",
+    "courtRoom": "Room 401",
+    "documents": [
+      {
+        "name": "Testimony_77_1.pdf",
+        "url": "/documents/testimony_77_1.pdf",
+        "uploadedBy": "Jennifer Lee",
+        "uploadDate": "2025-04-16"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-02-07",
+        "action": "Case Filed",
+        "by": "Jennifer Lee"
+      },
+      {
+        "date": "2025-02-07",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-02-21",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Rivera"
+      },
+      {
+        "date": "2025-03-09",
+        "action": "Status Changed to In Progress",
+        "by": "James Thomas"
+      }
+    ]
+  },
+  {
+    "id": 78,
+    "title": "State vs. Robert Garcia",
+    "description": "This is a criminal - fraud case. The plaintiff seeks damages.",
+    "submittedBy": "Andrew Miller",
+    "assignedTo": "Rachel Robinson",
+    "judge": "Judge Brown",
+    "status": "In Progress",
+    "filingDate": "2024-11-20",
+    "nextHearing": "2025-07-10",
+    "caseType": "Criminal - Fraud",
+    "courtRoom": "Room 201",
+    "documents": [
+      {
+        "name": "Order_78_1.pdf",
+        "url": "/documents/order_78_1.pdf",
+        "uploadedBy": "Andrew Miller",
+        "uploadDate": "2024-11-19"
+      },
+      {
+        "name": "Motion_78_2.pdf",
+        "url": "/documents/motion_78_2.pdf",
+        "uploadedBy": "Andrew Miller",
+        "uploadDate": "2024-12-21"
+      },
+      {
+        "name": "Transcript_78_3.pdf",
+        "url": "/documents/transcript_78_3.pdf",
+        "uploadedBy": "Rachel Robinson",
+        "uploadDate": "2025-03-21"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-11-20",
+        "action": "Case Filed",
+        "by": "Andrew Miller"
+      },
+      {
+        "date": "2024-11-20",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2024-12-04",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Brown"
+      },
+      {
+        "date": "2024-12-20",
+        "action": "Status Changed to In Progress",
+        "by": "Rachel Robinson"
+      }
+    ]
+  },
+  {
+    "id": 79,
+    "title": "State vs. David Johnson",
+    "description": "This is a criminal - theft case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Laura Lewis",
+    "assignedTo": "James Rodriguez",
+    "judge": "Judge Clark",
+    "status": "In Progress",
+    "filingDate": "2025-02-23",
+    "nextHearing": "2025-07-18",
+    "caseType": "Criminal - Theft",
+    "courtRoom": "Room 101",
+    "documents": [
+      {
+        "name": "Report_79_1.pdf",
+        "url": "/documents/report_79_1.pdf",
+        "uploadedBy": "James Rodriguez",
+        "uploadDate": "2025-02-15"
+      },
+      {
+        "name": "Evidence_79_2.pdf",
+        "url": "/documents/evidence_79_2.pdf",
+        "uploadedBy": "Laura Lewis",
+        "uploadDate": "2024-12-07"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-02-23",
+        "action": "Case Filed",
+        "by": "Laura Lewis"
+      },
+      {
+        "date": "2025-02-23",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-03-09",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Clark"
+      },
+      {
+        "date": "2025-03-25",
+        "action": "Status Changed to In Progress",
+        "by": "James Rodriguez"
+      }
+    ]
+  },
+  {
+    "id": 80,
+    "title": "Evergreen Properties vs. Zeta Systems",
+    "description": "This is a civil - property dispute case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Michael Gonzalez",
+    "assignedTo": "Elizabeth Moore",
+    "judge": "Judge Green",
+    "status": "Registered",
+    "filingDate": "2025-04-22",
+    "nextHearing": "2025-07-24",
+    "caseType": "Civil - Property Dispute",
+    "courtRoom": "Room 301",
+    "documents": [
+      {
+        "name": "Report_80_1.pdf",
+        "url": "/documents/report_80_1.pdf",
+        "uploadedBy": "Michael Gonzalez",
+        "uploadDate": "2025-03-17"
+      },
+      {
+        "name": "Contract_80_2.pdf",
+        "url": "/documents/contract_80_2.pdf",
+        "uploadedBy": "Michael Gonzalez",
+        "uploadDate": "2025-04-18"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-04-22",
+        "action": "Case Filed",
+        "by": "Michael Gonzalez"
+      },
+      {
+        "date": "2025-04-22",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      }
+    ]
+  },
+  {
+    "id": 81,
+    "title": "Harris LLC vs. Acme Inc.",
+    "description": "This is a civil - intellectual property case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Steven Harris",
+    "assignedTo": "Brandon Jones",
+    "judge": "Judge Green",
+    "status": "Closed",
+    "filingDate": "2025-03-03",
+    "nextHearing": "",
+    "caseType": "Civil - Intellectual Property",
+    "courtRoom": "Room 101",
+    "documents": [
+      {
+        "name": "Brief_81_1.pdf",
+        "url": "/documents/brief_81_1.pdf",
+        "uploadedBy": "Steven Harris",
+        "uploadDate": "2025-04-10"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-03-03",
+        "action": "Case Filed",
+        "by": "Steven Harris"
+      },
+      {
+        "date": "2025-03-03",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-03-17",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Green"
+      },
+      {
+        "date": "2025-04-02",
+        "action": "Status Changed to Closed",
+        "by": "Brandon Jones"
+      },
+      {
+        "date": "2025-06-01",
+        "action": "Case Closed",
+        "by": "Judge Green"
+      }
+    ]
+  },
+  {
+    "id": 82,
+    "title": "Brown Family Matter",
+    "description": "This is a family - divorce case. The plaintiff seeks damages.",
+    "submittedBy": "Joshua Rodriguez",
+    "assignedTo": "Jennifer Davis",
+    "judge": "Judge Torres",
+    "status": "Registered",
+    "filingDate": "2025-04-20",
+    "nextHearing": "2025-05-22",
+    "caseType": "Family - Divorce",
+    "courtRoom": "Room 302",
+    "documents": [
+      {
+        "name": "Analysis_82_1.pdf",
+        "url": "/documents/analysis_82_1.pdf",
+        "uploadedBy": "Joshua Rodriguez",
+        "uploadDate": "2025-03-18"
+      },
+      {
+        "name": "Motion_82_2.pdf",
+        "url": "/documents/motion_82_2.pdf",
+        "uploadedBy": "Jennifer Davis",
+        "uploadDate": "2025-02-27"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-04-20",
+        "action": "Case Filed",
+        "by": "Joshua Rodriguez"
+      },
+      {
+        "date": "2025-04-20",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      }
+    ]
+  },
+  {
+    "id": 83,
+    "title": "Davis Co. vs. Delta Enterprises",
+    "description": "This is a civil - intellectual property case. The plaintiff seeks damages.",
+    "submittedBy": "Joshua Davis",
+    "assignedTo": "Nicole Hernandez",
+    "judge": "Judge Rivera",
+    "status": "Registered",
+    "filingDate": "2025-02-23",
+    "nextHearing": "2025-06-21",
+    "caseType": "Civil - Intellectual Property",
+    "courtRoom": "Room 402",
+    "documents": [
+      {
+        "name": "Affidavit_83_1.pdf",
+        "url": "/documents/affidavit_83_1.pdf",
+        "uploadedBy": "Joshua Davis",
+        "uploadDate": "2024-12-03"
+      },
+      {
+        "name": "Evidence_83_2.pdf",
+        "url": "/documents/evidence_83_2.pdf",
+        "uploadedBy": "Joshua Davis",
+        "uploadDate": "2025-01-09"
+      },
+      {
+        "name": "Testimony_83_3.pdf",
+        "url": "/documents/testimony_83_3.pdf",
+        "uploadedBy": "Nicole Hernandez",
+        "uploadDate": "2025-03-30"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-02-23",
+        "action": "Case Filed",
+        "by": "Joshua Davis"
+      },
+      {
+        "date": "2025-02-23",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      }
+    ]
+  },
+  {
+    "id": 84,
+    "title": "Martinez Family Matter",
+    "description": "This is a family - divorce case. The plaintiff seeks damages.",
+    "submittedBy": "Brandon Smith",
+    "assignedTo": "Nicole Moore",
+    "judge": "Judge Clark",
+    "status": "On Hold",
+    "filingDate": "2025-02-17",
+    "nextHearing": "2025-06-22",
+    "caseType": "Family - Divorce",
+    "courtRoom": "Room 202",
+    "documents": [
+      {
+        "name": "Petition_84_1.pdf",
+        "url": "/documents/petition_84_1.pdf",
+        "uploadedBy": "Nicole Moore",
+        "uploadDate": "2024-12-10"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-02-17",
+        "action": "Case Filed",
+        "by": "Brandon Smith"
+      },
+      {
+        "date": "2025-02-17",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-03-03",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Clark"
+      },
+      {
+        "date": "2025-03-19",
+        "action": "Status Changed to On Hold",
+        "by": "Nicole Moore"
+      }
+    ]
+  },
+  {
+    "id": 85,
+    "title": "Harris LLC vs. Gamma LLC",
+    "description": "This is a civil - property dispute case. The plaintiff seeks damages.",
+    "submittedBy": "Steven Harris",
+    "assignedTo": "Robert Johnson",
+    "judge": "Judge Robinson",
+    "status": "On Hold",
+    "filingDate": "2025-02-03",
+    "nextHearing": "2025-06-23",
+    "caseType": "Civil - Property Dispute",
+    "courtRoom": "Room 201",
+    "documents": [
+      {
+        "name": "Brief_85_1.pdf",
+        "url": "/documents/brief_85_1.pdf",
+        "uploadedBy": "Robert Johnson",
+        "uploadDate": "2025-01-03"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-02-03",
+        "action": "Case Filed",
+        "by": "Steven Harris"
+      },
+      {
+        "date": "2025-02-03",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-02-17",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Robinson"
+      },
+      {
+        "date": "2025-03-05",
+        "action": "Status Changed to On Hold",
+        "by": "Robert Johnson"
+      }
+    ]
+  },
+  {
+    "id": 86,
+    "title": "Harris Co. Corporate Case",
+    "description": "This is a corporate - acquisition case. The plaintiff seeks damages.",
+    "submittedBy": "Steven Harris",
+    "assignedTo": "David Jackson",
+    "judge": "Judge Green",
+    "status": "Closed",
+    "filingDate": "2025-04-18",
+    "nextHearing": "",
+    "caseType": "Corporate - Acquisition",
+    "courtRoom": "Room 101",
+    "documents": [
+      {
+        "name": "Motion_86_1.pdf",
+        "url": "/documents/motion_86_1.pdf",
+        "uploadedBy": "David Jackson",
+        "uploadDate": "2025-03-27"
+      },
+      {
+        "name": "Evidence_86_2.pdf",
+        "url": "/documents/evidence_86_2.pdf",
+        "uploadedBy": "Steven Harris",
+        "uploadDate": "2025-01-12"
+      },
+      {
+        "name": "Contract_86_3.pdf",
+        "url": "/documents/contract_86_3.pdf",
+        "uploadedBy": "David Jackson",
+        "uploadDate": "2024-11-03"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-04-18",
+        "action": "Case Filed",
+        "by": "Steven Harris"
+      },
+      {
+        "date": "2025-04-18",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-05-02",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Green"
+      },
+      {
+        "date": "2025-05-18",
+        "action": "Status Changed to Closed",
+        "by": "David Jackson"
+      },
+      {
+        "date": "2025-07-17",
+        "action": "Case Closed",
+        "by": "Judge Green"
+      }
+    ]
+  },
+  {
+    "id": 87,
+    "title": "Jones Co. vs. Eta Solutions",
+    "description": "This is a civil - personal injury case. The plaintiff seeks damages.",
+    "submittedBy": "Rachel Jones",
+    "assignedTo": "Jessica Martinez",
+    "judge": "Judge Smith",
+    "status": "Closed",
+    "filingDate": "2025-02-06",
+    "nextHearing": "",
+    "caseType": "Civil - Personal Injury",
+    "courtRoom": "Room 402",
+    "documents": [
+      {
+        "name": "Analysis_87_1.pdf",
+        "url": "/documents/analysis_87_1.pdf",
+        "uploadedBy": "Rachel Jones",
+        "uploadDate": "2024-12-08"
+      },
+      {
+        "name": "Transcript_87_2.pdf",
+        "url": "/documents/transcript_87_2.pdf",
+        "uploadedBy": "Rachel Jones",
+        "uploadDate": "2025-01-11"
+      },
+      {
+        "name": "Order_87_3.pdf",
+        "url": "/documents/order_87_3.pdf",
+        "uploadedBy": "Jessica Martinez",
+        "uploadDate": "2025-03-26"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-02-06",
+        "action": "Case Filed",
+        "by": "Rachel Jones"
+      },
+      {
+        "date": "2025-02-06",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-02-20",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Smith"
+      },
+      {
+        "date": "2025-03-08",
+        "action": "Status Changed to Closed",
+        "by": "Jessica Martinez"
+      },
+      {
+        "date": "2025-05-07",
+        "action": "Case Closed",
+        "by": "Judge Smith"
+      }
+    ]
+  },
+  {
+    "id": 88,
+    "title": "Horizon Solutions vs. Zeta Systems",
+    "description": "This is a civil - intellectual property case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Rachel Moore",
+    "assignedTo": "Andrew Ramirez",
+    "judge": "Judge Smith",
+    "status": "Registered",
+    "filingDate": "2024-12-13",
+    "nextHearing": "2025-06-18",
+    "caseType": "Civil - Intellectual Property",
+    "courtRoom": "Room 502",
+    "documents": [
+      {
+        "name": "Report_88_1.pdf",
+        "url": "/documents/report_88_1.pdf",
+        "uploadedBy": "Rachel Moore",
+        "uploadDate": "2025-01-21"
+      },
+      {
+        "name": "Transcript_88_2.pdf",
+        "url": "/documents/transcript_88_2.pdf",
+        "uploadedBy": "Rachel Moore",
+        "uploadDate": "2025-04-10"
+      },
+      {
+        "name": "Report_88_3.pdf",
+        "url": "/documents/report_88_3.pdf",
+        "uploadedBy": "Rachel Moore",
+        "uploadDate": "2024-12-27"
+      },
+      {
+        "name": "Affidavit_88_4.pdf",
+        "url": "/documents/affidavit_88_4.pdf",
+        "uploadedBy": "Rachel Moore",
+        "uploadDate": "2024-11-29"
+      },
+      {
+        "name": "Contract_88_5.pdf",
+        "url": "/documents/contract_88_5.pdf",
+        "uploadedBy": "Andrew Ramirez",
+        "uploadDate": "2025-03-23"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-12-13",
+        "action": "Case Filed",
+        "by": "Rachel Moore"
+      },
+      {
+        "date": "2024-12-13",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      }
+    ]
+  },
+  {
+    "id": 89,
+    "title": "Miller Family Matter",
+    "description": "This is a family - child custody case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Thomas Thomas",
+    "assignedTo": "James Rodriguez",
+    "judge": "Judge Lee",
+    "status": "On Hold",
+    "filingDate": "2025-04-10",
+    "nextHearing": "2025-05-13",
+    "caseType": "Family - Child Custody",
+    "courtRoom": "Room 401",
+    "documents": [
+      {
+        "name": "Report_89_1.pdf",
+        "url": "/documents/report_89_1.pdf",
+        "uploadedBy": "Thomas Thomas",
+        "uploadDate": "2024-10-28"
+      },
+      {
+        "name": "Statement_89_2.pdf",
+        "url": "/documents/statement_89_2.pdf",
+        "uploadedBy": "Thomas Thomas",
+        "uploadDate": "2025-03-26"
+      },
+      {
+        "name": "Agreement_89_3.pdf",
+        "url": "/documents/agreement_89_3.pdf",
+        "uploadedBy": "Thomas Thomas",
+        "uploadDate": "2024-12-13"
+      },
+      {
+        "name": "Brief_89_4.pdf",
+        "url": "/documents/brief_89_4.pdf",
+        "uploadedBy": "Thomas Thomas",
+        "uploadDate": "2025-02-22"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-04-10",
+        "action": "Case Filed",
+        "by": "Thomas Thomas"
+      },
+      {
+        "date": "2025-04-10",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-04-24",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Lee"
+      },
+      {
+        "date": "2025-05-10",
+        "action": "Status Changed to On Hold",
+        "by": "James Rodriguez"
+      }
+    ]
+  },
+  {
+    "id": 90,
+    "title": "Davis Co. vs. Iota Technologies",
+    "description": "This is a civil - personal injury case. The plaintiff seeks damages.",
+    "submittedBy": "Joshua Davis",
+    "assignedTo": "John Doe",
+    "judge": "Judge Torres",
+    "status": "Registered",
+    "filingDate": "2024-12-16",
+    "nextHearing": "2025-07-16",
+    "caseType": "Civil - Personal Injury",
+    "courtRoom": "Room 202",
+    "documents": [
+      {
+        "name": "Petition_90_1.pdf",
+        "url": "/documents/petition_90_1.pdf",
+        "uploadedBy": "John Doe",
+        "uploadDate": "2025-03-04"
+      },
+      {
+        "name": "Judgment_90_2.pdf",
+        "url": "/documents/judgment_90_2.pdf",
+        "uploadedBy": "Joshua Davis",
+        "uploadDate": "2025-01-26"
+      },
+      {
+        "name": "Analysis_90_3.pdf",
+        "url": "/documents/analysis_90_3.pdf",
+        "uploadedBy": "Joshua Davis",
+        "uploadDate": "2025-04-20"
+      },
+      {
+        "name": "Report_90_4.pdf",
+        "url": "/documents/report_90_4.pdf",
+        "uploadedBy": "John Doe",
+        "uploadDate": "2025-02-10"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-12-16",
+        "action": "Case Filed",
+        "by": "Joshua Davis"
+      },
+      {
+        "date": "2024-12-16",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      }
+    ]
+  },
+  {
+    "id": 91,
+    "title": "State vs. William Miller",
+    "description": "This is a criminal - theft case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Joshua Lopez",
+    "assignedTo": "Jessica Lee",
+    "judge": "Judge Miller",
+    "status": "In Progress",
+    "filingDate": "2025-01-08",
+    "nextHearing": "2025-06-11",
+    "caseType": "Criminal - Theft",
+    "courtRoom": "Room 302",
+    "documents": [
+      {
+        "name": "Evidence_91_1.pdf",
+        "url": "/documents/evidence_91_1.pdf",
+        "uploadedBy": "Joshua Lopez",
+        "uploadDate": "2024-11-28"
+      },
+      {
+        "name": "Petition_91_2.pdf",
+        "url": "/documents/petition_91_2.pdf",
+        "uploadedBy": "Jessica Lee",
+        "uploadDate": "2025-02-04"
+      },
+      {
+        "name": "Petition_91_3.pdf",
+        "url": "/documents/petition_91_3.pdf",
+        "uploadedBy": "Joshua Lopez",
+        "uploadDate": "2025-03-11"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-01-08",
+        "action": "Case Filed",
+        "by": "Joshua Lopez"
+      },
+      {
+        "date": "2025-01-08",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-01-22",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Miller"
+      },
+      {
+        "date": "2025-02-07",
+        "action": "Status Changed to In Progress",
+        "by": "Jessica Lee"
+      }
+    ]
+  },
+  {
+    "id": 92,
+    "title": "Harris Co. vs. Eta Solutions",
+    "description": "This is a civil - personal injury case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Steven Harris",
+    "assignedTo": "Sarah Jackson",
+    "judge": "Judge Hill",
+    "status": "Registered",
+    "filingDate": "2025-03-24",
+    "nextHearing": "2025-06-12",
+    "caseType": "Civil - Personal Injury",
+    "courtRoom": "Room 102",
+    "documents": [
+      {
+        "name": "Transcript_92_1.pdf",
+        "url": "/documents/transcript_92_1.pdf",
+        "uploadedBy": "Steven Harris",
+        "uploadDate": "2024-11-14"
+      },
+      {
+        "name": "Analysis_92_2.pdf",
+        "url": "/documents/analysis_92_2.pdf",
+        "uploadedBy": "Steven Harris",
+        "uploadDate": "2025-03-08"
+      },
+      {
+        "name": "Affidavit_92_3.pdf",
+        "url": "/documents/affidavit_92_3.pdf",
+        "uploadedBy": "Sarah Jackson",
+        "uploadDate": "2025-01-25"
+      },
+      {
+        "name": "Motion_92_4.pdf",
+        "url": "/documents/motion_92_4.pdf",
+        "uploadedBy": "Steven Harris",
+        "uploadDate": "2025-02-13"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-03-24",
+        "action": "Case Filed",
+        "by": "Steven Harris"
+      },
+      {
+        "date": "2025-03-24",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      }
+    ]
+  },
+  {
+    "id": 93,
+    "title": "Global Industries Corporate Case",
+    "description": "This is a corporate - acquisition case. The plaintiff seeks damages.",
+    "submittedBy": "Daniel Smith",
+    "assignedTo": "Andrew Brown",
+    "judge": "Judge Patel",
+    "status": "Registered",
+    "filingDate": "2025-04-06",
+    "nextHearing": "2025-07-21",
+    "caseType": "Corporate - Acquisition",
+    "courtRoom": "Room 502",
+    "documents": [
+      {
+        "name": "Exhibit_93_1.pdf",
+        "url": "/documents/exhibit_93_1.pdf",
+        "uploadedBy": "Daniel Smith",
+        "uploadDate": "2025-01-31"
+      },
+      {
+        "name": "Transcript_93_2.pdf",
+        "url": "/documents/transcript_93_2.pdf",
+        "uploadedBy": "Daniel Smith",
+        "uploadDate": "2025-04-02"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-04-06",
+        "action": "Case Filed",
+        "by": "Daniel Smith"
+      },
+      {
+        "date": "2025-04-06",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      }
+    ]
+  },
+  {
+    "id": 94,
+    "title": "Davis Co. Corporate Case",
+    "description": "This is a employment - wrongful termination case. The plaintiff seeks damages.",
+    "submittedBy": "Joshua Davis",
+    "assignedTo": "Nicole Moore",
+    "judge": "Judge Torres",
+    "status": "On Hold",
+    "filingDate": "2025-03-01",
+    "nextHearing": "2025-06-25",
+    "caseType": "Employment - Wrongful Termination",
+    "courtRoom": "Room 202",
+    "documents": [
+      {
+        "name": "Motion_94_1.pdf",
+        "url": "/documents/motion_94_1.pdf",
+        "uploadedBy": "Joshua Davis",
+        "uploadDate": "2025-01-12"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-03-01",
+        "action": "Case Filed",
+        "by": "Joshua Davis"
+      },
+      {
+        "date": "2025-03-01",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-03-15",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Torres"
+      },
+      {
+        "date": "2025-03-31",
+        "action": "Status Changed to On Hold",
+        "by": "Nicole Moore"
+      }
+    ]
+  },
+  {
+    "id": 95,
+    "title": "Miller Family Matter",
+    "description": "This is a family - divorce case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Steven Harris",
+    "assignedTo": "Kevin Jackson",
+    "judge": "Judge Rodriguez",
+    "status": "In Progress",
+    "filingDate": "2025-03-10",
+    "nextHearing": "2025-05-12",
+    "caseType": "Family - Divorce",
+    "courtRoom": "Room 101",
+    "documents": [
+      {
+        "name": "Testimony_95_1.pdf",
+        "url": "/documents/testimony_95_1.pdf",
+        "uploadedBy": "Steven Harris",
+        "uploadDate": "2024-11-23"
+      },
+      {
+        "name": "Exhibit_95_2.pdf",
+        "url": "/documents/exhibit_95_2.pdf",
+        "uploadedBy": "Steven Harris",
+        "uploadDate": "2025-03-11"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-03-10",
+        "action": "Case Filed",
+        "by": "Steven Harris"
+      },
+      {
+        "date": "2025-03-10",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-03-24",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Rodriguez"
+      },
+      {
+        "date": "2025-04-09",
+        "action": "Status Changed to In Progress",
+        "by": "Kevin Jackson"
+      }
+    ]
+  },
+  {
+    "id": 96,
+    "title": "Rodriguez Family Matter",
+    "description": "This is a family - divorce case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Rachel Jones",
+    "assignedTo": "Kevin Sanchez",
+    "judge": "Judge Rivera",
+    "status": "Closed",
+    "filingDate": "2025-01-29",
+    "nextHearing": "",
+    "caseType": "Family - Divorce",
+    "courtRoom": "Room 501",
+    "documents": [
+      {
+        "name": "Transcript_96_1.pdf",
+        "url": "/documents/transcript_96_1.pdf",
+        "uploadedBy": "Kevin Sanchez",
+        "uploadDate": "2025-04-10"
+      },
+      {
+        "name": "Testimony_96_2.pdf",
+        "url": "/documents/testimony_96_2.pdf",
+        "uploadedBy": "Kevin Sanchez",
+        "uploadDate": "2025-01-20"
+      },
+      {
+        "name": "Petition_96_3.pdf",
+        "url": "/documents/petition_96_3.pdf",
+        "uploadedBy": "Rachel Jones",
+        "uploadDate": "2024-11-29"
+      },
+      {
+        "name": "Affidavit_96_4.pdf",
+        "url": "/documents/affidavit_96_4.pdf",
+        "uploadedBy": "Kevin Sanchez",
+        "uploadDate": "2025-02-03"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-01-29",
+        "action": "Case Filed",
+        "by": "Rachel Jones"
+      },
+      {
+        "date": "2025-01-29",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-02-12",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Rivera"
+      },
+      {
+        "date": "2025-02-28",
+        "action": "Status Changed to Closed",
+        "by": "Kevin Sanchez"
+      },
+      {
+        "date": "2025-04-29",
+        "action": "Case Closed",
+        "by": "Judge Rivera"
+      }
+    ]
+  },
+  {
+    "id": 97,
+    "title": "Evergreen Properties Corporate Case",
+    "description": "This is a corporate - merger case. The plaintiff seeks damages.",
+    "submittedBy": "Michael Gonzalez",
+    "assignedTo": "Kevin Jackson",
+    "judge": "Judge Adams",
+    "status": "Closed",
+    "filingDate": "2024-11-22",
+    "nextHearing": "",
+    "caseType": "Corporate - Merger",
+    "courtRoom": "Room 101",
+    "documents": [
+      {
+        "name": "Contract_97_1.pdf",
+        "url": "/documents/contract_97_1.pdf",
+        "uploadedBy": "Kevin Jackson",
+        "uploadDate": "2024-11-09"
+      },
+      {
+        "name": "Statement_97_2.pdf",
+        "url": "/documents/statement_97_2.pdf",
+        "uploadedBy": "Kevin Jackson",
+        "uploadDate": "2024-12-13"
+      },
+      {
+        "name": "Evidence_97_3.pdf",
+        "url": "/documents/evidence_97_3.pdf",
+        "uploadedBy": "Kevin Jackson",
+        "uploadDate": "2024-11-20"
+      },
+      {
+        "name": "Affidavit_97_4.pdf",
+        "url": "/documents/affidavit_97_4.pdf",
+        "uploadedBy": "Michael Gonzalez",
+        "uploadDate": "2025-04-20"
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-11-22",
+        "action": "Case Filed",
+        "by": "Michael Gonzalez"
+      },
+      {
+        "date": "2024-11-22",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2024-12-06",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Adams"
+      },
+      {
+        "date": "2024-12-22",
+        "action": "Status Changed to Closed",
+        "by": "Kevin Jackson"
+      },
+      {
+        "date": "2025-02-20",
+        "action": "Case Closed",
+        "by": "Judge Adams"
+      }
+    ]
+  },
+  {
+    "id": 98,
+    "title": "Lee Associates vs. Acme Inc.",
+    "description": "This is a civil - intellectual property case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Rachel Lee",
+    "assignedTo": "Daniel White",
+    "judge": "Judge Hill",
+    "status": "On Hold",
+    "filingDate": "2025-01-17",
+    "nextHearing": "2025-05-22",
+    "caseType": "Civil - Intellectual Property",
+    "courtRoom": "Room 502",
+    "documents": [
+      {
+        "name": "Transcript_98_1.pdf",
+        "url": "/documents/transcript_98_1.pdf",
+        "uploadedBy": "Daniel White",
+        "uploadDate": "2024-11-06"
+      },
+      {
+        "name": "Motion_98_2.pdf",
+        "url": "/documents/motion_98_2.pdf",
+        "uploadedBy": "Rachel Lee",
+        "uploadDate": "2024-12-05"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-01-17",
+        "action": "Case Filed",
+        "by": "Rachel Lee"
+      },
+      {
+        "date": "2025-01-17",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-01-31",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Hill"
+      },
+      {
+        "date": "2025-02-16",
+        "action": "Status Changed to On Hold",
+        "by": "Daniel White"
+      }
+    ]
+  },
+  {
+    "id": 99,
+    "title": "Pinnacle Group vs. Kappa Services",
+    "description": "This is a civil - intellectual property case. The plaintiff seeks injunctive relief.",
+    "submittedBy": "Joseph Jones",
+    "assignedTo": "Jennifer Davis",
+    "judge": "Judge Baker",
+    "status": "Closed",
+    "filingDate": "2025-03-13",
+    "nextHearing": "",
+    "caseType": "Civil - Intellectual Property",
+    "courtRoom": "Room 501",
+    "documents": [
+      {
+        "name": "Analysis_99_1.pdf",
+        "url": "/documents/analysis_99_1.pdf",
+        "uploadedBy": "Joseph Jones",
+        "uploadDate": "2025-01-02"
+      },
+      {
+        "name": "Motion_99_2.pdf",
+        "url": "/documents/motion_99_2.pdf",
+        "uploadedBy": "Jennifer Davis",
+        "uploadDate": "2025-01-17"
+      },
+      {
+        "name": "Motion_99_3.pdf",
+        "url": "/documents/motion_99_3.pdf",
+        "uploadedBy": "Jennifer Davis",
+        "uploadDate": "2025-04-02"
+      },
+      {
+        "name": "Agreement_99_4.pdf",
+        "url": "/documents/agreement_99_4.pdf",
+        "uploadedBy": "Joseph Jones",
+        "uploadDate": "2025-04-02"
+      },
+      {
+        "name": "Transcript_99_5.pdf",
+        "url": "/documents/transcript_99_5.pdf",
+        "uploadedBy": "Jennifer Davis",
+        "uploadDate": "2024-11-19"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-03-13",
+        "action": "Case Filed",
+        "by": "Joseph Jones"
+      },
+      {
+        "date": "2025-03-13",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      },
+      {
+        "date": "2025-03-27",
+        "action": "Initial Hearing Scheduled",
+        "by": "Judge Baker"
+      },
+      {
+        "date": "2025-04-12",
+        "action": "Status Changed to Closed",
+        "by": "Jennifer Davis"
+      },
+      {
+        "date": "2025-06-11",
+        "action": "Case Closed",
+        "by": "Judge Baker"
+      }
+    ]
+  },
+  {
+    "id": 100,
+    "title": "Titan Group Corporate Case",
+    "description": "This is a employment - wrongful termination case. The plaintiff seeks damages.",
+    "submittedBy": "Christopher Miller",
+    "assignedTo": "Nicole Moore",
+    "judge": "Judge Torres",
+    "status": "Registered",
+    "filingDate": "2025-02-24",
+    "nextHearing": "2025-07-20",
+    "caseType": "Employment - Wrongful Termination",
+    "courtRoom": "Room 402",
+    "documents": [
+      {
+        "name": "Order_100_1.pdf",
+        "url": "/documents/order_100_1.pdf",
+        "uploadedBy": "Christopher Miller",
+        "uploadDate": "2025-02-17"
+      },
+      {
+        "name": "Report_100_2.pdf",
+        "url": "/documents/report_100_2.pdf",
+        "uploadedBy": "Christopher Miller",
+        "uploadDate": "2025-02-14"
+      },
+      {
+        "name": "Statement_100_3.pdf",
+        "url": "/documents/statement_100_3.pdf",
+        "uploadedBy": "Christopher Miller",
+        "uploadDate": "2024-11-16"
+      },
+      {
+        "name": "Judgment_100_4.pdf",
+        "url": "/documents/judgment_100_4.pdf",
+        "uploadedBy": "Christopher Miller",
+        "uploadDate": "2024-11-11"
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-02-24",
+        "action": "Case Filed",
+        "by": "Christopher Miller"
+      },
+      {
+        "date": "2025-02-24",
+        "action": "Case Assigned to Judge",
+        "by": "System"
+      }
+    ]
+  }
+]

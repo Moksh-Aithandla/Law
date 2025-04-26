@@ -1,0 +1,61 @@
+[
+  {
+    "id": 1,
+    "title": "ABC Corp vs. Property Developer",
+    "description": "Property dispute case involving commercial real estate",
+    "submittedBy": "Alice Brown",
+    "assignedTo": "John Doe",
+    "judge": "Judge Smith",
+    "status": "In Progress",
+    "filingDate": "2023-10-15",
+    "nextHearing": "2023-12-10",
+    "documents": [
+      {
+        "name": "Property_Deed.pdf",
+        "url": "/documents/property_deed.pdf"
+      },
+      {
+        "name": "Contract_Agreement.pdf",
+        "url": "/documents/contract_agreement.pdf"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "XYZ Enterprises vs. Software Inc.",
+    "description": "Intellectual property infringement case regarding software patent",
+    "submittedBy": "Bob Wilson",
+    "assignedTo": "Jane Smith",
+    "judge": "Judge Patel",
+    "status": "Registered",
+    "filingDate": "2023-11-05",
+    "nextHearing": "2023-12-20",
+    "documents": [
+      {
+        "name": "Patent_Filing.pdf",
+        "url": "/documents/patent_filing.pdf"
+      },
+      {
+        "name": "Evidence_Document.pdf",
+        "url": "/documents/evidence_document.pdf"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "ABC Corp vs. Supplier Co.",
+    "description": "Contract breach case with supplier",
+    "submittedBy": "Alice Brown",
+    "assignedTo": "Robert Johnson",
+    "judge": "Judge Smith",
+    "status": "Registered",
+    "filingDate": "2023-11-20",
+    "nextHearing": "2024-01-15",
+    "documents": [
+      {
+        "name": "Supply_Agreement.pdf",
+        "url": "/documents/supply_agreement.pdf"
+      }
+    ]
+  }
+]

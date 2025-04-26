@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>E-Vault Login</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/login.js"></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">E-Vault</div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="register.html">Register</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="login-container">
+    <h2>Login with MetaMask</h2>
+    <button id="connectWalletBtn">Connect Wallet</button>
+    <p id="walletAddress"></p>
+    
+    <!-- Login Form Section -->
+    <div id="loginFormSection" style="display:none;">
+      <h3>Login</h3>
+      <form id="loginForm">
+        <label for="loginEmail">Email:</label>
+        <input type="email" id="loginEmail" required>
+        <label for="loginId">Bar ID / Judicial ID:</label>
+        <input type="text" id="loginId" required>
+        <button type="submit" id="loginSubmitBtn">Login</button>
+      </form>
+      <p id="errorLoginMessage" style="color: red;"></p>
+    </div>
+    
+    <!-- Signup Form Section -->
+    <div id="signupFormSection" style="display:none;">
+      <h3>Sign Up</h3>
+      <form id="signupForm">
+        <label for="signupEmail">Email:</label>
+        <input type="email" id="signupEmail" required>
+        <label for="signupId">Bar ID / Judicial ID:</label>
+        <input type="text" id="signupId" required>
+        <label for="signupPassword">Password:</label>
+        <input type="password" id="signupPassword" required>
+        <button type="submit" id="signupSubmitBtn">Sign Up</button>
+      </form>
+      <p id="errorSignupMessage" style="color: red;"></p>
+    </div>
+    
+    <!-- Role Selection After Login/Signup -->
+    <div id="roleSelectionSection" style="display:none;">
+      <h3>Login as:</h3>
+      <button id="loginAsLawyerBtn">Lawyer</button>
+      <button id="loginAsJudgeBtn">Judge</button>
+      <button id="loginAsClientBtn">Client</button>
+    </div>
+  </main>
+</body>
+</html>

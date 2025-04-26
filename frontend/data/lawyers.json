@@ -1,0 +1,648 @@
+[
+  {
+    "name": "John Doe",
+    "role": "lawyer",
+    "email": "john.doe@lawfirm.com",
+    "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+    "id": "BAR001",
+    "experience": "8 years",
+    "specialization": "Property Law",
+    "cases": [
+      1,
+      26,
+      50,
+      90
+    ]
+  },
+  {
+    "name": "Jane Smith",
+    "role": "lawyer",
+    "email": "jane.smith@lawfirm.com",
+    "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+    "id": "BAR002",
+    "experience": "12 years",
+    "specialization": "Intellectual Property",
+    "cases": [
+      2,
+      32
+    ]
+  },
+  {
+    "name": "Robert Johnson",
+    "role": "lawyer",
+    "email": "robert.johnson@lawfirm.com",
+    "address": "0x9965507D1a55bcC2695C58ba16FB37d819B0A4dc",
+    "id": "BAR003",
+    "experience": "5 years",
+    "specialization": "Contract Law",
+    "cases": [
+      3,
+      85
+    ]
+  },
+  {
+    "name": "Michael Sanchez",
+    "role": "lawyer",
+    "email": "michael.sanchez@williamslawfirm.com",
+    "address": "0x2967ba170cb13",
+    "id": "BAR004",
+    "experience": "1 years",
+    "specialization": "Corporate Law",
+    "cases": [
+      46
+    ]
+  },
+  {
+    "name": "Brandon Jones",
+    "role": "lawyer",
+    "email": "brandon.jones@williamslawfirm.com",
+    "address": "0x30aec7c4e80db",
+    "id": "BAR005",
+    "experience": "16 years",
+    "specialization": "Criminal Defense",
+    "cases": [
+      10,
+      14,
+      22,
+      30,
+      81
+    ]
+  },
+  {
+    "name": "Stephanie Jackson",
+    "role": "lawyer",
+    "email": "stephanie.jackson@rodriguezassociates.com",
+    "address": "0x72d4781ce8fc7",
+    "id": "BAR006",
+    "experience": "17 years",
+    "specialization": "Immigration Law",
+    "cases": [
+      64
+    ]
+  },
+  {
+    "name": "Amanda Williams",
+    "role": "lawyer",
+    "email": "amanda.williams@millersons.com",
+    "address": "0xcbaa558eda087",
+    "id": "BAR007",
+    "experience": "18 years",
+    "specialization": "Environmental Law",
+    "cases": [
+      73
+    ]
+  },
+  {
+    "name": "Joseph Williams",
+    "role": "lawyer",
+    "email": "joseph.williams@rodriguezassociates.com",
+    "address": "0xbd9114a782ec2",
+    "id": "BAR008",
+    "experience": "4 years",
+    "specialization": "Personal Injury",
+    "cases": [
+      12
+    ]
+  },
+  {
+    "name": "Stephanie Lee",
+    "role": "lawyer",
+    "email": "stephanie.lee@brownpartners.com",
+    "address": "0xca0685616e2d8",
+    "id": "BAR009",
+    "experience": "14 years",
+    "specialization": "Employment Law",
+    "cases": [
+      7,
+      49,
+      55
+    ]
+  },
+  {
+    "name": "Joshua Lewis",
+    "role": "lawyer",
+    "email": "joshua.lewis@martinezlegal.com",
+    "address": "0x67e6c915d5d29",
+    "id": "BAR010",
+    "experience": "8 years",
+    "specialization": "Tax Law",
+    "cases": [
+      9,
+      27,
+      74
+    ]
+  },
+  {
+    "name": "Andrew Brown",
+    "role": "lawyer",
+    "email": "andrew.brown@davislawgroup.com",
+    "address": "0x43979731a6421",
+    "id": "BAR011",
+    "experience": "2 years",
+    "specialization": "Employment Law",
+    "cases": [
+      69,
+      93
+    ]
+  },
+  {
+    "name": "Jennifer Harris",
+    "role": "lawyer",
+    "email": "jennifer.harris@brownpartners.com",
+    "address": "0xab21a8c8c3226",
+    "id": "BAR012",
+    "experience": "4 years",
+    "specialization": "Environmental Law",
+    "cases": [
+      72
+    ]
+  },
+  {
+    "name": "Joshua Perez",
+    "role": "lawyer",
+    "email": "joshua.perez@rodriguezassociates.com",
+    "address": "0x62afc0496dd23",
+    "id": "BAR013",
+    "experience": "16 years",
+    "specialization": "Tax Law",
+    "cases": [
+      13,
+      53
+    ]
+  },
+  {
+    "name": "James Thomas",
+    "role": "lawyer",
+    "email": "james.thomas@rodriguezassociates.com",
+    "address": "0xc14c7fd9ddd9c",
+    "id": "BAR014",
+    "experience": "8 years",
+    "specialization": "Real Estate",
+    "cases": [
+      24,
+      45,
+      47,
+      77
+    ]
+  },
+  {
+    "name": "Andrew Clark",
+    "role": "lawyer",
+    "email": "andrew.clark@johnsonlegalgroup.com",
+    "address": "0xcc3990e8f6047",
+    "id": "BAR015",
+    "experience": "4 years",
+    "specialization": "Tax Law",
+    "cases": [
+      29,
+      39,
+      59,
+      60
+    ]
+  },
+  {
+    "name": "James Rodriguez",
+    "role": "lawyer",
+    "email": "james.rodriguez@williamslawfirm.com",
+    "address": "0x11e30998d9b3d",
+    "id": "BAR016",
+    "experience": "16 years",
+    "specialization": "Corporate Law",
+    "cases": [
+      5,
+      19,
+      42,
+      79,
+      89
+    ]
+  },
+  {
+    "name": "Brandon Garcia",
+    "role": "lawyer",
+    "email": "brandon.garcia@brownpartners.com",
+    "address": "0xdab7d98db8777",
+    "id": "BAR017",
+    "experience": "5 years",
+    "specialization": "Corporate Law",
+    "cases": [
+      17
+    ]
+  },
+  {
+    "name": "Kevin Ramirez",
+    "role": "lawyer",
+    "email": "kevin.ramirez@martinezlegal.com",
+    "address": "0xc95042d27aab6",
+    "id": "BAR018",
+    "experience": "19 years",
+    "specialization": "Family Law",
+    "cases": [
+      34
+    ]
+  },
+  {
+    "name": "Jason Moore",
+    "role": "lawyer",
+    "email": "jason.moore@smithassociates.com",
+    "address": "0x133e4eba1391f",
+    "id": "BAR019",
+    "experience": "10 years",
+    "specialization": "Family Law",
+    "cases": [
+      6,
+      54,
+      56,
+      57,
+      71
+    ]
+  },
+  {
+    "name": "Andrew Johnson",
+    "role": "lawyer",
+    "email": "andrew.johnson@davislawgroup.com",
+    "address": "0x45c09d116afd1",
+    "id": "BAR020",
+    "experience": "9 years",
+    "specialization": "Immigration Law",
+    "cases": [
+      25,
+      44
+    ]
+  },
+  {
+    "name": "Kevin Jackson",
+    "role": "lawyer",
+    "email": "kevin.jackson@johnsonlegalgroup.com",
+    "address": "0x1bfdb69ce957d",
+    "id": "BAR021",
+    "experience": "3 years",
+    "specialization": "Family Law",
+    "cases": [
+      31,
+      38,
+      95,
+      97
+    ]
+  },
+  {
+    "name": "Jason White",
+    "role": "lawyer",
+    "email": "jason.white@johnsonlegalgroup.com",
+    "address": "0xbd58c1c590b45",
+    "id": "BAR022",
+    "experience": "12 years",
+    "specialization": "Personal Injury",
+    "cases": [
+      28,
+      63
+    ]
+  },
+  {
+    "name": "Jessica Martinez",
+    "role": "lawyer",
+    "email": "jessica.martinez@globallawpartners.com",
+    "address": "0x8b063e4eefa7d",
+    "id": "BAR023",
+    "experience": "5 years",
+    "specialization": "Tax Law",
+    "cases": [
+      58,
+      87
+    ]
+  },
+  {
+    "name": "Joshua Thompson",
+    "role": "lawyer",
+    "email": "joshua.thompson@martinezlegal.com",
+    "address": "0x1ef4def6199ef",
+    "id": "BAR024",
+    "experience": "2 years",
+    "specialization": "Real Estate",
+    "cases": []
+  },
+  {
+    "name": "Elizabeth White",
+    "role": "lawyer",
+    "email": "elizabeth.white@garcialegalservices.com",
+    "address": "0x9757f906a78df",
+    "id": "BAR025",
+    "experience": "4 years",
+    "specialization": "Family Law",
+    "cases": [
+      21,
+      48
+    ]
+  },
+  {
+    "name": "Jennifer Davis",
+    "role": "lawyer",
+    "email": "jennifer.davis@williamslawfirm.com",
+    "address": "0x061fbfe3ae3df",
+    "id": "BAR026",
+    "experience": "15 years",
+    "specialization": "Family Law",
+    "cases": [
+      82,
+      99
+    ]
+  },
+  {
+    "name": "David Jackson",
+    "role": "lawyer",
+    "email": "david.jackson@smithassociates.com",
+    "address": "0x2cc4731536dfb",
+    "id": "BAR027",
+    "experience": "20 years",
+    "specialization": "Intellectual Property",
+    "cases": [
+      86
+    ]
+  },
+  {
+    "name": "Christopher Thomas",
+    "role": "lawyer",
+    "email": "christopher.thomas@davislawgroup.com",
+    "address": "0x026ee5d7e6288",
+    "id": "BAR028",
+    "experience": "16 years",
+    "specialization": "Corporate Law",
+    "cases": [
+      18,
+      35
+    ]
+  },
+  {
+    "name": "Jessica Lee",
+    "role": "lawyer",
+    "email": "jessica.lee@davislawgroup.com",
+    "address": "0x820730963862f",
+    "id": "BAR029",
+    "experience": "17 years",
+    "specialization": "Criminal Defense",
+    "cases": [
+      62,
+      68,
+      91
+    ]
+  },
+  {
+    "name": "Steven Moore",
+    "role": "lawyer",
+    "email": "steven.moore@martinezlegal.com",
+    "address": "0x28f099e5f3b3",
+    "id": "BAR030",
+    "experience": "20 years",
+    "specialization": "Corporate Law",
+    "cases": []
+  },
+  {
+    "name": "Rachel Robinson",
+    "role": "lawyer",
+    "email": "rachel.robinson@globallawpartners.com",
+    "address": "0x2d1b6855a3403",
+    "id": "BAR031",
+    "experience": "9 years",
+    "specialization": "Real Estate",
+    "cases": [
+      16,
+      78
+    ]
+  },
+  {
+    "name": "Nicole Moore",
+    "role": "lawyer",
+    "email": "nicole.moore@brownpartners.com",
+    "address": "0xd997c50abab7c",
+    "id": "BAR032",
+    "experience": "12 years",
+    "specialization": "Personal Injury",
+    "cases": [
+      52,
+      65,
+      84,
+      94,
+      100
+    ]
+  },
+  {
+    "name": "Sarah Wilson",
+    "role": "lawyer",
+    "email": "sarah.wilson@williamslawfirm.com",
+    "address": "0xebdbbf3aa7058",
+    "id": "BAR033",
+    "experience": "8 years",
+    "specialization": "Corporate Law",
+    "cases": [
+      23
+    ]
+  },
+  {
+    "name": "Jessica Thompson",
+    "role": "lawyer",
+    "email": "jessica.thompson@martinezlegal.com",
+    "address": "0xfba243709fa32",
+    "id": "BAR034",
+    "experience": "9 years",
+    "specialization": "Corporate Law",
+    "cases": [
+      8,
+      40
+    ]
+  },
+  {
+    "name": "Sarah Jackson",
+    "role": "lawyer",
+    "email": "sarah.jackson@garcialegalservices.com",
+    "address": "0x432852b8b649c",
+    "id": "BAR035",
+    "experience": "10 years",
+    "specialization": "Intellectual Property",
+    "cases": [
+      15,
+      36,
+      92
+    ]
+  },
+  {
+    "name": "Kevin Sanchez",
+    "role": "lawyer",
+    "email": "kevin.sanchez@rodriguezassociates.com",
+    "address": "0xc64a14cf205da",
+    "id": "BAR036",
+    "experience": "2 years",
+    "specialization": "Personal Injury",
+    "cases": [
+      33,
+      96
+    ]
+  },
+  {
+    "name": "Brandon Moore",
+    "role": "lawyer",
+    "email": "brandon.moore@millersons.com",
+    "address": "0x3e83b2948fae8",
+    "id": "BAR037",
+    "experience": "5 years",
+    "specialization": "Family Law",
+    "cases": [
+      43
+    ]
+  },
+  {
+    "name": "Ryan Johnson",
+    "role": "lawyer",
+    "email": "ryan.johnson@rodriguezassociates.com",
+    "address": "0xed5842d3639cf",
+    "id": "BAR038",
+    "experience": "19 years",
+    "specialization": "Real Estate",
+    "cases": [
+      4,
+      11,
+      66
+    ]
+  },
+  {
+    "name": "Steven White",
+    "role": "lawyer",
+    "email": "steven.white@davislawgroup.com",
+    "address": "0xcb855283a6936",
+    "id": "BAR039",
+    "experience": "7 years",
+    "specialization": "Employment Law",
+    "cases": [
+      70
+    ]
+  },
+  {
+    "name": "Joseph Moore",
+    "role": "lawyer",
+    "email": "joseph.moore@millersons.com",
+    "address": "0x5badc6c680845",
+    "id": "BAR040",
+    "experience": "20 years",
+    "specialization": "Personal Injury",
+    "cases": [
+      20,
+      67
+    ]
+  },
+  {
+    "name": "Andrew Ramirez",
+    "role": "lawyer",
+    "email": "andrew.ramirez@martinezlegal.com",
+    "address": "0x7d8f705c20812",
+    "id": "BAR041",
+    "experience": "5 years",
+    "specialization": "Intellectual Property",
+    "cases": [
+      76,
+      88
+    ]
+  },
+  {
+    "name": "Steven Rodriguez",
+    "role": "lawyer",
+    "email": "steven.rodriguez@garcialegalservices.com",
+    "address": "0x6d89ab225e2cf",
+    "id": "BAR042",
+    "experience": "4 years",
+    "specialization": "Employment Law",
+    "cases": []
+  },
+  {
+    "name": "Daniel White",
+    "role": "lawyer",
+    "email": "daniel.white@martinezlegal.com",
+    "address": "0x8bd91f79f9c81",
+    "id": "BAR043",
+    "experience": "13 years",
+    "specialization": "Immigration Law",
+    "cases": [
+      37,
+      98
+    ]
+  },
+  {
+    "name": "Melissa Jones",
+    "role": "lawyer",
+    "email": "melissa.jones@brownpartners.com",
+    "address": "0xf45cba4c4765a",
+    "id": "BAR044",
+    "experience": "5 years",
+    "specialization": "Environmental Law",
+    "cases": [
+      41
+    ]
+  },
+  {
+    "name": "Jessica Lee",
+    "role": "lawyer",
+    "email": "jessica.lee@williamslawfirm.com",
+    "address": "0x3e02f68a7637b",
+    "id": "BAR045",
+    "experience": "14 years",
+    "specialization": "Employment Law",
+    "cases": [
+      51
+    ]
+  },
+  {
+    "name": "Michael White",
+    "role": "lawyer",
+    "email": "michael.white@smithassociates.com",
+    "address": "0xcc59655281324",
+    "id": "BAR046",
+    "experience": "16 years",
+    "specialization": "Immigration Law",
+    "cases": [
+      75
+    ]
+  },
+  {
+    "name": "Elizabeth Moore",
+    "role": "lawyer",
+    "email": "elizabeth.moore@davislawgroup.com",
+    "address": "0x4f4decc3de9b",
+    "id": "BAR047",
+    "experience": "13 years",
+    "specialization": "Tax Law",
+    "cases": [
+      80
+    ]
+  },
+  {
+    "name": "Nicole Hernandez",
+    "role": "lawyer",
+    "email": "nicole.hernandez@smithassociates.com",
+    "address": "0x42738a315d58d",
+    "id": "BAR048",
+    "experience": "12 years",
+    "specialization": "Employment Law",
+    "cases": [
+      83
+    ]
+  },
+  {
+    "name": "James Brown",
+    "role": "lawyer",
+    "email": "james.brown@davislawgroup.com",
+    "address": "0x4add96805b4a1",
+    "id": "BAR049",
+    "experience": "8 years",
+    "specialization": "Real Estate",
+    "cases": [
+      61
+    ]
+  },
+  {
+    "name": "Christopher Ramirez",
+    "role": "lawyer",
+    "email": "christopher.ramirez@millersons.com",
+    "address": "0x3ae7abe4e9a83",
+    "id": "BAR050",
+    "experience": "20 years",
+    "specialization": "Corporate Law",
+    "cases": []
+  }
+]

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Document</title>
+    <script src="https://unpkg.com/ethers@5.8.0/dist/ethers.umd.min.js"></script>
+    <script src="https://unpkg.com/ipfs-core@latest/dist/index.min.js"></script>
+</head>
+<body>
+    <h1>Upload Document</h1>
+    <form id="upload-form">
+        <label for="file-input">Select a file to upload:</label>
+        <input type="file" id="file-input" name="file" accept="image/jpeg, image/png, application/pdf">
+        <button type="submit">Upload</button>
+    </form>
+    <p id="status-message"></p>
+    
+    <script src="upload.js"></script>
+</body>
+</html>
