@@ -18,7 +18,6 @@ for /f "tokens=5" %%a in ('netstat -ano ^| findstr :8545') do (
 echo.
 echo Stopping frontend server (port 3000)...
 for /f "tokens=5" %%a in ('netstat -ano ^| findstr :3000') do (
-    echo Killing process with PID: %%a
     taskkill /F /PID %%a 2>nul
     if %ERRORLEVEL% equ 0 (
         echo Process killed successfully.
