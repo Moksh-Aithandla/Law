@@ -6,21 +6,21 @@ A blockchain-based law management system for managing legal cases, documents, an
 
 ### For Windows Users
 
-Simply double-click the `start-project.bat` file or run it from the command line:
+Simply double-click the `run-app.bat` file or run it from the command line:
 
 ```
-start-project.bat
+run-app.bat
 ```
 
 This will:
-1. Check for dependencies and install them if needed
-2. Start the Hardhat node (local blockchain)
-3. Deploy the contracts with initial data (judges, lawyers, clients, and cases)
-4. Start the frontend server
-5. Open your browser to http://localhost:3000
+1. Start the server
+2. Open your browser to http://localhost:3000
 
-To stop the application:
-- Run the `stop-project.bat` file
+Alternatively, you can run the server manually:
+
+```
+node simple-server.js
+```
 
 ### Login Credentials
 
@@ -60,19 +60,16 @@ You can use the following pre-populated users to log in:
 
 The E-Vault system consists of:
 
-1. **Smart Contracts** (Ethereum/Hardhat):
-   - UserRegistry: Manages user registration and authentication
-   - CaseManager: Handles case creation, updates, and assignments
-   - IPFSManager: Manages document storage and retrieval
-
-2. **Frontend**:
-   - Simple web interface for interacting with the blockchain
+1. **Frontend**:
+   - Professional law-themed interface
    - Role-specific dashboards for judges, lawyers, and clients
-   - Document upload and viewing capabilities
+   - Document viewing capabilities
+   - MetaMask integration for blockchain authentication
 
-3. **Backend Server**:
+2. **Backend Server**:
    - Express.js server for serving the frontend
    - API endpoints for data retrieval
+   - JSON-based data storage for demonstration purposes
 
 ## Detailed Setup Instructions
 
@@ -80,48 +77,28 @@ The E-Vault system consists of:
 
 - Node.js (v14+)
 - npm
-- Hardhat for Ethereum development
+- MetaMask browser extension
 
 ### Manual Installation
 
 1. Clone the repository
-2. Install dependencies:
+2. Navigate to the project directory
+3. Start the server:
 
 ```bash
-npm install
-```
-
-3. Install backend dependencies:
-
-```bash
-cd backend
-npm install
-cd ..
-```
-
-### Manual Startup
-
-If you prefer to start the components manually:
-
-1. Start a local Ethereum node:
-
-```bash
-npx hardhat node
-```
-
-2. In a new terminal, deploy the contracts with initial data:
-
-```bash
-npx hardhat run backend/scripts/deploy-with-data.js --network localhost
-```
-
-3. Start the frontend server:
-
-```bash
-node server.js
+node simple-server.js
 ```
 
 4. Open your browser and navigate to http://localhost:3000
+
+### MetaMask Integration
+
+To use the MetaMask integration:
+
+1. Install the MetaMask extension in your browser
+2. Create or import a wallet
+3. Connect to the application by clicking the "Connect with MetaMask" button
+4. Approve the connection request in the MetaMask popup
 
 ## Pre-populated Data
 
@@ -151,31 +128,25 @@ If you encounter any issues:
    - Check that Node.js is installed correctly
    - Try running `npm install` to ensure all dependencies are installed
 
-2. **Blockchain issues**:
-   - Ensure Hardhat node is running before deploying contracts
-   - If deployment fails, try increasing the timeout in the batch file
-   - Check the Hardhat console for any error messages
-
-3. **Frontend not loading**:
+2. **Frontend not loading**:
    - Check that the server is running (look for "Server running at http://localhost:3000")
    - Verify that the frontend directory and its subdirectories exist
    - Check browser console for any JavaScript errors
 
-4. **Login problems**:
+3. **Login problems**:
    - Use the pre-populated user credentials listed above
-   - Make sure the blockchain deployment was successful
+   - Make sure you're using the correct email and ID
 
-5. **MetaMask issues**:
+4. **MetaMask issues**:
    - Ensure MetaMask is installed in your browser
-   - Connect MetaMask to the Hardhat local network (http://localhost:8545)
-   - Import one of the test accounts using the private keys from the Hardhat console
-   - Make sure the account has enough ETH for transactions
+   - Make sure you're connected to the correct network
+   - Check that your MetaMask wallet is unlocked
+   - If the connection button doesn't work, try refreshing the page
 
-6. **Adding new cases**:
-   - You must be logged in as a lawyer to add new cases
-   - All form fields must be filled out
-   - The client and judge must exist in the system
-   - Your MetaMask wallet must be connected and have sufficient ETH
+5. **Dashboard not showing data**:
+   - Check that you're logged in with the correct credentials
+   - Verify that the API endpoints are working correctly
+   - Try logging out and logging back in
 
 ## License
 

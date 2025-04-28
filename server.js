@@ -43,6 +43,67 @@ app.get('/api/cases', (req, res) => {
   }
 });
 
+// Create js directory and files if they don't exist
+const web3Path = path.join(jsDir, 'web3.min.js');
+if (!fs.existsSync(web3Path)) {
+  const web3Content = `// Web3.js minified version - placeholder
+// In a real application, you would include the actual web3.min.js file
+// This is just a placeholder to simulate the presence of the file
+console.log("Web3.js loaded");`;
+  fs.writeFileSync(web3Path, web3Content);
+  console.log(`Created web3.min.js at ${web3Path}`);
+}
+
+const metamaskPath = path.join(jsDir, 'metamask.js');
+if (!fs.existsSync(metamaskPath)) {
+  const metamaskContent = `// MetaMask Integration Script
+console.log("MetaMask integration script loaded");
+
+// Check if MetaMask is installed
+async function checkMetaMaskInstalled() {
+  if (typeof window.ethereum !== 'undefined') {
+    console.log('MetaMask is installed!');
+    return true;
+  } else {
+    console.log('MetaMask is not installed!');
+    alert('MetaMask is not installed. Please install MetaMask to use this application.');
+    return false;
+  }
+}
+
+// Connect to MetaMask
+async function connectMetaMask() {
+  if (await checkMetaMaskInstalled()) {
+    try {
+      // Request account access
+      const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+      currentAccount = accounts[0];
+      isMetaMaskConnected = true;
+      
+      // Update wallet status
+      updateWalletStatus();
+      
+      // Listen for account changes
+      window.ethereum.on('accountsChanged', handleAccountsChanged);
+      
+      return currentAccount;
+    } catch (error) {
+      console.error('Error connecting to MetaMask:', error);
+      alert('Failed to connect to MetaMask. Please try again.');
+      return null;
+    }
+  }
+  return null;
+}
+
+// Export functions
+window.metamask = {
+  connectMetaMask
+};`;
+  fs.writeFileSync(metamaskPath, metamaskContent);
+  console.log(`Created metamask.js at ${metamaskPath}`);
+}
+
 // Create a simple index.html if it doesn't exist
 const indexPath = path.join(frontendDir, 'index.html');
 if (!fs.existsSync(indexPath)) {
