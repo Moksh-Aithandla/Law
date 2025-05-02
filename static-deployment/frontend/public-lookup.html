@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Public Case Lookup</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <h2>Lookup Case Information</h2>
+  <input type="number" id="caseId" placeholder="Enter Case ID">
+  <button onclick="fetchCase()">Search</button>
+  <div id="output"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+  <script src="config.js"></script>
+  <script src="js/lookup.js"></script>
+</body>
+</html>

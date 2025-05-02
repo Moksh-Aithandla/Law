@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lawyer Dashboard - E-Vault Law</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/modern-law-theme.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-gavel logo-icon"></i>
+                    E-Vault Law
+                </div>
+                <ul>
+                    <li><a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="#" id="my-cases-link"><i class="fas fa-briefcase"></i> My Cases</a></li>
+                    <li><a href="#" id="my-documents-link"><i class="fas fa-file-alt"></i> My Documents</a></li>
+                    <li><a href="#" id="upload-document-link"><i class="fas fa-upload"></i> Upload Document</a></li>
+                    <li><a href="#" id="profile-link"><i class="fas fa-user"></i> Profile</a></li>
+                    <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                    <li class="wallet-info">
+                        <span id="wallet-status" class="wallet-status wallet-connected">Not Connected</span>
+                    </li>
+                    <li class="network-container">
+                        <span id="network-info" class="network-info">Not Connected</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="dashboard-header">
+                <h1><i class="fas fa-user-tie"></i> Lawyer Dashboard</h1>
+                <p>Welcome, <span id="lawyer-name">Lawyer</span></p>
+            </div>
+
+            <!-- Dashboard Overview Section -->
+            <section id="dashboard-overview" class="dashboard-section">
+                <div class="dashboard-cards">
+                    <div class="dashboard-card">
+                        <div class="card-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>My Cases</h3>
+                            <p class="card-value" id="my-cases-count">0</p>
+                        </div>
+                        <a href="#" class="card-action" id="view-my-cases">View All</a>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>My Documents</h3>
+                            <p class="card-value" id="my-documents-count">0</p>
+                        </div>
+                        <a href="#" class="card-action" id="view-my-documents">View All</a>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Upcoming Hearings</h3>
+                            <p class="card-value" id="upcoming-hearings-count">0</p>
+                        </div>
+                        <a href="#" class="card-action" id="view-upcoming-hearings">View All</a>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-icon">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>My Clients</h3>
+                            <p class="card-value" id="my-clients-count">0</p>
+                        </div>
+                        <a href="#" class="card-action" id="view-my-clients">View All</a>
+                    </div>
+                </div>
+
+                <div class="recent-activity">
+                    <h2>Recent Activity</h2>
+                    <div class="activity-list" id="recent-activity-list">
+                        <p class="loading-data">Loading recent activity...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- My Cases Section -->
+            <section id="my-cases-section" class="dashboard-section" style="display: none;">
+                <div class="section-header">
+                    <h2><i class="fas fa-briefcase"></i> My Cases</h2>
+                    <p>View and manage your legal cases</p>
+                </div>
+                <div class="data-table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Case ID</th>
+                                <th>Title</th>
+                                <th>Type</th>
+                                <th>Client</th>
+                                <th>Judge</th>
+                                <th>Status</th>
+                                <th>Filing Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="my-cases-table-body">
+                            <tr>
+                                <td colspan="8" class="loading-data">Loading cases...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- My Documents Section -->
+            <section id="my-documents-section" class="dashboard-section" style="display: none;">
+                <div class="section-header">
+                    <h2><i class="fas fa-file-alt"></i> My Documents</h2>
+                    <p>View and manage your legal documents</p>
+                </div>
+                <div class="data-table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Document ID</th>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Case ID</th>
+                                <th>Upload Date</th>
+                                <th>Public</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="my-documents-table-body">
+                            <tr>
+                                <td colspan="7" class="loading-data">Loading documents...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Upload Document Section -->
+            <section id="upload-document-section" class="dashboard-section" style="display: none;">
+                <div class="section-header">
+                    <h2><i class="fas fa-upload"></i> Upload Document</h2>
+                    <p>Upload a new legal document</p>
+                </div>
+                <div class="form-container">
+                    <form id="upload-document-form">
+                        <div class="form-group">
+                            <label for="document-name">Document Name</label>
+                            <input type="text" id="document-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="document-description">Description</label>
+                            <textarea id="document-description" rows="4"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="document-case">Associated Case (optional)</label>
+                            <select id="document-case">
+                                <option value="0">None</option>
+                                <!-- Cases will be loaded dynamically -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="document-file">Document File</label>
+                            <input type="file" id="document-file" required>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="document-public">
+                            <label for="document-public">Make document publicly accessible</label>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Upload Document</button>
+                            <button type="button" class="btn btn-secondary" id="cancel-upload">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Profile Section -->
+            <section id="profile-section" class="dashboard-section" style="display: none;">
+                <div class="section-header">
+                    <h2><i class="fas fa-user"></i> My Profile</h2>
+                    <p>View and manage your profile information</p>
+                </div>
+                <div class="profile-container">
+                    <div class="profile-info">
+                        <div class="profile-field">
+                            <span class="field-label">Name:</span>
+                            <span class="field-value" id="profile-name">Loading...</span>
+                        </div>
+                        <div class="profile-field">
+                            <span class="field-label">Email:</span>
+                            <span class="field-value" id="profile-email">Loading...</span>
+                        </div>
+                        <div class="profile-field">
+                            <span class="field-label">Role:</span>
+                            <span class="field-value" id="profile-role">Lawyer</span>
+                        </div>
+                        <div class="profile-field">
+                            <span class="field-label">Bar ID:</span>
+                            <span class="field-value" id="profile-id">Loading...</span>
+                        </div>
+                        <div class="profile-field">
+                            <span class="field-label">Wallet Address:</span>
+                            <span class="field-value" id="profile-address">Loading...</span>
+                        </div>
+                        <div class="profile-field">
+                            <span class="field-label">Registration Date:</span>
+                            <span class="field-value" id="profile-registration-date">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 E-Vault Law Management System. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Loading overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loading-spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.ethers.io/lib/ethers-5.7.2.umd.min.js" type="application/javascript"></script>
+    <script type="module" src="js/lawyer-dashboard.js"></script>
+</body>
+</html>

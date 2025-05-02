@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Denied - E-Vault Law</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/modern-law-theme.css">
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        .access-denied-container {
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .access-denied-icon {
+            font-size: 80px;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+        
+        .access-denied-title {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .access-denied-message {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+        
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .action-button {
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .primary-button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+        }
+        
+        .primary-button:hover {
+            background-color: #2980b9;
+        }
+        
+        .secondary-button {
+            background-color: #f5f5f5;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+        
+        .secondary-button:hover {
+            background-color: #e9e9e9;
+        }
+        
+        .wallet-info {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .wallet-address {
+            font-family: monospace;
+            font-weight: 600;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-gavel logo-icon"></i>
+                    E-Vault Law
+                </div>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li class="wallet-info">
+                        <span id="wallet-status" class="wallet-status wallet-disconnected">Not Connected</span>
+                    </li>
+                    <li class="network-container">
+                        <span id="network-info" class="network-info">Not Connected</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="access-denied-container">
+                <div class="access-denied-icon">
+                    <i class="fas fa-ban"></i>
+                </div>
+                <h1 class="access-denied-title">Access Denied</h1>
+                <p class="access-denied-message" id="access-denied-message">
+                    You don't have permission to access this page. Your account may be pending approval by an administrator.
+                </p>
+                <div class="wallet-info">
+                    <p>Connected wallet: <span id="wallet-address" class="wallet-address">Not connected</span></p>
+                </div>
+                <div class="action-buttons">
+                    <a href="index.html" class="action-button secondary-button">
+                        <i class="fas fa-home"></i> Go to Home
+                    </a>
+                    <a href="register.html" class="action-button primary-button">
+                        <i class="fas fa-user-plus"></i> Register
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 E-Vault Law Management System. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.ethers.io/lib/ethers-5.7.2.umd.min.js" type="application/javascript"></script>
+    <script type="module">
+        import { initMetaMask, connectMetaMask, getCurrentAccount, getNetworkName, checkUserStatus } from './js/improved-metamask.js';
+        
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Initialize MetaMask
+            await initMetaMask();
+            
+            // Add connect wallet button
+            const actionButtons = document.querySelector('.action-buttons');
+            const connectButton = document.createElement('button');
+            connectButton.className = 'action-button secondary-button';
+            connectButton.innerHTML = '<i class="fas fa-wallet"></i> Connect Wallet';
+            connectButton.id = 'connect-wallet-btn';
+            actionButtons.appendChild(connectButton);
+            
+            // Add event listener for connect button
+            document.getElementById('connect-wallet-btn').addEventListener('click', handleConnectWallet);
+            
+            // Get message from URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const message = urlParams.get('message');
+            const reason = urlParams.get('reason');
+            
+            // Update message if provided
+            if (message) {
+                document.getElementById('access-denied-message').textContent = message;
+            }
+            
+            // Add specific reason if provided
+            if (reason) {
+                const messageElement = document.getElementById('access-denied-message');
+                messageElement.innerHTML = messageElement.innerHTML + '<br><br><strong>Reason:</strong> ' + reason;
+            }
+            
+            // Update wallet and network info
+            updateWalletInfo();
+            
+            // Check if MetaMask is connected
+            if (window.ethereum && ethereum.selectedAddress) {
+                updateWalletInfo();
+                
+                // Check user status
+                try {
+                    const status = await checkUserStatus(ethereum.selectedAddress);
+                    updateStatusInfo(status);
+                } catch (error) {
+                    console.error('Error checking user status:', error);
+                }
+            }
+            
+            // Listen for account changes
+            if (window.ethereum) {
+                window.ethereum.on('accountsChanged', async (accounts) => {
+                    updateWalletInfo();
+                    
+                    if (accounts.length > 0) {
+                        try {
+                            const status = await checkUserStatus(accounts[0]);
+                            updateStatusInfo(status);
+                        } catch (error) {
+                            console.error('Error checking user status:', error);
+                        }
+                    }
+                });
+                
+                window.ethereum.on('chainChanged', () => {
+                    updateWalletInfo();
+                });
+            }
+        });
+        
+        // Handle wallet connection
+        async function handleConnectWallet() {
+            const connected = await connectMetaMask();
+            if (connected) {
+                updateWalletInfo();
+                
+                // Check user status
+                try {
+                    const status = await checkUserStatus(ethereum.selectedAddress);
+                    updateStatusInfo(status);
+                } catch (error) {
+                    console.error('Error checking user status:', error);
+                }
+            }
+        }
+        
+        // Update wallet and network info
+        function updateWalletInfo() {
+            const walletAddress = ethereum?.selectedAddress;
+            const walletAddressElement = document.getElementById('wallet-address');
+            const walletStatusElement = document.getElementById('wallet-status');
+            const networkInfoElement = document.getElementById('network-info');
+            
+            if (walletAddress) {
+                // Format wallet address (first 6 and last 4 characters)
+                const formattedAddress = `${walletAddress.substring(0, 6)}...${walletAddress.substring(38)}`;
+                
+                // Update wallet address in the container
+                if (walletAddressElement) {
+                    walletAddressElement.textContent = walletAddress;
+                }
+                
+                // Update wallet status in the header
+                if (walletStatusElement) {
+                    walletStatusElement.textContent = formattedAddress;
+                    walletStatusElement.classList.remove('wallet-disconnected');
+                    walletStatusElement.classList.add('wallet-connected');
+                }
+                
+                // Update network info
+                if (networkInfoElement && ethereum.chainId) {
+                    const chainId = parseInt(ethereum.chainId, 16);
+                    networkInfoElement.textContent = getNetworkName(chainId);
+                    
+                    // Highlight if not on Sepolia testnet
+                    if (chainId !== 11155111) {
+                        networkInfoElement.classList.add('wrong-network');
+                    } else {
+                        networkInfoElement.classList.remove('wrong-network');
+                    }
+                }
+                
+                // Hide connect button
+                const connectButton = document.getElementById('connect-wallet-btn');
+                if (connectButton) {
+                    connectButton.style.display = 'none';
+                }
+            } else {
+                // Update for disconnected state
+                if (walletAddressElement) {
+                    walletAddressElement.textContent = 'Not connected';
+                }
+                
+                if (walletStatusElement) {
+                    walletStatusElement.textContent = 'Not Connected';
+                    walletStatusElement.classList.remove('wallet-connected');
+                    walletStatusElement.classList.add('wallet-disconnected');
+                }
+                
+                if (networkInfoElement) {
+                    networkInfoElement.textContent = 'Not Connected';
+                    networkInfoElement.classList.add('wrong-network');
+                }
+                
+                // Show connect button
+                const connectButton = document.getElementById('connect-wallet-btn');
+                if (connectButton) {
+                    connectButton.style.display = 'inline-block';
+                }
+            }
+        }
+        
+        // Update status info based on user registration and approval
+        function updateStatusInfo(status) {
+            const messageElement = document.getElementById('access-denied-message');
+            
+            if (!status.isRegistered) {
+                messageElement.innerHTML = 'Your wallet is not registered in our system. Please register first.';
+                return;
+            }
+            
+            if (!status.isApproved) {
+                messageElement.innerHTML = 'Your account is pending approval by the administrator. Please check back later.';
+                return;
+            }
+            
+            messageElement.innerHTML = `You don't have the required role to access this page. Your current role is: <strong>${status.role}</strong>`;
+        }
+    </script>
+</body>
+</html>

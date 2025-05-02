@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Vault Law Management System</title>
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/enhanced-ui.css">
+  <!-- Ethers.js -->
+  <script src="https://cdn.ethers.io/lib/ethers-5.7.umd.min.js" type="application/javascript"></script>
+  <!-- IPFS HTTP Client -->
+  <script src="https://cdn.jsdelivr.net/npm/ipfs-http-client/dist/index.min.js"></script>
+  <!-- Main JS (type="module" for ES6 imports) -->
+  <script type="module" src="/js/new-main.js"></script>
+</head>
+<body>
+  <!-- Notification System -->
+  <div class="notification-container">
+    <div id="error-message" class="notification error-message">
+      <i class="fas fa-exclamation-circle"></i>
+      <span class="message-text"></span>
+      <button class="close-notification"><i class="fas fa-times"></i></button>
+    </div>
+    <div id="success-message" class="notification success-message">
+      <i class="fas fa-check-circle"></i>
+      <span class="message-text"></span>
+      <button class="close-notification"><i class="fas fa-times"></i></button>
+    </div>
+    <div id="info-message" class="notification info-message">
+      <i class="fas fa-info-circle"></i>
+      <span class="message-text"></span>
+      <button class="close-notification"><i class="fas fa-times"></i></button>
+    </div>
+  </div>
+
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <i class="fas fa-gavel logo-icon"></i>
+          E-Vault Law
+        </div>
+        <ul>
+          <li class="logged-out-only"><a href="#" data-section="home-section" class="active"><i class="fas fa-home"></i> Home</a></li>
+          <li class="logged-out-only"><a href="#" data-section="login-section"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+          <li class="logged-out-only"><a href="#" data-section="register-section"><i class="fas fa-user-plus"></i> Register</a></li>
+          <li><a href="#" data-section="cases-section"><i class="fas fa-briefcase"></i> Cases</a></li>
+          
+          <!-- Logged in navigation -->
+          <li class="logged-in-only" style="display: none;"><a href="#" data-section="dashboard-section"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+          <li class="logged-in-only" style="display: none;"><a href="#" data-section="documents-section"><i class="fas fa-file-alt"></i> Documents</a></li>
+          <li class="logged-in-only" style="display: none;"><a href="#" id="logout-btn" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+          
+          <!-- Wallet and network info -->
+          <li class="wallet-info">
+            <span class="wallet-status wallet-disconnected">Not Connected</span>
+          </li>
+          <li class="network-container">
+            <span class="network-info">Not Connected</span>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Home Section -->
+    <section id="home-section">
+      <div class="hero">
+        <div class="container">
+          <h1>E-Vault Law Management System</h1>
+          <p>A blockchain-based platform for secure and transparent management of legal cases and documents.</p>
+          <div class="hero-buttons">
+            <a href="#features" class="btn btn-primary btn-lg">Learn More</a>
+            <a href="#" data-section="register-section" class="btn btn-accent btn-lg">Get Started</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <!-- Connect Wallet Section -->
+        <div class="connect-wallet-section">
+          <h2><i class="fas fa-wallet"></i> Connect Your Wallet</h2>
+          <p>Connect your MetaMask wallet to access the full features of the E-Vault Law Management System.</p>
+          
+          <div class="metamask-not-installed" style="display: none;">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div>
+              <p><strong>MetaMask is not installed!</strong> You need MetaMask to use this application.</p>
+              <p>Please <a href="https://metamask.io/download/" target="_blank">install MetaMask</a> and refresh this page.</p>
+            </div>
+          </div>
+          
+          <button class="btn connect-metamask-btn">
+            <img src="https://metamask.io/images/metamask-fox.svg" alt="MetaMask">
+            <span>Connect with MetaMask</span>
+          </button>
+          
+          <div class="metamask-status">
+            <p>Status: <span id="connection-status" class="wallet-status">Not Connected</span></p>
+            <p>Network: <span id="network-display" class="network-info">Not Connected</span></p>
+          </div>
+        </div>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+          <div class="section-title">
+            <h2>Key Features</h2>
+            <p>Discover how E-Vault Law Management System can transform your legal practice with blockchain technology.</p>
+          </div>
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <h3>Secure Document Storage</h3>
+              <p>Store legal documents securely on the blockchain with tamper-proof verification and access control.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-gavel"></i>
+              </div>
+              <h3>Case Management</h3>
+              <p>Manage legal cases with transparent tracking, updates, and collaboration between all parties.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <h3>Role-Based Access</h3>
+              <p>Different access levels for judges, lawyers, and clients ensure proper information security.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="law-quote">
+        "Justice will not be served until those who are unaffected are as outraged as those who are."
+        <cite>— Benjamin Franklin</cite>
+      </div>
+
+      <div class="card blockchain-card">
+        <h2><i class="fas fa-ethereum"></i> Blockchain Integration</h2>
+        <p>Our system leverages Ethereum blockchain technology for secure, transparent legal case management:</p>
+        
+        <div class="blockchain-features">
+          <div class="feature">
+            <h3><i class="fas fa-user-shield"></i> User Authentication</h3>
+            <p>Secure login with MetaMask wallet ensures your identity is cryptographically verified on the blockchain.</p>
+          </div>
+          
+          <div class="feature">
+            <h3><i class="fas fa-users"></i> Role-Based Access</h3>
+            <p>Client, lawyer, and judge roles are stored directly on the Ethereum blockchain, ensuring immutable verification.</p>
+          </div>
+          
+          <div class="feature">
+            <h3><i class="fas fa-folder-open"></i> Case Management</h3>
+            <p>All case details are securely stored on Ethereum, providing a tamper-proof record of all legal proceedings.</p>
+          </div>
+          
+          <div class="feature">
+            <h3><i class="fas fa-file-alt"></i> Document Verification</h3>
+            <p>Document references are stored on-chain with IPFS integration, ensuring document integrity and authenticity.</p>
+          </div>
+        </div>
+        
+        <div class="blockchain-transactions">
+          <h3><i class="fas fa-exchange-alt"></i> Live Blockchain Transactions</h3>
+          <div class="transaction-feed" id="transaction-feed">
+            <p class="loading-transactions">Loading recent transactions...</p>
+          </div>
+        </div>
+        
+        <div style="margin-top: 2rem; text-align: center;">
+          <button class="btn btn-primary" id="view-blockchain-btn"><i class="fas fa-cubes"></i> Learn About Our Blockchain</button>
+          <a href="https://sepolia.etherscan.io" target="_blank" class="btn btn-secondary"><i class="fas fa-external-link-alt"></i> View on Etherscan</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Login Section -->
+    <section id="login-section" style="display: none;">
+      <div class="container">
+        <div class="auth-container">
+          <div class="auth-form">
+            <h2><i class="fas fa-sign-in-alt"></i> Login to E-Vault</h2>
+            
+            <div class="wallet-connect">
+              <p>Connect your MetaMask wallet to access the platform. Your Ethereum address serves as your unique identifier.</p>
+              
+              <div class="metamask-not-installed" style="display: none;">
+                <i class="fas fa-exclamation-triangle"></i>
+                <div>
+                  <p><strong>MetaMask is not installed!</strong> You need MetaMask to use this application.</p>
+                  <p>Please <a href="https://metamask.io/download/" target="_blank">install MetaMask</a> and refresh this page.</p>
+                </div>
+              </div>
+              
+              <button class="connect-metamask-btn">
+                <img src="https://metamask.io/images/metamask-fox.svg" alt="MetaMask">
+                <span>Connect with MetaMask</span>
+              </button>
+              
+              <div class="connection-status">
+                <p><strong>Status:</strong> <span class="wallet-status wallet-disconnected">Not connected</span></p>
+                <p><strong>Network:</strong> <span class="network-info">Not connected</span></p>
+              </div>
+            </div>
+            
+            <form id="login-form">
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary" id="login-submit" disabled>Login with MetaMask</button>
+                <p class="help-text">Connect MetaMask to enable login</p>
+              </div>
+            </form>
+            
+            <p>Don't have an account? <a href="#" data-section="register-section">Register here</a></p>
+          </div>
+          
+          <div class="auth-info">
+            <h3>How to Login with MetaMask</h3>
+            <ol>
+              <li>Click the "Connect with MetaMask" button above</li>
+              <li>Approve the connection request in the MetaMask popup</li>
+              <li>If prompted, switch to the Sepolia network</li>
+              <li>Click "Login with MetaMask" to authenticate</li>
+            </ol>
+            
+            <div class="auth-note">
+              <i class="fas fa-info-circle"></i>
+              <p>Your wallet address must be registered in our system. If you haven't registered yet, please create an account first.</p>
+            </div>
+            
+            <div class="auth-benefits">
+              <h4>Benefits of Blockchain Authentication</h4>
+              <ul>
+                <li><i class="fas fa-lock"></i> Secure, cryptographic authentication</li>
+                <li><i class="fas fa-user-shield"></i> No password to remember or risk being stolen</li>
+                <li><i class="fas fa-signature"></i> Digital signatures for document verification</li>
+                <li><i class="fas fa-history"></i> Immutable audit trail of all actions</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Register Section -->
+    <section id="register-section" style="display: none;">
+      <div class="container">
+        <div class="auth-container">
+          <div class="auth-form">
+            <h2><i class="fas fa-user-plus"></i> Register for E-Vault</h2>
+            
+            <div class="wallet-connect">
+              <p>Connect your MetaMask wallet to register. This wallet address will be linked to your account.</p>
+              
+              <div class="metamask-not-installed" style="display: none;">
+                <i class="fas fa-exclamation-triangle"></i>
+                <div>
+                  <p><strong>MetaMask is not installed!</strong> You need MetaMask to use this application.</p>
+                  <p>Please <a href="https://metamask.io/download/" target="_blank">install MetaMask</a> and refresh this page.</p>
+                </div>
+              </div>
+              
+              <button class="connect-metamask-btn">
+                <img src="https://metamask.io/images/metamask-fox.svg" alt="MetaMask">
+                <span>Connect with MetaMask</span>
+              </button>
+              
+              <div class="connection-status">
+                <p><strong>Status:</strong> <span class="wallet-status wallet-disconnected">Not connected</span></p>
+                <p><strong>Network:</strong> <span class="network-info">Not connected</span></p>
+              </div>
+            </div>
+            
+            <form id="register-form">
+              <div class="form-group">
+                <label for="register-name">Full Name</label>
+                <input type="text" id="register-name" placeholder="Enter your full name" required>
+              </div>
+              <div class="form-group">
+                <label for="register-email">Email</label>
+                <input type="email" id="register-email" placeholder="Enter your email" required>
+              </div>
+              <div class="form-group">
+                <label for="register-role">Role</label>
+                <select id="register-role" required>
+                  <option value="">-- Select Role --</option>
+                  <option value="client">Client</option>
+                  <option value="lawyer">Lawyer</option>
+                  <option value="judge">Judge</option>
+                </select>
+              </div>
+              <div class="form-group" id="id-field" style="display: none;">
+                <label for="register-id">ID (Bar ID or Judicial ID)</label>
+                <input type="text" id="register-id" placeholder="Enter your ID">
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary" id="register-submit" disabled>Register</button>
+                <p class="help-text">Connect MetaMask to enable registration</p>
+              </div>
+            </form>
+            
+            <p>Already have an account? <a href="#" data-section="login-section">Login here</a></p>
+          </div>
+          
+          <div class="auth-info">
+            <h3>How to Register with MetaMask</h3>
+            <ol>
+              <li>Click the "Connect with MetaMask" button above</li>
+              <li>Approve the connection request in the MetaMask popup</li>
+              <li>If prompted, switch to the Sepolia network</li>
+              <li>Fill in your details and click "Register"</li>
+              <li>Confirm the transaction in MetaMask</li>
+            </ol>
+            
+            <div class="auth-note">
+              <i class="fas fa-info-circle"></i>
+              <p>Registration requires a blockchain transaction. Make sure you have some Sepolia ETH in your wallet.</p>
+            </div>
+            
+            <div class="auth-benefits">
+              <h4>User Roles Explained</h4>
+              <ul>
+                <li><i class="fas fa-user"></i> <strong>Client:</strong> Access to your cases and documents</li>
+                <li><i class="fas fa-user-tie"></i> <strong>Lawyer:</strong> Manage cases and documents for clients</li>
+                <li><i class="fas fa-user-graduate"></i> <strong>Judge:</strong> Oversee cases and make rulings</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cases Section -->
+    <section id="cases-section" style="display: none;">
+      <div class="container">
+        <h1>Public Case Registry</h1>
+        <div class="card">
+          <div class="search-container">
+            <input type="text" id="case-search" placeholder="Search cases..." class="search-input">
+            <button class="btn btn-primary search-btn"><i class="fas fa-search"></i></button>
+          </div>
+          
+          <div class="table-container">
+            <table id="all-cases-table" class="data-table">
+              <thead>
+                <tr>
+                  <th>Case ID</th>
+                  <th>Title</th>
+                  <th>Status</th>
+                  <th>Filed By</th>
+                  <th>Assigned To</th>
+                  <th>Judge</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="all-cases-body">
+                <tr>
+                  <td colspan="7" class="loading-data">Loading public cases...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="pagination">
+            <button class="btn btn-sm" id="prev-page" disabled><i class="fas fa-chevron-left"></i> Previous</button>
+            <span id="page-info">Page 1 of 1</span>
+            <button class="btn btn-sm" id="next-page" disabled>Next <i class="fas fa-chevron-right"></i></button>
+          </div>
+        </div>
+        
+        <div class="etherscan-link">
+          <a href="https://sepolia.etherscan.io" target="_blank" class="btn btn-secondary">
+            <i class="fas fa-external-link-alt"></i> View All Transactions on Etherscan
+          </a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Client Dashboard Section -->
+    <section id="client-dashboard" style="display: none;">
+      <div class="container">
+        <div class="dashboard-header">
+          <h1>Client Dashboard</h1>
+          <div class="user-welcome">
+            Welcome, <span class="user-name"></span> (<span class="user-role"></span>)
+          </div>
+        </div>
+        
+        <div class="dashboard-stats">
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-briefcase"></i></div>
+            <div class="stat-content">
+              <h3>My Cases</h3>
+              <p class="stat-value" id="client-case-count">0</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-file-alt"></i></div>
+            <div class="stat-content">
+              <h3>Documents</h3>
+              <p class="stat-value" id="client-document-count">0</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
+            <div class="stat-content">
+              <h3>Upcoming Hearings</h3>
+              <p class="stat-value" id="client-hearing-count">0</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="dashboard-actions">
+          <button class="btn btn-primary" id="new-case-btn"><i class="fas fa-plus"></i> File New Case</button>
+          <button class="btn btn-secondary" id="upload-document-btn"><i class="fas fa-upload"></i> Upload Document</button>
+        </div>
+        
+        <div class="dashboard-content">
+          <div class="card">
+            <h2><i class="fas fa-briefcase"></i> My Cases</h2>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Case ID</th>
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th>Assigned To</th>
+                    <th>Judge</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="client-cases-body">
+                  <tr>
+                    <td colspan="6" class="loading-data">Loading your cases...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+          <div class="card">
+            <h2><i class="fas fa-file-alt"></i> Recent Documents</h2>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Document Name</th>
+                    <th>Case</th>
+                    <th>Uploaded On</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="client-documents-body">
+                  <tr>
+                    <td colspan="4" class="loading-data">Loading your documents...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+          <div class="card">
+            <h2><i class="fas fa-calendar-alt"></i> Upcoming Hearings</h2>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Case</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Location</th>
+                    <th>Judge</th>
+                  </tr>
+                </thead>
+                <tbody id="client-hearings-body">
+                  <tr>
+                    <td colspan="5" class="loading-data">Loading upcoming hearings...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        
+        <div class="blockchain-info">
+          <h2><i class="fas fa-cubes"></i> Blockchain Transactions</h2>
+          <div class="transaction-list" id="client-transactions">
+            <p class="loading-data">Loading your transactions...</p>
+          </div>
+          <div class="etherscan-link">
+            <a href="https://sepolia.etherscan.io" target="_blank" class="btn btn-secondary">
+              <i class="fas fa-external-link-alt"></i> View All Transactions on Etherscan
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Lawyer Dashboard Section -->
+    <section id="lawyer-dashboard" style="display: none;">
+      <div class="container">
+        <div class="dashboard-header">
+          <h1>Lawyer Dashboard</h1>
+          <div class="user-welcome">
+            Welcome, <span class="user-name"></span> (<span class="user-role"></span>)
+          </div>
+        </div>
+        
+        <div class="dashboard-stats">
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-briefcase"></i></div>
+            <div class="stat-content">
+              <h3>Active Cases</h3>
+              <p class="stat-value" id="lawyer-case-count">0</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-users"></i></div>
+            <div class="stat-content">
+              <h3>Clients</h3>
+              <p class="stat-value" id="lawyer-client-count">0</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
+            <div class="stat-content">
+              <h3>Upcoming Hearings</h3>
+              <p class="stat-value" id="lawyer-hearing-count">0</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="dashboard-actions">
+          <button class="btn btn-primary" id="new-case-lawyer-btn"><i class="fas fa-plus"></i> Create New Case</button>
+          <button class="btn btn-secondary" id="upload-document-lawyer-btn"><i class="fas fa-upload"></i> Upload Document</button>
+        </div>
+        
+        <div class="dashboard-content">
+          <div class="card">
+            <h2><i class="fas fa-briefcase"></i> My Cases</h2>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Case ID</th>
+                    <th>Title</th>
+                    <th>Client</th>
+                    <th>Status</th>
+                    <th>Judge</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="lawyer-cases-body">
+                  <tr>
+                    <td colspan="6" class="loading-data">Loading your cases...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+          <div class="card">
+            <h2><i class="fas fa-users"></i> My Clients</h2>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Active Cases</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="lawyer-clients-body">
+                  <tr>
+                    <td colspan="4" class="loading-data">Loading your clients...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+          <div class="card">
+            <h2><i class="fas fa-calendar-alt"></i> Upcoming Hearings</h2>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Case</th>
+                    <th>Client</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Location</th>
+                    <th>Judge</th>
+                  </tr>
+                </thead>
+                <tbody id="lawyer-hearings-body">
+                  <tr>
+                    <td colspan="6" class="loading-data">Loading upcoming hearings...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        
+        <div class="blockchain-info">
+          <h2><i class="fas fa-cubes"></i> Blockchain Transactions</h2>
+          <div class="transaction-list" id="lawyer-transactions">
+            <p class="loading-data">Loading your transactions...</p>
+          </div>
+          <div class="etherscan-link">
+            <a href="https://sepolia.etherscan.io" target="_blank" class="btn btn-secondary">
+              <i class="fas fa-external-link-alt"></i> View All Transactions on Etherscan
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Judge Dashboard Section -->
+    <section id="judge-dashboard" style="display: none;">
+      <div class="container">
+        <div class="dashboard-header">
+          <h1>Judge Dashboard</h1>
+          <div class="user-welcome">
+            Welcome, <span class="user-name"></span> (<span class="user-role"></span>)
+          </div>
+        </div>
+        
+        <div class="dashboard-stats">
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-briefcase"></i></div>
+            <div class="stat-content">
+              <h3>Active Cases</h3>
+              <p class="stat-value" id="judge-case-count">0</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-gavel"></i></div>
+            <div class="stat-content">
+              <h3>Pending Rulings</h3>
+              <p class="stat-value" id="judge-ruling-count">0</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
+            <div class="stat-content">
+              <h3>Upcoming Hearings</h3>
+              <p class="stat-value" id="judge-hearing-count">0</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="dashboard-actions">
+          <button class="btn btn-primary" id="schedule-hearing-btn"><i class="fas fa-calendar-plus"></i> Schedule Hearing</button>
+          <button class="btn btn-secondary" id="issue-ruling-btn"><i class="fas fa-gavel"></i> Issue Ruling</button>
+        </div>
+        
+        <div class="dashboard-content">
+          <div class="card">
+            <h2><i class="fas fa-briefcase"></i> Assigned Cases</h2>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Case ID</th>
+                    <th>Title</th>
+                    <th>Client</th>
+                    <th>Lawyer</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="judge-cases-body">
+                  <tr>
+                    <td colspan="6" class="loading-data">Loading your cases...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+          <div class="card">
+            <h2><i class="fas fa-gavel"></i> Pending Rulings</h2>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Case ID</th>
+                    <th>Title</th>
+                    <th>Client</th>
+                    <th>Lawyer</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="judge-rulings-body">
+                  <tr>
+                    <td colspan="6" class="loading-data">Loading pending rulings...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+          <div class="card">
+            <h2><i class="fas fa-calendar-alt"></i> Upcoming Hearings</h2>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Case</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Location</th>
+                    <th>Participants</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="judge-hearings-body">
+                  <tr>
+                    <td colspan="6" class="loading-data">Loading upcoming hearings...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        
+        <div class="blockchain-info">
+          <h2><i class="fas fa-cubes"></i> Blockchain Transactions</h2>
+          <div class="transaction-list" id="judge-transactions">
+            <p class="loading-data">Loading your transactions...</p>
+          </div>
+          <div class="etherscan-link">
+            <a href="https://sepolia.etherscan.io" target="_blank" class="btn btn-secondary">
+              <i class="fas fa-external-link-alt"></i> View All Transactions on Etherscan
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <i class="fas fa-gavel logo-icon"></i>
+          <span>E-Vault Law</span>
+        </div>
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#" data-section="home-section">Home</a></li>
+            <li><a href="#" data-section="cases-section">Cases</a></li>
+            <li><a href="#" data-section="login-section">Login</a></li>
+            <li><a href="#" data-section="register-section">Register</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="https://sepolia.etherscan.io" target="_blank">Etherscan</a></li>
+            <li><a href="https://metamask.io" target="_blank">MetaMask</a></li>
+            <li><a href="https://ethereum.org" target="_blank">Ethereum</a></li>
+            <li><a href="https://ipfs.io" target="_blank">IPFS</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h3>Contact Us</h3>
+          <p><i class="fas fa-envelope"></i> support@evaultlaw.com</p>
+          <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+          <div class="social-links">
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 E-Vault Law Management System. All rights reserved.</p>
+        <p>Powered by Ethereum Blockchain</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

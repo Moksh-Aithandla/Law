@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Dashboard - E-Vault Law</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="/css/law-theme.css">
+  <link rel="stylesheet" href="/css/enhanced-styles.css">
+  <link rel="stylesheet" href="/css/enhanced-ui.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <!-- Add ethers.js -->
+  <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+  <!-- Add IPFS HTTP Client -->
+  <script src="https://cdn.jsdelivr.net/npm/ipfs-http-client/dist/index.min.js"></script>
+  <!-- Add Dashboard JS -->
+  <script src="/js/dashboard.js"></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <i class="fas fa-gavel logo-icon"></i>
+        E-Vault Law
+      </div>
+      <ul>
+        <li><a href="/" id="home-link"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="#" id="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        <li><a href="#" id="view-transactions-btn"><i class="fas fa-exchange-alt"></i> Transactions</a></li>
+        <li><span id="wallet-status" class="wallet-status"></span></li>
+        <li><span id="network-info" class="network-info"></span></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="dashboard-container">
+    <aside class="sidebar">
+      <div class="user-info">
+        <div class="avatar" id="user-avatar">CL</div>
+        <h3 id="user-name">Client Name</h3>
+        <p id="user-role">Client</p>
+        <p id="user-address">0x1234...5678</p>
+      </div>
+      <ul class="sidebar-menu">
+        <li><a href="#" class="active" id="dashboard-link"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+        <li><a href="#" id="my-cases-link"><i class="fas fa-briefcase"></i> My Cases</a></li>
+        <li><a href="#" id="new-case-link"><i class="fas fa-plus-circle"></i> New Case</a></li>
+        <li><a href="#" id="documents-link"><i class="fas fa-file-alt"></i> Documents</a></li>
+        <li><a href="#" id="profile-link"><i class="fas fa-user"></i> Profile</a></li>
+      </ul>
+    </aside>
+
+    <div class="main-content">
+      <!-- Dashboard Section -->
+      <section id="dashboard-section">
+        <h1>Client Dashboard</h1>
+        
+        <div class="stats-grid">
+          <div class="stat-card">
+            <h3>Active Cases</h3>
+            <p id="active-cases-count">0</p>
+          </div>
+          <div class="stat-card">
+            <h3>Documents</h3>
+            <p id="documents-count">0</p>
+          </div>
+          <div class="stat-card">
+            <h3>Upcoming Hearings</h3>
+            <p id="hearings-count">0</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2><i class="fas fa-history"></i> Recent Activity</h2>
+          <ul class="timeline" id="activity-timeline">
+            <li class="timeline-item">
+              <p class="timeline-date">Loading activities...</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2><i class="fas fa-calendar-alt"></i> Upcoming Hearings</h2>
+          <table id="hearings-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Case</th>
+                <th>Location</th>
+                <th>Judge</th>
+              </tr>
+            </thead>
+            <tbody id="hearings-body">
+              <tr>
+                <td colspan="5">Loading hearings...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- My Cases Section -->
+      <section id="my-cases-section" style="display: none;">
+        <h1>My Cases</h1>
+        
+        <div class="card">
+          <div class="form-group">
+            <input type="text" id="case-search" placeholder="Search cases..." style="margin-bottom: 1rem;">
+          </div>
+          <table id="cases-table">
+            <thead>
+              <tr>
+                <th>Case ID</th>
+                <th>Title</th>
+                <th>Status</th>
+                <th>Lawyer</th>
+                <th>Judge</th>
+                <th>Filing Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="cases-body">
+              <tr>
+                <td colspan="7">Loading cases...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- New Case Section -->
+      <section id="new-case-section" style="display: none;">
+        <h1>Register New Case</h1>
+        
+        <div class="card">
+          <form id="new-case-form">
+            <div class="form-group">
+              <label for="case-title">Case Title</label>
+              <input type="text" id="case-title" placeholder="Enter case title" required>
+            </div>
+            <div class="form-group">
+              <label for="case-description">Case Description</label>
+              <textarea id="case-description" placeholder="Enter case description" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="case-type">Case Type</label>
+              <select id="case-type" required>
+                <option value="">-- Select Case Type --</option>
+                <option value="Civil">Civil</option>
+                <option value="Criminal">Criminal</option>
+                <option value="Family">Family</option>
+                <option value="Corporate">Corporate</option>
+                <option value="Intellectual Property">Intellectual Property</option>
+                <option value="Real Estate">Real Estate</option>
+                <option value="Tax">Tax</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="lawyer-address">Lawyer's Ethereum Address</label>
+              <input type="text" id="lawyer-address" placeholder="0x..." required>
+            </div>
+            <div class="form-group">
+              <label for="initial-document">Initial Document (Optional)</label>
+              <input type="file" id="initial-document">
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Register Case</button>
+            </div>
+            <p id="new-case-status" class="status-message"></p>
+          </form>
+        </div>
+      </section>
+
+      <!-- Documents Section -->
+      <section id="documents-section" style="display: none;">
+        <h1>My Documents</h1>
+        
+        <div class="card">
+          <div class="form-group">
+            <input type="text" id="document-search" placeholder="Search documents..." style="margin-bottom: 1rem;">
+          </div>
+          
+          <div class="document-upload-area">
+            <h3>Upload New Document</h3>
+            <form id="document-upload-form">
+              <div class="form-group">
+                <label for="document-name">Document Name</label>
+                <input type="text" id="document-name" placeholder="Enter document name">
+              </div>
+              <div class="form-group">
+                <label for="document-description">Description</label>
+                <textarea id="document-description" placeholder="Enter document description" rows="2"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="document-case">Associated Case (Optional)</label>
+                <select id="document-case">
+                  <option value="0">-- None --</option>
+                  <!-- Cases will be loaded here -->
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="document-file">Select File</label>
+                <input type="file" id="document-file" required>
+              </div>
+              <div class="form-group">
+                <div class="checkbox-group">
+                  <input type="checkbox" id="document-public">
+                  <label for="document-public">Make document publicly accessible</label>
+                </div>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary">Upload Document</button>
+              </div>
+              <p id="document-upload-status" class="status-message"></p>
+            </form>
+          </div>
+          
+          <h3>My Documents</h3>
+          <div class="documents-grid" id="documents-grid">
+            <!-- Documents will be loaded here -->
+            <p>Loading documents...</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Profile Section -->
+      <section id="profile-section" style="display: none;">
+        <h1>My Profile</h1>
+        
+        <div class="card">
+          <div class="profile-info">
+            <div class="profile-header">
+              <div class="profile-avatar" id="profile-avatar">CL</div>
+              <div class="profile-details">
+                <h2 id="profile-name">Client Name</h2>
+                <p id="profile-role">Client</p>
+                <p id="profile-email">client@example.com</p>
+              </div>
+            </div>
+            
+            <div class="blockchain-info">
+              <h3>Blockchain Information</h3>
+              <p><strong>Ethereum Address:</strong> <span id="profile-address">0x1234...5678</span> <a href="#" id="view-on-etherscan" target="_blank"><i class="fas fa-external-link-alt"></i></a></p>
+              <p><strong>Network:</strong> <span id="profile-network">Sepolia Testnet</span></p>
+              <p><strong>Registration Date:</strong> <span id="profile-registration-date">January 1, 2023</span></p>
+            </div>
+            
+            <div class="profile-stats">
+              <h3>Activity Summary</h3>
+              <div class="stats-grid">
+                <div class="stat-card">
+                  <h4>Total Cases</h4>
+                  <p id="profile-cases-count">0</p>
+                </div>
+                <div class="stat-card">
+                  <h4>Total Documents</h4>
+                  <p id="profile-documents-count">0</p>
+                </div>
+                <div class="stat-card">
+                  <h4>Transactions</h4>
+                  <p id="profile-transactions-count">0</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Case Details Section -->
+      <section id="case-details-section" style="display: none;">
+        <h1>Case Details</h1>
+        
+        <div class="card" id="case-details-card">
+          <!-- Case details will be loaded here -->
+          <p>Loading case details...</p>
+        </div>
+        
+        <div class="card">
+          <h2><i class="fas fa-file-alt"></i> Case Documents</h2>
+          <div class="document-upload-area">
+            <h3>Upload New Document</h3>
+            <form id="case-document-upload-form">
+              <input type="hidden" id="case-id-for-document">
+              <div class="form-group">
+                <label for="case-document-name">Document Name</label>
+                <input type="text" id="case-document-name" placeholder="Enter document name">
+              </div>
+              <div class="form-group">
+                <label for="case-document-description">Description</label>
+                <textarea id="case-document-description" placeholder="Enter document description" rows="2"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="case-document-file">Select File</label>
+                <input type="file" id="case-document-file" required>
+              </div>
+              <div class="form-group">
+                <div class="checkbox-group">
+                  <input type="checkbox" id="case-document-public">
+                  <label for="case-document-public">Make document publicly accessible</label>
+                </div>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary">Upload Document</button>
+              </div>
+              <p id="case-document-upload-status" class="status-message"></p>
+            </form>
+          </div>
+          
+          <div class="documents-grid" id="case-documents-grid">
+            <!-- Case documents will be loaded here -->
+            <p>Loading documents...</p>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h2><i class="fas fa-calendar-alt"></i> Hearings</h2>
+          <table id="case-hearings-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Location</th>
+                <th>Description</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="case-hearings-body">
+              <tr>
+                <td colspan="5">Loading hearings...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <button class="btn" id="back-to-cases-btn">Back to Cases</button>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <i class="fas fa-gavel logo-icon"></i>
+        E-Vault Law
+      </div>
+      <p>&copy; 2023 E-Vault Law Management System. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Transactions Modal -->
+  <div id="transactions-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Blockchain Transactions</h2>
+      <table id="transactions-table">
+        <thead>
+          <tr>
+            <th>Transaction Hash</th>
+            <th>Type</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>View</th>
+          </tr>
+        </thead>
+        <tbody id="transactions-body">
+          <tr>
+            <td colspan="5">Loading transactions...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- JavaScript Modules -->
+  <script type="module" src="/js/blockchain-utils.js"></script>
+  <script type="module" src="/js/document-utils.js"></script>
+  <script type="module" src="/js/auth.js"></script>
+  <script type="module" src="/js/client-dashboard.js"></script>
+</body>
+</html>

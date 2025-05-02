@@ -24,12 +24,17 @@ module.exports = {
         accountsBalance: "10000000000000000000000" // 10000 ETH
       }
     },
+    ganache: {
+      url: "http://127.0.0.1:8545",
+      chainId: 1337,
+      // Use default accounts provided by Ganache
+    },
     sepolia: {
       url: SEPOLIA_RPC_URL,
       accounts: PRIVATE_KEY ? [PRIVATE_KEY] : [],
       chainId: 11155111,
-      gasPrice: 10_000_000_000, // 10 Gwei
-      gas: 3_000_000,           // Gas limit for deployment
+      gasPrice: 5_000_000_000, // 5 Gwei (reduced from 10 Gwei)
+      gas: 2_500_000,          // Gas limit for deployment (reduced from 3,000,000)
     },
   },
   paths: {
