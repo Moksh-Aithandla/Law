@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Document - E-Vault Law</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="css/modern-law-theme.css">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    .upload-container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 30px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    .upload-header {
+      margin-bottom: 30px;
+    }
+    
+    .upload-header h2 {
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .upload-header h2 i {
+      margin-right: 10px;
+      color: #3498db;
+    }
+    
+    .upload-header p {
+      color: #666;
+      font-size: 16px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #333;
+    }
+    
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: #80bdff;
+      outline: 0;
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+    
+    .form-group textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    
+    .file-upload-area {
+      border: 2px dashed #ced4da;
+      border-radius: 4px;
+      padding: 30px;
+      text-align: center;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .file-upload-area:hover {
+      border-color: #3498db;
+    }
+    
+    .file-upload-area.dragover {
+      background-color: #f8f9fa;
+      border-color: #3498db;
+    }
+    
+    .file-upload-icon {
+      font-size: 48px;
+      color: #6c757d;
+      margin-bottom: 15px;
+    }
+    
+    .file-upload-text {
+      font-size: 16px;
+      color: #495057;
+      margin-bottom: 10px;
+    }
+    
+    .file-upload-subtext {
+      font-size: 14px;
+      color: #6c757d;
+    }
+    
+    .file-input {
+      display: none;
+    }
+    
+    .file-preview {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #f8f9fa;
+      border-radius: 4px;
+    }
+    
+    .file-preview-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    
+    .file-preview-name {
+      font-weight: 600;
+      color: #333;
+      display: flex;
+      align-items: center;
+    }
+    
+    .file-preview-name i {
+      margin-right: 8px;
+    }
+    
+    .file-preview-remove {
+      color: #dc3545;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    
+    .file-preview-info {
+      font-size: 14px;
+      color: #6c757d;
+    }
+    
+    .submit-button {
+      width: 100%;
+      padding: 12px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .submit-button:hover {
+      background-color: #2980b9;
+    }
+    
+    .submit-button:disabled {
+      background-color: #6c757d;
+      cursor: not-allowed;
+    }
+    
+    .submit-button i {
+      margin-right: 8px;
+    }
+    
+    .spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s ease-in-out infinite;
+      margin-right: 10px;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .status-container {
+      margin-top: 30px;
+      display: none;
+    }
+    
+    .status-message {
+      padding: 15px;
+      border-radius: 4px;
+      margin-bottom: 15px;
+    }
+    
+    .status-success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    
+    .status-error {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+    
+    .status-loading {
+      background-color: #e9ecef;
+      color: #495057;
+      border: 1px solid #ced4da;
+    }
+    
+    .links-container {
+      margin-top: 20px;
+    }
+    
+    .link-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      padding: 10px;
+      background-color: #f8f9fa;
+      border-radius: 4px;
+    }
+    
+    .link-icon {
+      margin-right: 10px;
+      font-size: 20px;
+      color: #3498db;
+    }
+    
+    .link-text {
+      flex-grow: 1;
+      font-family: monospace;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    
+    .link-copy {
+      padding: 5px 10px;
+      background-color: #e9ecef;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-left: 10px;
+      transition: all 0.3s ease;
+    }
+    
+    .link-copy:hover {
+      background-color: #ced4da;
+    }
+    
+    .link-open {
+      padding: 5px 10px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-left: 10px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+    
+    .link-open:hover {
+      background-color: #2980b9;
+    }
+    
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    
+    .checkbox-group input {
+      margin-right: 10px;
+      width: auto;
+    }
+    
+    /* Access Denied */
+    .access-denied {
+      text-align: center;
+      padding: 50px 20px;
+      background-color: #f8d7da;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      display: none;
+    }
+    
+    .access-denied i {
+      font-size: 64px;
+      color: #721c24;
+      margin-bottom: 20px;
+    }
+    
+    .access-denied h3 {
+      font-size: 24px;
+      color: #721c24;
+      margin-bottom: 15px;
+    }
+    
+    .access-denied p {
+      color: #721c24;
+      max-width: 600px;
+      margin: 0 auto 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <i class="fas fa-gavel logo-icon"></i>
+          E-Vault Law
+        </div>
+        <ul>
+          <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+          <li><a href="documents.html"><i class="fas fa-file-alt"></i> Documents</a></li>
+          <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+          <li class="wallet-info">
+            <span id="wallet-status" class="wallet-status wallet-disconnected">Not Connected</span>
+          </li>
+          <li class="network-container">
+            <span id="network-info" class="network-info">Not Connected</span>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div id="access-denied" class="access-denied">
+        <i class="fas fa-ban"></i>
+        <h3>Access Denied</h3>
+        <p>Your wallet is not approved to access this application. Please register and wait for admin approval.</p>
+        <a href="register.html" class="btn">Register Now</a>
+      </div>
+      
+      <div id="upload-container" class="upload-container" style="display: none;">
+        <div class="upload-header">
+          <h2><i class="fas fa-cloud-upload-alt"></i> Upload Document</h2>
+          <p>Upload legal documents to the decentralized storage system</p>
+        </div>
+        
+        <form id="upload-form">
+          <div class="form-group">
+            <label for="document-name">Document Name:</label>
+            <input type="text" id="document-name" placeholder="Enter document name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="document-description">Description:</label>
+            <textarea id="document-description" placeholder="Enter document description"></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label for="document-type">Document Type:</label>
+            <select id="document-type" required>
+              <option value="">-- Select document type --</option>
+              <option value="contract">Contract</option>
+              <option value="evidence">Evidence</option>
+              <option value="court_filing">Court Filing</option>
+              <option value="legal_brief">Legal Brief</option>
+              <option value="affidavit">Affidavit</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          
+          <div class="file-upload-area" id="drop-area">
+            <div class="file-upload-icon">
+              <i class="fas fa-file-upload"></i>
+            </div>
+            <div class="file-upload-text">Drag & drop files here or click to browse</div>
+            <div class="file-upload-subtext">Supported formats: PDF, DOCX, JPG, PNG (Max size: 10MB)</div>
+            <input type="file" id="file-input" class="file-input" accept=".pdf,.docx,.doc,.jpg,.jpeg,.png">
+          </div>
+          
+          <div class="file-preview" id="file-preview">
+            <div class="file-preview-header">
+              <div class="file-preview-name">
+                <i class="fas fa-file-pdf"></i>
+                <span id="file-name">document.pdf</span>
+              </div>
+              <div class="file-preview-remove" id="remove-file">
+                <i class="fas fa-times"></i>
+              </div>
+            </div>
+            <div class="file-preview-info">
+              Size: <span id="file-size">0 KB</span> | Type: <span id="file-type">PDF</span>
+            </div>
+          </div>
+          
+          <div class="checkbox-group">
+            <input type="checkbox" id="is-public">
+            <label for="is-public">Make this document publicly accessible</label>
+          </div>
+          
+          <button type="submit" id="submit-button" class="submit-button" disabled>
+            <i class="fas fa-cloud-upload-alt"></i> Upload Document
+          </button>
+        </form>
+        
+        <div class="status-container" id="status-container">
+          <div class="status-message" id="status-message"></div>
+          
+          <div class="links-container" id="links-container" style="display: none;">
+            <div class="link-item">
+              <div class="link-icon">
+                <i class="fas fa-link"></i>
+              </div>
+              <div class="link-text" id="ipfs-link">https://ipfs.filebase.io/ipfs/QmExample...</div>
+              <button class="link-copy" id="copy-ipfs-link">
+                <i class="fas fa-copy"></i> Copy
+              </button>
+              <a href="#" class="link-open" id="open-ipfs-link" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Open
+              </a>
+            </div>
+            
+            <div class="link-item">
+              <div class="link-icon">
+                <i class="fas fa-receipt"></i>
+              </div>
+              <div class="link-text" id="tx-link">https://sepolia.etherscan.io/tx/0xExample...</div>
+              <button class="link-copy" id="copy-tx-link">
+                <i class="fas fa-copy"></i> Copy
+              </button>
+              <a href="#" class="link-open" id="open-tx-link" target="_blank">
+                <i class="fas fa-external-link-alt"></i> View
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 E-Vault Law Management System. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.ethers.io/lib/ethers-5.7.2.umd.min.js" type="application/javascript"></script>
+  <script type="module">
+    import { 
+      initMetaMask, 
+      connectMetaMask, 
+      getCurrentAccount, 
+      isUserApproved,
+      initContracts,
+      getExplorerUrl
+    } from './js/improved-metamask.js';
+    
+    import { 
+      documentStorageAddress,
+      filebaseConfig,
+      getIpfsUrl
+    } from './config.js';
+    
+    // DOM elements
+    const uploadContainer = document.getElementById('upload-container');
+    const accessDenied = document.getElementById('access-denied');
+    const uploadForm = document.getElementById('upload-form');
+    const dropArea = document.getElementById('drop-area');
+    const fileInput = document.getElementById('file-input');
+    const filePreview = document.getElementById('file-preview');
+    const fileName = document.getElementById('file-name');
+    const fileSize = document.getElementById('file-size');
+    const fileType = document.getElementById('file-type');
+    const removeFile = document.getElementById('remove-file');
+    const submitButton = document.getElementById('submit-button');
+    const statusContainer = document.getElementById('status-container');
+    const statusMessage = document.getElementById('status-message');
+    const linksContainer = document.getElementById('links-container');
+    const ipfsLink = document.getElementById('ipfs-link');
+    const txLink = document.getElementById('tx-link');
+    const copyIpfsLink = document.getElementById('copy-ipfs-link');
+    const openIpfsLink = document.getElementById('open-ipfs-link');
+    const copyTxLink = document.getElementById('copy-tx-link');
+    const openTxLink = document.getElementById('open-tx-link');
+    
+    // Contract variables
+    let documentStorageContract = null;
+    let signer = null;
+    
+    // File variables
+    let selectedFile = null;
+    
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Initialize MetaMask
+      await initMetaMask();
+      
+      // Add event listeners
+      uploadForm.addEventListener('submit', handleUpload);
+      dropArea.addEventListener('click', () => fileInput.click());
+      fileInput.addEventListener('change', handleFileSelect);
+      removeFile.addEventListener('click', handleFileRemove);
+      copyIpfsLink.addEventListener('click', () => copyToClipboard(ipfsLink.textContent));
+      copyTxLink.addEventListener('click', () => copyToClipboard(txLink.textContent));
+      document.getElementById('logout-btn').addEventListener('click', handleLogout);
+      
+      // Add drag and drop event listeners
+      dropArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropArea.classList.add('dragover');
+      });
+      
+      dropArea.addEventListener('dragleave', () => {
+        dropArea.classList.remove('dragover');
+      });
+      
+      dropArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropArea.classList.remove('dragover');
+        
+        if (e.dataTransfer.files.length) {
+          handleFiles(e.dataTransfer.files);
+        }
+      });
+      
+      // Check if MetaMask is connected
+      if (window.ethereum && ethereum.selectedAddress) {
+        // Check if user is approved
+        const approved = await isUserApproved();
+        if (approved) {
+          showUploadContainer();
+        } else {
+          showAccessDenied();
+        }
+      } else {
+        // Prompt to connect MetaMask
+        const connected = await connectMetaMask();
+        if (connected) {
+          // Check if user is approved
+          const approved = await isUserApproved();
+          if (approved) {
+            showUploadContainer();
+          } else {
+            showAccessDenied();
+          }
+        } else {
+          showAccessDenied();
+        }
+      }
+      
+      // Listen for account changes
+      if (window.ethereum) {
+        window.ethereum.on('accountsChanged', async (accounts) => {
+          if (accounts.length > 0) {
+            // Check if user is approved
+            const approved = await isUserApproved(accounts[0]);
+            if (approved) {
+              showUploadContainer();
+            } else {
+              showAccessDenied();
+            }
+          } else {
+            showAccessDenied();
+          }
+        });
+      }
+    });
+    
+    // Show upload container
+    function showUploadContainer() {
+      uploadContainer.style.display = 'block';
+      accessDenied.style.display = 'none';
+    }
+    
+    // Show access denied message
+    function showAccessDenied() {
+      uploadContainer.style.display = 'none';
+      accessDenied.style.display = 'block';
+    }
+    
+    // Handle file selection
+    function handleFileSelect(e) {
+      const files = e.target.files;
+      if (files.length) {
+        handleFiles(files);
+      }
+    }
+    
+    // Handle files
+    function handleFiles(files) {
+      selectedFile = files[0];
+      
+      // Check file size (max 10MB)
+      if (selectedFile.size > 10 * 1024 * 1024) {
+        showStatus('error', 'File size exceeds the 10MB limit. Please select a smaller file.');
+        selectedFile = null;
+        fileInput.value = '';
+        return;
+      }
+      
+      // Update file preview
+      fileName.textContent = selectedFile.name;
+      fileSize.textContent = formatFileSize(selectedFile.size);
+      fileType.textContent = selectedFile.type || 'Unknown';
+      
+      // Show file preview
+      filePreview.style.display = 'block';
+      
+      // Update file icon based on type
+      const fileIcon = filePreview.querySelector('i');
+      if (selectedFile.type.includes('pdf')) {
+        fileIcon.className = 'fas fa-file-pdf';
+      } else if (selectedFile.type.includes('word') || selectedFile.name.endsWith('.doc') || selectedFile.name.endsWith('.docx')) {
+        fileIcon.className = 'fas fa-file-word';
+      } else if (selectedFile.type.includes('image')) {
+        fileIcon.className = 'fas fa-file-image';
+      } else {
+        fileIcon.className = 'fas fa-file';
+      }
+      
+      // Enable submit button
+      submitButton.disabled = false;
+    }
+    
+    // Handle file removal
+    function handleFileRemove() {
+      selectedFile = null;
+      fileInput.value = '';
+      filePreview.style.display = 'none';
+      submitButton.disabled = true;
+    }
+    
+    // Handle document upload
+    async function handleUpload(e) {
+      e.preventDefault();
+      
+      // Check if file is selected
+      if (!selectedFile) {
+        showStatus('error', 'Please select a file to upload.');
+        return;
+      }
+      
+      // Get form values
+      const name = document.getElementById('document-name').value.trim();
+      const description = document.getElementById('document-description').value.trim();
+      const documentType = document.getElementById('document-type').value;
+      const isPublic = document.getElementById('is-public').checked;
+      
+      // Validate form
+      if (!name) {
+        showStatus('error', 'Please enter a document name.');
+        return;
+      }
+      
+      if (!documentType) {
+        showStatus('error', 'Please select a document type.');
+        return;
+      }
+      
+      // Disable form
+      submitButton.disabled = true;
+      submitButton.innerHTML = '<span class="spinner"></span> Uploading...';
+      
+      try {
+        // Show status
+        showStatus('loading', 'Uploading file to IPFS via Filebase...');
+        
+        // Upload file to IPFS via Filebase
+        const cid = await uploadToFilebase(selectedFile);
+        
+        // Show IPFS link
+        showStatus('success', 'File uploaded to IPFS successfully!');
+        
+        // Initialize contracts
+        await initializeContracts();
+        
+        // Store document reference on blockchain
+        showStatus('loading', 'Storing document reference on blockchain...');
+        
+        const tx = await documentStorageContract.storeDocument(
+          name,
+          description,
+          cid,
+          documentType,
+          0, // No case ID for now
+          isPublic
+        );
+        
+        // Show transaction hash
+        const chainId = parseInt(await window.ethereum.request({ method: 'eth_chainId' }), 16);
+        const explorerUrl = getExplorerUrl(chainId, tx.hash);
+        
+        // Update links
+        ipfsLink.textContent = getIpfsUrl(cid);
+        openIpfsLink.href = getIpfsUrl(cid);
+        txLink.textContent = explorerUrl;
+        openTxLink.href = explorerUrl;
+        
+        // Show links
+        linksContainer.style.display = 'block';
+        
+        // Wait for transaction to be mined
+        await tx.wait();
+        
+        // Show success message
+        showStatus('success', 'Document uploaded and stored on blockchain successfully!');
+        
+        // Reset form
+        uploadForm.reset();
+        handleFileRemove();
+      } catch (error) {
+        console.error('Upload error:', error);
+        showStatus('error', `Upload failed: ${error.message}`);
+        submitButton.disabled = false;
+        submitButton.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Upload Document';
+      }
+    }
+    
+    // Upload file to Filebase
+    async function uploadToFilebase(file) {
+      try {
+        // Create form data
+        const formData = new FormData();
+        formData.append('file', file);
+        
+        // Get current account
+        const account = getCurrentAccount();
+        
+        // Upload to Filebase proxy server
+        const response = await fetch(`${filebaseConfig.apiUrl}/upload`, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'X-User-Address': account
+          }
+        });
+        
+        if (!response.ok) {
+          throw new Error(`Upload failed with status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        if (!data.success || !data.cid) {
+          throw new Error('Failed to get CID from Filebase');
+        }
+        
+        return data.cid;
+      } catch (error) {
+        console.error('Filebase upload error:', error);
+        throw new Error(`Failed to upload to Filebase: ${error.message}`);
+      }
+    }
+    
+    // Initialize contracts
+    async function initializeContracts() {
+      try {
+        // Initialize contracts if not already done
+        await initContracts();
+        
+        // Get provider and signer
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        signer = provider.getSigner();
+        
+        // Get DocumentStorage contract
+        const documentStorageABI = await fetch('./abi/DocumentStorage.json').then(res => res.json());
+        documentStorageContract = new ethers.Contract(documentStorageAddress, documentStorageABI, signer);
+      } catch (error) {
+        console.error('Error initializing contracts:', error);
+        throw new Error('Failed to initialize blockchain contracts. Please try again.');
+      }
+    }
+    
+    // Show status message
+    function showStatus(type, message) {
+      statusContainer.style.display = 'block';
+      
+      switch (type) {
+        case 'success':
+          statusMessage.className = 'status-message status-success';
+          break;
+        case 'error':
+          statusMessage.className = 'status-message status-error';
+          break;
+        case 'loading':
+          statusMessage.className = 'status-message status-loading';
+          message = `<span class="spinner"></span> ${message}`;
+          break;
+      }
+      
+      statusMessage.innerHTML = message;
+    }
+    
+    // Format file size
+    function formatFileSize(bytes) {
+      if (bytes === 0) return '0 Bytes';
+      
+      const k = 1024;
+      const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      
+      return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+    
+    // Copy to clipboard
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text)
+        .then(() => {
+          alert('Copied to clipboard!');
+        })
+        .catch(err => {
+          console.error('Failed to copy:', err);
+        });
+    }
+    
+    // Handle logout
+    function handleLogout() {
+      // Clear local storage
+      localStorage.removeItem('userRole');
+      localStorage.removeItem('userAddress');
+      localStorage.removeItem('userName');
+      
+      // Redirect to home page
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>

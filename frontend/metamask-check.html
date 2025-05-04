@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MetaMask Sepolia Configuration Check</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 30px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+      font-size: 28px;
+      color: #2c3e50;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    
+    .check-item {
+      margin-bottom: 20px;
+      padding: 15px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .check-item i {
+      font-size: 24px;
+      margin-right: 15px;
+    }
+    
+    .check-item-content {
+      flex-grow: 1;
+    }
+    
+    .check-item h3 {
+      margin: 0 0 5px 0;
+      font-size: 18px;
+    }
+    
+    .check-item p {
+      margin: 0;
+      color: #6c757d;
+    }
+    
+    .success {
+      background-color: #d4edda;
+      color: #155724;
+    }
+    
+    .warning {
+      background-color: #fff3cd;
+      color: #856404;
+    }
+    
+    .error {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+    
+    .pending {
+      background-color: #e9ecef;
+      color: #495057;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+    
+    .btn:hover {
+      background-color: #2980b9;
+    }
+    
+    .btn-center {
+      display: block;
+      margin: 20px auto;
+      text-align: center;
+    }
+    
+    .balance {
+      font-weight: bold;
+      font-family: monospace;
+    }
+    
+    .address {
+      font-family: monospace;
+      word-break: break-all;
+    }
+    
+    .network-info {
+      text-align: center;
+      margin-bottom: 30px;
+      padding: 15px;
+      background-color: #e9ecef;
+      border-radius: 8px;
+    }
+    
+    .network-name {
+      font-weight: bold;
+      color: #3498db;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>MetaMask Sepolia Configuration Check</h1>
+    
+    <div class="network-info">
+      <p>This tool checks if your MetaMask is properly configured for the <span class="network-name">Sepolia Test Network</span>.</p>
+    </div>
+    
+    <div id="metamask-installed" class="check-item pending">
+      <i class="fas fa-spinner fa-spin"></i>
+      <div class="check-item-content">
+        <h3>MetaMask Installation</h3>
+        <p>Checking if MetaMask is installed...</p>
+      </div>
+    </div>
+    
+    <div id="metamask-connected" class="check-item pending">
+      <i class="fas fa-spinner fa-spin"></i>
+      <div class="check-item-content">
+        <h3>MetaMask Connection</h3>
+        <p>Checking if MetaMask is connected...</p>
+      </div>
+    </div>
+    
+    <div id="sepolia-network" class="check-item pending">
+      <i class="fas fa-spinner fa-spin"></i>
+      <div class="check-item-content">
+        <h3>Sepolia Network</h3>
+        <p>Checking if you're connected to Sepolia testnet...</p>
+      </div>
+    </div>
+    
+    <div id="eth-balance" class="check-item pending">
+      <i class="fas fa-spinner fa-spin"></i>
+      <div class="check-item-content">
+        <h3>ETH Balance</h3>
+        <p>Checking your Sepolia ETH balance...</p>
+      </div>
+    </div>
+    
+    <button id="connect-btn" class="btn btn-center" style="display: none;">Connect MetaMask</button>
+    <button id="switch-network-btn" class="btn btn-center" style="display: none;">Switch to Sepolia</button>
+    <button id="get-eth-btn" class="btn btn-center" style="display: none;">Get Sepolia ETH</button>
+    
+    <div id="summary" style="display: none; margin-top: 30px; text-align: center;">
+      <h3>Summary</h3>
+      <p id="summary-text"></p>
+      <a href="index.html" class="btn">Go to E-Vault Law Application</a>
+    </div>
+  </div>
+  
+  <script>
+    // DOM Elements
+    const metamaskInstalledEl = document.getElementById('metamask-installed');
+    const metamaskConnectedEl = document.getElementById('metamask-connected');
+    const sepoliaNetworkEl = document.getElementById('sepolia-network');
+    const ethBalanceEl = document.getElementById('eth-balance');
+    const connectBtn = document.getElementById('connect-btn');
+    const switchNetworkBtn = document.getElementById('switch-network-btn');
+    const getEthBtn = document.getElementById('get-eth-btn');
+    const summaryEl = document.getElementById('summary');
+    const summaryTextEl = document.getElementById('summary-text');
+    
+    // Sepolia Chain ID
+    const SEPOLIA_CHAIN_ID = '0xaa36a7'; // 11155111 in decimal
+    
+    // Check if MetaMask is installed
+    async function checkMetaMaskInstalled() {
+      if (typeof window.ethereum !== 'undefined') {
+        updateCheckItem(metamaskInstalledEl, 'success', 'MetaMask is installed!', 'Your browser has the MetaMask extension installed.');
+        return true;
+      } else {
+        updateCheckItem(metamaskInstalledEl, 'error', 'MetaMask is not installed', 'Please install MetaMask to use this application. <a href="https://metamask.io/download.html" target="_blank">Download MetaMask</a>');
+        return false;
+      }
+    }
+    
+    // Check if MetaMask is connected
+    async function checkMetaMaskConnected() {
+      try {
+        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+        if (accounts.length > 0) {
+          updateCheckItem(metamaskConnectedEl, 'success', 'MetaMask is connected', `Connected account: <span class="address">${accounts[0]}</span>`);
+          return true;
+        } else {
+          updateCheckItem(metamaskConnectedEl, 'warning', 'MetaMask is not connected', 'Please connect your MetaMask wallet.');
+          connectBtn.style.display = 'block';
+          return false;
+        }
+      } catch (error) {
+        updateCheckItem(metamaskConnectedEl, 'error', 'Error checking connection', `Error: ${error.message}`);
+        return false;
+      }
+    }
+    
+    // Check if connected to Sepolia
+    async function checkSepoliaNetwork() {
+      try {
+        const chainId = await window.ethereum.request({ method: 'eth_chainId' });
+        if (chainId === SEPOLIA_CHAIN_ID) {
+          updateCheckItem(sepoliaNetworkEl, 'success', 'Connected to Sepolia', 'You are connected to the Sepolia test network.');
+          return true;
+        } else {
+          const networkName = getNetworkName(chainId);
+          updateCheckItem(sepoliaNetworkEl, 'warning', `Connected to ${networkName}`, 'Please switch to the Sepolia test network.');
+          switchNetworkBtn.style.display = 'block';
+          return false;
+        }
+      } catch (error) {
+        updateCheckItem(sepoliaNetworkEl, 'error', 'Error checking network', `Error: ${error.message}`);
+        return false;
+      }
+    }
+    
+    // Check ETH balance
+    async function checkEthBalance() {
+      try {
+        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+        if (accounts.length === 0) {
+          updateCheckItem(ethBalanceEl, 'warning', 'Cannot check balance', 'Please connect your MetaMask wallet first.');
+          return false;
+        }
+        
+        const balance = await window.ethereum.request({
+          method: 'eth_getBalance',
+          params: [accounts[0], 'latest']
+        });
+        
+        const ethBalance = parseInt(balance, 16) / 1e18;
+        
+        if (ethBalance > 0) {
+          updateCheckItem(ethBalanceEl, 'success', 'Sufficient ETH balance', `Your balance: <span class="balance">${ethBalance.toFixed(4)} ETH</span>`);
+          return true;
+        } else {
+          updateCheckItem(ethBalanceEl, 'warning', 'Insufficient ETH balance', 'You need some Sepolia ETH to use the application.');
+          getEthBtn.style.display = 'block';
+          return false;
+        }
+      } catch (error) {
+        updateCheckItem(ethBalanceEl, 'error', 'Error checking balance', `Error: ${error.message}`);
+        return false;
+      }
+    }
+    
+    // Connect to MetaMask
+    async function connectMetaMask() {
+      try {
+        await window.ethereum.request({ method: 'eth_requestAccounts' });
+        connectBtn.style.display = 'none';
+        await checkMetaMaskConnected();
+        await checkSepoliaNetwork();
+        await checkEthBalance();
+        updateSummary();
+      } catch (error) {
+        console.error('Error connecting to MetaMask:', error);
+      }
+    }
+    
+    // Switch to Sepolia network
+    async function switchToSepolia() {
+      try {
+        await window.ethereum.request({
+          method: 'wallet_switchEthereumChain',
+          params: [{ chainId: SEPOLIA_CHAIN_ID }],
+        });
+        switchNetworkBtn.style.display = 'none';
+        await checkSepoliaNetwork();
+        await checkEthBalance();
+        updateSummary();
+      } catch (error) {
+        if (error.code === 4902) {
+          try {
+            await window.ethereum.request({
+              method: 'wallet_addEthereumChain',
+              params: [
+                {
+                  chainId: SEPOLIA_CHAIN_ID,
+                  chainName: 'Sepolia Test Network',
+                  nativeCurrency: {
+                    name: 'Ethereum',
+                    symbol: 'ETH',
+                    decimals: 18,
+                  },
+                  rpcUrls: ['https://sepolia.infura.io/v3/'],
+                  blockExplorerUrls: ['https://sepolia.etherscan.io'],
+                },
+              ],
+            });
+            switchNetworkBtn.style.display = 'none';
+            await checkSepoliaNetwork();
+            await checkEthBalance();
+            updateSummary();
+          } catch (addError) {
+            console.error('Error adding Sepolia network:', addError);
+          }
+        } else {
+          console.error('Error switching to Sepolia:', error);
+        }
+      }
+    }
+    
+    // Get network name from chain ID
+    function getNetworkName(chainId) {
+      const networks = {
+        '0x1': 'Ethereum Mainnet',
+        '0x3': 'Ropsten',
+        '0x4': 'Rinkeby',
+        '0x5': 'Goerli',
+        '0xaa36a7': 'Sepolia',
+        '0x38': 'Binance Smart Chain',
+        '0x89': 'Polygon',
+        '0xa86a': 'Avalanche',
+        '0xa': 'Optimism',
+        '0x539': 'Localhost',
+        '0x539': 'Ganache',
+      };
+      
+      return networks[chainId] || `Unknown Network (${chainId})`;
+    }
+    
+    // Update check item UI
+    function updateCheckItem(element, status, title, message) {
+      element.className = `check-item ${status}`;
+      
+      let icon;
+      switch (status) {
+        case 'success':
+          icon = '<i class="fas fa-check-circle"></i>';
+          break;
+        case 'warning':
+          icon = '<i class="fas fa-exclamation-triangle"></i>';
+          break;
+        case 'error':
+          icon = '<i class="fas fa-times-circle"></i>';
+          break;
+        default:
+          icon = '<i class="fas fa-spinner fa-spin"></i>';
+      }
+      
+      element.innerHTML = `
+        ${icon}
+        <div class="check-item-content">
+          <h3>${title}</h3>
+          <p>${message}</p>
+        </div>
+      `;
+    }
+    
+    // Update summary
+    function updateSummary() {
+      const isInstalled = metamaskInstalledEl.classList.contains('success');
+      const isConnected = metamaskConnectedEl.classList.contains('success');
+      const isSepoliaNetwork = sepoliaNetworkEl.classList.contains('success');
+      const hasBalance = ethBalanceEl.classList.contains('success');
+      
+      summaryEl.style.display = 'block';
+      
+      if (isInstalled && isConnected && isSepoliaNetwork && hasBalance) {
+        summaryTextEl.innerHTML = 'Your MetaMask is properly configured for the E-Vault Law application. You can now proceed to the application.';
+      } else {
+        summaryTextEl.innerHTML = 'Please resolve the issues above before proceeding to the application.';
+      }
+    }
+    
+    // Event listeners
+    connectBtn.addEventListener('click', connectMetaMask);
+    switchNetworkBtn.addEventListener('click', switchToSepolia);
+    getEthBtn.addEventListener('click', () => {
+      window.open('https://sepoliafaucet.com/', '_blank');
+    });
+    
+    // Listen for account changes
+    if (window.ethereum) {
+      window.ethereum.on('accountsChanged', async (accounts) => {
+        await checkMetaMaskConnected();
+        await checkEthBalance();
+        updateSummary();
+      });
+      
+      window.ethereum.on('chainChanged', async (chainId) => {
+        await checkSepoliaNetwork();
+        await checkEthBalance();
+        updateSummary();
+      });
+    }
+    
+    // Run checks on page load
+    async function runChecks() {
+      const isInstalled = await checkMetaMaskInstalled();
+      if (!isInstalled) {
+        updateSummary();
+        return;
+      }
+      
+      const isConnected = await checkMetaMaskConnected();
+      if (!isConnected) {
+        updateSummary();
+        return;
+      }
+      
+      const isSepoliaNetwork = await checkSepoliaNetwork();
+      await checkEthBalance();
+      
+      updateSummary();
+    }
+    
+    // Initialize
+    runChecks();
+  </script>
+</body>
+</html>

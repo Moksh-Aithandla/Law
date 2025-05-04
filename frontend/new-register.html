@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - E-Vault Law</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="css/modern-law-theme.css">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    .register-container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 30px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    .register-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .register-header h2 {
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    
+    .register-header p {
+      color: #666;
+      font-size: 16px;
+    }
+    
+    .wallet-section {
+      margin-bottom: 30px;
+      padding: 15px;
+      background-color: #f8f9fa;
+      border-radius: 6px;
+      text-align: center;
+    }
+    
+    .wallet-address {
+      display: inline-block;
+      padding: 8px 15px;
+      background-color: #e9ecef;
+      border-radius: 4px;
+      font-family: monospace;
+      margin: 10px 0;
+      font-weight: 600;
+    }
+    
+    .wallet-address.connected {
+      background-color: #d4edda;
+      color: #155724;
+    }
+    
+    #connectWalletBtn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 20px;
+      background-color: #f8f9fa;
+      border: 1px solid #dee2e6;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    #connectWalletBtn:hover {
+      background-color: #e9ecef;
+    }
+    
+    #connectWalletBtn img {
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
+    }
+    
+    #registerForm {
+      opacity: 0.7;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+    
+    #registerForm.enabled {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #333;
+    }
+    
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: #80bdff;
+      outline: 0;
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+    
+    .submit-button {
+      width: 100%;
+      padding: 12px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    .submit-button:hover {
+      background-color: #2980b9;
+    }
+    
+    .submit-button:disabled {
+      background-color: #6c757d;
+      cursor: not-allowed;
+    }
+    
+    .message {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+    
+    .error-message {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+    
+    .success-message {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    
+    .loading-message {
+      background-color: #e9ecef;
+      color: #495057;
+      border: 1px solid #ced4da;
+    }
+    
+    .transaction-link {
+      display: block;
+      margin-top: 15px;
+      text-align: center;
+      color: #3498db;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .transaction-link:hover {
+      text-decoration: underline;
+    }
+    
+    /* Spinner */
+    .spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s ease-in-out infinite;
+      margin-right: 10px;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <i class="fas fa-gavel logo-icon"></i>
+          E-Vault Law
+        </div>
+        <ul>
+          <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+          <li class="wallet-info">
+            <span id="wallet-status" class="wallet-status wallet-disconnected">Not Connected</span>
+          </li>
+          <li class="network-container">
+            <span id="network-info" class="network-info">Not Connected</span>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="register-container">
+        <div class="register-header">
+          <h2><i class="fas fa-user-plus"></i> Register</h2>
+          <p>Create a new account to access the E-Vault Law Management System</p>
+        </div>
+        
+        <div class="wallet-section">
+          <p>Connect your MetaMask wallet to register:</p>
+          <div id="wallet-address" class="wallet-address">Not Connected</div>
+          <button id="connectWalletBtn">
+            <img src="https://metamask.io/images/metamask-fox.svg" alt="MetaMask">
+            Connect MetaMask
+          </button>
+        </div>
+        
+        <form id="registerForm">
+          <div class="form-group">
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" placeholder="Enter your full name" required disabled>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" placeholder="Enter your email address" required disabled>
+          </div>
+          
+          <div class="form-group">
+            <label for="role">Select Role:</label>
+            <select id="role" required disabled>
+              <option value="">-- Select your role --</option>
+              <option value="client">Client</option>
+              <option value="lawyer">Lawyer</option>
+              <option value="judge">Judge</option>
+            </select>
+          </div>
+          
+          <div class="form-group" id="barIdGroup" style="display: none;">
+            <label for="barId">Bar ID:</label>
+            <input type="text" id="barId" placeholder="Enter your Bar ID" disabled>
+          </div>
+          
+          <div class="form-group" id="judicialIdGroup" style="display: none;">
+            <label for="judicialId">Judicial ID:</label>
+            <input type="text" id="judicialId" placeholder="Enter your Judicial ID" disabled>
+          </div>
+          
+          <button type="submit" id="submitButton" class="submit-button" disabled>Register</button>
+        </form>
+        
+        <div id="statusMessage" class="message" style="display: none;"></div>
+        <a id="transactionLink" class="transaction-link" style="display: none;" target="_blank"></a>
+      </div>
+    </div>
+  </main>
+  
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 E-Vault Law Management System. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.ethers.io/lib/ethers-5.7.2.umd.min.js" type="application/javascript"></script>
+  <script type="module">
+    import { 
+      initMetaMask, 
+      connectMetaMask, 
+      getCurrentAccount, 
+      getConnectionStatus,
+      initContracts,
+      getExplorerUrl
+    } from './js/improved-metamask.js';
+    
+    import { 
+      userRegistryAddress,
+      defaultNetwork
+    } from './config.js';
+    
+    // DOM elements
+    const walletAddressElement = document.getElementById('wallet-address');
+    const registerForm = document.getElementById('registerForm');
+    const fullNameInput = document.getElementById('fullName');
+    const emailInput = document.getElementById('email');
+    const roleSelect = document.getElementById('role');
+    const barIdGroup = document.getElementById('barIdGroup');
+    const barIdInput = document.getElementById('barId');
+    const judicialIdGroup = document.getElementById('judicialIdGroup');
+    const judicialIdInput = document.getElementById('judicialId');
+    const submitButton = document.getElementById('submitButton');
+    const statusMessage = document.getElementById('statusMessage');
+    const transactionLink = document.getElementById('transactionLink');
+    
+    // Contract variables
+    let userRegistryContract = null;
+    let signer = null;
+    
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Initialize MetaMask
+      await initMetaMask();
+      
+      // Add event listeners
+      document.getElementById('connectWalletBtn').addEventListener('click', handleConnectWallet);
+      registerForm.addEventListener('submit', handleRegister);
+      roleSelect.addEventListener('change', handleRoleChange);
+      
+      // Check if MetaMask is already connected
+      const status = getConnectionStatus();
+      if (status.isConnected) {
+        updateWalletAddress(status.account);
+        enableForm();
+      } else {
+        disableForm();
+      }
+      
+      // Listen for account changes
+      if (window.ethereum) {
+        window.ethereum.on('accountsChanged', (accounts) => {
+          if (accounts.length > 0) {
+            updateWalletAddress(accounts[0]);
+            enableForm();
+          } else {
+            updateWalletAddress(null);
+            disableForm();
+          }
+        });
+      }
+    });
+    
+    // Handle wallet connection
+    async function handleConnectWallet() {
+      const connected = await connectMetaMask();
+      if (connected) {
+        const account = getCurrentAccount();
+        updateWalletAddress(account);
+        enableForm();
+      }
+    }
+    
+    // Update wallet address display
+    function updateWalletAddress(address) {
+      if (address) {
+        walletAddressElement.textContent = `${address.substring(0, 6)}...${address.substring(38)}`;
+        walletAddressElement.classList.add('connected');
+      } else {
+        walletAddressElement.textContent = 'Not Connected';
+        walletAddressElement.classList.remove('connected');
+      }
+    }
+    
+    // Enable form after wallet connection
+    function enableForm() {
+      registerForm.classList.add('enabled');
+      fullNameInput.disabled = false;
+      emailInput.disabled = false;
+      roleSelect.disabled = false;
+      submitButton.disabled = false;
+    }
+    
+    // Disable form when wallet is not connected
+    function disableForm() {
+      registerForm.classList.remove('enabled');
+      fullNameInput.disabled = true;
+      emailInput.disabled = true;
+      roleSelect.disabled = true;
+      barIdInput.disabled = true;
+      judicialIdInput.disabled = true;
+      submitButton.disabled = true;
+    }
+    
+    // Handle role change
+    function handleRoleChange() {
+      const selectedRole = roleSelect.value;
+      
+      // Show/hide Bar ID field for lawyers
+      if (selectedRole === 'lawyer') {
+        barIdGroup.style.display = 'block';
+        barIdInput.disabled = false;
+        barIdInput.required = true;
+        judicialIdGroup.style.display = 'none';
+        judicialIdInput.disabled = true;
+        judicialIdInput.required = false;
+      } 
+      // Show/hide Judicial ID field for judges
+      else if (selectedRole === 'judge') {
+        judicialIdGroup.style.display = 'block';
+        judicialIdInput.disabled = false;
+        judicialIdInput.required = true;
+        barIdGroup.style.display = 'none';
+        barIdInput.disabled = true;
+        barIdInput.required = false;
+      } 
+      // Hide both fields for clients
+      else {
+        barIdGroup.style.display = 'none';
+        barIdInput.disabled = true;
+        barIdInput.required = false;
+        judicialIdGroup.style.display = 'none';
+        judicialIdInput.disabled = true;
+        judicialIdInput.required = false;
+      }
+    }
+    
+    // Handle registration form submission
+    async function handleRegister(event) {
+      event.preventDefault();
+      
+      // Get current account
+      const account = getCurrentAccount();
+      if (!account) {
+        showError('No wallet connected. Please connect your MetaMask wallet.');
+        return;
+      }
+      
+      // Get form values
+      const name = fullNameInput.value.trim();
+      const email = emailInput.value.trim();
+      const role = roleSelect.value;
+      const barId = barIdInput.value.trim();
+      const judicialId = judicialIdInput.value.trim();
+      
+      // Validate form
+      if (!name) {
+        showError('Please enter your full name.');
+        return;
+      }
+      
+      if (!email) {
+        showError('Please enter your email address.');
+        return;
+      }
+      
+      if (!role) {
+        showError('Please select a role.');
+        return;
+      }
+      
+      if (role === 'lawyer' && !barId) {
+        showError('Please enter your Bar ID.');
+        return;
+      }
+      
+      if (role === 'judge' && !judicialId) {
+        showError('Please enter your Judicial ID.');
+        return;
+      }
+      
+      // Show loading state
+      showLoading('Registering your account...');
+      submitButton.disabled = true;
+      
+      try {
+        // Initialize contracts
+        await initializeContracts();
+        
+        // Register user based on role
+        let tx;
+        if (role === 'lawyer') {
+          tx = await userRegistryContract.registerAsLawyer(name, email, barId);
+        } else if (role === 'judge') {
+          tx = await userRegistryContract.registerAsJudge(name, email, judicialId);
+        } else {
+          tx = await userRegistryContract.registerAsClient(name, email);
+        }
+        
+        // Show transaction hash
+        showSuccess('Registration submitted! Please wait for admin approval.');
+        
+        // Show transaction link
+        const chainId = parseInt(await window.ethereum.request({ method: 'eth_chainId' }), 16);
+        const explorerUrl = getExplorerUrl(chainId, tx.hash);
+        transactionLink.href = explorerUrl;
+        transactionLink.textContent = 'View transaction on Etherscan';
+        transactionLink.style.display = 'block';
+        
+        // Wait for transaction to be mined
+        await tx.wait();
+        
+        // Show success message
+        showSuccess('Registration confirmed! Please wait for admin approval before logging in.');
+        
+        // Clear form
+        registerForm.reset();
+        barIdGroup.style.display = 'none';
+        judicialIdGroup.style.display = 'none';
+      } catch (error) {
+        console.error('Registration error:', error);
+        showError(`Registration failed: ${error.message}`);
+        submitButton.disabled = false;
+      }
+    }
+    
+    // Initialize contracts
+    async function initializeContracts() {
+      try {
+        // Initialize contracts if not already done
+        await initContracts();
+        
+        // Get provider and signer
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        signer = provider.getSigner();
+        
+        // Get UserRegistry contract
+        const userRegistryABI = await fetch('./abi/UserRegistry.json').then(res => res.json());
+        userRegistryContract = new ethers.Contract(userRegistryAddress, userRegistryABI, signer);
+      } catch (error) {
+        console.error('Error initializing contracts:', error);
+        throw new Error('Failed to initialize blockchain contracts. Please try again.');
+      }
+    }
+    
+    // Show error message
+    function showError(message) {
+      statusMessage.textContent = message;
+      statusMessage.className = 'message error-message';
+      statusMessage.style.display = 'block';
+    }
+    
+    // Show success message
+    function showSuccess(message) {
+      statusMessage.textContent = message;
+      statusMessage.className = 'message success-message';
+      statusMessage.style.display = 'block';
+    }
+    
+    // Show loading message
+    function showLoading(message) {
+      statusMessage.innerHTML = `<span class="spinner"></span> ${message}`;
+      statusMessage.className = 'message loading-message';
+      statusMessage.style.display = 'block';
+    }
+  </script>
+</body>
+</html>

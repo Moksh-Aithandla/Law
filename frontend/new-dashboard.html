@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - E-Vault Law</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="css/modern-law-theme.css">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    .dashboard-container {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 30px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    .dashboard-header {
+      margin-bottom: 30px;
+    }
+    
+    .dashboard-header h2 {
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .dashboard-header h2 i {
+      margin-right: 10px;
+      color: #3498db;
+    }
+    
+    .dashboard-header p {
+      color: #666;
+      font-size: 16px;
+    }
+    
+    .user-info {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+      padding: 20px;
+      background-color: #f8f9fa;
+      border-radius: 8px;
+    }
+    
+    .user-avatar {
+      width: 80px;
+      height: 80px;
+      background-color: #e9ecef;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 20px;
+      font-size: 36px;
+      color: #6c757d;
+    }
+    
+    .user-details {
+      flex-grow: 1;
+    }
+    
+    .user-name {
+      font-size: 20px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 5px;
+    }
+    
+    .user-role {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    
+    .role-client {
+      background-color: #d1ecf1;
+      color: #0c5460;
+    }
+    
+    .role-lawyer {
+      background-color: #d4edda;
+      color: #155724;
+    }
+    
+    .role-judge {
+      background-color: #fff3cd;
+      color: #856404;
+    }
+    
+    .user-address {
+      font-family: monospace;
+      color: #6c757d;
+    }
+    
+    .dashboard-actions {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    
+    .action-card {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .action-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+    
+    .action-icon {
+      font-size: 36px;
+      color: #3498db;
+      margin-bottom: 15px;
+    }
+    
+    .action-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    
+    .action-description {
+      color: #6c757d;
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+    
+    .dashboard-section {
+      margin-bottom: 40px;
+    }
+    
+    .dashboard-section h3 {
+      font-size: 20px;
+      color: #333;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e9ecef;
+    }
+    
+    .document-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .document-item {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      border-bottom: 1px solid #e9ecef;
+      transition: background-color 0.3s ease;
+    }
+    
+    .document-item:hover {
+      background-color: #f8f9fa;
+    }
+    
+    .document-item i {
+      font-size: 24px;
+      color: #3498db;
+      margin-right: 15px;
+    }
+    
+    .document-info {
+      flex-grow: 1;
+    }
+    
+    .document-name {
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 5px;
+    }
+    
+    .document-meta {
+      font-size: 12px;
+      color: #6c757d;
+    }
+    
+    .document-actions {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+    
+    .btn:hover {
+      background-color: #2980b9;
+    }
+    
+    .btn-secondary {
+      background-color: #6c757d;
+    }
+    
+    .btn-secondary:hover {
+      background-color: #5a6268;
+    }
+    
+    .btn-small {
+      padding: 4px 8px;
+      font-size: 12px;
+    }
+    
+    .empty-state {
+      text-align: center;
+      padding: 40px 20px;
+      background-color: #f8f9fa;
+      border-radius: 8px;
+    }
+    
+    .empty-state i {
+      font-size: 48px;
+      color: #6c757d;
+      margin-bottom: 15px;
+    }
+    
+    .empty-state h4 {
+      font-size: 18px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    
+    .empty-state p {
+      color: #6c757d;
+      max-width: 500px;
+      margin: 0 auto 20px;
+    }
+    
+    /* Access Denied */
+    .access-denied {
+      text-align: center;
+      padding: 50px 20px;
+      background-color: #f8d7da;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      display: none;
+    }
+    
+    .access-denied i {
+      font-size: 64px;
+      color: #721c24;
+      margin-bottom: 20px;
+    }
+    
+    .access-denied h3 {
+      font-size: 24px;
+      color: #721c24;
+      margin-bottom: 15px;
+    }
+    
+    .access-denied p {
+      color: #721c24;
+      max-width: 600px;
+      margin: 0 auto 20px;
+    }
+    
+    /* Role-specific dashboards */
+    .role-dashboard {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <i class="fas fa-gavel logo-icon"></i>
+          E-Vault Law
+        </div>
+        <ul>
+          <li><a href="dashboard.html" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+          <li><a href="documents.html"><i class="fas fa-file-alt"></i> Documents</a></li>
+          <li><a href="upload.html"><i class="fas fa-cloud-upload-alt"></i> Upload</a></li>
+          <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+          <li class="wallet-info">
+            <span id="wallet-status" class="wallet-status wallet-disconnected">Not Connected</span>
+          </li>
+          <li class="network-container">
+            <span id="network-info" class="network-info">Not Connected</span>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div id="access-denied" class="access-denied">
+        <i class="fas fa-ban"></i>
+        <h3>Access Denied</h3>
+        <p>Your wallet is not approved to access this application. Please register and wait for admin approval.</p>
+        <a href="register.html" class="btn">Register Now</a>
+      </div>
+      
+      <div id="dashboard-container" class="dashboard-container" style="display: none;">
+        <div class="dashboard-header">
+          <h2><i class="fas fa-tachometer-alt"></i> Dashboard</h2>
+          <p>Welcome to your E-Vault Law Management System dashboard</p>
+        </div>
+        
+        <div class="user-info">
+          <div class="user-avatar">
+            <i class="fas fa-user"></i>
+          </div>
+          <div class="user-details">
+            <div class="user-name" id="user-name">John Doe</div>
+            <div class="user-role role-client" id="user-role">Client</div>
+            <div class="user-address" id="user-address">0x1234...5678</div>
+          </div>
+        </div>
+        
+        <div class="dashboard-actions">
+          <div class="action-card">
+            <div class="action-icon">
+              <i class="fas fa-cloud-upload-alt"></i>
+            </div>
+            <div class="action-title">Upload Document</div>
+            <div class="action-description">Upload legal documents securely to the blockchain</div>
+            <a href="upload.html" class="btn">Upload Now</a>
+          </div>
+          
+          <div class="action-card">
+            <div class="action-icon">
+              <i class="fas fa-file-alt"></i>
+            </div>
+            <div class="action-title">View Documents</div>
+            <div class="action-description">Access all your uploaded legal documents</div>
+            <a href="documents.html" class="btn">View Documents</a>
+          </div>
+          
+          <div class="action-card admin-only" style="display: none;">
+            <div class="action-icon">
+              <i class="fas fa-user-shield"></i>
+            </div>
+            <div class="action-title">Admin Panel</div>
+            <div class="action-description">Manage user registrations and system settings</div>
+            <a href="admin.html" class="btn">Access Admin Panel</a>
+          </div>
+        </div>
+        
+        <!-- Client Dashboard -->
+        <div id="client-dashboard" class="role-dashboard">
+          <div class="dashboard-section">
+            <h3>My Recent Documents</h3>
+            
+            <div id="client-documents-empty" class="empty-state">
+              <i class="fas fa-file-alt"></i>
+              <h4>No Documents Yet</h4>
+              <p>You haven't uploaded any documents yet. Start by uploading your first document.</p>
+              <a href="upload.html" class="btn">Upload Document</a>
+            </div>
+            
+            <ul id="client-documents" class="document-list" style="display: none;">
+              <!-- Documents will be added here dynamically -->
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Lawyer Dashboard -->
+        <div id="lawyer-dashboard" class="role-dashboard">
+          <div class="dashboard-section">
+            <h3>My Recent Documents</h3>
+            
+            <div id="lawyer-documents-empty" class="empty-state">
+              <i class="fas fa-file-alt"></i>
+              <h4>No Documents Yet</h4>
+              <p>You haven't uploaded any documents yet. Start by uploading your first document.</p>
+              <a href="upload.html" class="btn">Upload Document</a>
+            </div>
+            
+            <ul id="lawyer-documents" class="document-list" style="display: none;">
+              <!-- Documents will be added here dynamically -->
+            </ul>
+          </div>
+          
+          <div class="dashboard-section">
+            <h3>My Cases</h3>
+            
+            <div id="lawyer-cases-empty" class="empty-state">
+              <i class="fas fa-briefcase"></i>
+              <h4>No Cases Yet</h4>
+              <p>You don't have any active cases at the moment.</p>
+            </div>
+            
+            <ul id="lawyer-cases" class="document-list" style="display: none;">
+              <!-- Cases will be added here dynamically -->
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Judge Dashboard -->
+        <div id="judge-dashboard" class="role-dashboard">
+          <div class="dashboard-section">
+            <h3>My Recent Documents</h3>
+            
+            <div id="judge-documents-empty" class="empty-state">
+              <i class="fas fa-file-alt"></i>
+              <h4>No Documents Yet</h4>
+              <p>You haven't uploaded any documents yet. Start by uploading your first document.</p>
+              <a href="upload.html" class="btn">Upload Document</a>
+            </div>
+            
+            <ul id="judge-documents" class="document-list" style="display: none;">
+              <!-- Documents will be added here dynamically -->
+            </ul>
+          </div>
+          
+          <div class="dashboard-section">
+            <h3>Assigned Cases</h3>
+            
+            <div id="judge-cases-empty" class="empty-state">
+              <i class="fas fa-gavel"></i>
+              <h4>No Cases Assigned</h4>
+              <p>You don't have any cases assigned to you at the moment.</p>
+            </div>
+            
+            <ul id="judge-cases" class="document-list" style="display: none;">
+              <!-- Cases will be added here dynamically -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 E-Vault Law Management System. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.ethers.io/lib/ethers-5.7.2.umd.min.js" type="application/javascript"></script>
+  <script type="module">
+    import { 
+      initMetaMask, 
+      connectMetaMask, 
+      getCurrentAccount, 
+      isUserApproved,
+      getUserRole,
+      isAdmin,
+      initContracts
+    } from './js/improved-metamask.js';
+    
+    import { 
+      documentStorageAddress,
+      getIpfsUrl
+    } from './config.js';
+    
+    // DOM elements
+    const dashboardContainer = document.getElementById('dashboard-container');
+    const accessDenied = document.getElementById('access-denied');
+    const userName = document.getElementById('user-name');
+    const userRole = document.getElementById('user-role');
+    const userAddress = document.getElementById('user-address');
+    const clientDashboard = document.getElementById('client-dashboard');
+    const lawyerDashboard = document.getElementById('lawyer-dashboard');
+    const judgeDashboard = document.getElementById('judge-dashboard');
+    const adminOnly = document.querySelectorAll('.admin-only');
+    
+    // Contract variables
+    let documentStorageContract = null;
+    let signer = null;
+    
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Initialize MetaMask
+      await initMetaMask();
+      
+      // Add event listeners
+      document.getElementById('logout-btn').addEventListener('click', handleLogout);
+      
+      // Check if MetaMask is connected
+      if (window.ethereum && ethereum.selectedAddress) {
+        // Check if user is approved
+        const approved = await isUserApproved();
+        if (approved) {
+          await loadDashboard();
+        } else {
+          showAccessDenied();
+        }
+      } else {
+        // Prompt to connect MetaMask
+        const connected = await connectMetaMask();
+        if (connected) {
+          // Check if user is approved
+          const approved = await isUserApproved();
+          if (approved) {
+            await loadDashboard();
+          } else {
+            showAccessDenied();
+          }
+        } else {
+          showAccessDenied();
+        }
+      }
+      
+      // Listen for account changes
+      if (window.ethereum) {
+        window.ethereum.on('accountsChanged', async (accounts) => {
+          if (accounts.length > 0) {
+            // Check if user is approved
+            const approved = await isUserApproved(accounts[0]);
+            if (approved) {
+              await loadDashboard();
+            } else {
+              showAccessDenied();
+            }
+          } else {
+            showAccessDenied();
+          }
+        });
+      }
+    });
+    
+    // Load dashboard
+    async function loadDashboard() {
+      try {
+        // Initialize contracts
+        await initializeContracts();
+        
+        // Get current account
+        const account = getCurrentAccount();
+        
+        // Update user address
+        userAddress.textContent = `${account.substring(0, 6)}...${account.substring(account.length - 4)}`;
+        
+        // Get user role
+        const role = await getUserRole();
+        
+        // Update user role display
+        userRole.textContent = role.charAt(0).toUpperCase() + role.slice(1);
+        userRole.className = `user-role role-${role.toLowerCase()}`;
+        
+        // Check if admin
+        const admin = await isAdmin();
+        if (admin) {
+          adminOnly.forEach(el => el.style.display = 'block');
+        }
+        
+        // Get user details from contract
+        const userRegistryContract = await getUserRegistryContract();
+        const userDetails = await userRegistryContract.getUserDetails(account);
+        
+        // Update user name
+        userName.textContent = userDetails.name;
+        
+        // Show appropriate dashboard based on role
+        showRoleDashboard(role);
+        
+        // Load user documents
+        await loadUserDocuments(account);
+        
+        // Show dashboard container
+        dashboardContainer.style.display = 'block';
+        accessDenied.style.display = 'none';
+      } catch (error) {
+        console.error('Error loading dashboard:', error);
+        showAccessDenied();
+      }
+    }
+    
+    // Show role-specific dashboard
+    function showRoleDashboard(role) {
+      // Hide all dashboards
+      clientDashboard.style.display = 'none';
+      lawyerDashboard.style.display = 'none';
+      judgeDashboard.style.display = 'none';
+      
+      // Show dashboard based on role
+      switch (role.toLowerCase()) {
+        case 'client':
+          clientDashboard.style.display = 'block';
+          break;
+        case 'lawyer':
+          lawyerDashboard.style.display = 'block';
+          break;
+        case 'judge':
+          judgeDashboard.style.display = 'block';
+          break;
+      }
+    }
+    
+    // Load user documents
+    async function loadUserDocuments(account) {
+      try {
+        // Get user documents
+        const documentIds = await documentStorageContract.getUserDocuments(account);
+        
+        // Get document lists based on role
+        const clientDocumentsList = document.getElementById('client-documents');
+        const lawyerDocumentsList = document.getElementById('lawyer-documents');
+        const judgeDocumentsList = document.getElementById('judge-documents');
+        
+        // Get empty states
+        const clientDocumentsEmpty = document.getElementById('client-documents-empty');
+        const lawyerDocumentsEmpty = document.getElementById('lawyer-documents-empty');
+        const judgeDocumentsEmpty = document.getElementById('judge-documents-empty');
+        
+        // Check if user has documents
+        if (documentIds.length > 0) {
+          // Clear document lists
+          clientDocumentsList.innerHTML = '';
+          lawyerDocumentsList.innerHTML = '';
+          judgeDocumentsList.innerHTML = '';
+          
+          // Show document lists and hide empty states
+          clientDocumentsList.style.display = 'block';
+          lawyerDocumentsList.style.display = 'block';
+          judgeDocumentsList.style.display = 'block';
+          clientDocumentsEmpty.style.display = 'none';
+          lawyerDocumentsEmpty.style.display = 'none';
+          judgeDocumentsEmpty.style.display = 'none';
+          
+          // Load documents (limit to 5 most recent)
+          const recentDocumentIds = documentIds.slice(-5).reverse();
+          
+          for (const documentId of recentDocumentIds) {
+            // Get document details
+            const document = await documentStorageContract.getDocument(documentId);
+            
+            // Create document item
+            const documentItem = createDocumentItem(document);
+            
+            // Add to appropriate list based on role
+            if (userRole.textContent.toLowerCase() === 'client') {
+              clientDocumentsList.appendChild(documentItem);
+            } else if (userRole.textContent.toLowerCase() === 'lawyer') {
+              lawyerDocumentsList.appendChild(documentItem);
+            } else if (userRole.textContent.toLowerCase() === 'judge') {
+              judgeDocumentsList.appendChild(documentItem);
+            }
+          }
+        } else {
+          // Hide document lists and show empty states
+          clientDocumentsList.style.display = 'none';
+          lawyerDocumentsList.style.display = 'none';
+          judgeDocumentsList.style.display = 'none';
+          clientDocumentsEmpty.style.display = 'block';
+          lawyerDocumentsEmpty.style.display = 'block';
+          judgeDocumentsEmpty.style.display = 'block';
+        }
+      } catch (error) {
+        console.error('Error loading user documents:', error);
+      }
+    }
+    
+    // Create document item
+    function createDocumentItem(document) {
+      // Create list item
+      const li = document.createElement('li');
+      li.className = 'document-item';
+      
+      // Create icon based on document type
+      const icon = document.createElement('i');
+      switch (document.documentType) {
+        case 'contract':
+          icon.className = 'fas fa-file-contract';
+          break;
+        case 'evidence':
+          icon.className = 'fas fa-file-alt';
+          break;
+        case 'court_filing':
+          icon.className = 'fas fa-file-pdf';
+          break;
+        case 'legal_brief':
+          icon.className = 'fas fa-file-word';
+          break;
+        case 'affidavit':
+          icon.className = 'fas fa-file-signature';
+          break;
+        default:
+          icon.className = 'fas fa-file';
+      }
+      
+      // Format date
+      const date = new Date(document.uploadDate.toNumber() * 1000);
+      const formattedDate = date.toLocaleDateString();
+      
+      // Create document info
+      const info = document.createElement('div');
+      info.className = 'document-info';
+      
+      const name = document.createElement('div');
+      name.className = 'document-name';
+      name.textContent = document.name;
+      
+      const meta = document.createElement('div');
+      meta.className = 'document-meta';
+      meta.textContent = `${document.documentType} • Uploaded on ${formattedDate}`;
+      
+      info.appendChild(name);
+      info.appendChild(meta);
+      
+      // Create document actions
+      const actions = document.createElement('div');
+      actions.className = 'document-actions';
+      
+      const viewBtn = document.createElement('a');
+      viewBtn.href = getIpfsUrl(document.contentCID);
+      viewBtn.className = 'btn btn-small';
+      viewBtn.target = '_blank';
+      viewBtn.innerHTML = '<i class="fas fa-eye"></i> View';
+      
+      actions.appendChild(viewBtn);
+      
+      // Assemble document item
+      li.appendChild(icon);
+      li.appendChild(info);
+      li.appendChild(actions);
+      
+      return li;
+    }
+    
+    // Show dashboard container
+    function showDashboard() {
+      dashboardContainer.style.display = 'block';
+      accessDenied.style.display = 'none';
+    }
+    
+    // Show access denied message
+    function showAccessDenied() {
+      dashboardContainer.style.display = 'none';
+      accessDenied.style.display = 'block';
+    }
+    
+    // Initialize contracts
+    async function initializeContracts() {
+      try {
+        // Initialize contracts if not already done
+        await initContracts();
+        
+        // Get provider and signer
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        signer = provider.getSigner();
+        
+        // Get DocumentStorage contract
+        const documentStorageABI = await fetch('./abi/DocumentStorage.json').then(res => res.json());
+        documentStorageContract = new ethers.Contract(documentStorageAddress, documentStorageABI, signer);
+      } catch (error) {
+        console.error('Error initializing contracts:', error);
+        throw new Error('Failed to initialize blockchain contracts. Please try again.');
+      }
+    }
+    
+    // Get UserRegistry contract
+    async function getUserRegistryContract() {
+      try {
+        // Get provider and signer
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+        
+        // Get UserRegistry contract address from DocumentStorage contract
+        const userRegistryAddress = await documentStorageContract.userRegistry();
+        
+        // Get UserRegistry contract
+        const userRegistryABI = await fetch('./abi/UserRegistry.json').then(res => res.json());
+        return new ethers.Contract(userRegistryAddress, userRegistryABI, signer);
+      } catch (error) {
+        console.error('Error getting UserRegistry contract:', error);
+        throw new Error('Failed to get UserRegistry contract. Please try again.');
+      }
+    }
+    
+    // Handle logout
+    function handleLogout() {
+      // Clear local storage
+      localStorage.removeItem('userRole');
+      localStorage.removeItem('userAddress');
+      localStorage.removeItem('userName');
+      
+      // Redirect to home page
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>

@@ -4,11 +4,7 @@
  */
 
 // Import network configuration
-import { networkConfig, defaultNetwork } from '../config.js';
-
-// Admin wallet address - this is your MetaMask wallet address
-// Your connected wallet will be automatically set as admin
-export const ADMIN_WALLET_ADDRESS = ethereum?.selectedAddress || null;
+import { networkConfig, defaultNetwork, userRegistryAddress, ADMIN_WALLET_ADDRESS } from '../config.js';
 
 // Global state
 let currentAccount = null;
@@ -17,6 +13,7 @@ let isConnected = false;
 let isConnecting = false;
 let provider = null;
 let signer = null;
+let userRegistryContract = null;
 
 // Event listeners for connection status changes
 const connectionListeners = [];
@@ -658,4 +655,223 @@ export function getCurrentAccount() {
 export function getExplorerUrl(chainId, txHash) {
   const baseUrl = networkConfig[chainId]?.explorer || 'https://etherscan.io';
   return `${baseUrl}/tx/${txHash}`;
+}
+
+/**
+ * Initialize blockchain contracts
+ * @returns {Promise<boolean>} True if initialization successful, false otherwise
+ */
+export async function initContracts() {
+  if (!window.ethereum || !currentAccount || !window.ethers) {
+    console.error('Cannot initialize contracts: MetaMask not connected or ethers not available');
+    return false;
+  }
+
+  try {
+    // Initialize ethers provider and signer if not already done
+    if (!provider) {
+      provider = new ethers.providers.Web3Provider(window.ethereum);
+    }
+    
+    if (!signer) {
+      signer = provider.getSigner();
+    }
+
+    // Initialize UserRegistry contract
+    if (!userRegistryContract) {
+      // Fetch ABI from file
+      const response = await fetch('./abi/UserRegistry.json');
+      if (!response.ok) {
+        throw new Error(`Failed to fetch UserRegistry ABI: ${response.statusText}`);
+      }
+      
+      const userRegistryABI = await response.json();
+      userRegistryContract = new ethers.Contract(userRegistryAddress, userRegistryABI, signer);
+      console.log('UserRegistry contract initialized');
+    }
+
+    return true;
+  } catch (error) {
+    console.error('Error initializing contracts:', error);
+    showError(`Failed to initialize blockchain contracts: ${error.message}`);
+    return false;
+  }
+}
+
+/**
+ * Check if a user is approved in the UserRegistry contract
+ * @param {string} [address] - Optional address to check, defaults to current account
+ * @returns {Promise<boolean>} True if user is approved, false otherwise
+ */
+export async function isUserApproved(address) {
+  try {
+    // Initialize contracts if not already done
+    await initContracts();
+    
+    // Use provided address or current account
+    const userAddress = address || currentAccount;
+    
+    if (!userAddress) {
+      console.error('No address provided and no current account');
+      return false;
+    }
+    
+    // Check if user is approved
+    const isApproved = await userRegistryContract.isApproved(userAddress);
+    return isApproved;
+  } catch (error) {
+    console.error('Error checking if user is approved:', error);
+    return false;
+  }
+}
+
+/**
+ * Get user role from the UserRegistry contract
+ * @param {string} [address] - Optional address to check, defaults to current account
+ * @returns {Promise<string>} User role or empty string if not found
+ */
+export async function getUserRole(address) {
+  try {
+    // Initialize contracts if not already done
+    await initContracts();
+    
+    // Use provided address or current account
+    const userAddress = address || currentAccount;
+    
+    if (!userAddress) {
+      console.error('No address provided and no current account');
+      return '';
+    }
+    
+    // Check if user is registered
+    const isRegistered = await userRegistryContract.isRegistered(userAddress);
+    if (!isRegistered) {
+      return '';
+    }
+    
+    // Get user role
+    const role = await userRegistryContract.getUserRole(userAddress);
+    return role;
+  } catch (error) {
+    console.error('Error getting user role:', error);
+    return '';
+  }
+}
+
+/**
+ * Get connection status
+ * @returns {Object} Connection status object with isConnected, account, and chainId
+ */
+export function getConnectionStatus() {
+  return {
+    isConnected,
+    account: currentAccount,
+    chainId: currentChainId ? parseInt(currentChainId, 16) : null
+  };
+}
+
+/**
+ * Check if user is approved by the smart contract
+ * @param {string} address - Address to check (defaults to current account)
+ * @returns {Promise<boolean>} True if user is approved, false otherwise
+ */
+export async function isUserApproved(address = null) {
+  const userAddress = address || currentAccount;
+  if (!userAddress) {
+    console.error('Cannot check approval: No address provided and not connected');
+    return false;
+  }
+  
+  try {
+    // Initialize contracts if not already done
+    if (!userRegistryContract) {
+      const initialized = await initContracts();
+      if (!initialized) {
+        return false;
+      }
+    }
+    
+    // First check if user is registered
+    const isRegistered = await userRegistryContract.isUserRegistered(userAddress);
+    if (!isRegistered) {
+      console.log(`User ${userAddress} is not registered`);
+      return false;
+    }
+    
+    // Then check if user is approved
+    const isApproved = await userRegistryContract.isUserApproved(userAddress);
+    console.log(`User ${userAddress} approval status:`, isApproved);
+    return isApproved;
+  } catch (error) {
+    console.error('Error checking user approval:', error);
+    return false;
+  }
+}
+
+/**
+ * Check if the current account is the admin
+ * @returns {Promise<boolean>} True if the current account is the admin
+ */
+export async function isAdmin() {
+  if (!currentAccount) return false;
+  
+  // Check if the current account matches the hardcoded admin address
+  if (currentAccount.toLowerCase() === ADMIN_WALLET_ADDRESS?.toLowerCase()) {
+    return true;
+  }
+  
+  try {
+    // Initialize contracts if not already done
+    if (!userRegistryContract) {
+      const initialized = await initContracts();
+      if (!initialized) {
+        return false;
+      }
+    }
+    
+    // Check if the current account is the admin in the contract
+    const contractAdmin = await userRegistryContract.getAdmin();
+    return currentAccount.toLowerCase() === contractAdmin.toLowerCase();
+  } catch (error) {
+    console.error('Error checking admin status:', error);
+    return false;
+  }
+}
+
+/**
+ * Get user role from the contract
+ * @param {string} address - Address to check (defaults to current account)
+ * @returns {Promise<string>} User role or empty string if not found
+ */
+export async function getUserRole(address = null) {
+  const userAddress = address || currentAccount;
+  if (!userAddress) {
+    console.error('Cannot get role: No address provided and not connected');
+    return '';
+  }
+  
+  try {
+    // Initialize contracts if not already done
+    if (!userRegistryContract) {
+      const initialized = await initContracts();
+      if (!initialized) {
+        return '';
+      }
+    }
+    
+    // Check if user is registered
+    const isRegistered = await userRegistryContract.isUserRegistered(userAddress);
+    if (!isRegistered) {
+      console.log(`User ${userAddress} is not registered`);
+      return '';
+    }
+    
+    // Get user role
+    const role = await userRegistryContract.getUserRole(userAddress);
+    console.log(`User ${userAddress} role:`, role);
+    return role;
+  } catch (error) {
+    console.error('Error getting user role:', error);
+    return '';
+  }
 }
