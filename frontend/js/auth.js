@@ -1,328 +1,318 @@
-// Authentication functionality for E-Vault Law Management System
-import * as blockchainUtils from './blockchain-utils.js';
+he// Authentication and User Management for E-Vault Law Management System
 
-// DOM elements
-let connectWalletBtn;
-let loginForm;
-let registerForm;
-let loginError;
-let registerError;
-let roleSelect;
-let idField;
-let walletStatus;
-let networkInfo;
+import { 
+  connectToMetaMask, 
+  isUserRegistered, 
+  getUserRole, 
+  isUserApproved 
+} from './blockchain-utils.js';
+
+// Store user data
+let currentUser = {
+  address: null,
+  role: null,
+  isRegistered: false,
+  isApproved: false
+};
 
 // Initialize authentication
 async function initAuth() {
-  // Get DOM elements
-  connectWalletBtn = document.getElementById('connect-metamask');
-  loginForm = document.getElementById('login-form');
-  registerForm = document.getElementById('register-form');
-  loginError = document.getElementById('login-error');
-  registerError = document.getElementById('register-error');
-  roleSelect = document.getElementById('register-role');
-  idField = document.getElementById('id-field');
-  walletStatus = document.getElementById('wallet-status');
-  networkInfo = document.getElementById('network-info');
-  
-  // Set up event listeners
-  if (connectWalletBtn) {
-    connectWalletBtn.addEventListener('click', connectWallet);
-  }
-  
-  if (roleSelect) {
-    roleSelect.addEventListener('change', handleRoleChange);
-  }
-  
-  if (loginForm) {
-    loginForm.addEventListener('submit', handleLogin);
-  }
-  
-  if (registerForm) {
-    registerForm.addEventListener('submit', handleRegister);
-  }
-  
-  // Check if user is already logged in
-  const user = getLoggedInUser();
-  if (user) {
-    // Redirect to appropriate dashboard
-    redirectToDashboard(user.role);
-  }
-  
-  // Initialize blockchain
   try {
-    await blockchainUtils.initBlockchain();
-    updateWalletStatus();
-    updateNetworkInfo();
-  } catch (error) {
-    console.error("Error initializing blockchain:", error);
-  }
-  
-  // Set up event listeners for MetaMask events
-  if (window.ethereum) {
-    window.ethereum.on('accountsChanged', () => {
-      updateWalletStatus();
-      // If user is logged in, log them out
-      if (getLoggedInUser()) {
-        logout();
-        window.location.href = '/';
-      }
-    });
-    
-    window.ethereum.on('chainChanged', () => {
-      updateNetworkInfo();
-      window.location.reload();
-    });
-  }
-}
-
-// Connect wallet
-async function connectWallet() {
-  try {
-    await blockchainUtils.initBlockchain();
-    updateWalletStatus();
+    // Connect to MetaMask
+    const address = await connectToMetaMask();
+    currentUser.address = address;
     
     // Check if user is registered
-    const isRegistered = await blockchainUtils.isUserRegistered();
-    if (isRegistered) {
-      // Get user details
-      const userDetails = await blockchainUtils.getUserDetails();
+    currentUser.isRegistered = await isUserRegistered(address);
+    
+    if (currentUser.isRegistered) {
+      // Get user role and approval status
+      currentUser.role = await getUserRole(address);
+      currentUser.isApproved = await isUserApproved(address);
       
-      // Log in user
-      const user = {
-        address: blockchainUtils.getCurrentAccount(),
-        name: userDetails.name,
-        email: userDetails.email,
-        role: userDetails.role,
-        id: userDetails.id
-      };
+      // Store user data in session storage
+      sessionStorage.setItem('userAddress', address);
+      sessionStorage.setItem('userRole', currentUser.role);
+      sessionStorage.setItem('userIsApproved', currentUser.isApproved);
       
-      loginUser(user);
+      // Route user based on role and approval status
+      routeUser();
+    } else {
+      // User is not registered, show access denied message
+      displayError('You are not registered. Please contact Admin.');
       
-      // Show success message
-      if (loginError) {
-        loginError.textContent = "Login successful! Redirecting...";
-        loginError.className = "success";
+      // Create access denied message
+      const container = document.querySelector('.container');
+      if (container) {
+        container.innerHTML = `
+          <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+              <div class="card shadow">
+                <div class="card-header bg-danger text-white text-center">
+                  <h2>Access Denied</h2>
+                </div>
+                <div class="card-body text-center">
+                  <div class="mb-4">
+                    <i class="bi bi-shield-lock" style="font-size: 4rem;"></i>
+                  </div>
+                  
+                  <div class="alert alert-danger">
+                    <p>You are not registered. Please contact the Admin to get registered.</p>
+                  </div>
+                  
+                  <div class="d-grid gap-2 mt-4">
+                    <button id="check-status-btn" class="btn btn-primary">Check Again</button>
+                  </div>
+                </div>
+                <div class="card-footer text-center">
+                  <p class="mb-0">If you believe this is an error, please contact support.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        
+        // Add event listener to check status button
+        const checkStatusBtn = document.getElementById('check-status-btn');
+        if (checkStatusBtn) {
+          checkStatusBtn.addEventListener('click', () => {
+            window.location.reload();
+          });
+        }
       }
+    }
+    
+    return currentUser;
+  } catch (error) {
+    console.error('Authentication error:', error);
+    displayError(error.message);
+    throw error;
+  }
+}
+
+// Route user based on role and approval status
+function routeUser() {
+  // Get current page
+  const currentPage = window.location.pathname.split('/').pop();
+  
+  // If user is not approved, show access denied message
+  if (!currentUser.isApproved) {
+    displayError('Your account is not approved. Please contact Admin.');
+    
+    // Create access denied message
+    const container = document.querySelector('.container');
+    if (container) {
+      container.innerHTML = `
+        <div class="row justify-content-center mt-5">
+          <div class="col-md-6">
+            <div class="card shadow">
+              <div class="card-header bg-warning text-dark text-center">
+                <h2>Account Not Approved</h2>
+              </div>
+              <div class="card-body text-center">
+                <div class="mb-4">
+                  <i class="bi bi-hourglass-split" style="font-size: 4rem;"></i>
+                </div>
+                
+                <div class="alert alert-warning">
+                  <p>Your account is pending approval by an admin. Please check back later.</p>
+                </div>
+                
+                <div class="d-grid gap-2 mt-4">
+                  <button id="check-status-btn" class="btn btn-primary">Check Again</button>
+                </div>
+              </div>
+              <div class="card-footer text-center">
+                <p class="mb-0">If your account is not approved within 24 hours, please contact support.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
       
-      // Redirect to dashboard
-      setTimeout(() => {
-        redirectToDashboard(user.role);
-      }, 1000);
-    } else {
-      // User is not registered
-      if (loginError) {
-        loginError.textContent = "Wallet connected, but not registered. Please register first.";
-        loginError.className = "error";
+      // Add event listener to check status button
+      const checkStatusBtn = document.getElementById('check-status-btn');
+      if (checkStatusBtn) {
+        checkStatusBtn.addEventListener('click', () => {
+          window.location.reload();
+        });
       }
-      
-      // Redirect to registration page
-      setTimeout(() => {
-        window.location.href = '/register.html';
-      }, 2000);
     }
-  } catch (error) {
-    console.error("Error connecting wallet:", error);
-    if (loginError) {
-      loginError.textContent = "Error connecting wallet: " + error.message;
-      loginError.className = "error";
-    }
+    return;
   }
-}
-
-// Handle role change
-function handleRoleChange() {
-  if (roleSelect && idField) {
-    const role = roleSelect.value;
-    if (role === 'lawyer' || role === 'judge') {
-      idField.style.display = 'block';
-    } else {
-      idField.style.display = 'none';
-    }
-  }
-}
-
-// Handle login
-async function handleLogin(event) {
-  event.preventDefault();
   
-  try {
-    // Connect wallet
-    await connectWallet();
-  } catch (error) {
-    console.error("Error during login:", error);
-    if (loginError) {
-      loginError.textContent = "Error during login: " + error.message;
-      loginError.className = "error";
+  // If user is on the index page or login page, redirect to appropriate dashboard
+  if (currentPage === 'index.html' || currentPage === 'login.html' || currentPage === '') {
+    switch (currentUser.role) {
+      case 'admin':
+        window.location.href = 'admin-dashboard.html';
+        break;
+      case 'lawyer':
+        window.location.href = 'lawyer-dashboard.html';
+        break;
+      case 'judge':
+        window.location.href = 'judge-dashboard.html';
+        break;
+      case 'client':
+        window.location.href = 'client-dashboard.html';
+        break;
+      default:
+        // Unknown role, show error
+        displayError('Unknown user role. Please contact Admin.');
     }
   }
 }
 
-// Handle registration
-async function handleRegister(event) {
-  event.preventDefault();
+// Check if user is authorized for the current page
+function checkAuthorization() {
+  // Get current page
+  const currentPage = window.location.pathname.split('/').pop();
   
-  try {
-    // Get form values
-    const name = document.getElementById('register-name').value;
-    const email = document.getElementById('register-email').value;
-    const role = document.getElementById('register-role').value;
-    const id = document.getElementById('register-id')?.value || '';
-    
-    // Validate form
-    if (!name || !email || !role) {
-      registerError.textContent = "Please fill in all required fields";
-      registerError.className = "error";
-      return;
-    }
-    
-    if ((role === 'lawyer' || role === 'judge') && !id) {
-      registerError.textContent = `Please enter your ${role === 'lawyer' ? 'Bar ID' : 'Judicial ID'}`;
-      registerError.className = "error";
-      return;
-    }
-    
-    // Connect to blockchain
-    await blockchainUtils.initBlockchain();
-    updateWalletStatus();
-    
-    // Check if user is already registered
-    const isRegistered = await blockchainUtils.isUserRegistered();
-    if (isRegistered) {
-      registerError.textContent = "This wallet is already registered. Please use a different wallet or login.";
-      registerError.className = "error";
-      return;
-    }
-    
-    // Register user based on role
-    let success = false;
-    if (role === 'client') {
-      success = await blockchainUtils.registerAsClient(name, email);
-    } else if (role === 'lawyer') {
-      success = await blockchainUtils.registerAsLawyer(name, email, id);
-    } else if (role === 'judge') {
-      success = await blockchainUtils.registerAsJudge(name, email, id);
-    }
-    
-    if (success) {
-      // Get user details
-      const userDetails = await blockchainUtils.getUserDetails();
-      
-      // Log in user
-      const user = {
-        address: blockchainUtils.getCurrentAccount(),
-        name: userDetails.name,
-        email: userDetails.email,
-        role: userDetails.role,
-        id: userDetails.id
-      };
-      
-      loginUser(user);
-      
-      // Show success message
-      registerError.textContent = "Registration successful! Redirecting...";
-      registerError.className = "success";
-      
-      // Redirect to dashboard
-      setTimeout(() => {
-        redirectToDashboard(user.role);
-      }, 1000);
-    } else {
-      registerError.textContent = "Registration failed. Please try again.";
-      registerError.className = "error";
-    }
-  } catch (error) {
-    console.error("Error during registration:", error);
-    registerError.textContent = "Error during registration: " + error.message;
-    registerError.className = "error";
-  }
-}
-
-// Update wallet status
-function updateWalletStatus() {
-  if (walletStatus) {
-    const account = blockchainUtils.getCurrentAccount();
-    if (account) {
-      walletStatus.textContent = `Connected: ${account.substring(0, 6)}...${account.substring(account.length - 4)}`;
-      walletStatus.className = "wallet-status wallet-connected";
-      walletStatus.style.display = "inline-block";
-    } else {
-      walletStatus.textContent = "Not connected";
-      walletStatus.className = "wallet-status wallet-disconnected";
-      walletStatus.style.display = "inline-block";
-    }
-  }
-}
-
-// Update network info
-function updateNetworkInfo() {
-  if (networkInfo) {
-    const network = blockchainUtils.getNetworkInfo();
-    networkInfo.textContent = `Network: ${network.name}`;
-    networkInfo.style.display = "inline-block";
-  }
-}
-
-// Login user
-function loginUser(user) {
-  localStorage.setItem('user', JSON.stringify(user));
-}
-
-// Logout user
-function logout() {
-  localStorage.removeItem('user');
-}
-
-// Get logged in user
-function getLoggedInUser() {
-  const user = localStorage.getItem('user');
-  return user ? JSON.parse(user) : null;
-}
-
-// Redirect to dashboard based on role
-function redirectToDashboard(role) {
-  if (role === 'client') {
-    window.location.href = '/client-dashboard.html';
-  } else if (role === 'lawyer') {
-    window.location.href = '/lawyer-dashboard.html';
-  } else if (role === 'judge') {
-    window.location.href = '/judge-dashboard.html';
-  } else {
-    window.location.href = '/';
-  }
-}
-
-// Check if user is authorized for a page
-function checkAuthorization(allowedRoles) {
-  const user = getLoggedInUser();
+  // Get user data from session storage
+  const userRole = sessionStorage.getItem('userRole');
+  const userIsApproved = sessionStorage.getItem('userIsApproved') === 'true';
   
-  if (!user) {
-    // User is not logged in
-    window.location.href = '/login.html';
+  // If user is not approved, show access denied message
+  if (!userIsApproved) {
+    displayError('Your account is not approved. Please contact Admin.');
+    
+    // Create access denied message
+    const container = document.querySelector('.container');
+    if (container) {
+      container.innerHTML = `
+        <div class="row justify-content-center mt-5">
+          <div class="col-md-6">
+            <div class="card shadow">
+              <div class="card-header bg-warning text-dark text-center">
+                <h2>Account Not Approved</h2>
+              </div>
+              <div class="card-body text-center">
+                <div class="mb-4">
+                  <i class="bi bi-hourglass-split" style="font-size: 4rem;"></i>
+                </div>
+                
+                <div class="alert alert-warning">
+                  <p>Your account is pending approval by an admin. Please check back later.</p>
+                </div>
+                
+                <div class="d-grid gap-2 mt-4">
+                  <button id="check-status-btn" class="btn btn-primary">Check Again</button>
+                </div>
+              </div>
+              <div class="card-footer text-center">
+                <p class="mb-0">If your account is not approved within 24 hours, please contact support.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      // Add event listener to check status button
+      const checkStatusBtn = document.getElementById('check-status-btn');
+      if (checkStatusBtn) {
+        checkStatusBtn.addEventListener('click', () => {
+          window.location.reload();
+        });
+      }
+    }
     return false;
   }
   
-  if (!allowedRoles.includes(user.role)) {
-    // User is not authorized for this page
-    window.location.href = '/unauthorized.html';
+  // Check page access based on role
+  if (currentPage.includes('admin') && userRole !== 'admin') {
+    displayError('You do not have permission to access this page.');
+    
+    // Create access denied message
+    const container = document.querySelector('.container');
+    if (container) {
+      container.innerHTML = `
+        <div class="row justify-content-center mt-5">
+          <div class="col-md-6">
+            <div class="card shadow">
+              <div class="card-header bg-danger text-white text-center">
+                <h2>Access Denied</h2>
+              </div>
+              <div class="card-body text-center">
+                <div class="mb-4">
+                  <i class="bi bi-shield-lock" style="font-size: 4rem;"></i>
+                </div>
+                
+                <div class="alert alert-danger">
+                  <p>You do not have permission to access this page.</p>
+                </div>
+                
+                <div class="d-grid gap-2 mt-4">
+                  <button id="back-btn" class="btn btn-primary">Go Back</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      // Add event listener to back button
+      const backBtn = document.getElementById('back-btn');
+      if (backBtn) {
+        backBtn.addEventListener('click', () => {
+          window.history.back();
+        });
+      }
+    }
+    return false;
+  }
+  
+  if (currentPage.includes('lawyer') && userRole !== 'lawyer') {
+    displayError('You do not have permission to access this page.');
+    return false;
+  }
+  
+  if (currentPage.includes('judge') && userRole !== 'judge') {
+    displayError('You do not have permission to access this page.');
+    return false;
+  }
+  
+  if (currentPage.includes('client') && userRole !== 'client') {
+    displayError('You do not have permission to access this page.');
     return false;
   }
   
   return true;
 }
 
+// Display error message
+function displayError(message) {
+  const errorElement = document.getElementById('error-message');
+  if (errorElement) {
+    errorElement.textContent = message;
+    errorElement.style.display = 'block';
+  } else {
+    alert(`Error: ${message}`);
+  }
+}
+
+// Check if MetaMask is installed
+function isMetaMaskInstalled() {
+  return window.ethereum !== undefined;
+}
+
+// Logout user
+function logout() {
+  // Clear session storage
+  sessionStorage.removeItem('userAddress');
+  sessionStorage.removeItem('userRole');
+  sessionStorage.removeItem('userIsApproved');
+  
+  // Redirect to login page
+  window.location.href = 'index.html';
+}
+
 // Export functions
 export {
   initAuth,
-  connectWallet,
-  handleLogin,
-  handleRegister,
-  loginUser,
+  routeUser,
+  checkAuthorization,
+  displayError,
+  isMetaMaskInstalled,
   logout,
-  getLoggedInUser,
-  redirectToDashboard,
-  checkAuthorization
+  currentUser
 };
-
-// Initialize auth when DOM is loaded
-document.addEventListener('DOMContentLoaded', initAuth);

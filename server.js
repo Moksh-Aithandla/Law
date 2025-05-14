@@ -1,98 +1,73 @@
-const express = require('express');
-const path = require('path');
-const cors = require('cors');
-const multer = require('multer');
+const http = require('http');
 const fs = require('fs');
-const axios = require('axios');
-const FormData = require('form-data');
+const path = require('path');
 
-const app = express();
-const port = process.env.PORT || 3000;
+const PORT = 8000;
+const FRONTEND_DIR = path.join(__dirname, 'frontend');
 
-// Enable CORS
-app.use(cors());
+const MIME_TYPES = {
+    '.html': 'text/html',
+    '.js': 'text/javascript',
+    '.css': 'text/css',
+    '.json': 'application/json',
+    '.png': 'image/png',
+    '.jpg': 'image/jpeg',
+    '.gif': 'image/gif',
+    '.svg': 'image/svg+xml',
+    '.ico': 'image/x-icon',
+    '.woff': 'font/woff',
+    '.woff2': 'font/woff2',
+    '.ttf': 'font/ttf',
+    '.eot': 'application/vnd.ms-fontobject',
+    '.otf': 'font/otf'
+};
 
-// Serve static files from the frontend directory
-app.use(express.static(path.join(__dirname, 'frontend')));
-
-// Configure multer for file uploads
-const upload = multer({ 
-  dest: 'uploads/',
-  limits: { fileSize: 10 * 1024 * 1024 } // 10MB limit
-});
-
-// API endpoint for file uploads to Filebase
-app.post('/api/upload', upload.single('file'), async (req, res) => {
-  try {
-    // Get user address from headers
-    const userAddress = req.headers['x-user-address'];
-    if (!userAddress) {
-      return res.status(400).json({ success: false, message: 'User address is required' });
-    }
-
-    // Check if file was uploaded
-    if (!req.file) {
-      return res.status(400).json({ success: false, message: 'No file uploaded' });
-    }
-
-    // Read the file
-    const fileData = fs.readFileSync(req.file.path);
-
-    // Create form data for Filebase API
-    const formData = new FormData();
-    formData.append('file', fileData, {
-      filename: req.file.originalname,
-      contentType: req.file.mimetype
-    });
-
-    // Get Filebase API key from environment variable
-    const filebaseApiKey = process.env.FILEBASE_API_KEY || 'YOUR_FILEBASE_API_KEY';
-
-    // Upload to Filebase
-    const response = await axios.post('https://api.filebase.io/v1/ipfs', formData, {
-      headers: {
-        ...formData.getHeaders(),
-        'Authorization': `Bearer ${filebaseApiKey}`
-      }
-    });
-
-    // Delete the temporary file
-    fs.unlinkSync(req.file.path);
-
-    // Return the CID
-    return res.json({ 
-      success: true, 
-      cid: response.data.cid,
-      filename: req.file.originalname,
-      size: req.file.size,
-      type: req.file.mimetype
-    });
-  } catch (error) {
-    console.error('Error uploading to Filebase:', error);
+const server = http.createServer((req, res) => {
+    console.log(`${req.method} ${req.url}`);
     
-    // Delete the temporary file if it exists
-    if (req.file && req.file.path) {
-      try {
-        fs.unlinkSync(req.file.path);
-      } catch (unlinkError) {
-        console.error('Error deleting temporary file:', unlinkError);
-      }
+    // Normalize URL to prevent directory traversal
+    let filePath = path.normalize(path.join(FRONTEND_DIR, req.url));
+    
+    // If URL ends with /, serve index.html
+    if (filePath.endsWith('/')) {
+        filePath = path.join(filePath, 'index.html');
     }
     
-    return res.status(500).json({ 
-      success: false, 
-      message: 'Error uploading file to IPFS',
-      error: error.message
+    // Get file extension
+    const extname = path.extname(filePath);
+    
+    // Set content type
+    const contentType = MIME_TYPES[extname] || 'application/octet-stream';
+    
+    // Read file
+    fs.readFile(filePath, (err, content) => {
+        if (err) {
+            if (err.code === 'ENOENT') {
+                // Page not found
+                fs.readFile(path.join(FRONTEND_DIR, '404.html'), (err, content) => {
+                    if (err) {
+                        // No 404 page found
+                        res.writeHead(404);
+                        res.end('404 Not Found');
+                    } else {
+                        res.writeHead(404, { 'Content-Type': 'text/html' });
+                        res.end(content, 'utf-8');
+                    }
+                });
+            } else {
+                // Server error
+                res.writeHead(500);
+                res.end(`Server Error: ${err.code}`);
+            }
+        } else {
+            // Success
+            res.writeHead(200, { 'Content-Type': contentType });
+            res.end(content, 'utf-8');
+        }
     });
-  }
 });
 
-// Serve index.html for all routes (SPA support)
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
-});
-
-// Start the server
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+server.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}/`);
+    console.log(`Serving files from ${FRONTEND_DIR}`);
 });

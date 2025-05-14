@@ -1,1 +1,443 @@
-"[{\"type\":\"constructor\",\"stateMutability\":\"undefined\",\"payable\":false,\"inputs\":[{\"type\":\"address\",\"name\":\"_userRegistryAddress\"}]},{\"type\":\"event\",\"anonymous\":false,\"name\":\"DocumentAssociatedWithCase\",\"inputs\":[{\"type\":\"uint256\",\"name\":\"documentId\",\"indexed\":true},{\"type\":\"uint256\",\"name\":\"caseId\",\"indexed\":true}]},{\"type\":\"event\",\"anonymous\":false,\"name\":\"DocumentStored\",\"inputs\":[{\"type\":\"uint256\",\"name\":\"documentId\",\"indexed\":true},{\"type\":\"string\",\"name\":\"name\",\"indexed\":false},{\"type\":\"string\",\"name\":\"contentCID\",\"indexed\":false},{\"type\":\"address\",\"name\":\"owner\",\"indexed\":true},{\"type\":\"uint256\",\"name\":\"caseId\",\"indexed\":true}]},{\"type\":\"event\",\"anonymous\":false,\"name\":\"DocumentUpdated\",\"inputs\":[{\"type\":\"uint256\",\"name\":\"documentId\",\"indexed\":true},{\"type\":\"string\",\"name\":\"contentCID\",\"indexed\":false}]},{\"type\":\"function\",\"name\":\"associateWithCase\",\"constant\":false,\"payable\":false,\"inputs\":[{\"type\":\"uint256\",\"name\":\"_documentId\"},{\"type\":\"uint256\",\"name\":\"_caseId\"}],\"outputs\":[]},{\"type\":\"function\",\"name\":\"caseDocuments\",\"constant\":true,\"stateMutability\":\"view\",\"payable\":false,\"inputs\":[{\"type\":\"uint256\",\"name\":\"\"},{\"type\":\"uint256\",\"name\":\"\"}],\"outputs\":[{\"type\":\"uint256\",\"name\":\"\"}]},{\"type\":\"function\",\"name\":\"documentCounter\",\"constant\":true,\"stateMutability\":\"view\",\"payable\":false,\"inputs\":[],\"outputs\":[{\"type\":\"uint256\",\"name\":\"\"}]},{\"type\":\"function\",\"name\":\"documents\",\"constant\":true,\"stateMutability\":\"view\",\"payable\":false,\"inputs\":[{\"type\":\"uint256\",\"name\":\"\"}],\"outputs\":[{\"type\":\"uint256\",\"name\":\"documentId\"},{\"type\":\"string\",\"name\":\"name\"},{\"type\":\"string\",\"name\":\"description\"},{\"type\":\"string\",\"name\":\"contentCID\"},{\"type\":\"string\",\"name\":\"documentType\"},{\"type\":\"address\",\"name\":\"owner\"},{\"type\":\"uint256\",\"name\":\"uploadDate\"},{\"type\":\"uint256\",\"name\":\"caseId\"},{\"type\":\"bool\",\"name\":\"isPublic\"}]},{\"type\":\"function\",\"name\":\"getCaseDocumentCount\",\"constant\":true,\"stateMutability\":\"view\",\"payable\":false,\"inputs\":[{\"type\":\"uint256\",\"name\":\"_caseId\"}],\"outputs\":[{\"type\":\"uint256\",\"name\":\"\"}]},{\"type\":\"function\",\"name\":\"getCaseDocuments\",\"constant\":true,\"stateMutability\":\"view\",\"payable\":false,\"inputs\":[{\"type\":\"uint256\",\"name\":\"_caseId\"}],\"outputs\":[{\"type\":\"uint256[]\",\"name\":\"\"}]},{\"type\":\"function\",\"name\":\"getDocument\",\"constant\":true,\"stateMutability\":\"view\",\"payable\":false,\"inputs\":[{\"type\":\"uint256\",\"name\":\"_documentId\"}],\"outputs\":[{\"type\":\"tuple\",\"name\":\"\",\"components\":[{\"type\":\"uint256\",\"name\":\"documentId\"},{\"type\":\"string\",\"name\":\"name\"},{\"type\":\"string\",\"name\":\"description\"},{\"type\":\"string\",\"name\":\"contentCID\"},{\"type\":\"string\",\"name\":\"documentType\"},{\"type\":\"address\",\"name\":\"owner\"},{\"type\":\"uint256\",\"name\":\"uploadDate\"},{\"type\":\"uint256\",\"name\":\"caseId\"},{\"type\":\"bool\",\"name\":\"isPublic\"}]}]},{\"type\":\"function\",\"name\":\"getUserDocumentCount\",\"constant\":true,\"stateMutability\":\"view\",\"payable\":false,\"inputs\":[{\"type\":\"address\",\"name\":\"_user\"}],\"outputs\":[{\"type\":\"uint256\",\"name\":\"\"}]},{\"type\":\"function\",\"name\":\"getUserDocuments\",\"constant\":true,\"stateMutability\":\"view\",\"payable\":false,\"inputs\":[{\"type\":\"address\",\"name\":\"_user\"}],\"outputs\":[{\"type\":\"uint256[]\",\"name\":\"\"}]},{\"type\":\"function\",\"name\":\"storeDocument\",\"constant\":false,\"payable\":false,\"inputs\":[{\"type\":\"string\",\"name\":\"_name\"},{\"type\":\"string\",\"name\":\"_description\"},{\"type\":\"string\",\"name\":\"_contentCID\"},{\"type\":\"string\",\"name\":\"_documentType\"},{\"type\":\"uint256\",\"name\":\"_caseId\"},{\"type\":\"bool\",\"name\":\"_isPublic\"}],\"outputs\":[{\"type\":\"uint256\",\"name\":\"\"}]},{\"type\":\"function\",\"name\":\"updateDocumentCID\",\"constant\":false,\"payable\":false,\"inputs\":[{\"type\":\"uint256\",\"name\":\"_documentId\"},{\"type\":\"string\",\"name\":\"_newContentCID\"}],\"outputs\":[]},{\"type\":\"function\",\"name\":\"userDocuments\",\"constant\":true,\"stateMutability\":\"view\",\"payable\":false,\"inputs\":[{\"type\":\"address\",\"name\":\"\"},{\"type\":\"uint256\",\"name\":\"\"}],\"outputs\":[{\"type\":\"uint256\",\"name\":\"\"}]},{\"type\":\"function\",\"name\":\"userRegistry\",\"constant\":true,\"stateMutability\":\"view\",\"payable\":false,\"inputs\":[],\"outputs\":[{\"type\":\"address\",\"name\":\"\"}]}]"
+[
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_userRegistryAddress",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "documentId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "caseId",
+        "type": "uint256"
+      }
+    ],
+    "name": "DocumentAssociatedWithCase",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "documentId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "contentCID",
+        "type": "string"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "caseId",
+        "type": "uint256"
+      }
+    ],
+    "name": "DocumentStored",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "documentId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "contentCID",
+        "type": "string"
+      }
+    ],
+    "name": "DocumentUpdated",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_documentId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_caseId",
+        "type": "uint256"
+      }
+    ],
+    "name": "associateWithCase",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "caseDocuments",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "documentCounter",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "documents",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "documentId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "description",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "contentCID",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "documentType",
+        "type": "string"
+      },
+      {
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "uploadDate",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "caseId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "isPublic",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_caseId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getCaseDocumentCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_caseId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getCaseDocuments",
+    "outputs": [
+      {
+        "internalType": "uint256[]",
+        "name": "",
+        "type": "uint256[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_documentId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getDocument",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "documentId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "contentCID",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "documentType",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "owner",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "uploadDate",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "caseId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bool",
+            "name": "isPublic",
+            "type": "bool"
+          }
+        ],
+        "internalType": "struct DocumentStorage.Document",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_user",
+        "type": "address"
+      }
+    ],
+    "name": "getUserDocumentCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_user",
+        "type": "address"
+      }
+    ],
+    "name": "getUserDocuments",
+    "outputs": [
+      {
+        "internalType": "uint256[]",
+        "name": "",
+        "type": "uint256[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_description",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_contentCID",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_documentType",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_caseId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "_isPublic",
+        "type": "bool"
+      }
+    ],
+    "name": "storeDocument",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_documentId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "_newContentCID",
+        "type": "string"
+      }
+    ],
+    "name": "updateDocumentCID",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "userRegistry",
+    "outputs": [
+      {
+        "internalType": "contract UserRegistry",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "userDocuments",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]

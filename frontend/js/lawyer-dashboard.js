@@ -1,4 +1,4 @@
-// client-dashboard.js - Handles client dashboard functionality
+// lawyer-dashboard.js - Handles lawyer dashboard functionality
 
 // Web3 instance and contract instances
 let web3;
@@ -8,14 +8,16 @@ let caseManagerContract;
 let currentAccount;
 
 // DOM elements
-const profileSection = document.querySelector('.profile-section');
-const activeCasesCount = document.querySelector('.active-cases-count');
-const pendingCasesCount = document.querySelector('.pending-cases-count');
-const resolvedCasesCount = document.querySelector('.resolved-cases-count');
+const profileSection = document.getElementById('profile-section');
+const activeCasesCount = document.getElementById('active-cases-count');
+const caseScheduleTable = document.getElementById('case-schedule-table');
+const caseScheduleBody = document.getElementById('case-schedule-body');
 const uploadBtn = document.getElementById('uploadBtn');
-const recentDocumentsBody = document.querySelector('.recent-documents-body');
-const logoutButton = document.querySelector('.logout-button');
-const editProfileButton = document.querySelector('.edit-profile-button');
+const recentDocumentsTable = document.getElementById('recent-documents-table');
+const recentDocumentsBody = document.getElementById('recent-documents-body');
+const editProfileBtn = document.getElementById('editProfileBtn');
+const logoutBtn = document.getElementById('logoutBtn');
+const mobileMenuButton = document.getElementById('mobile-menu-button');
 
 // Initialize the dashboard
 document.addEventListener('DOMContentLoaded', async function() {
@@ -25,8 +27,8 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Set up event listeners
     setupEventListeners();
     
-    // Load client profile
-    await loadClientProfile();
+    // Load lawyer profile
+    await loadLawyerProfile();
     
     // Load cases
     await loadCases();
@@ -35,27 +37,9 @@ document.addEventListener('DOMContentLoaded', async function() {
     await loadRecentDocuments();
     
     // Mobile menu toggle
-    const menuToggle = document.getElementById('menuToggle');
-    const sidebar = document.querySelector('.sidebar');
-    if (menuToggle && sidebar) {
-        menuToggle.addEventListener('click', function() {
-            sidebar.classList.toggle('active');
-        });
-    }
-    
-    // Profile dropdown toggle
-    const profileDropdown = document.getElementById('profileDropdown');
-    const profileMenu = document.getElementById('profileMenu');
-    if (profileDropdown && profileMenu) {
-        profileDropdown.addEventListener('click', function() {
-            profileMenu.classList.toggle('hidden');
-        });
-        
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!profileDropdown.contains(event.target)) {
-                profileMenu.classList.add('hidden');
-            }
+    if (mobileMenuButton) {
+        mobileMenuButton.addEventListener('click', function() {
+            document.body.classList.toggle('mobile-menu-open');
         });
     }
 });
@@ -97,17 +81,17 @@ async function initWeb3() {
             // Initialize contract instances
             initContractInstances();
             
-            // Check if user is registered and is a client
+            // Check if user is registered and is a lawyer
             const isRegistered = await checkUserRegistration();
             if (!isRegistered) {
                 window.location.href = 'Blockchain-Law-Firm-DApp.html';
                 return false;
             }
             
-            // Check if user is a client
+            // Check if user is a lawyer
             const userRole = await userRegistryContract.methods.getUserRole(currentAccount).call();
-            if (userRole !== 'client') {
-                showToast("You are not registered as a client");
+            if (userRole !== 'lawyer') {
+                showToast("You are not registered as a lawyer");
                 window.location.href = 'Blockchain-Law-Firm-DApp.html';
                 return false;
             }
@@ -206,8 +190,8 @@ async function checkUserRegistration() {
 // Set up event listeners
 function setupEventListeners() {
     // Edit profile button
-    if (editProfileButton) {
-        editProfileButton.addEventListener('click', showEditProfileModal);
+    if (editProfileBtn) {
+        editProfileBtn.addEventListener('click', showEditProfileModal);
     }
     
     // Upload document button
@@ -216,42 +200,39 @@ function setupEventListeners() {
     }
     
     // Logout button
-    if (logoutButton) {
-        logoutButton.addEventListener('click', function() {
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', function() {
             localStorage.removeItem('userRole');
             window.location.href = 'Blockchain-Law-Firm-DApp.html';
         });
     }
 }
 
-// Load client profile
-async function loadClientProfile() {
+// Load lawyer profile
+async function loadLawyerProfile() {
     try {
         if (!userRegistryContract || !currentAccount) return;
         
         const userDetails = await userRegistryContract.methods.getUserDetails(currentAccount).call();
         
         // Update profile information
-        document.querySelectorAll('.client-name').forEach(el => {
-            el.textContent = userDetails.name;
-        });
+        document.getElementById('lawyer-name').textContent = userDetails.name;
+        document.getElementById('lawyer-email').textContent = userDetails.email;
+        document.getElementById('lawyer-bar-id').textContent = userDetails.id;
         
-        document.querySelectorAll('.client-email').forEach(el => {
-            el.textContent = userDetails.email;
-        });
+        // Update profile image with MetaMask address (using a placeholder for now)
+        document.getElementById('profile-image').src = `https://robohash.org/${currentAccount}?set=set3`;
+        
+        // Update header profile info
+        document.getElementById('header-lawyer-name').textContent = userDetails.name;
+        document.getElementById('header-lawyer-role').textContent = "Defense Attorney";
+        document.getElementById('header-profile-image').src = `https://robohash.org/${currentAccount}?set=set3`;
         
         // Format wallet address
         const formattedAddress = `${currentAccount.substring(0, 6)}...${currentAccount.substring(currentAccount.length - 4)}`;
-        document.querySelectorAll('.wallet-address').forEach(el => {
-            el.textContent = formattedAddress;
-        });
-        
-        // Update profile image with MetaMask address (using a placeholder for now)
-        document.querySelectorAll('.profile-image').forEach(el => {
-            el.src = `https://robohash.org/${currentAccount}?set=set3`;
-        });
+        document.getElementById('wallet-address').textContent = formattedAddress;
     } catch (error) {
-        console.error("Error loading client profile:", error);
+        console.error("Error loading lawyer profile:", error);
         showToast("Error loading profile: " + error.message);
     }
 }
@@ -261,43 +242,143 @@ async function loadCases() {
     try {
         if (!caseManagerContract || !currentAccount) return;
         
-        // Get client cases
-        const caseIds = await caseManagerContract.methods.getClientCases(currentAccount).call();
+        // Get lawyer cases
+        const caseIds = await caseManagerContract.methods.getLawyerCases(currentAccount).call();
         
-        // Count cases by status
+        // Count active cases
         let activeCount = 0;
-        let pendingCount = 0;
-        let resolvedCount = 0;
+        const casePromises = [];
+        
+        // Clear existing table rows
+        caseScheduleBody.innerHTML = '';
         
         // Process each case
         for (const caseId of caseIds) {
-            const caseDetails = await caseManagerContract.methods.getCaseDetails(caseId).call();
-            
-            // Count cases by status
-            // Status: Registered, InProgress, OnHold, Resolved, Closed, Appealed
-            if (caseDetails.status == 0 || caseDetails.status == 1) {
-                activeCount++;
-            } else if (caseDetails.status == 2) {
-                pendingCount++;
-            } else if (caseDetails.status == 3 || caseDetails.status == 4) {
-                resolvedCount++;
-            }
+            casePromises.push(caseManagerContract.methods.getCaseDetails(caseId).call());
         }
         
-        // Update case counts
-        if (activeCasesCount) activeCasesCount.textContent = activeCount;
-        if (pendingCasesCount) pendingCasesCount.textContent = pendingCount;
-        if (resolvedCasesCount) resolvedCasesCount.textContent = resolvedCount;
+        const cases = await Promise.all(casePromises);
+        
+        // Process case details
+        cases.forEach((caseDetails, index) => {
+            // Count active cases (status 0 = Registered, 1 = InProgress)
+            if (caseDetails.status == 0 || caseDetails.status == 1) {
+                activeCount++;
+            }
+            
+            // Add case to table (limit to 5 most recent)
+            if (index < 5) {
+                addCaseToTable(caseDetails);
+            }
+        });
+        
+        // Update active cases count
+        activeCasesCount.textContent = activeCount;
     } catch (error) {
         console.error("Error loading cases:", error);
         showToast("Error loading cases: " + error.message);
     }
 }
 
+// Add case to table
+function addCaseToTable(caseDetails) {
+    // Get client name
+    getUserName(caseDetails.client).then(clientName => {
+        // Get opposing lawyer name
+        getUserName(caseDetails.judge).then(judgeName => {
+            // Create table row
+            const tr = document.createElement('tr');
+            tr.className = 'border-b border-gray-100';
+            
+            // Format date
+            const hearingDate = new Date(caseDetails.filingDate * 1000);
+            const formattedDate = hearingDate.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            
+            // Get status text and class
+            const statusInfo = getCaseStatusInfo(caseDetails.status);
+            
+            // Create row HTML
+            tr.innerHTML = `
+                <td class="py-4 pr-4">
+                    <div class="font-medium">#${caseDetails.caseId}</div>
+                </td>
+                <td class="py-4 pr-4">
+                    <div class="font-medium">${clientName}</div>
+                </td>
+                <td class="py-4 pr-4">
+                    <div>${formattedDate}</div>
+                </td>
+                <td class="py-4 pr-4">
+                    <div>${judgeName}</div>
+                </td>
+                <td class="py-4 pr-4">
+                    <span class="px-3 py-1 rounded-full text-xs font-medium ${statusInfo.class} whitespace-nowrap">${statusInfo.text}</span>
+                </td>
+                <td class="py-4">
+                    <div class="flex space-x-2">
+                        <button class="w-8 h-8 flex items-center justify-center rounded-full text-slate-600 hover:bg-gray-100 !rounded-button view-case" data-case-id="${caseDetails.caseId}">
+                            <i class="ri-eye-line"></i>
+                        </button>
+                        <button class="w-8 h-8 flex items-center justify-center rounded-full text-slate-600 hover:bg-gray-100 !rounded-button edit-case" data-case-id="${caseDetails.caseId}">
+                            <i class="ri-edit-line"></i>
+                        </button>
+                    </div>
+                </td>
+            `;
+            
+            // Add event listeners
+            const viewBtn = tr.querySelector('.view-case');
+            const editBtn = tr.querySelector('.edit-case');
+            
+            viewBtn.addEventListener('click', () => viewCase(caseDetails.caseId));
+            editBtn.addEventListener('click', () => editCase(caseDetails.caseId));
+            
+            // Add to table
+            caseScheduleBody.appendChild(tr);
+        });
+    });
+}
+
+// Get case status info
+function getCaseStatusInfo(status) {
+    // Status: Registered, InProgress, OnHold, Resolved, Closed, Appealed
+    switch (parseInt(status)) {
+        case 0:
+            return { text: 'Scheduled', class: 'status-scheduled' };
+        case 1:
+            return { text: 'In Progress', class: 'status-in-progress' };
+        case 2:
+            return { text: 'On Hold', class: 'status-withdrawn' };
+        case 3:
+            return { text: 'Resolved', class: 'status-settled' };
+        case 4:
+            return { text: 'Closed', class: 'status-settled' };
+        case 5:
+            return { text: 'Appealed', class: 'status-withdrawn' };
+        default:
+            return { text: 'Unknown', class: 'status-withdrawn' };
+    }
+}
+
+// Get user name from address
+async function getUserName(address) {
+    try {
+        const userDetails = await userRegistryContract.methods.getUserDetails(address).call();
+        return userDetails.name;
+    } catch (error) {
+        console.error("Error getting user name:", error);
+        return address.substring(0, 6) + '...' + address.substring(address.length - 4);
+    }
+}
+
 // Load recent documents
 async function loadRecentDocuments() {
     try {
-        if (!documentStorageContract || !currentAccount || !recentDocumentsBody) return;
+        if (!documentStorageContract || !currentAccount) return;
         
         // Get user documents
         const documentIds = await documentStorageContract.methods.getUserDocuments(currentAccount).call();
@@ -337,8 +418,8 @@ function addDocumentToTable(docDetails) {
     
     // Get status
     const status = docDetails.isPublic ? 
-        '<span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Approved</span>' : 
-        '<span class="px-2 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">Pending Review</span>';
+        '<span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">Public</span>' : 
+        '<span class="px-2 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded-full">Private</span>';
     
     // Create row HTML
     tr.innerHTML = `
@@ -363,7 +444,7 @@ function addDocumentToTable(docDetails) {
                         <i class="ri-eye-line"></i>
                     </div>
                 </button>
-                <button class="text-gray-600 hover:text-primary download-document" data-cid="${docDetails.contentCID}" data-name="${docDetails.name}">
+                <button class="text-gray-600 hover:text-primary download-document" data-cid="${docDetails.contentCID}">
                     <div class="w-6 h-6 flex items-center justify-center">
                         <i class="ri-download-line"></i>
                     </div>
@@ -421,8 +502,28 @@ function showEditProfileModal() {
                     <input type="email" id="edit-email" class="w-full px-3 py-2 border border-gray-300 rounded-md" value="${userDetails.email}">
                 </div>
                 <div>
-                    <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                    <input type="tel" id="edit-phone" class="w-full px-3 py-2 border border-gray-300 rounded-md" value="+1 (555) 123-4567">
+                    <label for="barId" class="block text-sm font-medium text-gray-700 mb-1">Bar ID</label>
+                    <input type="text" id="edit-bar-id" class="w-full px-3 py-2 border border-gray-300 rounded-md" value="${userDetails.id}" readonly>
+                    <p class="text-xs text-gray-500 mt-1">Bar ID cannot be changed</p>
+                </div>
+                <div>
+                    <label for="specialty" class="block text-sm font-medium text-gray-700 mb-1">Specialty</label>
+                    <select id="edit-specialty" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                        <option value="Criminal Law">Criminal Law</option>
+                        <option value="Civil Law">Civil Law</option>
+                        <option value="Family Law">Family Law</option>
+                        <option value="Corporate Law">Corporate Law</option>
+                        <option value="Intellectual Property">Intellectual Property</option>
+                        <option value="Tax Law">Tax Law</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="experience" class="block text-sm font-medium text-gray-700 mb-1">Years of Experience</label>
+                    <input type="number" id="edit-experience" class="w-full px-3 py-2 border border-gray-300 rounded-md" min="1" max="50" value="12">
+                </div>
+                <div>
+                    <label for="location" class="block text-sm font-medium text-gray-700 mb-1">Office Location</label>
+                    <input type="text" id="edit-location" class="w-full px-3 py-2 border border-gray-300 rounded-md" value="Manhattan, New York">
                 </div>
                 <button id="saveProfileBtn" class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap w-full font-medium hover:bg-opacity-90 transition-all">Save Changes</button>
             </div>
@@ -449,7 +550,9 @@ async function updateProfile() {
     try {
         const name = document.getElementById('edit-name').value;
         const email = document.getElementById('edit-email').value;
-        const phone = document.getElementById('edit-phone').value;
+        const specialty = document.getElementById('edit-specialty').value;
+        const experience = document.getElementById('edit-experience').value;
+        const location = document.getElementById('edit-location').value;
         
         if (!name || !email) {
             showToast('Please fill in all required fields');
@@ -462,13 +565,9 @@ async function updateProfile() {
         // For now, we'll just update the UI
         
         // Update UI
-        document.querySelectorAll('.client-name').forEach(el => {
-            el.textContent = name;
-        });
-        
-        document.querySelectorAll('.client-email').forEach(el => {
-            el.textContent = email;
-        });
+        document.getElementById('lawyer-name').textContent = name;
+        document.getElementById('lawyer-email').textContent = email;
+        document.getElementById('header-lawyer-name').textContent = name;
         
         // Close modal
         hideModal();
@@ -523,7 +622,7 @@ function showUploadDocumentModal() {
         const caseSelect = document.getElementById('doc-case');
         if (caseSelect) {
             try {
-                const caseIds = await caseManagerContract.methods.getClientCases(currentAccount).call();
+                const caseIds = await caseManagerContract.methods.getLawyerCases(currentAccount).call();
                 
                 // Process each case
                 for (const caseId of caseIds) {
@@ -642,6 +741,18 @@ function downloadDocument(cid, name) {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+}
+
+// View case
+function viewCase(caseId) {
+    // Implement case viewing functionality
+    showToast(`Viewing case #${caseId}`);
+}
+
+// Edit case
+function editCase(caseId) {
+    // Implement case editing functionality
+    showToast(`Editing case #${caseId}`);
 }
 
 // Show modal

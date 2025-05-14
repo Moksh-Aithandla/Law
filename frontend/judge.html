@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Judge Dashboard | Justice System</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#4f46e5',secondary:'#818cf8'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<script src="https://cdn.jsdelivr.net/npm/web3@1.8.2/dist/web3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', sans-serif;
+overflow-x: hidden;
+}
+.sidebar {
+transition: all 0.3s ease;
+}
+.nav-item {
+transition: all 0.2s ease;
+}
+.nav-item:hover {
+transform: translateX(4px);
+}
+.status-badge {
+transition: all 0.3s ease;
+}
+.status-badge.scheduled {
+background-color: rgba(34, 197, 94, 0.1);
+color: #22c55e;
+}
+.status-badge.in-progress {
+background-color: rgba(59, 130, 246, 0.1);
+color: #3b82f6;
+}
+.status-badge.postponed {
+background-color: rgba(249, 115, 22, 0.1);
+color: #f97316;
+}
+.stat-card {
+transition: all 0.3s ease;
+}
+.stat-card:hover {
+transform: translateY(-4px);
+box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+input[type="checkbox"] {
+appearance: none;
+-webkit-appearance: none;
+width: 18px;
+height: 18px;
+border: 2px solid #d1d5db;
+border-radius: 4px;
+outline: none;
+cursor: pointer;
+position: relative;
+}
+input[type="checkbox"]:checked {
+background-color: #4f46e5;
+border-color: #4f46e5;
+}
+input[type="checkbox"]:checked::after {
+content: "";
+position: absolute;
+top: 2px;
+left: 5px;
+width: 6px;
+height: 10px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+@media (max-width: 1024px) {
+.sidebar {
+width: 80px;
+}
+.sidebar .logo-text {
+display: none;
+}
+.sidebar .nav-text {
+display: none;
+}
+.main-content {
+margin-left: 80px;
+}
+}
+@media (max-width: 768px) {
+.sidebar {
+transform: translateX(-100%);
+position: fixed;
+z-index: 50;
+height: 100vh;
+}
+.sidebar.active {
+transform: translateX(0);
+}
+.main-content {
+margin-left: 0;
+}
+.mobile-menu-btn {
+display: block;
+}
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<!-- Mobile Menu Button (visible on small screens) -->
+<button class="mobile-menu-btn fixed top-4 left-4 z-50 bg-primary text-white p-2 rounded-button hidden md:hidden">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-menu-line ri-lg"></i>
+</div>
+</button>
+<!-- Sidebar -->
+<div class="sidebar fixed top-0 left-0 h-full w-[280px] bg-[#1e1b4b] text-white flex flex-col z-40">
+<!-- Logo -->
+<div class="p-6 flex items-center">
+<div class="w-10 h-10 flex items-center justify-center bg-primary rounded-button mr-3">
+<i class="ri-scales-3-line ri-lg"></i>
+</div>
+<h1 class="font-['Pacifico'] text-2xl logo-text">Justice System</h1>
+</div>
+<!-- Navigation -->
+<div class="flex-1 overflow-y-auto py-6">
+<ul class="space-y-2 px-4">
+<li>
+<a href="#" class="nav-item flex items-center p-3 rounded-button bg-primary/20 text-secondary">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-dashboard-line ri-lg"></i>
+</div>
+<span class="ml-3 nav-text">Dashboard</span>
+</a>
+</li>
+<li>
+<a href="#" class="nav-item flex items-center p-3 rounded-button text-gray-300 hover:bg-primary/10 hover:text-secondary">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-file-list-3-line ri-lg"></i>
+</div>
+<span class="ml-3 nav-text">Cases</span>
+</a>
+</li>
+<li>
+<a href="#" class="nav-item flex items-center p-3 rounded-button text-gray-300 hover:bg-primary/10 hover:text-secondary">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-calendar-line ri-lg"></i>
+</div>
+<span class="ml-3 nav-text">Hearings</span>
+</a>
+</li>
+<li>
+<a href="#" class="nav-item flex items-center p-3 rounded-button text-gray-300 hover:bg-primary/10 hover:text-secondary">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-gavel-line ri-lg"></i>
+</div>
+<span class="ml-3 nav-text">Judgments</span>
+</a>
+</li>
+</ul>
+</div>
+<!-- Logout -->
+<div class="p-4 border-t border-gray-700">
+<a href="#" class="nav-item flex items-center p-3 rounded-button text-gray-300 hover:bg-primary/10 hover:text-secondary">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-logout-box-line ri-lg"></i>
+</div>
+<span class="ml-3 nav-text">Logout</span>
+</a>
+</div>
+</div>
+<!-- Main Content -->
+<div class="main-content ml-[280px] transition-all duration-300">
+<!-- Top Navigation Bar -->
+<header class="bg-white border-b border-gray-200 sticky top-0 z-30">
+<div class="flex items-center justify-between px-6 py-4">
+<h1 class="text-2xl font-semibold text-gray-800">Judge Dashboard</h1>
+<div class="flex items-center space-x-6">
+<div class="text-gray-600">
+<span>May 8, 2025</span>
+</div>
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-full overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=professional%20portrait%20of%20a%20female%20judge%20with%20short%20gray%20hair%2C%20judicial%20robe%2C%20professional%20headshot%2C%20neutral%20background%2C%20serious%20expression%2C%20high%20quality%2C%208k&width=200&height=200&seq=judge1&orientation=squarish" alt="Judge" class="w-full h-full object-cover object-top">
+</div>
+<div>
+<p class="font-medium text-sm text-gray-800">Hon. Elizabeth Richardson</p>
+<p class="text-xs text-gray-500">Senior Judge</p>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Dashboard Content -->
+<main class="p-6">
+<!-- Profile Card -->
+<section class="mb-8">
+<div class="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+<div class="flex flex-col md:flex-row items-center md:items-start gap-6">
+<div class="w-32 h-32 rounded-full overflow-hidden flex-shrink-0">
+<img src="https://readdy.ai/api/search-image?query=professional%20portrait%20of%20a%20female%20judge%20with%20short%20gray%20hair%2C%20judicial%20robe%2C%20professional%20headshot%2C%20neutral%20background%2C%20serious%20expression%2C%20high%20quality%2C%208k&width=300&height=300&seq=judge2&orientation=squarish" alt="Judge Elizabeth Richardson" class="w-full h-full object-cover object-top">
+</div>
+<div class="flex-1">
+<div class="flex flex-col md:flex-row justify-between mb-4">
+<div>
+<h2 class="text-2xl font-bold text-gray-800">Hon. Elizabeth Richardson</h2>
+<p class="text-gray-600">Senior Judge</p>
+</div>
+<div class="mt-4 md:mt-0">
+<button class="flex items-center bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-edit-line"></i>
+</div>
+Edit Profile
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div>
+<p class="text-sm text-gray-500">Experience</p>
+<p class="font-medium">15 years</p>
+</div>
+<div>
+<p class="text-sm text-gray-500">Department</p>
+<p class="font-medium">Criminal Law</p>
+</div>
+<div>
+<p class="text-sm text-gray-500">Chamber</p>
+<p class="font-medium">Chamber 5</p>
+</div>
+<div>
+<p class="text-sm text-gray-500">Blockchain Address</p>
+<p class="font-medium text-sm text-gray-800 truncate">0x7Fc9...3E4a</p>
+</div>
+<div>
+<p class="text-sm text-gray-500">Last Active</p>
+<p class="font-medium">Today, 10:45 AM</p>
+</div>
+<div>
+<p class="text-sm text-gray-500">Status</p>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+Active
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Statistics Cards -->
+<section class="mb-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Total Assigned Cases -->
+<div class="stat-card bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-gray-500 font-medium">Total Assigned Cases</h3>
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-indigo-100 text-primary">
+<i class="ri-folder-line ri-lg"></i>
+</div>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<p class="text-3xl font-bold text-gray-800">247</p>
+<div class="flex items-center mt-2">
+<div class="w-4 h-4 flex items-center justify-center text-green-500">
+<i class="ri-arrow-up-line"></i>
+</div>
+<span class="text-xs text-green-500 ml-1">12% from last month</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Upcoming Hearings -->
+<div class="stat-card bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-gray-500 font-medium">Upcoming Hearings</h3>
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-blue-100 text-blue-600">
+<i class="ri-calendar-event-line ri-lg"></i>
+</div>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<p class="text-3xl font-bold text-gray-800">18</p>
+<div class="flex items-center mt-2">
+<div class="w-4 h-4 flex items-center justify-center text-green-500">
+<i class="ri-arrow-up-line"></i>
+</div>
+<span class="text-xs text-green-500 ml-1">5% from last week</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Closed Cases -->
+<div class="stat-card bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-gray-500 font-medium">Closed Cases</h3>
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-green-100 text-green-600">
+<i class="ri-check-double-line ri-lg"></i>
+</div>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<p class="text-3xl font-bold text-gray-800">192</p>
+<div class="flex items-center mt-2">
+<div class="w-4 h-4 flex items-center justify-center text-green-500">
+<i class="ri-arrow-up-line"></i>
+</div>
+<span class="text-xs text-green-500 ml-1">8% from last month</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Pending Judgments -->
+<div class="stat-card bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-gray-500 font-medium">Pending Judgments</h3>
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-amber-100 text-amber-600">
+<i class="ri-gavel-line ri-lg"></i>
+</div>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<p class="text-3xl font-bold text-gray-800">14</p>
+<div class="flex items-center mt-2">
+<div class="w-4 h-4 flex items-center justify-center text-red-500">
+<i class="ri-arrow-down-line"></i>
+</div>
+<span class="text-xs text-red-500 ml-1">3% from last week</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Upcoming Hearings Table -->
+<section class="mb-8">
+<div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
+<div class="p-6 border-b border-gray-100">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<h2 class="text-xl font-semibold text-gray-800">Upcoming Hearings</h2>
+<div class="relative w-full md:w-64">
+<input type="text" placeholder="Search hearings..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-button text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
+<div class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 flex items-center justify-center text-gray-400">
+<i class="ri-search-line"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="min-w-full divide-y divide-gray-200">
+<thead class="bg-gray-50">
+<tr>
+<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Case ID</th>
+<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Client Name</th>
+<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Lawyer</th>
+<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Hearing Date</th>
+<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+<th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+</tr>
+</thead>
+<tbody class="bg-white divide-y divide-gray-200">
+<tr class="hover:bg-gray-50">
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">BTC-2025-0142</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Robert Anderson</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Jennifer Martinez</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">May 10, 2025 - 10:30 AM</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="status-badge scheduled px-2.5 py-1 rounded-full text-xs font-medium">Scheduled</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-primary hover:text-primary/80">View Details</button>
+</td>
+</tr>
+<tr class="hover:bg-gray-50">
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">BTC-2025-0138</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Sarah Johnson</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Michael Thompson</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">May 9, 2025 - 2:00 PM</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="status-badge in-progress px-2.5 py-1 rounded-full text-xs font-medium">In Progress</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-primary hover:text-primary/80">View Details</button>
+</td>
+</tr>
+<tr class="hover:bg-gray-50">
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">BTC-2025-0136</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">David Wilson</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Emily Rodriguez</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">May 11, 2025 - 9:00 AM</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="status-badge scheduled px-2.5 py-1 rounded-full text-xs font-medium">Scheduled</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-primary hover:text-primary/80">View Details</button>
+</td>
+</tr>
+<tr class="hover:bg-gray-50">
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">BTC-2025-0129</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Jessica Brown</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Daniel Williams</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">May 12, 2025 - 11:15 AM</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="status-badge postponed px-2.5 py-1 rounded-full text-xs font-medium">Postponed</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-primary hover:text-primary/80">View Details</button>
+</td>
+</tr>
+<tr class="hover:bg-gray-50">
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">BTC-2025-0125</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Thomas Clark</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Olivia Garcia</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">May 15, 2025 - 3:30 PM</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="status-badge scheduled px-2.5 py-1 rounded-full text-xs font-medium">Scheduled</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+<button class="text-primary hover:text-primary/80">View Details</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-4 border-t border-gray-200 flex items-center justify-between">
+<div class="text-sm text-gray-500">
+Showing <span class="font-medium">1</span> to <span class="font-medium">5</span> of <span class="font-medium">18</span> results
+</div>
+<div class="flex space-x-2">
+<button class="px-3 py-1 border border-gray-300 rounded-button text-sm text-gray-700 hover:bg-gray-50 whitespace-nowrap">Previous</button>
+<button class="px-3 py-1 bg-primary text-white rounded-button text-sm whitespace-nowrap">1</button>
+<button class="px-3 py-1 border border-gray-300 rounded-button text-sm text-gray-700 hover:bg-gray-50 whitespace-nowrap">2</button>
+<button class="px-3 py-1 border border-gray-300 rounded-button text-sm text-gray-700 hover:bg-gray-50 whitespace-nowrap">3</button>
+<button class="px-3 py-1 border border-gray-300 rounded-button text-sm text-gray-700 hover:bg-gray-50 whitespace-nowrap">Next</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Activity and Notifications -->
+<section class="grid grid-cols-1 gap-6">
+<!-- Recent Activity -->
+<div class="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
+<h2 class="text-xl font-semibold text-gray-800 mb-6">Recent Activity</h2>
+<div class="space-y-6">
+<div class="flex">
+<div class="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 mr-4">
+<i class="ri-gavel-line ri-lg"></i>
+</div>
+<div>
+<p class="text-gray-800 font-medium">Judgment Issued</p>
+<p class="text-gray-600 text-sm">You issued a judgment for case <span class="text-primary">BTC-2025-0118</span></p>
+<p class="text-gray-400 text-xs mt-1">Today, 9:15 AM</p>
+</div>
+</div>
+<div class="flex">
+<div class="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-green-100 text-green-600 mr-4">
+<i class="ri-calendar-check-line ri-lg"></i>
+</div>
+<div>
+<p class="text-gray-800 font-medium">Hearing Completed</p>
+<p class="text-gray-600 text-sm">You completed a hearing for case <span class="text-primary">BTC-2025-0124</span></p>
+<p class="text-gray-400 text-xs mt-1">Yesterday, 2:30 PM</p>
+</div>
+</div>
+<div class="flex">
+<div class="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-amber-100 text-amber-600 mr-4">
+<i class="ri-file-edit-line ri-lg"></i>
+</div>
+<div>
+<p class="text-gray-800 font-medium">Case Assigned</p>
+<p class="text-gray-600 text-sm">New case <span class="text-primary">BTC-2025-0142</span> has been assigned to you</p>
+<p class="text-gray-400 text-xs mt-1">Yesterday, 10:45 AM</p>
+</div>
+</div>
+<div class="flex">
+<div class="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-purple-100 text-purple-600 mr-4">
+<i class="ri-discuss-line ri-lg"></i>
+</div>
+<div>
+<p class="text-gray-800 font-medium">Comment Added</p>
+<p class="text-gray-600 text-sm">You added a comment to case <span class="text-primary">BTC-2025-0136</span></p>
+<p class="text-gray-400 text-xs mt-1">May 7, 2025, 4:20 PM</p>
+</div>
+</div>
+<div class="flex">
+<div class="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-red-100 text-red-600 mr-4">
+<i class="ri-time-line ri-lg"></i>
+</div>
+<div>
+<p class="text-gray-800 font-medium">Hearing Rescheduled</p>
+<p class="text-gray-600 text-sm">Hearing for case <span class="text-primary">BTC-2025-0129</span> has been rescheduled</p>
+<p class="text-gray-400 text-xs mt-1">May 6, 2025, 11:30 AM</p>
+</div>
+</div>
+</div>
+<div class="mt-6 text-center">
+<button class="text-primary hover:text-primary/80 text-sm font-medium">View All Activity</button>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- Import contract configuration -->
+<script src="js/contract-config.js"></script>
+<!-- Import judge dashboard script -->
+<script src="js/judge-dashboard.js"></script>
+</body>
+</html>

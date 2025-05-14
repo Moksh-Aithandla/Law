@@ -1,248 +1,374 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lawyer Dashboard - E-Vault Law</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="css/modern-law-theme.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/dashboard.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Justice System - Lawyer Dashboard</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#4F46E5',secondary:'#22C55E'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<script src="https://cdn.jsdelivr.net/npm/web3@1.8.2/dist/web3.min.js"></script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', sans-serif;
+overflow-x: hidden;
+}
+.sidebar {
+width: 280px;
+height: 100vh;
+position: fixed;
+left: 0;
+top: 0;
+z-index: 50;
+transition: all 0.3s;
+}
+.main-content {
+margin-left: 280px;
+min-height: 100vh;
+}
+.nav-item {
+transition: all 0.2s;
+}
+.nav-item:hover:not(.active) {
+background-color: #EEF2FF;
+}
+.nav-item.active {
+background-color: #E0E7FF;
+border-left: 4px solid #4F46E5;
+}
+.status-scheduled {
+background-color: #FEF3C7;
+color: #92400E;
+}
+.status-in-progress {
+background-color: #DBEAFE;
+color: #1E40AF;
+}
+.status-settled {
+background-color: #DCFCE7;
+color: #166534;
+}
+.status-withdrawn {
+background-color: #FEE2E2;
+color: #B91C1C;
+}
+.card {
+transition: all 0.3s;
+}
+.card:hover {
+transform: translateY(-2px);
+box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+input[type="checkbox"] {
+appearance: none;
+width: 1.25rem;
+height: 1.25rem;
+border: 2px solid #D1D5DB;
+border-radius: 4px;
+position: relative;
+cursor: pointer;
+}
+input[type="checkbox"]:checked {
+background-color: #4F46E5;
+border-color: #4F46E5;
+}
+input[type="checkbox"]:checked::after {
+content: '';
+position: absolute;
+left: 6px;
+top: 2px;
+width: 5px;
+height: 10px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+@keyframes fade-in {
+from {
+opacity: 0;
+transform: translateY(10px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+.animate-fade-in {
+animation: fade-in 0.3s ease-out forwards;
+}
+@media (max-width: 1024px) {
+.sidebar {
+width: 80px;
+}
+.main-content {
+margin-left: 80px;
+}
+.sidebar-text {
+display: none;
+}
+.logo-text {
+display: none;
+}
+}
+@media (max-width: 768px) {
+.sidebar {
+transform: translateX(-100%);
+}
+.main-content {
+margin-left: 0;
+}
+.mobile-menu-open .sidebar {
+transform: translateX(0);
+}
+}
+</style>
 </head>
-<body>
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">
-                    <i class="fas fa-gavel logo-icon"></i>
-                    E-Vault Law
-                </div>
-                <ul>
-                    <li><a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-                    <li><a href="#" id="my-cases-link"><i class="fas fa-briefcase"></i> My Cases</a></li>
-                    <li><a href="#" id="my-documents-link"><i class="fas fa-file-alt"></i> My Documents</a></li>
-                    <li><a href="#" id="upload-document-link"><i class="fas fa-upload"></i> Upload Document</a></li>
-                    <li><a href="#" id="profile-link"><i class="fas fa-user"></i> Profile</a></li>
-                    <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-                    <li class="wallet-info">
-                        <span id="wallet-status" class="wallet-status wallet-connected">Not Connected</span>
-                    </li>
-                    <li class="network-container">
-                        <span id="network-info" class="network-info">Not Connected</span>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <div class="container">
-            <div class="dashboard-header">
-                <h1><i class="fas fa-user-tie"></i> Lawyer Dashboard</h1>
-                <p>Welcome, <span id="lawyer-name">Lawyer</span></p>
-            </div>
-
-            <!-- Dashboard Overview Section -->
-            <section id="dashboard-overview" class="dashboard-section">
-                <div class="dashboard-cards">
-                    <div class="dashboard-card">
-                        <div class="card-icon">
-                            <i class="fas fa-briefcase"></i>
-                        </div>
-                        <div class="card-content">
-                            <h3>My Cases</h3>
-                            <p class="card-value" id="my-cases-count">0</p>
-                        </div>
-                        <a href="#" class="card-action" id="view-my-cases">View All</a>
-                    </div>
-                    <div class="dashboard-card">
-                        <div class="card-icon">
-                            <i class="fas fa-file-alt"></i>
-                        </div>
-                        <div class="card-content">
-                            <h3>My Documents</h3>
-                            <p class="card-value" id="my-documents-count">0</p>
-                        </div>
-                        <a href="#" class="card-action" id="view-my-documents">View All</a>
-                    </div>
-                    <div class="dashboard-card">
-                        <div class="card-icon">
-                            <i class="fas fa-calendar-alt"></i>
-                        </div>
-                        <div class="card-content">
-                            <h3>Upcoming Hearings</h3>
-                            <p class="card-value" id="upcoming-hearings-count">0</p>
-                        </div>
-                        <a href="#" class="card-action" id="view-upcoming-hearings">View All</a>
-                    </div>
-                    <div class="dashboard-card">
-                        <div class="card-icon">
-                            <i class="fas fa-user-friends"></i>
-                        </div>
-                        <div class="card-content">
-                            <h3>My Clients</h3>
-                            <p class="card-value" id="my-clients-count">0</p>
-                        </div>
-                        <a href="#" class="card-action" id="view-my-clients">View All</a>
-                    </div>
-                </div>
-
-                <div class="recent-activity">
-                    <h2>Recent Activity</h2>
-                    <div class="activity-list" id="recent-activity-list">
-                        <p class="loading-data">Loading recent activity...</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- My Cases Section -->
-            <section id="my-cases-section" class="dashboard-section" style="display: none;">
-                <div class="section-header">
-                    <h2><i class="fas fa-briefcase"></i> My Cases</h2>
-                    <p>View and manage your legal cases</p>
-                </div>
-                <div class="data-table-container">
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Case ID</th>
-                                <th>Title</th>
-                                <th>Type</th>
-                                <th>Client</th>
-                                <th>Judge</th>
-                                <th>Status</th>
-                                <th>Filing Date</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="my-cases-table-body">
-                            <tr>
-                                <td colspan="8" class="loading-data">Loading cases...</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-
-            <!-- My Documents Section -->
-            <section id="my-documents-section" class="dashboard-section" style="display: none;">
-                <div class="section-header">
-                    <h2><i class="fas fa-file-alt"></i> My Documents</h2>
-                    <p>View and manage your legal documents</p>
-                </div>
-                <div class="data-table-container">
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Document ID</th>
-                                <th>Name</th>
-                                <th>Type</th>
-                                <th>Case ID</th>
-                                <th>Upload Date</th>
-                                <th>Public</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="my-documents-table-body">
-                            <tr>
-                                <td colspan="7" class="loading-data">Loading documents...</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-
-            <!-- Upload Document Section -->
-            <section id="upload-document-section" class="dashboard-section" style="display: none;">
-                <div class="section-header">
-                    <h2><i class="fas fa-upload"></i> Upload Document</h2>
-                    <p>Upload a new legal document</p>
-                </div>
-                <div class="form-container">
-                    <form id="upload-document-form">
-                        <div class="form-group">
-                            <label for="document-name">Document Name</label>
-                            <input type="text" id="document-name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="document-description">Description</label>
-                            <textarea id="document-description" rows="4"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="document-case">Associated Case (optional)</label>
-                            <select id="document-case">
-                                <option value="0">None</option>
-                                <!-- Cases will be loaded dynamically -->
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="document-file">Document File</label>
-                            <input type="file" id="document-file" required>
-                        </div>
-                        <div class="form-group checkbox-group">
-                            <input type="checkbox" id="document-public">
-                            <label for="document-public">Make document publicly accessible</label>
-                        </div>
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-primary">Upload Document</button>
-                            <button type="button" class="btn btn-secondary" id="cancel-upload">Cancel</button>
-                        </div>
-                    </form>
-                </div>
-            </section>
-
-            <!-- Profile Section -->
-            <section id="profile-section" class="dashboard-section" style="display: none;">
-                <div class="section-header">
-                    <h2><i class="fas fa-user"></i> My Profile</h2>
-                    <p>View and manage your profile information</p>
-                </div>
-                <div class="profile-container">
-                    <div class="profile-info">
-                        <div class="profile-field">
-                            <span class="field-label">Name:</span>
-                            <span class="field-value" id="profile-name">Loading...</span>
-                        </div>
-                        <div class="profile-field">
-                            <span class="field-label">Email:</span>
-                            <span class="field-value" id="profile-email">Loading...</span>
-                        </div>
-                        <div class="profile-field">
-                            <span class="field-label">Role:</span>
-                            <span class="field-value" id="profile-role">Lawyer</span>
-                        </div>
-                        <div class="profile-field">
-                            <span class="field-label">Bar ID:</span>
-                            <span class="field-value" id="profile-id">Loading...</span>
-                        </div>
-                        <div class="profile-field">
-                            <span class="field-label">Wallet Address:</span>
-                            <span class="field-value" id="profile-address">Loading...</span>
-                        </div>
-                        <div class="profile-field">
-                            <span class="field-label">Registration Date:</span>
-                            <span class="field-value" id="profile-registration-date">Loading...</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 E-Vault Law Management System. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- Loading overlay -->
-    <div id="loading-overlay" class="loading-overlay">
-        <div class="loading-spinner"></div>
-        <p>Loading...</p>
-    </div>
-
-    <!-- Scripts -->
-    <script src="https://cdn.ethers.io/lib/ethers-5.7.2.umd.min.js" type="application/javascript"></script>
-    <script type="module" src="js/lawyer-dashboard.js"></script>
+<body class="bg-gray-50 text-slate-800">
+<!-- Sidebar -->
+<div class="sidebar bg-white border-r border-gray-200 flex flex-col shadow-sm">
+<!-- Logo -->
+<div class="h-20 flex items-center px-6 border-b border-gray-100">
+<div class="w-10 h-10 flex items-center justify-center bg-primary rounded-lg text-white mr-3">
+<i class="ri-scales-3-line ri-lg"></i>
+</div>
+<h1 class="font-['Pacifico'] text-xl text-primary logo-text">Justice System</h1>
+</div>
+<!-- Navigation -->
+<nav class="flex-1 py-6">
+<ul class="space-y-1 px-3">
+<li>
+<a href="#" class="nav-item active flex items-center px-4 py-3 rounded-lg text-primary">
+<div class="w-6 h-6 flex items-center justify-center mr-3">
+<i class="ri-dashboard-line"></i>
+</div>
+<span class="sidebar-text">Dashboard</span>
+</a>
+</li>
+<li>
+<a href="#" class="nav-item flex items-center px-4 py-3 rounded-lg text-slate-600">
+<div class="w-6 h-6 flex items-center justify-center mr-3">
+<i class="ri-folder-line"></i>
+</div>
+<span class="sidebar-text">My Cases</span>
+</a>
+</li>
+<li>
+<a href="#" class="nav-item flex items-center px-4 py-3 rounded-lg text-slate-600">
+<div class="w-6 h-6 flex items-center justify-center mr-3">
+<i class="ri-calendar-line"></i>
+</div>
+<span class="sidebar-text">Hearings</span>
+</a>
+</li>
+<li>
+<a href="#" class="nav-item flex items-center px-4 py-3 rounded-lg text-slate-600">
+<div class="w-6 h-6 flex items-center justify-center mr-3">
+<i class="ri-user-3-line"></i>
+</div>
+<span class="sidebar-text">Clients</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Logout -->
+<div class="px-3 pb-6">
+<a href="#" id="logoutBtn" class="nav-item flex items-center px-4 py-3 rounded-lg text-slate-600">
+<div class="w-6 h-6 flex items-center justify-center mr-3">
+<i class="ri-logout-box-line"></i>
+</div>
+<span class="sidebar-text">Logout</span>
+</a>
+</div>
+</div>
+<!-- Main Content -->
+<div class="main-content">
+<!-- Top Navigation -->
+<header class="h-18 bg-white border-b border-gray-200 sticky top-0 z-30">
+<div class="container mx-auto px-6 h-full flex items-center justify-between">
+<div class="flex items-center">
+<button id="mobile-menu-button" class="lg:hidden w-10 h-10 flex items-center justify-center text-slate-600 mr-4">
+<i class="ri-menu-line ri-lg"></i>
+</button>
+<h1 class="text-2xl font-semibold">Lawyer Dashboard</h1>
+</div>
+<div class="flex items-center space-x-6">
+<div class="text-slate-600">
+<span id="current-date"></span>
+</div>
+<div class="relative">
+<button class="w-10 h-10 flex items-center justify-center text-slate-600 relative">
+<i class="ri-notification-3-line ri-lg"></i>
+<span class="absolute top-1 right-1 w-5 h-5 bg-red-500 rounded-full text-white text-xs flex items-center justify-center">4</span>
+</button>
+</div>
+<div class="flex items-center">
+<div class="w-10 h-10 rounded-full bg-gray-200 overflow-hidden mr-3">
+<img id="header-profile-image" src="" alt="Profile" class="w-full h-full object-cover">
+</div>
+<div class="hidden md:block">
+<div id="header-lawyer-name" class="font-medium"></div>
+<div id="header-lawyer-role" class="text-sm text-slate-500"></div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Dashboard Content -->
+<main class="container mx-auto px-6 py-8">
+<!-- Profile Card -->
+<div id="profile-section" class="bg-white rounded-xl p-6 shadow-sm mb-8 card">
+<div class="flex flex-col md:flex-row">
+<div class="w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden mb-4 md:mb-0 md:mr-6">
+<img id="profile-image" src="" alt="Lawyer Profile" class="w-full h-full object-cover">
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h2 id="lawyer-name" class="text-2xl font-semibold mb-1"></h2>
+<p class="text-primary font-medium">Defense Attorney</p>
+</div>
+<button id="editProfileBtn" class="px-4 py-2 bg-primary text-white rounded-lg flex items-center !rounded-button hover:bg-indigo-700 transition-colors">
+<i class="ri-edit-line mr-2"></i>
+<span class="whitespace-nowrap">Edit Profile</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<div class="text-sm text-slate-500 mb-1">Years of Experience</div>
+<div class="font-medium">12 years</div>
+</div>
+<div>
+<div class="text-sm text-slate-500 mb-1">Specialty</div>
+<div class="font-medium">Criminal Law</div>
+</div>
+<div>
+<div class="text-sm text-slate-500 mb-1">Bar ID</div>
+<div id="lawyer-bar-id" class="font-medium"></div>
+</div>
+<div>
+<div class="text-sm text-slate-500 mb-1">Wallet Address</div>
+<div id="wallet-address" class="font-medium"></div>
+</div>
+<div>
+<div class="text-sm text-slate-500 mb-1">Email</div>
+<div id="lawyer-email" class="font-medium"></div>
+</div>
+<div>
+<div class="text-sm text-slate-500 mb-1">Office Location</div>
+<div class="font-medium">Manhattan, New York</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Statistics Cards -->
+<div class="mb-8">
+<!-- Active Cases -->
+<div class="bg-white rounded-xl p-6 shadow-sm card">
+<div class="flex items-start justify-between">
+<div>
+<div class="text-sm text-slate-500 mb-1">Active Cases</div>
+<div id="active-cases-count" class="text-3xl font-semibold">0</div>
+</div>
+<div class="w-12 h-12 flex items-center justify-center rounded-lg bg-indigo-100 text-primary">
+<i class="ri-folder-open-line ri-xl"></i>
+</div>
+</div>
+<div class="mt-4 flex items-center text-sm">
+<span class="text-green-600 font-medium flex items-center">
+<i class="ri-arrow-up-line mr-1"></i> 8%
+</span>
+<span class="text-slate-500 ml-2">vs last month</span>
+</div>
+</div>
+</div>
+<!-- Case Schedule -->
+<div class="bg-white rounded-xl p-6 shadow-sm mb-8 card">
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
+<h3 class="text-lg font-semibold mb-3 md:mb-0">Case Schedule</h3>
+<div class="relative">
+<input type="text" placeholder="Search cases..." class="pl-10 pr-4 py-2 border border-gray-200 rounded-lg w-full md:w-64 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+<div class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+<i class="ri-search-line"></i>
+</div>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table id="case-schedule-table" class="w-full">
+<thead>
+<tr class="text-left border-b border-gray-200">
+<th class="pb-3 font-semibold text-sm text-slate-600">Case ID</th>
+<th class="pb-3 font-semibold text-sm text-slate-600">Client Name</th>
+<th class="pb-3 font-semibold text-sm text-slate-600">Hearing Date</th>
+<th class="pb-3 font-semibold text-sm text-slate-600">Judge</th>
+<th class="pb-3 font-semibold text-sm text-slate-600">Status</th>
+<th class="pb-3 font-semibold text-sm text-slate-600">Actions</th>
+</tr>
+</thead>
+<tbody id="case-schedule-body">
+<!-- Case data will be loaded dynamically -->
+</tbody>
+</table>
+</div>
+</div>
+<!-- Upload Documents Section -->
+<section class="mb-8">
+<div class="flex flex-wrap gap-4">
+<button id="uploadBtn" class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-button font-medium flex items-center whitespace-nowrap">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-upload-2-line"></i>
+</div>
+Upload Documents
+</button>
+</div>
+</section>
+<!-- Recent Documents -->
+<section>
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-lg font-medium text-gray-800">Recent Documents</h2>
+<a href="#" class="text-primary hover:text-primary/80 text-sm font-medium">View All</a>
+</div>
+<div class="bg-white rounded shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table id="recent-documents-table" class="w-full">
+<thead>
+<tr class="bg-gray-50">
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Document</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date Uploaded</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+</tr>
+</thead>
+<tbody id="recent-documents-body" class="divide-y divide-gray-200">
+<!-- Document data will be loaded dynamically -->
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- Import contract configuration -->
+<script src="js/contract-config.js"></script>
+<!-- Import lawyer dashboard script -->
+<script src="js/lawyer-dashboard.js"></script>
+<script>
+// Set current date
+document.addEventListener('DOMContentLoaded', function() {
+    const currentDate = new Date();
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    document.getElementById('current-date').textContent = currentDate.toLocaleDateString('en-US', options);
+});
+</script>
 </body>
 </html>

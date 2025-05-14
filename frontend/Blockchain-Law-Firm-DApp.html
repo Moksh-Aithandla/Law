@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LexChain - Blockchain Legal Solutions</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#2b6cb0',secondary:'#0a1a2f'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<!-- Web3 and Ethereum integration -->
+<script src="https://cdn.jsdelivr.net/npm/web3@1.8.0/dist/web3.min.js"></script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Roboto', sans-serif;
+color: #333;
+background-color: #f5f6fa;
+}
+.font-lato {
+font-family: 'Lato', sans-serif;
+}
+.bg-navy {
+background-color: #0a1a2f;
+}
+.bg-royal {
+background-color: #2b6cb0;
+}
+.bg-emerald {
+background-color: #2ecc71;
+}
+.bg-gold {
+background-color: #f1c40f;
+}
+.text-navy {
+color: #0a1a2f;
+}
+.text-royal {
+color: #2b6cb0;
+}
+.text-emerald {
+color: #2ecc71;
+}
+.text-gold {
+color: #f1c40f;
+}
+.border-navy {
+border-color: #0a1a2f;
+}
+.border-royal {
+border-color: #2b6cb0;
+}
+.border-emerald {
+border-color: #2ecc71;
+}
+.border-gold {
+border-color: #f1c40f;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+.hero-gradient {
+background: linear-gradient(90deg, rgba(10,26,47,0.95) 0%, rgba(10,26,47,0.8) 50%, rgba(10,26,47,0.6) 100%);
+}
+.feature-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 25px -5px rgba(10,26,47,0.1);
+}
+.connect-btn:hover {
+box-shadow: 0 0 15px rgba(46,204,113,0.5);
+}
+.connect-btn:active {
+transform: scale(0.98);
+}
+.feature-card {
+transition: all 0.3s ease;
+}
+.status-pending {
+background-color: #f1c40f;
+}
+.status-approved {
+background-color: #2ecc71;
+}
+.status-rejected {
+background-color: #e74c3c;
+}
+.toast {
+transform: translateY(100px);
+opacity: 0;
+transition: all 0.5s ease;
+}
+.toast.show {
+transform: translateY(0);
+opacity: 1;
+}
+.blockchain-icon {
+animation: pulse 2s infinite;
+}
+@keyframes pulse {
+0% {
+transform: scale(1);
+opacity: 1;
+}
+50% {
+transform: scale(1.05);
+opacity: 0.8;
+}
+100% {
+transform: scale(1);
+opacity: 1;
+}
+}
+.custom-checkbox {
+display: none;
+}
+.custom-checkbox + label {
+position: relative;
+padding-left: 35px;
+cursor: pointer;
+display: inline-block;
+}
+.custom-checkbox + label:before {
+content: '';
+position: absolute;
+left: 0;
+top: 0;
+width: 24px;
+height: 24px;
+border: 2px solid #2b6cb0;
+background: #fff;
+border-radius: 4px;
+}
+.custom-checkbox:checked + label:after {
+content: '';
+position: absolute;
+left: 8px;
+top: 4px;
+width: 8px;
+height: 14px;
+border: solid #2b6cb0;
+border-width: 0 3px 3px 0;
+transform: rotate(45deg);
+}
+.custom-switch {
+position: relative;
+display: inline-block;
+width: 50px;
+height: 24px;
+}
+.custom-switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+.slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #ccc;
+transition: .4s;
+border-radius: 34px;
+}
+.slider:before {
+position: absolute;
+content: "";
+height: 16px;
+width: 16px;
+left: 4px;
+bottom: 4px;
+background-color: white;
+transition: .4s;
+border-radius: 50%;
+}
+input:checked + .slider {
+background-color: #2b6cb0;
+}
+input:checked + .slider:before {
+transform: translateX(26px);
+}
+</style>
+</head>
+<body>
+<header class="bg-white shadow-md">
+<div class="container mx-auto px-4 py-4 flex justify-between items-center">
+<div class="flex items-center">
+<h1 class="text-2xl font-['Pacifico'] text-primary mr-2">logo</h1>
+<span class="text-navy font-bold">LexChain</span>
+</div>
+<nav class="hidden md:flex space-x-8">
+<a href="#features" class="text-navy hover:text-primary transition-colors">Features</a>
+<a href="#benefits" class="text-navy hover:text-primary transition-colors">Benefits</a>
+<a href="#about" class="text-navy hover:text-primary transition-colors">About</a>
+<a href="#contact" class="text-navy hover:text-primary transition-colors">Contact</a>
+</nav>
+<div class="flex items-center">
+<button id="connectWallet" class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap hover:bg-opacity-90 transition-all">Connect Wallet</button>
+<button class="md:hidden ml-4 text-navy w-8 h-8 flex items-center justify-center">
+<i class="ri-menu-line ri-lg"></i>
+</button>
+</div>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative">
+<div style="background-image: url('https://readdy.ai/api/search-image?query=A%20professional%20law%20office%20setting%20with%20blockchain%20visualization%20elements%2C%20showing%20a%20modern%20courtroom%20with%20digital%20elements%2C%20blockchain%20nodes%20connecting%20across%20a%20justice%20scale%2C%20with%20a%20deep%20navy%20blue%20gradient%20on%20the%20left%20side%20fading%20to%20transparent%20on%20the%20right%2C%20professional%20and%20clean%20aesthetic%2C%20high-quality%20photorealistic%20rendering&width=1920&height=1080&seq=1234567&orientation=landscape');" class="absolute inset-0 bg-cover bg-center bg-no-repeat"></div>
+<div class="hero-gradient absolute inset-0"></div>
+<div class="container mx-auto px-4 py-24 md:py-32 relative z-10">
+<div class="max-w-2xl">
+<h1 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">Secure Legal Case Management on the Blockchain</h1>
+<p class="text-lg text-white opacity-90 mb-8">Revolutionizing legal services with transparent, immutable, and secure blockchain technology. Experience the future of legal case management.</p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button id="connectWalletHero" class="connect-btn bg-emerald text-white px-6 py-3 rounded-button whitespace-nowrap text-lg font-medium flex items-center justify-center transition-all">
+<span class="w-6 h-6 mr-2 blockchain-icon flex items-center justify-center">
+<i class="ri-link-m ri-lg"></i>
+</span>
+Connect MetaMask
+</button>
+<button class="bg-white text-navy px-6 py-3 rounded-button whitespace-nowrap text-lg font-medium hover:bg-opacity-90 transition-all">Learn More</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Section -->
+<section id="features" class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-bold text-navy mb-4">Why Choose LexChain?</h2>
+<p class="text-lg text-gray-600 max-w-2xl mx-auto">Our blockchain-powered legal platform offers unparalleled security, transparency, and efficiency for all legal proceedings.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="feature-card bg-white rounded-lg p-6 shadow-md border border-gray-100">
+<div class="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center mb-4">
+<i class="ri-shield-check-line ri-2x text-primary"></i>
+</div>
+<h3 class="text-xl font-bold text-navy mb-3">Immutable Records</h3>
+<p class="text-gray-600">All case documents and proceedings are permanently recorded on the blockchain, ensuring tamper-proof legal records.</p>
+</div>
+<div class="feature-card bg-white rounded-lg p-6 shadow-md border border-gray-100">
+<div class="w-14 h-14 bg-green-50 rounded-full flex items-center justify-center mb-4">
+<i class="ri-lock-password-line ri-2x text-emerald"></i>
+</div>
+<h3 class="text-xl font-bold text-navy mb-3">Enhanced Security</h3>
+<p class="text-gray-600">Advanced cryptographic security ensures your sensitive legal information remains protected and confidential.</p>
+</div>
+<div class="feature-card bg-white rounded-lg p-6 shadow-md border border-gray-100">
+<div class="w-14 h-14 bg-yellow-50 rounded-full flex items-center justify-center mb-4">
+<i class="ri-time-line ri-2x text-gold"></i>
+</div>
+<h3 class="text-xl font-bold text-navy mb-3">Efficient Processes</h3>
+<p class="text-gray-600">Smart contracts automate routine legal procedures, reducing paperwork and accelerating case resolution times.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- How It Works -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-bold text-navy mb-4">How LexChain Works</h2>
+<p class="text-lg text-gray-600 max-w-2xl mx-auto">Our platform connects clients, lawyers, and judges in a secure blockchain ecosystem.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="bg-white p-6 rounded-lg shadow-sm text-center">
+<div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+<span class="text-2xl font-bold text-primary">1</span>
+</div>
+<h3 class="font-bold text-navy mb-2">Connect</h3>
+<p class="text-gray-600 text-sm">Connect your MetaMask wallet to access the platform securely.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm text-center">
+<div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+<span class="text-2xl font-bold text-primary">2</span>
+</div>
+<h3 class="font-bold text-navy mb-2">Register</h3>
+<p class="text-gray-600 text-sm">Create your profile as a client, lawyer, or judge with verified credentials.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm text-center">
+<div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+<span class="text-2xl font-bold text-primary">3</span>
+</div>
+<h3 class="font-bold text-navy mb-2">Upload</h3>
+<p class="text-gray-600 text-sm">Submit case documents securely to IPFS with blockchain verification.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm text-center">
+<div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+<span class="text-2xl font-bold text-primary">4</span>
+</div>
+<h3 class="font-bold text-navy mb-2">Manage</h3>
+<p class="text-gray-600 text-sm">Track case progress with full transparency and immutable records.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- User Roles -->
+<section id="benefits" class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-bold text-navy mb-4">Benefits for All Parties</h2>
+<p class="text-lg text-gray-600 max-w-2xl mx-auto">Our platform serves the unique needs of clients, lawyers, and judges.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-white rounded-lg overflow-hidden shadow-md">
+<div class="h-48 bg-blue-600 relative">
+<div style="background-image: url('https://readdy.ai/api/search-image?query=A%20professional%20client%20in%20business%20attire%20reviewing%20legal%20documents%20on%20a%20tablet%20with%20blockchain%20visualization%20elements%2C%20showing%20transparent%20nodes%20connecting%20across%20the%20screen%2C%20with%20a%20blue%20gradient%20overlay%2C%20professional%20and%20clean%20aesthetic%2C%20high-quality%20photorealistic%20rendering&width=600&height=400&seq=123456&orientation=landscape');" class="absolute inset-0 bg-cover bg-center opacity-80"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<h3 class="text-xl font-bold text-white">For Clients</h3>
+</div>
+</div>
+<div class="p-6">
+<ul class="space-y-3">
+<li class="flex items-start">
+<span class="w-5 h-5 text-emerald mt-0.5 flex items-center justify-center">
+<i class="ri-check-line"></i>
+</span>
+<span class="ml-2">Full transparency of case progress</span>
+</li>
+<li class="flex items-start">
+<span class="w-5 h-5 text-emerald mt-0.5 flex items-center justify-center">
+<i class="ri-check-line"></i>
+</span>
+<span class="ml-2">Secure document submission</span>
+</li>
+<li class="flex items-start">
+<span class="w-5 h-5 text-emerald mt-0.5 flex items-center justify-center">
+<i class="ri-check-line"></i>
+</span>
+<span class="ml-2">Immutable record of all proceedings</span>
+</li>
+<li class="flex items-start">
+<span class="w-5 h-5 text-emerald mt-0.5 flex items-center justify-center">
+<i class="ri-check-line"></i>
+</span>
+<span class="ml-2">Reduced paperwork and faster resolution</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="bg-white rounded-lg overflow-hidden shadow-md">
+<div class="h-48 bg-blue-600 relative">
+<div style="background-image: url('https://readdy.ai/api/search-image?query=A%20professional%20lawyer%20in%20formal%20attire%20working%20at%20a%20modern%20desk%20with%20digital%20screens%20showing%20legal%20documents%20and%20blockchain%20connections%2C%20professional%20office%20setting%20with%20law%20books%20and%20digital%20elements%2C%20blue-tinted%20professional%20photography%20style&width=600&height=400&seq=234567&orientation=landscape');" class="absolute inset-0 bg-cover bg-center opacity-80"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<h3 class="text-xl font-bold text-white">For Lawyers</h3>
+</div>
+</div>
+<div class="p-6">
+<ul class="space-y-3">
+<li class="flex items-start">
+<span class="w-5 h-5 text-emerald mt-0.5 flex items-center justify-center">
+<i class="ri-check-line"></i>
+</span>
+<span class="ml-2">Streamlined case management</span>
+</li>
+<li class="flex items-start">
+<span class="w-5 h-5 text-emerald mt-0.5 flex items-center justify-center">
+<i class="ri-check-line"></i>
+</span>
+<span class="ml-2">Secure document sharing with clients</span>
+</li>
+<li class="flex items-start">
+<span class="w-5 h-5 text-emerald mt-0.5 flex items-center justify-center">
+<i class="ri-check-line"></i>
+</span>
+<span class="ml-2">Automated contract execution</span>
+</li>
+<li class="flex items-start">
+<span class="w-5 h-5 text-emerald mt-0.5 flex items-center justify-center">
+<i class="ri-check-line"></i>
+</span>
+<span class="ml-2">Verifiable case history and evidence</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="bg-white rounded-lg overflow-hidden shadow-md">
+<div class="h-48 bg-blue-600 relative">
+<div style="background-image: url('https://readdy.ai/api/search-image?query=A%20professional%20judge%20in%20robes%20reviewing%20digital%20evidence%20on%20a%20tablet%20in%20a%20modern%20courtroom%20with%20blockchain%20visualization%20elements%2C%20showing%20transparent%20nodes%20connecting%20across%20screens%2C%20with%20a%20blue%20gradient%20overlay%2C%20professional%20and%20dignified%20setting%2C%20high-quality%20photorealistic%20rendering&width=600&height=400&seq=345678&orientation=landscape');" class="absolute inset-0 bg-cover bg-center opacity-80"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<h3 class="text-xl font-bold text-white">For Judges</h3>
+</div>
+</div>
+<div class="p-6">
+<ul class="space-y-3">
+<li class="flex items-start">
+<span class="w-5 h-5 text-emerald mt-0.5 flex items-center justify-center">
+<i class="ri-check-line"></i>
+</span>
+<span class="ml-2">Complete case history at a glance</span>
+</li>
+<li class="flex items-start">
+<span class="w-5 h-5 text-emerald mt-0.5 flex items-center justify-center">
+<i class="ri-check-line"></i>
+</span>
+<span class="ml-2">Tamper-proof evidence verification</span>
+</li>
+<li class="flex items-start">
+<span class="w-5 h-5 text-emerald mt-0.5 flex items-center justify-center">
+<i class="ri-check-line"></i>
+</span>
+<span class="ml-2">Efficient case review process</span>
+</li>
+<li class="flex items-start">
+<span class="w-5 h-5 text-emerald mt-0.5 flex items-center justify-center">
+<i class="ri-check-line"></i>
+</span>
+<span class="ml-2">Secure digital ruling publication</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-16 bg-navy text-white">
+<div class="container mx-auto px-4 text-center">
+<h2 class="text-3xl font-bold mb-6">Ready to Transform Your Legal Practice?</h2>
+<p class="text-lg opacity-90 mb-8 max-w-2xl mx-auto">Join the growing network of legal professionals leveraging blockchain technology for more secure, efficient, and transparent case management.</p>
+<button id="connectWalletCTA" class="connect-btn bg-emerald text-white px-8 py-3 rounded-button whitespace-nowrap text-lg font-medium flex items-center mx-auto transition-all">
+<span class="w-6 h-6 mr-2 blockchain-icon flex items-center justify-center">
+<i class="ri-link-m ri-lg"></i>
+</span>
+Connect MetaMask
+</button>
+</div>
+</section>
+<!-- Partners -->
+<section id="about" class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-bold text-navy mb-4">Our Technology Partners</h2>
+<p class="text-lg text-gray-600 max-w-2xl mx-auto">We've partnered with industry leaders to build a robust legal blockchain ecosystem.</p>
+</div>
+<div class="flex flex-wrap justify-center items-center gap-12">
+<div class="text-center">
+<div class="w-20 h-20 mx-auto mb-3 flex items-center justify-center">
+<i class="ri-ethereum-line ri-3x text-primary"></i>
+</div>
+<p class="font-medium text-navy">Ethereum</p>
+</div>
+<div class="text-center">
+<div class="w-20 h-20 mx-auto mb-3 flex items-center justify-center">
+<i class="ri-database-2-line ri-3x text-primary"></i>
+</div>
+<p class="font-medium text-navy">Filebase IPFS</p>
+</div>
+<div class="text-center">
+<div class="w-20 h-20 mx-auto mb-3 flex items-center justify-center">
+<i class="ri-codepen-line ri-3x text-primary"></i>
+</div>
+<p class="font-medium text-navy">Alchemy</p>
+</div>
+<div class="text-center">
+<div class="w-20 h-20 mx-auto mb-3 flex items-center justify-center">
+<i class="ri-file-lock-line ri-3x text-primary"></i>
+</div>
+<p class="font-medium text-navy">DocuSign</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Developer Info -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="max-w-4xl mx-auto text-center">
+<h2 class="text-3xl font-bold text-navy mb-4">Developer</h2>
+<div class="bg-white rounded-lg shadow-md p-8 hover:shadow-xl transition-shadow duration-300">
+<div class="flex flex-col items-center">
+<div class="w-32 h-32 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center mb-6 shadow-lg">
+<i class="ri-code-s-slash-line ri-3x text-white"></i>
+</div>
+<h3 class="text-2xl font-bold text-navy mb-3">Moksh Aithandla</h3>
+<div class="flex flex-col items-center space-y-2 mb-6">
+<p class="text-lg text-gray-600 flex items-center">
+<i class="ri-school-line mr-2"></i>
+Student at RNSIT, Dept of ISE
+</p>
+<p class="text-lg text-gray-600 flex items-center">
+<i class="ri-code-box-line mr-2"></i>
+Blockchain Developer
+</p>
+</div>
+<div class="flex space-x-6">
+<a href="https://github.com/Moksh-Aithandla" target="_blank" class="group">
+<div class="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-md">
+<i class="ri-github-line ri-lg"></i>
+</div>
+<span class="text-sm text-gray-500 mt-2 block">GitHub</span>
+</a>
+<a href="https://www.linkedin.com/in/moksh-a-n-762670278/" target="_blank" class="group">
+<div class="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-md">
+<i class="ri-linkedin-line ri-lg"></i>
+</div>
+<span class="text-sm text-gray-500 mt-2 block">LinkedIn</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-navy text-white py-12">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div>
+<div class="flex items-center mb-4">
+<h1 class="text-2xl font-['Pacifico'] text-white mr-2">logo</h1>
+<span class="text-white font-bold">LexChain</span>
+</div>
+<p class="text-gray-300 mb-4">Revolutionizing legal services with blockchain technology for transparent, secure, and efficient case management.</p>
+<div class="flex space-x-4">
+<a href="#" class="text-gray-300 hover:text-white">
+<i class="ri-twitter-x-line"></i>
+</a>
+<a href="#" class="text-gray-300 hover:text-white">
+<i class="ri-linkedin-line"></i>
+</a>
+<a href="#" class="text-gray-300 hover:text-white">
+<i class="ri-github-line"></i>
+</a>
+<a href="#" class="text-gray-300 hover:text-white">
+<i class="ri-discord-line"></i>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-4">Quick Links</h4>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-300 hover:text-white">Home</a></li>
+<li><a href="#features" class="text-gray-300 hover:text-white">Features</a></li>
+<li><a href="#benefits" class="text-gray-300 hover:text-white">Benefits</a></li>
+<li><a href="#about" class="text-gray-300 hover:text-white">About Us</a></li>
+<li><a href="#contact" class="text-gray-300 hover:text-white">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-4">Legal</h4>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-300 hover:text-white">Terms of Service</a></li>
+<li><a href="#" class="text-gray-300 hover:text-white">Privacy Policy</a></li>
+<li><a href="#" class="text-gray-300 hover:text-white">Cookie Policy</a></li>
+<li><a href="#" class="text-gray-300 hover:text-white">Data Protection</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-4">Newsletter</h4>
+<p class="text-gray-300 mb-4">Stay updated with the latest in legal tech and blockchain innovations.</p>
+<form class="flex">
+<input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-button border-none focus:outline-none text-navy w-full">
+<button type="submit" class="bg-primary text-white px-4 py-2 rounded-r-button whitespace-nowrap font-medium hover:bg-opacity-90 transition-all">Subscribe</button>
+</form>
+</div>
+</div>
+<div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-300 text-sm">&copy; 2025 LexChain. All rights reserved.</p>
+<div class="flex space-x-4 mt-4 md:mt-0">
+<div class="flex items-center">
+<i class="ri-ethereum-line mr-2 text-gray-300"></i>
+<span class="text-gray-300 text-sm">Ethereum Powered</span>
+</div>
+<div class="flex items-center">
+<i class="ri-database-2-line mr-2 text-gray-300"></i>
+<span class="text-gray-300 text-sm">IPFS Storage</span>
+</div>
+<div class="flex items-center">
+<i class="ri-shield-check-line mr-2 text-gray-300"></i>
+<span class="text-gray-300 text-sm">Secure & Verified</span>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- Toast Notification -->
+<div id="toast" class="toast fixed bottom-4 right-4 bg-white text-navy px-4 py-3 rounded-lg shadow-lg flex items-center z-50">
+<div class="w-8 h-8 rounded-full bg-emerald flex items-center justify-center mr-3">
+<i class="ri-check-line text-white"></i>
+</div>
+<div>
+<h4 class="font-medium">Success!</h4>
+<p class="text-sm text-gray-600" id="toastMessage">Action completed successfully.</p>
+</div>
+<button class="ml-4 text-gray-400 hover:text-gray-600" onclick="hideToast()">
+<i class="ri-close-line"></i>
+</button>
+</div>
+<!-- Modal -->
+<div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+<div class="bg-white rounded-lg shadow-xl p-6 max-w-md w-full mx-4">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-xl font-bold text-navy" id="modalTitle">Connect Wallet</h3>
+<button class="text-gray-400 hover:text-gray-600" onclick="hideModal()">
+<i class="ri-close-line ri-lg"></i>
+</button>
+</div>
+<div id="modalContent">
+<p class="text-gray-600 mb-4">Please connect your MetaMask wallet to access the LexChain platform.</p>
+<div class="bg-gray-50 p-4 rounded-lg mb-4">
+<div class="flex items-center">
+<div class="w-10 h-10 mr-4 flex items-center justify-center">
+<i class="ri-wallet-3-line ri-lg text-primary"></i>
+</div>
+<div>
+<h4 class="font-medium text-navy">MetaMask</h4>
+<p class="text-sm text-gray-500">Connect to your MetaMask wallet</p>
+</div>
+</div>
+</div>
+<button id="connectWalletModal" class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap w-full font-medium hover:bg-opacity-90 transition-all">Connect MetaMask</button>
+</div>
+</div>
+</div>
+<script type="module">
+import * as web3Integration from './js/web3-integration.js';
+window.connectMetaMask = web3Integration.connectMetaMask;
+window.checkUserRegistration = web3Integration.checkUserRegistration;
+window.redirectToDashboard = web3Integration.redirectToDashboard;
+</script>
+<script>
+// Show toast notification
+function showToast(message) {
+    const toast = document.getElementById('toast');
+    const toastMessage = document.getElementById('toastMessage');
+    toastMessage.textContent = message;
+    toast.classList.add('show');
+    setTimeout(() => {
+        hideToast();
+    }, 5000);
+}
+
+// Hide toast notification
+function hideToast() {
+    const toast = document.getElementById('toast');
+    toast.classList.remove('show');
+}
+
+// Show modal
+function showModal(title, content) {
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalContent = document.getElementById('modalContent');
+    if (title) modalTitle.textContent = title;
+    if (content) modalContent.innerHTML = content;
+    modal.classList.remove('hidden');
+}
+
+// Hide modal
+function hideModal() {
+    const modal = document.getElementById('modal');
+    modal.classList.add('hidden');
+}
+
+// Handle contact form submission
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            if (name && email) {
+                showToast('Message sent successfully!');
+                contactForm.reset();
+            } else {
+                showToast('Please fill in all required fields');
+            }
+        });
+    }
+    
+    // Connect wallet buttons
+    const connectButtons = [
+        document.getElementById('connectWallet'),
+        document.getElementById('connectWalletHero'),
+        document.getElementById('connectWalletCTA'),
+        document.getElementById('connectWalletModal')
+    ];
+    
+    connectButtons.forEach(button => {
+        if (button) {
+            button.addEventListener('click', async function() {
+                try {
+                    const result = await connectMetaMask();
+                    if (result.success) {
+                        showToast(`Connected: ${result.account.substring(0, 6)}...${result.account.substring(38)}`);
+                    } else {
+                        if (result.error.includes("MetaMask is not installed")) {
+                            showModal('MetaMask Not Found', `
+                                <p class="text-gray-600 mb-4">Please install MetaMask to use the LexChain platform.</p>
+                                <a href="https://metamask.io/download/" target="_blank" class="bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap block text-center font-medium hover:bg-opacity-90 transition-all">Install MetaMask</a>
+                            `);
+                        } else {
+                            showToast(`Failed to connect: ${result.error}`);
+                        }
+                    }
+                } catch (error) {
+                    console.error("Error connecting to MetaMask:", error);
+                    showToast('Failed to connect wallet');
+                }
+            });
+        }
+    });
+    
+    // Check if user is already connected
+    if (typeof window.ethereum !== 'undefined' && window.ethereum.selectedAddress) {
+        checkUserRegistration().then(isRegistered => {
+            if (isRegistered) {
+                redirectToDashboard();
+            }
+        });
+    }
+});
+</script>
+</body>
+</html>
