@@ -64,8 +64,8 @@ The E-Vault Law Management System is a decentralized application (dApp) that ena
    
    The file should contain:
    ```
-   ALCHEMY_API_KEY=RuOilkGBfCJflqOLZND0WrLWvLFtooRA
-   PRIVATE_KEY=06fe5cf665ced25f071ef6d237c21b1f36222605c2822135839aec503006b4f0
+   ALCHEMY_API_KEY=
+   PRIVATE_KEY=
    ```
 
 4. Deploy the AdminDashboard contract to Sepolia testnet:
@@ -88,8 +88,8 @@ The E-Vault Law Management System is a decentralized application (dApp) that ena
 3. Create a `.env` file with the following variables:
    ```
    PORT=3001
-   FILEBASE_API_KEY=8C7456690C30D12D749F
-   FILEBASE_SECRET_KEY=TX2i0euuxWAA6hlyjIyOQUAbk72LL8G2L7pOwE3I
+   FILEBASE_API_KEY=
+   FILEBASE_SECRET_KEY=
    FILEBASE_BUCKET=evault-law
    ```
 
